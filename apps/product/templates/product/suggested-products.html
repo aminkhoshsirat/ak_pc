@@ -1,0 +1,56 @@
+{% load poll_extras %}
+<div class="swiper-wrapper">
+    {% for product in products %}
+        <div class="swiper-slide">
+            <div class="product-box-item bg-white">
+                <div class="hover">
+                    <div class="hover-btn">
+                        <a href="" data-hint="مقایسه محصول" class="hint--right"><i
+                                class="bi bi-arrow-left-right"></i></a>
+                        <a href="" data-hint="افزودن به علاقه مندی" class="hint--right"><i
+                                class="bi bi-heart"></i></a>
+                        <a href="#productModal" data-hint="مشاهده سریع" class="hint--right"
+                           data-bs-toggle="modal" data-bs-target="#productModal"><i
+                                class="bi bi-eye"></i></a>
+                    </div>
+                </div>
+                <a href="{{ product.get_absolute_url }}">
+                    <div class="image text-center">
+                        <img src="{{ product.image.url }}" alt="" class="img-fluid one-image">
+                        <img src="{{ product.image.url }}" alt="" class="img-fluid two-image">
+                    </div>
+                    <div class="desc">
+                        <div class="title">
+                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                {{ product.title }}
+                            </h6>
+                        </div>
+                        <div class="foot d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <div class="add" data-hint="افزودن به سبد خرید" class="hint--right">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                         fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="price d-flex flex-column justify-content-end">
+                                <div>
+                                    <span class="fw-bold font-18 def-color">{{ product.price_after_off | money_format }}</span>
+                                    <span class="badge main-color-two-bg rounded-pill">{{ product.off }}%</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span class="text-muted font-14 text-decoration-line-through">{{ product.price | money_format }}</span>
+                                    <span class="text-muted font-14 ms-2">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next d-sm-flex d-none"></div>
+    <div class="swiper-button-prev d-sm-flex d-none"></div>
+</div>

@@ -1,0 +1,283 @@
+{% load static %}
+<header>
+    <div class="header-bottom shadow-box">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-7 order-lg-3 order-1">
+                    <div class="d-flex flex-column d-lg-flex d-none flex-wrap justify-content-center">
+                        <div class="header-bottom-btn">
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'user:dashboard' %}"
+                                   class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
+                                    پنل کاربری
+                                </a>
+                                |
+                                <a class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap"
+                                   data-bs-toggle="offcanvas" href="#cartCanvas" onclick="showSmallBucket()"
+                                   role="button"
+                                   aria-controls="cart canvas">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                                         class="bi bi-bag me-2" viewBox="0 0 16 16">
+                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
+                                    </svg>
+                                    <span class="text-overflow fw-bold font-14">سبد خرید</span>
+                                </a>
+                                <a href="{% url 'user:logout' %}">خروج</a>
+                            {% else %}
+                                <a href="{% url 'user:login' %}"
+                                   class="header-bottom-link-cat waves-effect waves-light rounded-pill ms-1 font-14 d-flex align-items-center justify-content-center flex-wrap"
+                                   data-bs-toggle="modal" data-bs-target="#loginModal" role="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-person-circle me-2" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
+                                        <path fill-rule="evenodd"
+                                              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+                                    </svg>
+                                    <span class="fw-bold text-overflow">حساب کاربری</span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="responsive-menu d-lg-none d-block">
+                        <button class="btn border-0 btn-responsive-menu" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#responsiveMenu" aria-controls="responsive menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                                 class="bi bi-list" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                            </svg>
+                        </button>
+                        <div class="offcanvas offcanvas-start" tabindex="-1" id="responsiveMenu"
+                             aria-labelledby="responsive menu">
+                            <div class="offcanvas-header">
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel">{{ site_detail.title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body">
+                                <a href="" class="text-center d-block mb-3">
+                                    <img src="{{ site_detail.logo.url }}" alt="" class="img-fluid" width="200">
+                                </a>
+                                <div class="header-bottom-form mb-4 w-100">
+                                    <form action="/product">
+                                        <div class="position-relative">
+                                            <input type="text" name="search"
+                                                   class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
+                                                   placeholder="جستجو...">
+                                            <button type="submit"
+                                                    class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
+                                                    style="left: 5px;">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                     fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <ul class="rm-item-menu navbar-nav">
+                                {% if request.user.is_authenticated %}
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'user:dashboard' %}" class="nav-link">پنل کاربری
+                                        </a></li>
+                                    {% else %}
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'user:login' %}" class="nav-link">ورود کاربر
+                                        </a></li>
+                                {% endif %}
+                                    <li class="nav-item bg-ul-f7">
+                                        <a href="" class="nav-link">دسته بندی محصولات</a>
+                                        <span class="showSubMenu"><i class="bi bi-chevron-left"></i></span>
+                                        <ul class="navbar-nav h-0">
+                                            {% for main_category in main_categories %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link"
+                                                       href="{{ main_category.get_absolute_url }}">{{ main_category.title }}</a>
+                                                    <span class="showSubMenu"><i class="bi bi-chevron-left"></i></span>
+                                                    <ul class="navbar-nav h-0 bg-ul-f7">
+                                                        {% for child_category in main_category.base_category_child.all %}
+
+                                                            {% if child_category.parent_category == None %}
+                                                                <li class="nav-item"><a
+                                                                        href="{{ child_category.get_absolute_url }}"
+                                                                        class="nav-link">{{ child_category.title }}</a>
+                                                                </li>
+                                                                {% for child_child_category in child_category.child_category.all %}
+                                                                    <li>
+                                                                        <a href="{{ child_child_category.get_absolute_url }}">{{ child_child_category.title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                            {% endif %}
+
+                                                        {% endfor %}
+
+                                                    </ul>
+                                                </li>
+
+                                            {% endfor %}
+
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item bg-ul-f7"><a href="" class="nav-link">دسته بندی مقالات</a>
+                                        <span class="showSubMenu"><i class="bi bi-chevron-left"></i></span>
+                                        <ul class="navbar-nav h-0">
+
+                                            {% for category in blog_categories %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link"
+                                                       href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                                                </li>
+                                            {% endfor %}
+
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'power:caculator' %}"
+                                                                     class="nav-link">محاسبه گر پاور</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-5 order-lg-1 order-2">
+                    <div class="row">
+                        <a href="" class="text-lg-start text-end d-block">
+                            <img src="{{ site_detail.logo.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-6 d-lg-flex d-none order-lg-2 order-3">
+                    <div class="header-bottom-form me-2 w-100">
+                        <form action="/product">
+                            <div class="position-relative">
+                                <input type="text" name="search"
+                                       class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
+                                       placeholder="جستجو...">
+                                <button type="submit"
+                                        class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
+                                        style="left: 5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                         class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- start mege menu -->
+    <div class="mega-menu d-lg-flex d-none">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-10">
+                    <div class="top-menu-menu">
+                        <ul class="navbar-nav">
+                            <li class="position-relative m-0"></li>
+                            <li class="nav-item main-menu-head"><a href=""
+                                                                   class="nav-link border-animate fromRight fw-bold"><i
+                                    class="bi bi-list"></i>
+                                دسته بندی محصولات
+                            </a>
+                                <ul class="main-menu mega-container">
+                                    {% for main_category in main_categories %}
+                                        <li class="main-menu-sub-active-li"><a
+                                                href="{{ main_category.get_absolute_url }}"><i
+                                                class="bi bi-phone"></i>{{ main_category.title }}</a>
+                                            <ul class="main-menu-sub back-menu"
+                                                style=" background: #fff url('{{ main_category.main_category_image.image.url }}') no-repeat;">
+                                                {% for child_category in main_category.base_category_child.all %}
+                                                    {% if child_category.parent_category == None %}
+                                                        <li><a class="title my-flex-baseline"
+                                                               href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
+                                                        </li>
+                                                        {% for child_child_category in child_category.child_category.all %}
+                                                            <li>
+                                                                <a href="{{ child_child_category.get_absolute_url }}">{{ child_child_category.title }}</a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="" class="nav-link border-animate fromRight">دسته بندی مقالات<i
+                                    class="bi bi-tablet"></i></a>
+                                <ul class="list-unstyled shadow-lg back-menu sub-menu mega-container"
+                                    style="background: #fff url('assets/image/mega-img-1.jpg') no-repeat;background-size: 400px !important;">
+
+                                    {% for category in blog_categories %}
+                                        <li><a href="{{ category.get_absolute_url }}"
+                                               class="title">{{ category.title }}</a></li>
+                                    {% endfor %}
+
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="{% url 'asemble:index' %}"
+                                                    class="nav-link border-animate fromRight"><i class="bi bi-tag"></i>اسمبل
+                                کیس</a></li>
+                            <li class="nav-item"><a href="{% url 'power:caculator' %}"
+                                                    class="nav-link border-animate fromRight"><i class="bi bi-tag"></i>محاسبه
+                                گر پاور</a></li>
+                            <li class="nav-item"><a href="{% url 'benchmark:index' %}"
+                                                    class="nav-link border-animate fromRight">بنجمارک</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <ul class="navbar-nav text-end">
+                        <li class="nav-item"><a href="" class="nav-item def-color"><i class="bi bi-telephone me-2"></i>
+                            <span>{{ site_detail.phone }}</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end mega menu -->
+
+    <!-- mobile footer -->
+
+    <div class="mobile-footer d-lg-none d-table justify-content-center shadow-box bg-white position-fixed bottom-0 p-2 w-100"
+         style="z-index: 100;table-layout: fixed;">
+        <ul class="d-table-row">
+            <li class="d-table-cell pointer" onclick="topFunction()">
+                <div class="mf-link nav-link text-center">
+                    <span class="d-block mf-link-icon"><i class="bi bi-chevron-up font-20"></i></span>
+                    <span class="mt-1 font-12 fw-bold mf-link-title">بالا</span>
+                </div>
+            </li>
+            <li class="d-table-cell"><a href="{% url 'product:product_list_view' %}"
+                                        class="mf-link nav-link text-center">
+                <div class="mf-link-icon position-relative d-table mx-auto">
+                    <i class="bi bi-pc-display font-20"></i>
+                </div>
+                <span class="mt-1 font-12 fw-bold mf-link-title">محصولات</span>
+            </a></li>
+            <li class="d-table-cell"><a href="{% url 'index' %}" class="mf-link nav-link text-center">
+                <span class="d-block mf-link-icon"><i class="bi bi-house font-20"></i></span>
+                <span class="mt-1 font-12 fw-bold mf-link-title">صفحه اصلی</span>
+            </a></li>
+            <li class="d-table-cell"><a href="{% url 'blog:blog' %}" class="mf-link nav-link text-center">
+
+                    <div class="position-relative mf-link-icon d-table mx-auto">
+                        <span class="d-block mf-link-icon"><i class="bi bi-book-half font-20"></i></span>
+                    </div>
+                    <span class="mt-1 font-12 fw-bold mf-link-title">وبلاگ</span>
+            </a></li>
+            <li class="d-table-cell"><a class="mf-link nav-link text-center" data-bs-toggle="offcanvas"
+                                        href="#cartCanvas" role="button" aria-controls="cart canvas">
+                <div class="position-relative mf-link-icon d-table mx-auto">
+                    <span class="d-block mf-link-icon"><i class="bi bi-bag font-20"></i></span>
+                    <span class="position-absolute main-color-one-bg rounded-pill font-10 text-white badge"
+                          style="right:-60%;bottom:-5px;">0</span>
+                </div>
+                <span class="mt-1 font-12 fw-bold mf-link-title">سبد خرید</span>
+            </a></li>
+        </ul>
+    </div>
+</header>

@@ -1,0 +1,319 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="slide-contain">
+        <div class="form-cells component-options">
+            <div class="cpu-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="cpu-heading" id="cpu-name">Central Processing Unit (CPU)</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select cpu-brand-select">
+                        <select name="select" id="cpu-brand" title="Select a Processor Brand" class="cpu-brand-select">
+                            <option value="0" selected="">Select Brand</option>
+                            {% for brand in cpu_brands %}
+                                <option value="{{ brand.title }}">{{ brand.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="form-select-name">Select Brand</span> <i class="fa fa-caret-down"></i>
+                        <span class="form-error-message">This field is required.</span>
+                    </label>
+                    <label class="form-select cpu-select">
+                        <select name="select" id="cpu" title="Select a Processor Series" class="psu-calc-item select2-hidden-accessible" data-select2-id="select2-data-cpu" tabindex="-1" aria-hidden="true">
+                            <option value="0" selected="" data-select2-id="select2-data-2-rphy">Select Series</option>
+                            {% for cpu in cpus %}
+                                <option value="{{ cpu.title }}">{{ cpu.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="select2 select2-container select2-container--default select2-container--below" dir="ltr" data-select2-id="select2-data-1-7x0m" style="width: 150px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" title="Select a Processor Series" tabindex="0" aria-disabled="false" aria-labelledby="select2-cpu-container" aria-controls="select2-cpu-container"><span class="select2-selection__rendered" id="select2-cpu-container" role="textbox" aria-readonly="true" title="Select Series">Select Series</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                        <span class="form-select-name" style="display:none;">Select Series</span> <i style="display:none;" class="fa fa-caret-down"></i>
+                        <span class="form-error-message">This field is required.</span>
+                    </label>
+                </div>
+            </div>
+            <div class="motherboard-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="motherboard-heading" id="motherboard-name">Motherboard</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select is-wide mb-select">
+                        <select name="select" title="Select a Motherboard" id="motherboard" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Motherboard</option>
+                            {% for main_board in main_boards %}
+                                <option value="70">{{ main_board.form_factor }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="gpu-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="gpu-heading" id="video_card-name">Graphics Processing Unit (GPU)</h3>
+                </div>
+                <div class="form-cell layout-third-two gpu-section">
+                    <label class="form-select is-wide gpu-brand-select">
+                        <select name="select" title="Select Chipset" id="video_card-brand" class="gpu-brand-select" disabled="true">
+                            <option value="0" selected="">Select Chipset</option>
+                            {% for brand in gpu_brands %}
+                                <option value="{{ brand.title }}">{{ brand.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="form-select-name">Select Chipset</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty gpu-select" data-select2-id="select2-data-95-xn8p">
+                        <select name="select" title="Select Series" id="video_card" class="psu-calc-item select2-hidden-accessible" data-select2-id="select2-data-video_card" tabindex="-1" aria-hidden="true" disabled="true">
+                            <option value="0" selected="" data-select2-id="select2-data-4-shuk">Select Series</option>
+                        </select><span class="select2 select2-container select2-container--default select2-container--above select2-container--disabled" dir="ltr" data-select2-id="select2-data-3-f2th" style="width: 311px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" title="Select Series" tabindex="-1" aria-disabled="true" aria-labelledby="select2-video_card-container" aria-controls="select2-video_card-container"><span class="select2-selection__rendered" id="select2-video_card-container" role="textbox" aria-readonly="true" title="Select Series">Select Series</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                        <span class="form-select-name" style="display:none;">Select Series</span> <i style="display:none;" class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x gpu-quantity-x-label">x</span>
+                    <label class="form-select gpu-qty-select-panel">
+                        <select name="select-qty" id="video_card-qty" class="psu-calc-qty" disabled="true">
+                            {% for gpu in gpus %}
+                                <option value="{{ gpu.title }}">{{ gpu.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="ram-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="ram-heading" id="memory-name">Random Access Memory (RAM)</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select has-qty">
+                        <select name="select" title="Select Your Memory" id="memory" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select Your Memory</option>
+                            {% for ram in rams %}
+                                <option value="{{ ram.title }}">{{ ram.title }}</option>
+                            {% endfor %}
+                        </select>
+                        <span class="form-select-name">4GB DDR4</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select-qty" id="memory-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="ssd-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="ssd-heading" id="ssd-name">Solid state Drive (SSD)</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                        </select>
+                        <span class="form-select-name">Under 120GB</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd-1" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                        </select>
+                        <span class="form-select-name">Select a Solid State Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-1-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd-2" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                        </select>
+                        <span class="form-select-name">Select a Solid State Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-2-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd-3" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                        </select>
+                        <span class="form-select-name">Select a Solid State Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-3-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd-4" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                        </select>
+                        <span class="form-select-name">Select a Solid State Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-4-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="ssd-5" class="psu-calc-item" title="Select a Solid State Drive" disabled="true">
+                            <option value="0" selected="">Select a Solid State Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="10">Under 120GB</option>
+                            <option value="10">120GB - 256GB</option>
+                        </select>
+                        <span class="form-select-name">Select a Solid State Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="ssd-5-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="hdd-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="hdd-heading" id="hdd-name">Hard Disk drive (HDD)</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">10,000RPM 3.5" HDD</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd-1" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">Select a Hard Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-1-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd-2" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">Select a Hard Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-2-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd-3" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">Select a Hard Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-3-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd-4" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">Select a Hard Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-4-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <label class="form-select has-qty">
+                        <select name="select" id="hdd-5" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select a Hard Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="15">5400RPM 3.5" HDD</option>
+                        </select>
+                        <span class="form-select-name">Select a Hard Drive</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                    <span class="quantity-x">x</span>
+                    <label class="form-select">
+                        <select name="select" id="hdd-5-qty" class="psu-calc-qty" disabled="true">
+                            <option value="1" selected="">1</option>
+                        </select>
+                        <span class="form-select-name">1</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="cd-cell">
+                <div class="form-cell layout-third-one">
+                    <h3 class="optical-heading" id="optical-name">Optical Drive (CD/DVD/Blu-Ray)</h3>
+                </div>
+                <div class="form-cell layout-third-two">
+                    <label class="form-select is-wide">
+                        <select name="select" id="optical" class="psu-calc-item" disabled="true">
+                            <option value="0" selected="">Select an Optical Drive</option>
+                            <option value="0">Not Installed</option>
+                            <option value="30">Blu-Ray</option>
+                        </select>
+                        <span class="form-select-name">Blu-Ray</span> <i class="fa fa-caret-down"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

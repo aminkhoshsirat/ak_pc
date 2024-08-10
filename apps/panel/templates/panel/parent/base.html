@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" class="semi-dark" dir="rtl">
+{% load static %}
+{% load render_partial %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{% static 'panel/images/favicon-32x32.png' %}" type="image/png" />
+    <!--plugins-->
+    <link href="{% static 'panel/plugins/vectormap/jquery-jvectormap-2.0.2.css' %}" rel="stylesheet"/>
+    <link href="{% static 'panel/plugins/simplebar/css/simplebar.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet" />
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'panel/css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/bootstrap-extended.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/icons.css' %}" rel="stylesheet">
+    <link href="{% static 'panel/fonts/googlefonts.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'panel/fonts/bootstrap-icons.css' %}">
+
+    <!-- loader-->
+    <link href="{% static 'panel/css/pace.min.css' %}" rel="stylesheet" />
+
+    <!--Theme Styles-->
+    <link href="{% static 'panel/css/dark-theme.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/light-theme.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/semi-dark.css' %}" rel="stylesheet" />
+    <link href="{% static 'panel/css/header-colors.css' %}" rel="stylesheet" />
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div class="wrapper">
+    <!--start top header-->
+    {% render_partial 'apps.panel.views.HeaderView' %}
+    <!--end top header-->
+
+    <!--start sidebar -->
+    {% include 'panel/partial/sidebar.html' %}
+    <!--end sidebar -->
+
+    <!--start content-->
+    {% block content %}
+
+    {% endblock %}
+</div>
+    <!--start overlay-->
+    <div class="overlay nav-toggle-icon"></div>
+    <!--end overlay-->
+{% include 'panel/partial/footer.html' %}
+<!--Start Back To Top Button-->
+    <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+    <!--End Back To Top Button-->
+<!--start switcher-->
+    <div class="switcher-body">
+        <button class="btn btn-primary btn-switcher shadow-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="bi bi-paint-bucket me-0"></i></button>
+        <div class="offcanvas offcanvas-end shadow border-start-0 p-2" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">سفارشی ساز تم</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <h6 class="mb-0">تنوع تم</h6>
+                <hr>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="LightTheme" value="option1">
+                    <label class="form-check-label" for="LightTheme">روشن</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="DarkTheme" value="option2">
+                    <label class="form-check-label" for="DarkTheme">تاریک</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="SemiDarkTheme" value="option3">
+                    <label class="form-check-label" for="SemiDarkTheme">نیمه دارک</label>
+                </div>
+                <hr>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="MinimalTheme" value="option3" checked>
+                    <label class="form-check-label" for="MinimalTheme">تم مینیمال</label>
+                </div>
+                <hr/>
+                <h6 class="mb-0">رنگ های سرصفحه</h6>
+                <hr/>
+                <div class="header-colors-indigators">
+                    <div class="row row-cols-auto g-3">
+                        <div class="col">
+                            <div class="indigator headercolor1" id="headercolor1"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor2" id="headercolor2"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor3" id="headercolor3"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor4" id="headercolor4"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor5" id="headercolor5"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor6" id="headercolor6"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor7" id="headercolor7"></div>
+                        </div>
+                        <div class="col">
+                            <div class="indigator headercolor8" id="headercolor8"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end switcher-->
+<!-- Bootstrap bundle JS -->
+<script src="{% static 'panel/js/bootstrap.bundle.min.js' %}"></script>
+<!--plugins-->
+<script src="{% static 'panel/js/jquery.min.js' %}"></script>
+<script src="{% static 'panel/plugins/simplebar/js/simplebar.min.js' %}"></script>
+<script src="{% static 'panel/plugins/metismenu/js/metisMenu.min.js' %}"></script>
+<script src="{% static 'panel/plugins/perfect-scrollbar/js/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'panel/plugins/vectormap/jquery-jvectormap-2.0.2.min.js' %}"></script>
+<script src="{% static 'panel/plugins/vectormap/jquery-jvectormap-world-mill-en.js' %}"></script>
+<script src="{% static 'panel/js/pace.min.js' %}"></script>
+<script src="{% static 'panel/plugins/chartjs/js/Chart.min.js' %}"></script>
+<script src="{% static 'panel/plugins/chartjs/js/Chart.extension.js' %}"></script>
+<script src="{% static 'panel/plugins/apexcharts-bundle/js/apexcharts.min.js' %}"></script>
+<!--app-->
+<script src="{% static 'panel/js/app.js' %}"></script>
+<script src="{% static 'panel/js/index4.js' %}"></script>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/costum.js' %}"></script>
+
+<script>
+    new PerfectScrollbar(".best-product")
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'product:product_list_view' %}" class="font-14 text-muted">فروشگاه</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'bucket:cart' %}" class="font-14 text-muted">سبد خرید</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="empty-cart">
+                    <img src="{{ site_detail.empty_cart_image.url }}" class="d-block mx-auto" alt="">
+                    <h5 class="h5 text-center my-3">سبد خرید شما خالی است</h5>
+                    <div class="text-center">
+                        <a href="{% url 'product:product_list_view' %}" class="btn border-0 main-color-one-bg rounded-pill">ادامه خرید از فروشگاه</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

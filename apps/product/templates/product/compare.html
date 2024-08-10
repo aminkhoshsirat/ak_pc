@@ -1,0 +1,29 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div id="cp-1" style="display: inline-block;width: 200px;">
+        <img src="{{ product.image.url }}">
+        <p>{{ product.title }}</p>
+    </div>
+    <div id="cp-2" style="display: inline-block;width: 200px;">
+
+    </div>
+    <div id="cp-3" style="display: inline-block;width: 200px;">
+
+    </div>
+    <div id="cp-4" style="display: inline-block;width: 200px;">
+        <button>انتخاب محصول</button>
+    </div>
+    <table>
+        <tr>
+            {% for field in fields %}
+                <th>{{ field.name }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for field in fields %}
+                <th>{{ field.amount }}</th>
+            {% endfor %}
+        </tr>
+    </table>
+{% endblock %}

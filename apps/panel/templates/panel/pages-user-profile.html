@@ -1,0 +1,160 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center">
+            <div class="breadcrumb-title pe-3 text-white">صفحات</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt text-white"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active text-white" aria-current="page">مشخصات کاربر</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-light">تنظیمات</button>
+                    <button type="button" class="btn btn-light split-bg-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">تغییر حالت کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="profile-cover bg-dark"></div>
+
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="mb-0">حساب من</h5>
+                        <hr>
+                        <div class="card shadow-none border">
+                            <div class="card-header">
+                                <h6 class="mb-0">اطلاعات کاربر</h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="row g-3">
+                                    <div class="col-6">
+                                        <label class="form-label">نام کاربری</label>
+                                        <input type="text" class="form-control" value="@jhon">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">آدرس ایمیل</label>
+                                        <input type="text" class="form-control" value="xyz@example.com">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">نام کوچک</label>
+                                        <input type="text" class="form-control" value="علی">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">نام خانوادگی</label>
+                                        <input type="text" class="form-control" value="">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card shadow-none border">
+                            <div class="card-header">
+                                <h6 class="mb-0">اطلاعات تماس</h6>
+                            </div>
+                            <div class="card-body">
+                                <form class="row g-3">
+                                    <div class="col-12">
+                                        <label class="form-label">نشانی</label>
+                                        <input type="text" class="form-control" value="خیابان, نام شهر, ایالات متحده">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">شهر</label>
+                                        <input type="text" class="form-control" value="برلین">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">کشور</label>
+                                        <input type="text" class="form-control" value="xyz@example.com">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">پین کد</label>
+                                        <input type="password" class="form-control" value="*****">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">نام خانوادگی</label>
+                                        <input type="text" class="form-control" value="علی">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">درمورد من</label>
+                                        <textarea class="form-control" rows="4" cols="4" placeholder="خودت را توصیف کن..."></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="text-start">
+                            <button type="button" class="btn btn-primary px-4">ذخیره تغییرات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card shadow-sm border-0 overflow-hidden">
+                    <div class="card-body">
+                        <div class="profile-avatar text-center">
+                            <img src="assets/images/avatars/avatar-1.png" class="rounded-circle shadow" width="120" height="120" alt="">
+                        </div>
+                        <div class="d-flex align-items-center justify-content-around mt-5 gap-3">
+                            <div class="text-center">
+                                <h4 class="mb-0">45</h4>
+                                <p class="mb-0 text-secondary">دوستان</p>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="mb-0">15</h4>
+                                <p class="mb-0 text-secondary">عکس ها</p>
+                            </div>
+                            <div class="text-center">
+                                <h4 class="mb-0">86</h4>
+                                <p class="mb-0 text-secondary">نظرات</p>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <h4 class="mb-1">جان دیو، 27 ساله</h4>
+                            <p class="mb-0 text-secondary">سیدنی، استرالیا</p>
+                            <div class="mt-4"></div>
+                            <h6 class="mb-1">مدیر منابع انسانی</h6>
+                            <p class="mb-0 text-secondary">دانشگاه فناوری اطلاعات</p>
+                        </div>
+                        <hr>
+                        <div class="text-start">
+                            <h5 class="">در باره</h5>
+                            <p class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله وجود خارجی ندارد.
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-top">
+                            دنبال کننده
+                            <span class="badge bg-primary rounded-pill">95</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                            دنبال شونده
+                            <span class="badge bg-primary rounded-pill">75</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent">
+                            قالب ها
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div><!--end row-->
+
+    </main>
+    <!--end page main-->
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'user/base.html' %}
+{% block title %}{% endblock %}
+{% block panel %}
+    <div class="col-lg-9">
+        <div class="content-box">
+            <div class="item-box shadow-box">
+                <div class="title border-bottom border-muted">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="font-14">اطلاعات شخصی</h6>
+                        <a href="" class="font-14 btn border-0 main-color-two-bg">
+                            <i class="bi bi-pencil-square"></i>
+                            ویرایش
+                        </a>
+                    </div>
+                </div>
+                <div class="desc shadow-none">
+                    <table class="table shadow-none mb-0">
+                        <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <h6 class="text-muted font-12">نام و نام خانوادگی</h6>
+                                <p style="display: inline-block" class="fw-bold mt-2 font-14">{{ user.fullname }}</p>
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                            <td colspan="2">
+                                <h6 class="text-muted font-12">شماره تلفن</h6>
+                                <p class="fw-bold mt-2 font-14">{{ user.phone }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h6 class="font-12 text-muted">پست الکترونیک</h6>
+                                <p style="display: inline-block" class="fw-bold mt-2 font-14">{{ user.email }}</p>
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <h6 class="font-12 text-muted">عضویت</h6>
+                                <p style="display: inline-block" class="fw-bold mt-2 font-14">{{ user.register_date | date:'H:i:s  Y-m-d' }}</p>
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                            <td colspan="2">
+                                <h6 class="font-12 text-muted">کد پستی </h6>
+                                <p style="display: inline-block" class="fw-bold mt-2 font-14">{{ user.post_code }}</p>
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <h6 class="font-12 text-muted">آدرس: </h6>
+                                <p style="display: inline-block" class="fw-bold mt-2 font-14">{{ user.address }}</p>
+                                <i class="fa fa-pencil"></i>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

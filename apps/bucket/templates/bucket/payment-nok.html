@@ -1,0 +1,74 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+
+
+                <style>
+                    .line-step-box.complete:nth-child(1):before {
+                        width: 100%;
+                    }
+                </style>
+                <div class="line-step-container d-sm-block d-none">
+                    <div class="line-step">
+                        <div class="line-step-boxs">
+                            <div class="line-step-box complete">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-bag"></i>
+                                    </div>
+                                    <p>سبد خرید</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box complete">
+                                <a href="checkout.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <p>پرداخت</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-break"></i>
+                                    </div>
+                                    <p>تکمیل سفارش</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- start payment content -->
+                <div class="payment-content py-20 mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                            <div class="alert-box ab-nsuccess">
+                                <div class="title">
+                                    <h5 class="h5">پرداخت ناموفق!</h5>
+                                </div>
+                                <div class="desc">
+                                    <p class="text-muted font-14">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                        چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در
+                                        ستون و سطرآنچنان که لازم است </p>
+                                </div>
+                                <div class="action d-sm-block d-grid gap-2">
+                                    <a href="" class="btn border-0 rounded-pill main-color-two-bg">پرداخت مجدد</a>
+                                    <a href="" class="btn border-0 rounded-pill main-color-one-bg">پنل کاربری</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end payment content -->
+
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+
+{% endblock %}

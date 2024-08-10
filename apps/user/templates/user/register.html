@@ -1,0 +1,71 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">ثبت نام</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-xl-4 col-sm-8">
+                        <div class="auth shadow-box rounded-4 p-4">
+                            <div class="auth-content">
+                                <h3 class="font-20 text-center auth-title-form">ثبت نام در فروشگاه</h3>
+
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="phone" class="form-control float-input" id="phone-field" placeholder="تلفن همراه">
+                                        <label for="floatingInputMobile">تلفن همراه</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="email" class="form-control float-input" id="email-field" placeholder="ایمیل">
+                                        <label for="floatingInputEmail">ایمیل</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" name="fullname" class="form-control float-input" id="fullname-field" placeholder="نام">
+                                        <label for="floatingInputEmail">نام</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" name="password" class="form-control float-input" id="password-field" placeholder="کلمه عبور">
+                                        <label for="floatingPassword">کلمه عبور</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" name="confirm_password" class="form-control float-input" id="confirm-password-field" placeholder="تکرار کلمه عبور">
+                                        <label for="floatingPasswordRe">تکرار کلمه عبور</label>
+                                    </div>
+                                    <div>
+                                        <button onclick="sendCode()">send code</button>
+                                    </div>
+                                    <div id="register-detail">
+
+                                    </div>
+                                    <div class="form-group">
+                                        <button onclick="register()" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ثبت نام</button>
+                                    </div>
+
+
+                                <div class="divider">
+                                    <span>یا</span>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <a href="">حساب کاربری دارم ! ورود به فروشگاه</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

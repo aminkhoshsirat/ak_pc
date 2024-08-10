@@ -1,0 +1,566 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">ابزارک ها</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">ویجت های ایستا</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">تغییر حالت کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <h6 class="mb-0 text-uppercase">ابزارک های آیکون دایره ای</h6>
+        <hr>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-6 row-cols-xxl-6">
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-primary text-primary">
+                            <i class="bi bi-chat-left-fill"></i>
+                        </div>
+                        <h3>25</h3>
+                        <p class="mb-0">پیام ها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-danger text-danger">
+                            <i class="bi bi-hdd-fill"></i>
+                        </div>
+                        <h3>35</h3>
+                        <p class="mb-0">ذخیره سازی</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-success text-success">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3>16</h3>
+                        <p class="mb-0">اعضا</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-info text-info">
+                            <i class="bi bi-archive-fill"></i>
+                        </div>
+                        <h3>18</h3>
+                        <p class="mb-0">فایل ها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-purple text-purple">
+                            <i class="bi bi-flag-fill"></i>
+                        </div>
+                        <h3>22</h3>
+                        <p class="mb-0">وظایف جدید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-light-orange text-orange">
+                            <i class="bi bi-pie-chart-fill"></i>
+                        </div>
+                        <h3>45</h3>
+                        <p class="mb-0">پروژه ها</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+
+        <h6 class="mb-0 text-uppercase">ابزارک های نماد رنگ</h6>
+        <hr>
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-6 row-cols-xxl-6">
+            <div class="col">
+                <div class="card radius-10 bg-tiffany">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-chat-left-fill"></i>
+                        </div>
+                        <h3 class="text-white">25</h3>
+                        <p class="mb-0 text-white">پیام ها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-danger">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-hdd-fill"></i>
+                        </div>
+                        <h3 class="text-white">35</h3>
+                        <p class="mb-0 text-white">ذخیره سازی</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-success">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h3 class="text-white">16</h3>
+                        <p class="mb-0 text-white">اعضا</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-dark">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-archive-fill"></i>
+                        </div>
+                        <h3 class="text-white">18</h3>
+                        <p class="mb-0 text-white">فایل ها</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-purple">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-flag-fill"></i>
+                        </div>
+                        <h3 class="text-white">22</h3>
+                        <p class="mb-0 text-white">وظایف جدید</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-orange">
+                    <div class="card-body text-center">
+                        <div class="widget-icon mx-auto mb-3 bg-white-1 text-white">
+                            <i class="bi bi-pie-chart-fill"></i>
+                        </div>
+                        <h3 class="text-white">45</h3>
+                        <p class="mb-0 text-white">پروژه ها</p>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+
+
+        <h6 class="mb-0 text-uppercase">ابزارک نماد سمت راست</h6>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-4">
+            <div class="col">
+                <div class="card radius-10 border-0 border-start border-tiffany border-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">کل سفارشات</p>
+                                <h4 class="mb-0 text-tiffany">248</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-tiffany text-white">
+                                <i class="bi bi-bag-check-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 border-0 border-start border-success border-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">کل درآمد</p>
+                                <h4 class="mb-0 text-success">1200 تومان</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-success text-white">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 border-0 border-start border-pink border-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">نرخ پرش</p>
+                                <h4 class="mb-0 text-pink">24.25درصد</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-pink text-white">
+                                <i class="bi bi-bar-chart-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 border-0 border-start border-orange border-3">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">کاربران جدید</p>
+                                <h4 class="mb-0 text-orange">214</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-orange text-white">
+                                <i class="bi bi-person-plus-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">کل سفارشات</p>
+                                <h4 class="mb-0 text-pink">542</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-pink">
+                                <i class="bi bi-cup"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">درآمد کلی</p>
+                                <h4 class="mb-0 text-info">800 تومان</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-info">
+                                <i class="bi bi-wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">نظرات</p>
+                                <h4 class="mb-0 text-purple">59</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-purple">
+                                <i class="bi bi-chat-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">بلیط</p>
+                                <h4 class="mb-0 text-primary">145</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-primary">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">اطلاعیه</p>
+                                <h4 class="mb-0 text-primary">145</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-primary">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                        <small class="mb-0"><i class="bi bi-arrow-up"></i> <span>+12.3 درصد نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">مجموع پست ها</p>
+                                <h4 class="mb-0 text-danger">249</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-danger">
+                                <i class="bi bi-pencil"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                        <small class="mb-0"><i class="bi bi-arrow-up"></i> <span>+ 10.5٪ نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">پیام ها</p>
+                                <h4 class="mb-0 text-success">845</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-success">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                        <small class="mb-0"><i class="bi bi-arrow-up"></i> <span>+15.8٪ نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1">مقالات</p>
+                                <h4 class="mb-0 text-orange">645</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-orange">
+                                <i class="bi bi-book"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2">
+                        <small class="mb-0"><i class="bi bi-arrow-up"></i> <span>+16.5٪ نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+
+
+        <h6 class="mb-0 text-uppercase">ویجت های نماد رنگ</h6>
+        <hr>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-4">
+            <div class="col">
+                <div class="card radius-10 bg-primary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">کل سفارشات</p>
+                                <h4 class="mb-0 text-white">248</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-white-1 text-white">
+                                <i class="bi bi-bag-check-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-success">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">کل درآمد</p>
+                                <h4 class="mb-0 text-white">1200 تومان</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-white-1 text-white">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-pink">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">نرخ پرش</p>
+                                <h4 class="mb-0 text-white">24.25٪</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-white-1 text-white">
+                                <i class="bi bi-bar-chart-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-orange">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">کاربران جدید</p>
+                                <h4 class="mb-0 text-white">214</h4>
+                            </div>
+                            <div class="ms-auto widget-icon bg-white-1 text-white">
+                                <i class="bi bi-person-plus-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-danger">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">کل سفارشات</p>
+                                <h4 class="mb-0 text-white">542</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-cup"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-info">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">درآمد کلی</p>
+                                <h4 class="mb-0 text-white">5 تومان</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-purple">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">نظرات</p>
+                                <h4 class="mb-0 text-white">59</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-chat-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-primary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">بلیط</p>
+                                <h4 class="mb-0 text-white">145</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-truck"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-primary">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">اطلاعیه</p>
+                                <h4 class="mb-0 text-white">145</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-bell"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2 border-top border-light">
+                        <small class="mb-0 text-white"><i class="bi bi-arrow-up"></i> <span>+12.3 درصد نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-orange">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">مجموع پست ها</p>
+                                <h4 class="mb-0 text-white">249</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-pencil"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2 border-top border-light">
+                        <small class="mb-0 text-white"><i class="bi bi-arrow-up"></i> <span>+ 10.5٪ نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-success">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">پیام ها</p>
+                                <h4 class="mb-0 text-white">845</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2 border-top border-light">
+                        <small class="mb-0 text-white"><i class="bi bi-arrow-up"></i> <span>+15.8 درصد نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10 bg-purple">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                                <p class="mb-1 text-white">مقالات</p>
+                                <h4 class="mb-0 text-white">645</h4>
+                            </div>
+                            <div class="ms-auto fs-2 text-white">
+                                <i class="bi bi-book"></i>
+                            </div>
+                        </div>
+                        <hr class="my-2 border-top border-light">
+                        <small class="mb-0 text-white"><i class="bi bi-arrow-up"></i> <span>+16.5٪ نسبت به هفته گذشته</span></small>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+
+    </main>
+    <!--end page main-->
+{% endblock %}

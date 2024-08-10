@@ -1,0 +1,131 @@
+{% extends 'user/base.html' %}
+{% load poll_extras %}
+{% block title %}{% endblock %}
+{% block panel %}
+    <div class="col-lg-9">
+        <div class="content-box">
+            <div class="row gy-3">
+                <div class="col-12">
+                    <div class="item-box shadow-box">
+                        <div class="title border-bottom border-muted">
+                            <h6 class="font-14">جزییات سفارش
+                            </h6>
+                        </div>
+                        <div class="desc p-0 shadow-none">
+                            <div class="orders">
+                                <div class="order-item">
+                                    <div class="order-item-detail">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <span class="text-mute">کد پیگیری سفارش</span>
+                                                <strong>{{ order.transaction_code }}</strong>
+                                            </li>
+                                            <li class="nav-item">
+                                                <span class="text-mute">تاریخ ثبت سفارش</span>
+                                                <strong>{{ order.paid_date }}</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="order-item-detail" style="padding-top: 20px;">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <span class="text-mute">تحویل گیرنده</span>
+                                            <strong>{{ order.bailee_name }}</strong>
+                                        </li>
+                                        <li class="nav-item">
+                                            <span class="text-mute">شماره موبایل </span>
+                                            <strong>{{ order.bailee_phone }}</strong>
+                                        </li>
+                                        <li class="nav-item w-100">
+                                        </li>
+                                        <li class="nav-item">
+                                            <span class="text-mute">آدرس</span>
+                                            <strong>{{ order.address }}</strong>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                    <div class="order-item-detail" style="padding-top: 20px;">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <span class="text-mute">مبلغ</span>
+                                                <strong>{{ order.price_paid | money_format }} تومان</strong>
+                                            </li>
+                                            <li class="nav-item">
+                                                <strong>{{ order.transaction_mode }}</strong>
+                                            </li>
+                                            <li class="nav-item w-100">
+                                            </li>
+                                            <li class="nav-item">
+                                                <span class="text-mute">هزینه ارسال (بر اساس وزن
+                                                    و حجم)
+                                                </span>
+                                                <strong>{{ order.post_price | money_format }} تومان</strong>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="order-item-detail" style="padding-top: 20px;">
+                                        <ul class="nav">
+                                            <li class="nav-item">
+                                                <span class="text-mute">زمان تحویل</span>
+                                                <strong>{{ order.delivery_date }}
+                                                </strong>
+                                            </li>
+                                        </ul>
+                                        <div class="order-progress py-3">
+                                            <h6 class="fw-bold mb-2">{{ order.status }} <i class="bi bi-check"></i></h6>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar"
+                                                     aria-valuenow="100" aria-valuemin="0"
+                                                     aria-valuemax="100" style="width: 100%">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-list-row my-3">
+                                        <div class="row gy-3">
+                                            {% for product in order.bucket_products.all %}
+                                                <div class="col-md-6">
+                                                    <div class="item">
+                                                        <a href="">
+                                                            <div class="product-row m-0 p-0 bg-white d-flex align-items-center justify-content-between rounded-4 shadow-md">
+                                                                <div class="image">
+                                                                    <img src="{{ product.product.image.url }}"
+                                                                         class="img-fluid" width="150" alt="">
+                                                                </div>
+                                                                <div class="desca shadow-none"
+                                                                     style="border-radius: 10px;">
+                                                                    <h6 class="font-14 title text-overflow-1">{{ product.product.title }}</h6>
+                                                                    <div class="price d-flex flex-column justify-content-end mt-2">
+                                                                        {% if product.product.available %}
+                                                                            <div class="text-end">
+                                                                                <span class="fw-bold font-18 def-color">{{ product.product.price_after_off | money_format }}</span>
+                                                                                <span class="badge main-color-two-bg rounded-pill">{{ product.product.off }}%</span>
+                                                                            </div>
+                                                                            <div class="text-end">
+                                                                                <span class="text-muted font-14 text-decoration-line-through">{{ product.product.price | money_format }}</span>
+                                                                                <span class="text-muted font-14">تومان</span>
+                                                                            </div>
+                                                                        {% else %}
+                                                                            <div class="text-end">
+                                                                                <span class="badge main-color-two-bg rounded-pill">ناموجود</span>
+                                                                            </div>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,318 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% load poll_extras %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="content">
+        <!-- start bradcrumb -->
+        <div class="category-bread">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-meta-breadcrumb shadow-sm">
+                            <nav>
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'index' %}">خانه</a>
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a href="{% url 'product:product_list_view' %}">محصولات</a>
+                                    </li>
+
+                                    {% if main_category %}
+
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                            <a href="{{ main_category.get_absolute_url }}"><span>{{ main_category.title }}</span></a>
+                                        </li>
+
+                                    {% elif child_category %}
+
+                                        {% if child_category.parent_category %}
+
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.parent_category.title }}</span></a>
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.title }}</span></a>
+                                            </li>
+
+                                        {% else %}
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ main_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
+                                            </li>
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.title }}</span></a>
+                                            </li>
+                                        {% endif %}
+
+                                    {% endif %}
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end bradcrumb -->
+
+        <!-- start category -->
+        <div class="category">
+            <div class="container-fluid">
+                <div class="filter-items shadow-box">
+                    <div class="items">
+                        <div class="link d-md-block d-none">
+                            <a onclick="sortProducts('1')" class="active">پیشفرض</a>
+                            <a onclick="sortProducts('2')" class="waves-effect waves-light">محبوب ترین</a>
+                            <a onclick="sortProducts('3')" class="waves-effect waves-light">پرفروش ترین</a>
+                            <a onclick="sortProducts('4')" class="waves-effect waves-light">جدیدترین</a>
+                            <a onclick="sortProducts('5')" class="waves-effect waves-light">ارزان ترین</a>
+                            <a onclick="sortProducts('6')" class="waves-effect waves-light">گران ترین</a>
+                        </div>
+                        <div class="count">
+                            <p>مشاهده همه <span class="fw-bold">{{ count_products }}</span> نتیجه</p>
+                        </div>
+                        <div class="link-responsive d-md-none d-block">
+                            <form action="">
+                                <select class="form-select bg-light">
+                                    <option onclick="sortProducts('1')">پیشفرض</option>
+                                    <option onclick="sortProducts('2')">محبوب ترین</option>
+                                    <option onclick="sortProducts('3')">پر فروش ترین</option>
+                                    <option onclick="sortProducts('4')">جدیدترین</option>
+                                    <option onclick="sortProducts('5')">ارزان ترین</option>
+                                    <option onclick="sortProducts('6')">گران ترین</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                <div class="row">
+{#                    <div class="col-lg-3">#}
+{#                        <div class="category-filters">#}
+{#                            <div class="category-filter">#}
+{#                                <div class="category-filter-box">#}
+{#                                    <div class="category-filter-box-title">#}
+{#                                        <h4 class="fw-bold">#}
+{#                                            فیلتر موجودی و حراجی#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div class="category-filter-box-desc">#}
+{#                                        <form action="">#}
+{#                                            <div class="form-group form-check">#}
+{#                                                <input class="form-check-input" type="radio" id="ProductOfferd"#}
+{#                                                    name="available">#}
+{#                                                <label class="form-check-label" for="ProductOfferd">محصولات تخفیف#}
+{#                                                    خورده</label>#}
+{#                                            </div>#}
+{#                                            <div class="form-group">#}
+{#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
+{#                                                    name="available">#}
+{#                                                <label class="form-check-label" for="availableInStock">موجود در#}
+{#                                                    انبار</label>#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="category-filter">#}
+{#                                <div class="category-filter-box">#}
+{#                                    <div class="category-filter-box-title">#}
+{#                                        <h4 class="fw-bold">#}
+{#                                            فیلتر متنوع#}
+{#                                        </h4>#}
+{#                                    </div>#}
+{#                                    <div class="category-filter-box-desc">#}
+{#                                        <form action="">#}
+{#                                            <div class="form-group form-check form-switch">#}
+{#                                                <input class="form-check-input" type="checkbox"#}
+{#                                                    id="flexSwitchCheckDefault">#}
+{#                                                <label class="form-check-label" for="flexSwitchCheckDefault">ریجیستر#}
+{#                                                    شده</label>#}
+{#                                            </div>#}
+{#                                            <div class="form-group form-check form-switch">#}
+{#                                                <input class="form-check-input" type="checkbox"#}
+{#                                                    id="flexSwitchCheckChecked" checked>#}
+{#                                                <label class="form-check-label" for="flexSwitchCheckChecked">طرح اصلی#}
+{#                                                    بودن کالا</label>#}
+{#                                            </div>#}
+{#                                        </form>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{##}
+{##}
+{##}
+{#                            <div class="category-filter">#}
+{#                                <form>#}
+{#                                <div class="form-group">#}
+{#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
+{#                                                    name="available" value="1">#}
+{#                                                <label class="form-check-label" for="availableInStock">موجود در#}
+{#                                                    انبار</label>#}
+{#                                            </div>#}
+{#                                    {% for filter in filters %}#}
+{#                                        <div class="category-filter-box">#}
+{#                                            <div class="category-filter-box-title">#}
+{#                                                <h4 class="fw-bold">#}
+{#                                                    {{ filter.name }}#}
+{#                                                </h4>#}
+{#                                            </div>#}
+{#                                            <div class="category-filter-box-desc">#}
+{#                                                    <div class="form-group">#}
+{#                                                    {% if filter.list %}#}
+{#                                                        {% for field in filter.list %}#}
+{#                                                            {{ field.title }}#}
+{#                                                            <input title="{{ field.title }}" type="checkbox" name="{{ filter.title }}" value="{{ field.id }}">#}
+{#                                                        {% endfor %}#}
+{#                                                    {% else %}#}
+{##}
+{#                                                            <input type="checkbox" name="{{ filter.title }}" value="1">#}
+{##}
+{#                                                    {% endif %}#}
+{#                                                    </div>#}
+{##}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    {% endfor %}#}
+{#                                    <button type="submit">submit</button>#}
+{#                                </form>#}
+{#                            </div>#}
+{##}
+{#                        </div>#}
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="category-item">
+                            <div class="row">
+                                {% for product in products %}
+
+                                    <div class="col-md-4">
+                                        <div class="product-box-item">
+                                            <div class="product-box-item-img">
+                                                <a href="">
+
+
+                                                        <img src="{{ product.image.url }}" alt="" class="img-fluid one-image">
+                                                        <img src="{{ product.image.url }}" alt="" class="img-fluid two-image">
+                                                </a>
+                                                <div class="product-box-item-hover">
+                                                    <div class="product-box-item-hover-btn">
+                                                        <span class="see-more hint--right" data-hint="مشاهده سریع"
+                                                            data-bs-toggle="modal" data-bs-target="#productModal"><i
+                                                                class="bi bi-eye"></i></span>
+                                                        <span class="favorite hint--right"
+                                                            data-hint="افزودن به برگزیده ها"><i
+                                                                class="bi bi-heart"></i></span>
+                                                        <span class="comparison hint--right" data-hint="مقایسه محصول"><i
+                                                                class="bi bi-arrow-left-right"></i></span>
+                                                        <span class="add-cart hint--right" data-hint="افزودن به سبد خرید"><i
+                                                                class="bi bi-cart-plus"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="{{ product.get_absolute_url }}">
+                                                <div class="product-box-item-desc">
+                                                    <div class="product-box-item-title">
+                                                        <h6>
+                                                            {{ product.title }}
+                                                        </h6>
+                                                    </div>
+                                                    <div class="product-box-price">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            {% if product.off %}
+                                                                <div class="d-flex flex-column">
+                                                                    <span class="text-danger fw-bold fs-5">٪{{ product.off }}</span>
+                                                                    <span class="fw-bold">تخفیف</span>
+                                                                </div>
+                                                            {% endif %}
+                                                            <div class="d-flex flex-column">
+                                                                {% if product.off %}
+                                                                    <span class="new-price">{{ product.price_after_off|money_format }} تومان</span>
+                                                                    <span class="old-price">{{ product.price|money_format }} تومان</span>
+                                                                {% else %}
+                                                                    <span class="new-price">{{ product.price|money_format }} تومان</span>
+                                                                {% endif %}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end category -->
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('.select2-box').select2();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#catRange").slider({
+                id: "slider5b",
+                min: 0,
+                max: 1000000,
+                range: true,
+                step: 10000,
+                value: [0, 1000000],
+                rtl: 'false',
+                formatter: function formatter(val) {
+                    if (Array.isArray(val)) {
+                        return " تومان " +val[0] +" - " + val[1] + " تومان ";
+                    } else {
+                        return val;
+                    }
+                },
+            });
+        });
+    </script>
+    <script src="{% static 'js/plugin/bootstrap-slider/bootstrap-slider.min.js' %}"></script>
+    <script src="{% static 'js/plugin/select2/select2.full.min.js' %}"></script>
+    <script src="{% static 'js/plugin/select2/fa.js' %}"></script>
+    <script>
+        var page = 1;
+      var empty_page = false;
+      var block_request = false;
+
+      $(window).scroll(function() {
+        var margin = $(document).height() - $(window).height() - 200;
+        if  ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+            block_request = true;
+            page += 1;
+            $.get('?page=' + page, function(data) {
+                if(data == '') {
+                    empty_page = true;
+                }
+                else {
+                    block_request = false;
+                    $('#image-list').append(data)
+                }
+            });
+        }
+      });
+    </script>
+
+
+
+
+{% endblock %}

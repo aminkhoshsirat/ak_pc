@@ -1,0 +1,66 @@
+{% extends 'user/base.html' %}
+{% load poll_extras %}
+{% block title %}{% endblock %}
+{% block panel %}
+    <div class="col-lg-9">
+        <div class="content-box">
+            <div class="row gy-3">
+                <div class="col-12">
+                    <div class="item-box shadow-box">
+                        <div class="title border-bottom border-muted">
+                            <h6 class="font-14">آخرین سفارشات من</h6>
+                        </div>
+                        <div class="desc p-0 shadow-none">
+                            <div class="responsive-table p-0">
+                                <table class="table main-table rounded-0">
+                                    <thead class="text-bg-dark bg-opacity-75 text-center">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>شماره سفارش</th>
+                                        <th>تاریخ ثبت سفارش</th>
+                                        <th>مبلغ پرداختی</th>
+                                        <th>وضعیت سفارش</th>
+                                        <th>جزییات</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="text-center">
+                                        {% for order in orders %}
+                                            <tr>
+                                                <td class="font-14">{{ forloop.counter }}</td>
+                                                <td class="font-14">{{ order.transaction_code }}</td>
+                                                <td class="font-14">{{ order.paid_date }}</td>
+                                                <td class="font-14">{{ order.price_paid | money_format }} تومان</td>
+                                                <td class="font-14">{{ order.status }}</td>
+                                                <td class="font-14">
+                                                    <a href="{{ order.get_absolute_url }}" class="btn border-0 main-color-three-bg waves-effect waves-light"><i class="bi bi-chevron-left"></i></a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="my-paginate pb-2 mt-3">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled">
+                                        <a class="page-link rounded-3" href="#"><i class="bi bi-chevron-right"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link rounded-3" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">...</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">14</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">15</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#">16</a></li>
+                                    <li class="page-item"><a class="page-link rounded-3" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <table id="fl-table">
+        {% for detail in details %}
+            <tr>
+                <th>{{ detail.name}}</th>
+                {% for amount in detail.amount %}
+                    <th>{{ amount }}</th>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

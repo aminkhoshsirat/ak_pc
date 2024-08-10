@@ -1,0 +1,289 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">صفحات</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">جدول زمانی</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">تغییر حالت کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="">
+            <div class="">
+                <div class="container py-2">
+                    <h2 class="font-weight-light text-center text-muted py-3">جدول زمانی مثال 1</h2>
+                    <!-- timeline item 1 -->
+                    <div class="row">
+                        <!-- timeline item 1 left dot -->
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 event content -->
+                        <div class="col py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted">دوشنبه، 9 خرداد 1400، ساعت 7:00 صبح</div>
+                                    <h4 class="card-title text-muted">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 2 -->
+                    <div class="row">
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col py-2">
+                            <div class="card border-primary shadow radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-primary">سه شنبه 10 خرداد 1399 ساعت 8:30 صبح</div>
+                                    <h4 class="card-title text-primary">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-target="#t2_details" data-bs-toggle="collapse">نمایش جزئیات ▼</button>
+                                    <div class="collapse border" id="t2_details">
+                                        <div class="p-2 text-monospace">
+                                            <div>08:30 - 09:00 صبحانه  </div>
+                                            <div>09:00 - 10:30 جلسات زنده  </div>
+                                            <div>10:30 - 10:45 استراحت</div>
+                                            <div>10:45 - 12:00 جلسات زنده</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 3 -->
+                    <div class="row">
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted">چهارشنبه 11 خرداد 1399 ساعت 8:30 صبح</div>
+                                    <h4 class="card-title">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشته است.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 4 -->
+                    <div class="row">
+                        <div class="col-auto text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted">چهارشنبه 12 خرداد 1399 ساعت 8:30 صبح</div>
+                                    <h4 class="card-title">لورم اپیسوم متن ساختگی است</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ  مورد استفاده می باشد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <!--container-->
+                <hr>
+                <div class="container py-2">
+                    <h2 class="font-weight-light text-center text-muted py-3">جدول زمانی مثال 2</h2>
+                    <!-- timeline item 1 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <!-- timeline item 1 center dot -->
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <!-- timeline item 1 event content -->
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">9 خرداد 1399 ساعت 7:00 صبح</div>
+                                    <h4 class="card-title text-muted">لوررم اپیسوم متن ساختگی است.</h4>
+                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 2 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card border-primary shadow radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-primary small">10 خرداد 1399 ساعت 7:00 صبح</div>
+                                    <h4 class="card-title text-primary">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p class="card-text">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه می باشد.</p>
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-target="#t22_details" data-bs-toggle="collapse">نمایش جزئیات ▼</button>
+                                    <div class="collapse border" id="t22_details">
+                                        <div class="p-2 text-monospace">
+                                            <div>08:30 - 09:00 صبحانه در </div>
+                                            <div>09:00 - 10:30 جلسات زنده در </div>
+                                            <div>10:30 - 10:45 استراحت</div>
+                                            <div>10:45 - 12:00 جلسات زنده در </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-primary">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 3 -->
+                    <div class="row g-0">
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">11 خرداد 1399 ساعت 8:30 صبح</div>
+                                    <h4 class="card-title">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت زیاد دارد.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/row-->
+                    <!-- timeline item 4 -->
+                    <div class="row g-0">
+                        <div class="col-sm py-2">
+                            <div class="card radius-15">
+                                <div class="card-body">
+                                    <div class="float-end text-muted small">12 خرداد 1399 ساعت 11:30 صبح</div>
+                                    <h4 class="card-title">لورم اپیسوم متن ساختگی است.</h4>
+                                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1 text-center flex-column d-none d-sm-flex">
+                            <div class="row h-50">
+                                <div class="col border-end">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                            <h5 class="m-2">
+                                <span class="badge rounded-pill bg-light border">&nbsp;</span>
+                            </h5>
+                            <div class="row h-50">
+                                <div class="col">&nbsp;</div>
+                                <div class="col">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <!--spacer-->
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--end page main-->
+{% endblock %}

@@ -1,0 +1,44 @@
+{% load poll_extras %}
+    <div class="offcanvas-header border-bottom border-1 border-muted">
+        <h5 class="offcanvas-title">سبد خرید</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="row">
+
+            {% for product in bucket_products %}
+                <div class="col-12">
+                    <div class="row align-items-center">
+                        <div class="col-11">
+                            <a href="">
+                                <div class="product-row bg-white d-flex align-items-center justify-content-between rounded-4 shadow-md">
+                                    <div class="image">
+                                        <img src="{{ product.product.image.url }}" class="img-fluid" width="100" alt="">
+                                    </div>
+                                    <div class="desc">
+                                        <h6 class="font-14 title text-overflow">{{ product.product.title }}</h6>
+                                        <div class="price d-flex flex-column justify-content-end mt-2">
+                                            <div class="text-end">
+                                                <span class="fw-bold font-18 def-color">{{ product.product.price_after_off | money_format }}</span>
+                                                <span class="badge main-color-two-bg rounded-pill">{{ product.product.off }}%</span>
+                                            </div>
+                                            <div class="text-end">
+                                                <span class="text-muted font-14 text-decoration-line-through">{{ product.product.price | money_format }}</span>
+                                                <span class="text-muted font-14">تومان</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-1 ps-0">
+                            <a onclick="deleteBucketProduct({{ product.product.id }})" data-hint="حذف از سبد" class="hint--right">
+                                <i class="bi bi-x-circle-fill text-danger fs-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>

@@ -1,0 +1,852 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!--start content-->
+    <main class="page-content">
+
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">مولفه</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">دکمه ها</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">کشویی را تغییر دهید</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="row">
+            <div class="col col-lg-9 mx-auto">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">مثال های اساسی</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary px-5">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger px-5">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success px-5">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-info px-5">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-warning px-5">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-dark px-5">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary px-5">ثانویه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-light px-5">روشن</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">نمونه هایی را مشخص کنید</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-primary px-5">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-danger px-5">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-success px-5">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-info px-5">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-warning px-5">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-dark px-5">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary px-5">ثانویه</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه های گرد</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary px-5 radius-30">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger px-5 radius-30">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success px-5 radius-30">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-info px-5 radius-30">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-warning px-5 radius-30">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-dark px-5 radius-30">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary px-5 radius-30">ثانویه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-light px-5 radius-30">روشن</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه های طرح گرد</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-primary px-5 radius-30">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-danger px-5 radius-30">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-success px-5 radius-30">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-info px-5 radius-30">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-warning px-5 radius-30">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-dark px-5 radius-30">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary px-5 radius-30">ثانویه</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه های مربعی</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary px-5 rounded-0">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger px-5 rounded-0">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success px-5 rounded-0">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-info px-5 rounded-0">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-warning px-5 rounded-0">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-dark px-5 rounded-0">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary px-5 rounded-0">ثانویه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-light px-5 rounded-0">روشن</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه های طرح مربع</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-primary px-5 rounded-0">اولیه</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-danger px-5 rounded-0">خطر</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-success px-5 rounded-0">موفقیت</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-info px-5 rounded-0">اطلاعات</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-warning px-5 rounded-0">هشدار</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-dark px-5 rounded-0">تاریک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary px-5 rounded-0">ثانویه</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه با آیکون</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-primary px-5"><i class="bi bi-person-circle"></i>شخص</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-danger px-5"><i class="bi bi-bookmark-check-fill"></i>نشانک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success px-5"><i class="bi bi-house-fill"></i>صفحه اصلی</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-info px-5"><i class="bi bi-cloud-arrow-down-fill"></i>دانلودها</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-warning px-5"><i class="bi bi-heart-fill"></i>عشق</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-dark px-5"><i class="bi bi-upload"></i>بارگذاری</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary px-5"><i class="bi bi-chat-left-text-fill"></i>نظرات</button>
+                            </div>
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-primary px-5"><i class="bi bi-bag-check-fill"></i>وارسی</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-danger px-5"><i class="bi bi-bookmarks-fill"></i>نشانک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-success px-5"><i class="bi bi-house-door-fill"></i>صفحه اصلی</button>
+                            </div>
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-primary px-5"><i class="bi bi-person-fill"></i>شخص</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-danger px-5"><i class="bi bi-star-fill"></i>ستاره</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-success px-5"><i class="bi bi-skip-start-btn-fill"></i>موسیقی</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه طرح کلی با نمادها</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-primary px-5"><i class="bi bi-person-circle"></i>شخص</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-danger px-5"><i class="bi bi-bookmark-check-fill"></i>نشانک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-success px-5"><i class="bi bi-house-fill"></i>صفحه اصلی</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-info px-5"><i class="bi bi-cloud-arrow-down-fill"></i>دانلودها</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-warning px-5"><i class="bi bi-heart-fill"></i>عشق</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-dark px-5"><i class="bi bi-upload"></i>بارگذاری</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-secondary px-5"><i class="bi bi-chat-left-text-fill"></i>نظرات</button>
+                            </div>
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-outline-primary px-5"><i class="bi bi-bag-check-fill"></i>وارسی</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-outline-danger px-5"><i class="bi bi-bookmarks-fill"></i>نشانک</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-lg btn-outline-success px-5"><i class="bi bi-house-door-fill"></i>صفحه اصلی</button>
+                            </div>
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-outline-primary px-5"><i class="bi bi-person-fill"></i>شخص</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-outline-danger px-5"><i class="bi bi-star-fill"></i>ستاره</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-sm btn-outline-success px-5"><i class="bi bi-skip-start-btn-fill"></i>موسیقی</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">گروه دکمه ها</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary">دکمه</button>
+                                    <button type="button" class="btn btn-primary">دکمه</button>
+                                    <button type="button" class="btn btn-primary">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger">دکمه</button>
+                                    <button type="button" class="btn btn-danger">دکمه</button>
+                                    <button type="button" class="btn btn-danger">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">دکمه</button>
+                                    <button type="button" class="btn btn-success">دکمه</button>
+                                    <button type="button" class="btn btn-success">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-dark">دکمه</button>
+                                    <button type="button" class="btn btn-dark">دکمه</button>
+                                    <button type="button" class="btn btn-dark">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-warning">دکمه</button>
+                                    <button type="button" class="btn btn-warning">دکمه</button>
+                                    <button type="button" class="btn btn-warning">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info">دکمه</button>
+                                    <button type="button" class="btn btn-info">دکمه</button>
+                                    <button type="button" class="btn btn-info">دکمه</button>
+                                </div>
+                            </div>
+
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary"><i class="bi bi-bookmark-heart-fill"></i></button>
+                                    <button type="button" class="btn btn-primary"><i class="bi bi-suit-heart-fill"></i></button>
+                                    <button type="button" class="btn btn-primary"><i class="bi bi-emoji-heart-eyes-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger"><i class="bi bi-alarm"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="bi bi-archive"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="bi bi-badge-3d"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success"><i class="bi bi-arrow-left-square"></i></button>
+                                    <button type="button" class="btn btn-success"><i class="bi bi-arrow-right-square"></i></button>
+                                    <button type="button" class="btn btn-success"><i class="bi bi-arrow-up-square"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-dark"><i class="bi bi-hand-index-thumb-fill"></i></button>
+                                    <button type="button" class="btn btn-dark"><i class="bi bi-hand-thumbs-down-fill"></i></button>
+                                    <button type="button" class="btn btn-dark"><i class="bi bi-pin-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-brightness-high-fill"></i></button>
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-broadcast"></i></button>
+                                    <button type="button" class="btn btn-warning"><i class="bi bi-cloud-fog-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info"><i class="bi bi-hurricane"></i></button>
+                                    <button type="button" class="btn btn-info"><i class="bi bi-moon-stars-fill"></i></button>
+                                    <button type="button" class="btn btn-info"><i class="bi bi-lightning-charge-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <h5 class="card-title">دکمه های گروه طرح کلی</h5>
+                        <div class="my-3 border-top"></div>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-primary">دکمه</button>
+                                    <button type="button" class="btn btn-outline-primary">دکمه</button>
+                                    <button type="button" class="btn btn-outline-primary">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-danger">دکمه</button>
+                                    <button type="button" class="btn btn-outline-danger">دکمه</button>
+                                    <button type="button" class="btn btn-outline-danger">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-success">دکمه</button>
+                                    <button type="button" class="btn btn-outline-success">دکمه</button>
+                                    <button type="button" class="btn btn-outline-success">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-dark">دکمه</button>
+                                    <button type="button" class="btn btn-outline-dark">دکمه</button>
+                                    <button type="button" class="btn btn-outline-dark">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-warning">دکمه</button>
+                                    <button type="button" class="btn btn-outline-warning">دکمه</button>
+                                    <button type="button" class="btn btn-outline-warning">دکمه</button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-info">دکمه</button>
+                                    <button type="button" class="btn btn-outline-info">دکمه</button>
+                                    <button type="button" class="btn btn-outline-info">دکمه</button>
+                                </div>
+                            </div>
+
+                            <div class="w-100 border-top"></div>
+
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-primary"><i class="bi bi-bookmark-heart-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-primary"><i class="bi bi-suit-heart-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-primary"><i class="bi bi-emoji-heart-eyes-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-alarm"></i></button>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-archive"></i></button>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-badge-3d"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-success"><i class="bi bi-arrow-left-square"></i></button>
+                                    <button type="button" class="btn btn-outline-success"><i class="bi bi-arrow-right-square"></i></button>
+                                    <button type="button" class="btn btn-outline-success"><i class="bi bi-arrow-up-square"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-hand-index-thumb-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-hand-thumbs-down-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-dark"><i class="bi bi-pin-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-warning"><i class="bi bi-brightness-high-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-warning"><i class="bi bi-broadcast"></i></button>
+                                    <button type="button" class="btn btn-outline-warning"><i class="bi bi-cloud-fog-fill"></i></button>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-info"><i class="bi bi-hurricane"></i></button>
+                                    <button type="button" class="btn btn-outline-info"><i class="bi bi-moon-stars-fill"></i></button>
+                                    <button type="button" class="btn btn-outline-info"><i class="bi bi-lightning-charge-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="card-title">دکمه های کشویی</h5>
+                        </div>
+                        <hr/>
+                        <div class="row row-cols-auto g-3">
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">اولیه</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">ثانویه</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">موفقیت</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-info dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">اطلاعات</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">هشدار</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="dropdown">
+                                    <button class="btn btn-danger dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">خطر</button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-100 border-top"></div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-primary">اولیه</button>
+                                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">تغییر حالت کشویی</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-secondary">ثانویه</button>
+                                    <button type="button" class="btn btn-secondary split-bg-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-success">موفقیت</button>
+                                    <button type="button" class="btn btn-success split-bg-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-info">اطلاعات</button>
+                                    <button type="button" class="btn btn-info split-bg-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-warning">هشدار</button>
+                                    <button type="button" class="btn btn-warning split-bg-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger">خطر</button>
+                                    <button type="button" class="btn btn-danger split-bg-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="w-100 border-top"></div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-primary">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-success">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-info">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-warning">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-danger">حالت کشویی</button>
+                                    <button type="button" class="btn btn-outline-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">	<span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">عمل</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یک اقدام دیگر</a>
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">یه چیز دیگه اینجا</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item" href="#">لینک جداشده</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end row -->
+                    </div>
+                </div>
+
+            </div>
+        </div><!--end row-->
+
+    </main>
+    <!--end page main-->
+{% endblock %}

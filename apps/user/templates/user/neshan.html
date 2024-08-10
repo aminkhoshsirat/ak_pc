@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fa">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Map</title>
+
+    <link rel="stylesheet" href="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.css"/>
+    <script src="https://static.neshan.org/sdk/leaflet/v1.9.4/neshan-sdk/v1.0.8/index.js"></script>
+
+    <style>
+        body {
+            height: 70vh;
+            width: 70vw;
+            margin: 0;
+        }
+
+        #map {
+            height: 70%;
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+<form>
+    <input type="search" name="search" value="{{ search }}">
+    <input type="submit">
+</form>
+<div id="map"></div>
+    <input id="lng" type="hidden" name="position_x" value="{{ map_x }}">
+    <input id="lat" type="hidden" name="position_y" value="{{ map_y }}">
+    <button onclick="showAddress()">تایید</button>
+
+    <input id="state" type="text" name="state">
+    <input id="city" type="text" name="city">
+    <input id="address" type="text" name="address">
+    <input id="plaque" type="text" name="plaque">
+    <input id="post_code" type="text" name="post_code">
+    <button onclick="addAddress()">ثبت آدرس</button>
+
+<script>
+    var lat=35.699739;
+    var lng=51.338097;
+
+    console.log(document.getElementById("lat").value);
+
+    if(document.getElementById("lat").value)
+        lat=document.getElementById("lat").value;
+
+    if(document.getElementById("lng").value)
+        lng=document.getElementById("lng").value;
+
+    // neshan map
+    var myMap = new L.Map('map', {
+        key: 'web.2fd66238f28645ecbc9060601e09b56f',
+        maptype: 'dreamy',
+        poi: true,
+        traffic: false,
+        center: [lat, lng],
+        zoom: 14
+    });
+
+    //add marker
+    var stuSplit = L.latLng(lat, lng);
+    var myMarker = new L.Marker(stuSplit,
+        {
+            title: 'unselected' ,
+            draggable : true,
+            clickable: true,
+        })
+        .addTo(myMap).on('dragend', (e)=>{
+            document.getElementById("lat").value = e.target.getLatLng().lat;
+            document.getElementById("lng").value = e.target.getLatLng().lng;
+        });
+
+    function geocoding() {
+        var log = document.getElementById("log");
+        //getting adrress value from input tag
+        var address = document.getElementById("address").value;
+        //making url
+        var url = `https://api.neshan.org/v4/geocoding?address=${{ search }}`;
+        console.log(url);
+        //add your api key
+        var params = {
+            headers: {
+                'Api-Key': 'service.a77ead3f22874b168c2b86ed615fd771'
+            },
+
+        };
+        //sending get request
+        axios.get(url, params)
+            .then(data => {
+                //using the data
+                var lat = data.data.location.y;
+                var lng = data.data.location.x;
+                //logging the location
+                document.getElementById("lat").value = lat;
+                document.getElementById("lng").value = lng;
+                //update marker location to address
+                myMarker.setLatLng([lat, lng]);
+                myMarker.bindPopup(address).openPopup();
+                //set map center to address
+                myMap.flyTo([lat, lng], 15);
+
+            }).catch(err => {
+            console.log("error = " + err);
+            log.textContent = "Nothing found";
+
+        });
+    }
+</script>
+<script src="{% static 'js/costum.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>

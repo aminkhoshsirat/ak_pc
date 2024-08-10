@@ -1,0 +1,313 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">تجارت الکترونیک</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">معاملات</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">کشویی را تغییر دهید</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="card">
+            <div class="card-header py-3">
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6 me-auto">
+                        <div class="ms-auto position-relative">
+                            <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                            <input class="form-control ps-5" type="text" placeholder="جستجوی پرداخت">
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>وضعیت</option>
+                            <option>فعال</option>
+                            <option>معلول</option>
+                            <option>انتظار</option>
+                            <option>نمایش همه</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-2 col-6 col-md-3">
+                        <select class="form-select">
+                            <option>نمایش 10</option>
+                            <option>نمایش 30</option>
+                            <option>نمایش 50</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table align-middle mb-0">
+                        <thead class="table-light">
+                        <tr>
+                            <th>#شناسه</th>
+                            <th>نام مشتری</th>
+                            <th>میزان</th>
+                            <th>وضعیت</th>
+                            <th>روش</th>
+                            <th>تاریخ</th>
+                            <th>عمل</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>#8562</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-1.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">توماس هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>854 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>14 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#7568</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-2.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">ویکتوریا هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>653 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>16 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#3265</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-3.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">ماریا آندرس</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>152 تومان</td>
+                            <td><span class="badge rounded-pill alert-danger">ناموفق</span></td>
+                            <td>مستر کارت</td>
+                            <td>18 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#8965</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-4.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">مارتین لوتر</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>185 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>19 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#4256</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-5.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">توماس هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>452 تومان</td>
+                            <td><span class="badge rounded-pill alert-warning">انتظار</span></td>
+                            <td>مستر کارت</td>
+                            <td>20 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#3245</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-6.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">ویکتوریا هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>352 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>22 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#6589</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-7.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">ماریا آندرس</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>452 تومان</td>
+                            <td><span class="badge rounded-pill alert-danger">ناموفق</span></td>
+                            <td>مستر کارت</td>
+                            <td>25 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#7542</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-8.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">مارتین لوتر</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>254 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>28 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#6850</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-9.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">ویکتوریا هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>145 تومان</td>
+                            <td><span class="badge rounded-pill alert-warning">انتظار</span></td>
+                            <td>مستر کارت</td>
+                            <td>29 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#6534</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    <img src="assets/images/avatars/avatar-10.png" class="rounded-circle" width="44" height="44" alt="">
+                                    <div class="">
+                                        <p class="mb-0">توماس هاردی</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>105 تومان</td>
+                            <td><span class="badge rounded-pill alert-success">پرداخت شده</span></td>
+                            <td>مستر کارت</td>
+                            <td>30 مهر 1400</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 fs-6">
+                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                    <a href="javascript:;" class="text-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="ویرایش اطلاعات" aria-label="Edit"><i class="bi bi-pencil-fill"></i></a>
+                                    <a href="javascript:;" class="text-danger" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="حذف" aria-label="Delete"><i class="bi bi-trash-fill"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <nav class="float-end mt-3">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="#">قبلی</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">بعد</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </main>
+    <!--end page main-->
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'parent/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box p-3 shadow-box">
+                <div class="404">
+                    <img src="{% static 'images/404.png' %}" width="400" class="img-fluid mx-auto d-block" alt="">
+                    <div class="text-center my-1">
+                        <h5 class="text-muted-2 fw-bold">صفحه مورد نظر یافت نشد که به چند دلیل این اتفاق افتاده است:
+                        </h5>
+                        <div class="my-3">
+                            <p class="text-muted font-14">آدرس صفحه تغییر کرده است.
+                            </p>
+                            <p class="text-muted font-14">مطلب به طور کلی حذف شده است.
+                            </p>
+                            <p class="text-muted font-14">مشکلی در دیتابیس بوجود آمده است.
+                            </p>
+                        </div>
+                        <a href="index.html"><span class="primary-span">بازگشت به فروشگاه</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

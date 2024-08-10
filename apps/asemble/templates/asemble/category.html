@@ -1,0 +1,145 @@
+{% load poll_extras %}
+<div class="modal-dialog modal-xl modal-dialog-centered" style="width:97%;max-width:1140px">
+    <div class="modal-content" style="filter: unset;">
+        <div class="modal-body" id="category-info" style="min-height:200px">
+            <div class="modal-header m-n3 mb-3">
+                <div class="d-flex"><i class="icon-font icon-cpu fs-3 text-primary"></i><h5
+                        class="mb-0 ms-2">پردازنده (سی پی یو)</h5></div>
+                <button type="button" class="btn-close ms-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+            <div id="product-category">
+                <div class="row">
+                    <div class="row ps-2">
+                        <div class="col-4 align-self-baseline mt-1"><h6 class="text-body fw-bold mb-2">
+                            فیلتر کالا</h6>
+                            <div>
+                                <div class="accordion" id="filters-group">
+                                    {% for list in field_list %}
+                                        <div class="accordion-item">
+                                            <button class="accordion-button collapsed text-dark"
+                                                    type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#filter-group957">
+                                                {{ list.name }}
+                                            </button>
+                                            <div id="filter-group957"
+                                                 class="accordion-collapse collapse overflow-auto mh-200 pb-3 px-3"
+                                                 data-bs-parent="#filters-group">
+                                                <div class="ms-3">
+                                                    {% for field in list.fields %}
+                                                        <div class="checkbox">
+                                                            <label class="small">
+                                                                <input type="checkbox" name="filter[]"
+                                                                       value="21979"
+                                                                       class="form-check-input align-middle m-0">
+                                                                <span class="text-secondary ms-2 align-middle">{{ field.title }}</span>
+                                                            </label>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div>
+                                    <a href="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213"
+                                       type="button" id="button-filter"
+                                       class="btn btn-primary">فیلتر</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-8 overflow-auto" style="max-height:80vh">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <div class="col-6">
+                                    <div class="text-secondary text-nowrap small d-flex">
+                                        <label class="h6 text-body fw-bold me-4" for="input-sort">مرتب
+                                            سازی</label>
+                                        <ul id="input-sort" class="d-flex">
+                                            <li class="me-4"><a
+                                                    href="https://exo.ir/index.php?route=pc/assemble/category&amp;sort=p.sort_order&amp;order=ASC&amp;filter=21984,19358,22072&amp;category_id=213">پیش
+                                                فرض</a></li>
+                                            <li class="me-4"><a
+                                                    href="https://exo.ir/index.php?route=pc/assemble/category&amp;sort=p.price&amp;order=ASC&amp;filter=21984,19358,22072&amp;category_id=213">ارزانترین</a>
+                                            </li>
+                                            <li class="me-4 h6 text-primary fw-bold"><a
+                                                    href="https://exo.ir/index.php?route=pc/assemble/category&amp;sort=p.price&amp;order=DESC&amp;filter=21984,19358,22072&amp;category_id=213">گرانترین</a>
+                                            </li>
+                                            <li class="me-4"><a
+                                                    href="https://exo.ir/index.php?route=pc/assemble/category&amp;sort=rating&amp;order=DESC&amp;filter=21984,19358,22072&amp;category_id=213">مجبوب
+                                                ترین</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ms-auto d-flex align-items-center">
+                                    <label class="h6 text-body fw-bold me-4"
+                                           for="input-sort">نمایش:</label>
+                                    <div class="text-secondary small d-flex">
+                                        <select id="input-limit" class="form-control">
+                                            <option value="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213&amp;filter=21984,19358,22072&amp;category_id=213&amp;limit=20"
+                                                    selected="selected">20
+                                            </option>
+                                            <option value="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213&amp;filter=21984,19358,22072&amp;category_id=213&amp;limit=25">
+                                                25
+                                            </option>
+                                            <option value="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213&amp;filter=21984,19358,22072&amp;category_id=213&amp;limit=50">
+                                                50
+                                            </option>
+                                            <option value="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213&amp;filter=21984,19358,22072&amp;category_id=213&amp;limit=75">
+                                                75
+                                            </option>
+                                            <option value="https://exo.ir/index.php?route=pc/assemble/category&amp;category_id=213&amp;filter=21984,19358,22072&amp;category_id=213&amp;limit=100">
+                                                100
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="category_id" value="213">
+                            <table class="table table-bordered text-center align-middle">
+                                <thead>
+                                <tr>
+                                    <td width="75%" class="fw-bold py-3">نام محصول</td>
+                                    <td width="25%" class="fw-bold py-3">قیمت</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for product in products %}
+                                        <tr class="product-layout product-list col-sm-3">
+                                            <td class="d-flex align-items-center position-relative text-start">
+                                                <img onclick="showDetails('{{ product.url }}')" src="{{ product.image.url }}"
+                                                     alt="{{ product.title }}"
+                                                     title="{{ product.title }}"
+                                                     class="img-responsive ms-3" id="product-thumb-13836">
+                                                <div class="mx-3">
+                                                    <div class="mb-3 mt-n3">
+                                                    </div>
+                                                    <h6 class="m-0">{{ product.title }}</h6>
+                                                </div>
+                                                <div class="ms-auto" onclick="showDetails('{{ product.url }}')"><i
+                                                        class="icon-font icon-elink fs-5 text-primary"
+                                                        style="transform:scaleX(-1)" role="button"></i></div>
+                                            </td>
+                                            <!-- this is for description clear with moslem <p> description </p> -->
+                                            <td>
+                                                <p class="m-0"> {{ product.price_after_off | money_format }} تومان
+
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="d-flex flex-column align-items-center">
+                                <div></div>
+                                <div class="my-3">نمايش 1 تا 7 از 7 (1 صفحه)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

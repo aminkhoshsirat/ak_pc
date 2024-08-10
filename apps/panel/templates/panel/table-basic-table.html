@@ -1,0 +1,504 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">جداول</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">جدول پایه</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">تغییر حالت کشویی</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h6 class="mb-0 text-uppercase">جدول اولیه</h6>
+                <hr/>
+                <div class="card color-table bg-primary">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h6 class="mb-0 text-uppercase">جدول خطر</h6>
+                <hr/>
+                <div class="card color-table bg-danger">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h6 class="mb-0 text-uppercase">جدول موفقیت</h6>
+                <hr/>
+                <div class="card color-table bg-success">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h6 class="mb-0 text-uppercase">جدول هشدار</h6>
+                <hr/>
+                <div class="card warning-table bg-warning">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h6 class="mb-0 text-uppercase">جدول اطلاعات</h6>
+                <hr/>
+                <div class="card info-table bg-info">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <h6 class="mb-0 text-uppercase">جدول پایه</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">ردیف های راه راه</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table mb-0 table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">میز تاریک</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table mb-0 table-dark table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">ردیف های قابل شناور</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table mb-0 table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">جداول حاشیه دار</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-bordered mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">جداول بدون حاشیه</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-borderless mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">میزهای کوچک</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-sm mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">سر میز</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table mb-0">
+                            <thead class="table-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">اولین</th>
+                                <th scope="col">اخرین</th>
+                                <th scope="col">رسیدگی</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>مارک</td>
+                                <td>اوتو</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>یعقوب</td>
+                                <td>ثورنتون</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td colspan="2">لری پرنده</td>
+                                <td>@twitter</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+            </div>
+        </div><!--end row-->
+
+
+    </main>
+    <!--end page main-->
+{% endblock %}

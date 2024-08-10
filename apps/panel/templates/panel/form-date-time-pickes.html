@@ -1,0 +1,76 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">فرم ها</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">انتخابگرهای تاریخ</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">کشویی را تغییر دهید</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h6 class="mb-0 text-uppercase">انتخابگرهای تاریخ</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="border p-3 rounded">
+                            <div class="mb-3">
+                                <label class="form-label">یک تاریخ انتخاب کنید</label>
+                                <input type="text" class="form-control persianDate" />
+                            </div>
+                            <div class="">
+                                <label class="form-label">انتخاب کننده زمان</label>
+                                <input type="text" class="form-control persianDate" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">متریال دیتا پیکر</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="border p-3 rounded">
+                            <div class="mb-3">
+                                <label class="form-label">انتخابگر تاریخ و زمان پیش‌فرض</label>
+                                <input class="result form-control persianDate" type="text"  placeholder="انتخابگر تاریخ...">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">فقط انتخابگر تاریخ</label>
+                                <input class="result form-control persianDate" type="text" placeholder="انتخابگر تاریخ...">
+                            </div>
+                            <div class="">
+                                <label class="form-label">زمان فقط انتخابگر</label>
+                                <input class="result form-control" type="text" id="time" placeholder="انتخابگر تاریخ...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end row-->
+    </main>
+    <!--end page main-->
+{% endblock %}

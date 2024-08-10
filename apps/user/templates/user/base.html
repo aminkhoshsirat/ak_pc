@@ -1,0 +1,80 @@
+{% extends 'parent/base.html' %}
+{% block content %}
+
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">پنل کاربری</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row gy-2">
+                <div class="col-lg-3">
+                    <div class="content-box">
+                        <div class="panel-box">
+                            <div class="d-flex align-items-center">
+                                {% if user.profile_image %}
+                                      <img style="border-radius: 5px" src="{{ user.profile_image.url }}" width="100px" height="100px" class="img-fluid me-2 shadow-sm" alt="{{ user.fullname }}">
+                                {% endif %}
+                                <div class="d-grid gap-2">
+                                    <h4 class="font-16">{{ user.fullname }}</h4>
+                                    <a href="" class="font-14 main-color-one-color"><i class="bi bi-pencil-square"></i>مشخصات و تنظیمات</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="profile-box">
+                            <nav class="navbar profile-box-nav">
+                                <ul class="navbar-nav flex-column">
+                                    <li class="nav-item active"><a href="{% url 'user:profile' %}" class="nav-link">
+                                        <i class="bi bi-house-door"></i>پروفایل</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:order' %}" class="nav-link">
+                                        <i class="bi bi-cart-check"></i>سفارش های من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:address' %}" class="nav-link">
+                                            <i class="bi bi-pin-map"></i>آدرس های من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:notification' %}" class="nav-link">
+                                            <i class="bi bi-bell"></i>پیام ها و اطلاعیه ها</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:comments' %}" class="nav-link">
+                                            <i class="bi bi-chat-dots"></i>نظرات من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-question-circle"></i>درخواست پشتیبانی</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:favorite' %}" class="nav-link">
+                                            <i class="bi bi-heart"></i>محصولات مورد علاقه</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-gift"></i>کد های تخفیف من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="{% url 'user:logout' %}" class="nav-link mct-hover">
+                                            <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                {% block panel %}
+
+
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

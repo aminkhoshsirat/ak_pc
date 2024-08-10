@@ -1,0 +1,57 @@
+<div>
+					<h3>{{ comments_count }} دیدگاه</h3>
+					<!-- Comment level 1-->
+                    {% for comment in comments %}
+                        <div class="my-4 d-flex">
+                            <img class="avatar avatar-md rounded-circle float-start me-3" src="{{ comment.user.image.image.url }}" alt="avatar">
+                            <div>
+                                <div class="mb-2">
+                                    <h5 class="m-0">{{ comment.user.name }}</h5>
+                                    <span class="me-3 small">{{ comment.date }}</span>
+                                    <button onclick="replayComment('{{ comment.user.fullname }}', {{ comment.id }})" class="text-body fw-normal">پاسخ</button>
+                                </div>
+                                <p>{{ comment.text }}</p>
+                            </div>
+                        </div>
+                        {% for child_comment in comment.comment_child.all %}
+                            {% if child_comment.active %}
+                                <div class="my-4 d-flex ps-2 ps-md-3">
+                                    <img class="avatar avatar-md rounded-circle float-start me-3" src="{{ child_comment.user.image.url }}" alt="avatar">
+                                    <div>
+                                        <div class="mb-2">
+                                            <h5 class="m-0">{{ child_comment.user.name }}</h5>
+                                            <span class="me-3 small">{{ child_comment.date }}</span>
+                                            <button onclick="replayComment('{{ comment.user.fullname }}', {{ comment.id }})" class="text-body fw-normal">پاسخ</button>
+                                        </div>
+                                        <p>{{ child_comment.text }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% empty %}
+                            <br><br>
+                        {% endfor %}
+                    {% endfor %}
+
+				</div>
+				<!-- Comments END -->
+				<!-- Reply START -->
+				<div>
+					<h3>ثبت دیدگاه</h3>
+                    {% if user.is_authenticated %}
+                        <div id="user-replay"></div>
+                            <div class="col-12">
+                                <label class="form-label">متن دیدگاه *</label>
+                                <label>
+                                    <input id="blog-comment-text" type="text" name="text" class="form-control" rows="3">
+                                    <input id="blog-replay-id" type="text" style="display: none">
+                                </label>
+                            </div>
+                            <br>
+                            <div class="col-12">
+                                <button onclick="blogComment({{ blog.id }})" class="btn btn-primary">ثبت</button>
+                            </div>
+                    {% else %}
+                        <p>برای تبت دیدگاه ابتدا لاگین کنید</p>
+                    {% endif %}
+				</div>
+<script src="js/costum.js"></script>

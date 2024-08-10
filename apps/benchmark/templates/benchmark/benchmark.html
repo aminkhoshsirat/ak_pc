@@ -1,0 +1,1466 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <header>
+        <div class="container-fluid fixed_main" id="main_menu">
+            <nav class="nav navbar navbar-expand-md navbar-light bg-light">
+
+                <div class="collapse navbar-collapse  justify-content-start" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="benchmarksDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Benchmarks
+                            </a>
+                            <div class="dropdown-menu big-dropdown-menu ddmenu_left_110"
+                                 aria-labelledby="benchmarksDropdown">
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.cpubenchmark.net/">
+                                        CPU Benchmarks
+
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.cpubenchmark.net/">Learn More</a>
+
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.videocardbenchmark.net/">
+                                        Video Card Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.videocardbenchmark.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.harddrivebenchmark.net/">
+                                        Hard Drive Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.harddrivebenchmark.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.memorybenchmark.net/">
+                                        RAM Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.memorybenchmark.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.pcbenchmarks.net/">
+                                        PC Systems Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.pcbenchmarks.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item"
+                                       href="https://www.softwaremarketshare.net/">
+                                        Software Marketshare
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.softwaremarketshare.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.databasebenchmarks.net/">
+                                        Database Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.databasebenchmarks.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.androidbenchmark.net/">
+                                        Android Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.androidbenchmark.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.iphonebenchmark.net/">
+                                        iOS Benchmarks
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.iphonebenchmark.net/">Learn More</a>
+                                </span>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a target="_blank" class="dropdown-item" href="https://www.bandwidthtest.net/">
+                                        Internet Bandwidth
+                                    </a>
+
+                                    <span class="menu_tips_button">
+                                    <a target="_blank" href="https://www.bandwidthtest.net/">Learn More</a>
+                                </span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Services</a>
+                            <div class="dropdown-menu one-column-drop-menu ddmenu_left_113"
+                                 aria-labelledby="servicesDropdown">
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/services/index.php">
+                                        Software Customization
+                                    </a>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/services/it-consultancy.php">
+                                        Independent Benchmarking Labs
+                                    </a>
+
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/services/market-analysis.php">
+                                        Hardware &amp; Software Market Trends
+                                    </a>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/reports/index.php">
+                                        Benchmark Reports
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="sales_link" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Store
+                            </a>
+                            <div class="dropdown-menu big-dropdown-menu colum-2-menu" aria-labelledby="sales_link">
+                                <div class="column_1_submenu">
+                                    <div class="submeu_block_title">
+                                        Purchase
+                                    </div>
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/sales/index.php">
+                                            Products
+                                            <span class="menu_desc">Major software\hardware products</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/index.php">Learn More</a>
+                                    </span>
+                                    </div>
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/sales/upgrade/index.php">
+                                            Upgrades
+                                            <span class="menu_desc">Purchasing Software Upgrades</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/upgrade/index.php">Learn More</a>
+                                    </span>
+                                    </div>
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item"
+                                           href="https://passmark.com/sales/sitelicenses/index.php">
+                                            Site Licenses
+                                            <span class="menu_desc">Purchasing Site Licenses</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/sitelicenses/index.php">Learn More</a>
+                                    </span>
+                                    </div>
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/sales/support/index.php">
+                                            Support
+                                            <span style="line-height: 13px;" class="menu_desc">Purchasing Support \ <br> Support for site licenses</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/support/index.php">Learn More</a>
+                                    </span>
+                                    </div>
+                                </div>
+                                <div class="column_2_submenu">
+                                    <div class="submeu_block_title">
+                                        INFO
+                                    </div>
+
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/sales/purchase_orders.php">
+                                            Purchase Orders
+                                            <span class="menu_desc">How to order with a PO</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/purchase_orders.php">Learn More</a>
+                                    </span>
+                                    </div>
+
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/support/ordering_faq.php">
+                                            FAQ
+                                            <span class="menu_desc">Information about ordering &amp; <br> shipping</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/support/ordering_faq.php">Learn More</a>
+                                    </span>
+                                    </div>
+
+                                    <div class="one_big_submenu_item">
+                                        <a class="dropdown-item" href="https://passmark.com/sales/specials/index.php">
+                                            Specials
+                                            <span class="menu_desc">Monthly specials</span>
+                                        </a>
+
+                                        <span class="menu_tips_button">
+                                        <a href="https://passmark.com/sales/specials/index.php">Learn More</a>
+                                    </span>
+                                    </div>
+
+                                </div>
+
+                                <!--
+                                <a class="dropdown-item all_width" href="#">All Hardware Products <span class="icon icon_right"></a> -->
+                            </div>
+                        </li>
+                        <li class="nav-item ">
+                            <a id="support_link" class="nav-link"
+                               href="https://passmark.com/support/index.php">Support</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutUsDropDown" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About Us
+                            </a>
+                            <div class="dropdown-menu one-column-drop-menu ddmenu_left_114"
+                                 aria-labelledby="aboutUsDropDown">
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/about/index.php">
+                                        Company
+
+                                    </a>
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/about/contact_us.php">
+                                        Contact Us
+
+                                    </a>
+
+                                </div>
+                                <div class="one_big_submenu_item">
+                                    <a class="dropdown-item" href="https://passmark.com/press/index.php">
+                                        The Press Room
+
+                                    </a>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="https://passmark.com/forum/index.php">Forums</a>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+
+                <ul id="search_form" class="nav navbar-nav left-nav-bar">
+                    <li class="active">
+                        <form action="https://www.passmark.com/search/zoomsearch.php" class="form-inline my-lg-0">
+                            <input name="zoom_query" id="search_input" class="form-control mr-sm-2" type="search"
+                                   placeholder="Search entire site..." aria-label="Search">
+                            <button id="search_submit" class="icon_search icons" type="submit"
+                                    aria-label="Submit Search"></button>
+                        </form>
+                    </li>
+                    <li>
+                        <a href="https://www.passmark.com/about/contact_us.php" aria-label="Contact Us">
+                            <span class="icons icon_phone"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class="cmp-header mob-cmp-h">
+                            <a href="/singleCompare.php?redirect">
+                                <svg viewBox="0 0 40 40" id="icon-header-compare">
+                                    <path d="M24.7155 5H34C34.8284 5 35.5 5.67157 35.5 6.5C35.5 7.32843 34.8284 8 34 8H24.7155C24.0291 9.74779 22.1771 11 20 11C17.8229 11 15.9709 9.74779 15.2845 8H6C5.17163 8 4.5 7.32843 4.5 6.5C4.5 5.67157 5.17163 5 6 5H15.2845C15.9709 3.25221 17.8229 2 20 2C22.1771 2 24.0291 3.25221 24.7155 5Z"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M9 11.0845L18 26.0845V26.5C18 29.1843 17.1319 31.5684 15.5183 33.295C13.8968 35.0299 11.6146 36 9 36C6.38542 36 4.10321 35.0299 2.48172 33.295C0.86806 31.5684 0 29.1843 0 26.5V26.0845L9 11.0845ZM3.1269 28C3.36348 29.3415 3.91726 30.4374 4.67351 31.2465C5.68709 32.3311 7.15488 33 9 33C10.8451 33 12.3129 32.3311 13.3265 31.2465C14.0827 30.4374 14.6365 29.3415 14.8731 28H3.1269ZM13.8507 25H4.14929L9 16.9155L13.8507 25Z"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                          d="M31 11.0845L40 26.0845V26.5C40 29.1843 39.1319 31.5684 37.5183 33.295C35.8968 35.0299 33.6146 36 31 36C28.3854 36 26.1032 35.0299 24.4817 33.295C22.8681 31.5684 22 29.1843 22 26.5V26.0845L31 11.0845ZM25.1269 28C25.3635 29.3415 25.9173 30.4374 26.6735 31.2465C27.6871 32.3311 29.1549 33 31 33C32.8451 33 34.3129 32.3311 35.3265 31.2465C36.0827 30.4374 36.6365 29.3415 36.8731 28H25.1269ZM35.8507 25H26.1493L31 16.9155L35.8507 25Z"></path>
+                                </svg>
+
+                                <span id="indexcmp3" class="number-cmp">0</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+
+            </nav>
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                $(".navbar-toggler").click(function () {
+                    $("#navbarSupportedContent").toggle();
+                })
+
+                $("#benchmarksDropdown").click(function () {
+                    $(".ddmenu_left_110").toggleClass('show');
+                })
+                $("#hardwareDropdown").click(function () {
+                    $(".ddmenu_left_111").toggleClass('show');
+                })
+                $("#softwareDropdown").click(function () {
+                    $(".ddmenu_left_112").toggleClass('show');
+                })
+                $("#servicesDropdown").click(function () {
+                    $(".ddmenu_left_113").toggleClass('show');
+                })
+                $("#sales_link").click(function () {
+                    $(".colum-2-menu").toggleClass('show');
+                })
+                $("#aboutUsDropDown").click(function () {
+                    $(".ddmenu_left_114").toggleClass('show');
+                })
+            })
+
+
+        </script>
+    </header>
+    <script>
+        $(document).ready(function () {
+            $(".mob-dropd").click(function () {
+                $("#mob-drop").toggle();
+            });
+
+            $(window).on("resize", function () {
+                if ($(window).width() > 992) {
+                    $("#mob-drop").css("display", "flex");
+                } else {
+                    $("#mob-drop").css("display", "none");
+                }
+            });
+        });
+    </script>
+    <div id="tabs">
+        <div class="wrap-tub">
+            <a href="/static"><img src="/img/home-1.svg" alt="iconcharts"></a>
+            <div class="mob-dropd" style="display: none;">
+                <h2>CPU Benchmarks</h2>
+            </div>
+        </div>
+        <ul class="container" id="mob-drop" style="display: flex;">
+            <li><a href="//www.cpubenchmark.net/"><span class="currenttab2"><span
+                    class="currenttab">CPU Benchmarks</span></span></a></li>
+            <li><a href="//www.videocardbenchmark.net/"><span class="othertab2"><span class="othertab">Video Card Benchmarks</span></span></a>
+            </li>
+            <li><a href="//www.harddrivebenchmark.net/"><span class="othertab2"><span class="othertab">Hard Drive Benchmarks</span></span></a>
+            </li>
+            <li><a href="//www.memorybenchmark.net/"><span class="othertab2"><span
+                    class="othertab">Memory Benchmarks</span></span></a></li>
+            <li><a href="//www.pcbenchmarks.net/"><span class="othertab2"><span
+                    class="othertab">PC Benchmarks</span></span></a></li>
+            <li><a href="//www.softwaremarketshare.net/"><span class="othertab2"><span class="othertab">Software Marketshare</span></span></a>
+            </li>
+            <li><a href="//www.databasebenchmarks.net/"><span class="othertab2"><span class="othertab">Database Benchmarks</span></span></a>
+            </li>
+            <li><a href="//www.androidbenchmark.net/"><span class="othertab2"><span
+                    class="othertab">Android Benchmarks</span></span></a></li>
+            <li><a href="//www.iphonebenchmark.net/"><span class="othertab2"><span
+                    class="othertab">iOS Benchmarks</span></span></a></li>
+        </ul>
+        <div class="cmp-header">
+            <a href="/singleCompare.php?redirect">
+                <svg viewBox="0 0 40 40" style="width: 45px; height: 35px;">
+                    <use href="#icon-header-compare"></use>
+                </svg>
+                <span id="indexcmp" class="number-cmp">0</span>
+            </a></div>
+    </div>
+    <div class="main-title">
+        <div class="container">
+            <h2>CPU Benchmarks</h2>
+            <p>Over 1,000,000 CPUs benchmarked</p>
+        </div>
+    </div>
+    <div id="block_content">
+        <div class="container">
+            <div id="main_content">
+                <div class="productheader">
+                    <br>
+                    <h1>1,000,000+ Systems Tested and 3,100 + CPU Models - <br>Updated Daily!</h1>
+                </div>
+                <div class="main-text-cmps">
+                    <div class="main-cmps-head">
+                        <p>
+                            PassMark Software has delved into the millions of benchmark results that
+                            <a href="https://www.passmark.com/products/pt.htm">PerformanceTest</a> users
+                            have posted to its web site and produced a comprehensive range of CPU charts to
+                            help compare the relative speeds of different processors from Intel, AMD, Apple, Qualcomm
+                            and others.<br><br>
+                            Included in these lists are CPUs designed for servers and workstations
+                            (such as Intel Xeon and AMD EPYC processors), desktop CPUs
+                            (Intel Core Series and AMD Ryzen), in addition to ARM processors
+                            (Apple M1 and Qualcomm Snapdragon) and mobile CPUs.
+                        </p>
+                    </div>
+                    <div class="banner-block">
+                        <!-- 71161633/PMS_cpub/home_hrec_1 -->
+                        <div data-fuse="21826887699"></div><!-- 71161633/PMS_cpub/mob_home_mrec_1 -->
+                        <div data-fuse="21854435774"></div>
+                    </div>
+                </div>
+                <div class="wrapper">
+
+                    <script>
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.hight-end  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.hight-end ').addClass('hightcurrentul')
+                                }
+
+                            });
+                        });
+                        jQuery(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.best-value   li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.best-value  ').addClass('bestcurrentul')
+                                }
+
+                            });
+                        });
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.new-desctop  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.new-desctop ').addClass('desccurrentul')
+                                }
+
+                            });
+                        });
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.single-thread  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.single-thread ').addClass('threadcurrentul')
+                                }
+
+                            });
+                        });
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.search-sidebar  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.search-sidebar').addClass('searchcurrentul')
+                                }
+
+                            });
+                        });
+                        jQuery(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.compare-sidebar  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.compare-sidebar').addClass('comparecurrentul')
+                                }
+
+                            });
+                        });
+                        jQuery(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.new-common  li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.new-common').addClass('commoncurrentul')
+                                }
+
+                            });
+                        });
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.compare-sidebarvs li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.compare-sidebarvs').addClass('comparevscurrentul')
+                                }
+
+                            });
+                        });
+                        $(function () {
+                            var location = window.location.href;
+                            var cur_url = '/' + location.split('/').pop();
+
+                            jQuery('.main-href li').each(function () {
+                                var link = jQuery(this).find('a').attr('href');
+
+
+                                if (cur_url == link) {
+                                    jQuery(this).addClass('currentbar');
+                                    jQuery('.main-href').addClass('maincurrentul')
+                                }
+
+                            });
+                        });
+                    </script>
+                    <div class="sidebar">
+                        <div class="sidebar-list">
+                            <ul class="main-href maincurrentul">
+                                <li class="currentbar">
+                                    <a href="/static"><img src="/img/home-1.svg" alt="iconcharts">
+                                        <p>cpus</p></a>
+                                </li>
+                            </ul>
+                            <ul class="hight-end">
+                                <li><a href="/high_end_cpus.html"><img src="/img/chartssb.svg" alt="iconcharts">High End</a>
+                                </li>
+                                <li class="padding-left-align"><a href="/mid_range_cpus.html">High Mid Range</a></li>
+                                <li class="padding-left-align"><a href="/midlow_range_cpus.html">Low Mid Range</a></li>
+                                <li class="padding-left-align"><a href="/low_end_cpus.html">Low End</a></li>
+                            </ul>
+                            <ul class="best-value ">
+                                <li><a href="/cpu_value_available.html"><img src="/img/bw-icon.svg" alt="icon">Best
+                                    Value<br>(On Market)</a></li>
+                                <li class="padding-left-align"
+                                    onclick="location.href='http://dev.cpubenchmark.net/cpu_value_available.html#xy_scatter_graph';window.location.reload();">
+                                    <a href="/cpu_value_available.html#xy_scatter_graph">Best Value XY<br>Scatter</a>
+                                </li>
+                                <li class="padding-left-align"><a href="/cpu_value_alltime.html">Best Value<br>(All
+                                    time)</a></li>
+                            </ul>
+                            <ul class="new-desctop">
+                                <li><a href="/desktop.html"><img src="/img/descicon.svg" alt="iconcharts"> New
+                                    Desktop</a></li>
+                                <li class="padding-left-align"><a href="/laptop.html">New Laptop</a></li>
+                            </ul>
+                            <ul class="single-thread">
+                                <li><a href="/singleThread.html"><img src="/img/single-threadsb.svg" alt="iconcharts">Single
+                                    Thread</a></li>
+                                <li class="padding-left-align"><a href="/multi_cpu.html">Systems with<br>Multiple
+                                    CPUs</a></li>
+                                <li class="padding-left-align"><a href="/overclocked_cpus.html">Overclocked</a></li>
+                                <li class="padding-left-align"><a
+                                        href="/power_performance.html">Power<br>Performance</a></li>
+                                <li class="padding-left-align"><a href="/socketType.html">CPU Mark by Socket Type</a>
+                                </li>
+                                <li class="padding-left-align"><a href="/cross-platform.html">Cross-Platform CPU
+                                    Performance</a></li>
+                                <li class="padding-left-align"><a href="/top-gaming-cpus.html">Top Gaming CPUs</a></li>
+                            </ul>
+                            <ul class="search-sidebar">
+
+                                <li><a href="/CPU_mega_page.html"><img src="/img/searchsb.svg" alt="icon">CPU Mega List</a>
+                                </li>
+                                <li><a class="padding-left-align" href="/cpu_list.php">Search Model</a></li>
+                            </ul>
+                            <ul class="compare-sidebar">
+                                <li><a href="/singleCompare.php"><img src="/img/conpare.svg" alt="icon">Compare<span
+                                        id="indexcmp2" class="number-cmp">0</span></a></li>
+                            </ul>
+                            <ul class="new-common">
+                                <li><a href="/common_cpus.html"><img src="/img/star-sb.svg" alt="iconcharts"> Common</a>
+                                </li>
+                                <li class="padding-left-align"><a href="/share30.html">Most<br>Benchmarked</a></li>
+                            </ul>
+                            <ul class="compare-sidebarvs">
+                                <li><a href="/market_share.html"><img src="/img/vs-sb.svg" alt="icon">AMD vs Intel<br>
+                                    Market Share</a></li>
+                                <li class="padding-left-align"><a href="/year-on-year.html">Year on Year Performance</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-banner">
+                            <br>
+                            <!-- 71161633/PMS_cpub/home_vrec_2 -->
+                            <div data-fuse="21826789691"></div>
+                        </div>
+                    </div>
+                    <div class="main-cmps main-page">
+                        <div class="hiden-cmp" style="display: none;">
+                            <div id="portamento_container" style="min-height: 0px; width: 0px;">
+                                <div id="sidebar" class="fixed" style="top: 10px;">
+                                    <div id="sb_restore"
+                                         style=" font-size: 14px;  background: transparent; padding: .25em;text-align: right;	">
+                                        <a href="#" id="sidebar_restore"> Minimize _</a>
+                                    </div>
+                                    <h2>Add CPUs to start comparisons</h2>
+                                    <p id="sidebar_default_text" style="display: block;">Compare the performance of up
+                                        to 5 different CPUs</p>
+                                    <div id="wrap-compare-hide">
+                                        <div id="div_sidebar_table" class="compare_table" style="display: block;">
+                                            <table id="sidebar_table">
+                                                <thead>
+                                                <tr>
+                                                    <td>Compare List</td>
+                                                    <td class="ta-center"></td>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr id="selectCPU">
+                                                    <td colspan="2"><label for="autocomplete"
+                                                                           style="color: #00496B; font-size:10px;">Add
+                                                        other CPU:</label><br><img class="icon-s-comp"
+                                                                                   src="/img/compsearch.svg"><input
+                                                            id="autocomplete" placeholder="Intel Core ..." type="text">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="compare-footer">
+                                            <button id="sidebar_button" style="display: block;">Compare</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script src="/portamento-min.js"></script>
+                            <script src="/jquery.autocomplete.js"></script>
+                            <script>
+
+                                var MAX_COMPARE = 5;
+
+                                class CPU {
+                                    constructor(CPUId, CPUName, CPUCount) {
+                                        this.CPUId = CPUId;
+                                        this.CPUName = CPUName;
+                                        this.CPUCount = CPUCount;
+                                    }
+                                }
+
+                                class MyCompare {
+                                    constructor() {
+                                        this.CPUs = [];
+                                    }
+
+                                    UpdateGUI() {
+                                        if ($("#indexcmp").length > 0)
+                                            $("#indexcmp").empty().append(this.CPUs.length);
+                                        if ($("#indexcmp2").length > 0)
+                                            $("#indexcmp2").empty().append(this.CPUs.length);
+                                        if ($("#indexcmp3").length > 0)
+                                            $("#indexcmp3").empty().append(this.CPUs.length);
+
+                                        updateSidebar();
+                                    }
+
+                                    addCPU(CPUId, CPUName, CPUCount) {
+                                        if (this._AddCPU(CPUId, CPUName, CPUCount)) {
+                                            let _this = this;
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/compareAjax.php",
+                                                data: {
+                                                    action: "add",
+                                                    cpuid: CPUId,
+                                                    cpuname: CPUName,
+                                                    cpucount: CPUCount
+                                                },
+                                                success: function (data) {
+                                                    console.log(data);
+                                                    _this.UpdateGUI();
+                                                },
+                                            });
+                                        } else {
+                                            var toast = document.getElementById("toast");
+                                            var oldText = toast.innerHTML;
+                                            var oldBgColor = toast.style.backgroundColor;
+                                            var newMsg = "You can only compare " + MAX_COMPARE + " CPUs.";
+                                            toast.innerHTML = '<div id="img"><svg viewBox="0 0 30 30"><use xlink:href="#icon-header-compare"></use></svg></div><div id="desc">' + newMsg + '</div>';
+                                            toast.style.backgroundColor = "#AE0034";
+                                            launch_toast();
+                                            //toast.innerHTML = oldText;
+                                            //toast.style.backgroundColor = oldBgColor;
+                                        }
+                                    }
+
+                                    _AddCPU(CPUId, CPUName, CPUCount) {
+                                        CPUCount = typeof CPUCount !== 'undefined' ? parseInt(CPUCount) : 1;
+                                        CPUId = parseInt(CPUId);
+
+                                        for (var i = 0; i < this.CPUs.length; i++)
+                                            if (this.CPUs[i].CPUId == CPUId && this.CPUs[i].CPUCount == CPUCount)
+                                                return true; // Already added
+
+                                        if (this.CPUs.length < MAX_COMPARE) {
+                                            console.log("Index: " + this.CPUs.length + ", CPUId: " + CPUId + ", CPUName: " + CPUName + ", CPUCount: " + CPUCount);
+                                            this.CPUs.push(new CPU(CPUId, CPUName, CPUCount));
+                                            return true;
+                                        }
+
+                                        return false;
+                                    }
+
+                                    removeCPU(CPUId, CPUCount) {
+                                        if (this._RemoveCPU(CPUId, "", CPUCount)) {
+                                            let _this = this;
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "/compareAjax.php",
+                                                data: {
+                                                    action: "remove",
+                                                    cpuid: CPUId,
+                                                    cpucount: CPUCount
+                                                },
+                                                success: function (data) {
+                                                    console.log(data);
+                                                    _this.UpdateGUI();
+                                                },
+                                            });
+                                        }
+                                    }
+
+                                    _RemoveCPU(CPUId, CPUName, CPUCount) {
+                                        CPUCount = typeof CPUCount !== 'undefined' ? CPUCount : 1;
+
+                                        for (var i = 0; i < this.CPUs.length; i++)
+                                            if (this.CPUs[i].CPUId == CPUId && this.CPUs[i].CPUCount == CPUCount) {
+                                                this.CPUs.splice(i, 1);
+                                                return true;
+                                            }
+
+                                        return false;
+                                    }
+
+                                    removeAll() {
+                                        this.CPUs.length = 0;
+                                        let _this = this;
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "/compareAjax.php",
+                                            data: {
+                                                action: "removeAll"
+                                            },
+                                            success: function (data) {
+                                                console.log(data);
+                                                _this.UpdateGUI();
+                                            },
+                                        });
+                                    }
+
+                                    _RemoveAll() {
+                                        this.CPUs.length = 0;
+                                    }
+
+                                    CompareCPUs(interactive) {
+                                        if (this.CPUs.length < 2) {
+                                            if (interactive) alert("Minimum of 2 CPUs are required for comparison");
+                                            return;
+                                        }
+
+                                        // Build Param String
+                                        let paramString1 = "";
+                                        let paramString2 = "";
+                                        for (let i = 0; i < this.CPUs.length; i++) {
+                                            if (i) {
+                                                paramString1 += " vs ";
+                                                paramString2 += "vs";
+                                            }
+
+                                            var name = this.CPUs[i].CPUName;
+                                            var n = name.indexOf("@");
+                                            if (n > 0) {
+                                                name = name.substr(0, n - 1);
+                                            }
+
+                                            name = name.replace(/\//g, "", name);
+                                            name = name.replace(/Intel\sCore\b/i, "Intel ");
+                                            name = name.replace(/\s+/g, " ", name);
+
+                                            paramString1 += name;
+                                            paramString2 += "" + this.CPUs[i].CPUId;
+
+                                            if (typeof this.CPUs[i].CPUCount !== 'undefined' && Number.isInteger(this.CPUs[i].CPUCount) && this.CPUs[i].CPUCount > 1)
+                                                paramString2 += "." + this.CPUs[i].CPUCount.toString();
+                                        }
+
+                                        // Redirect to comparison page
+                                        let locationHref = "/compare";
+                                        window.location.href = encodeURI(locationHref +
+                                            "/" + paramString2 +
+                                            "/" + paramString1.replace(/\s/g, "-"));
+                                    }
+                                }
+
+                                function updateSidebar() {
+                                    let objSidebar = document.getElementById("sidebar");
+                                    if (!objSidebar) {
+                                        console.log("Error: Object 'sidebar' not found!");
+                                        return;
+                                    }
+                                    console.log("UpdateSideBar() Max Compare: " + MAX_COMPARE);
+                                    console.log(myCmp.CPUs);
+
+                                    let pSidebar = document.getElementById("sidebar_default_text");
+                                    let tableSidebar = document.getElementById("sidebar_table");
+                                    let buttonSidebar = document.getElementById("sidebar_button");
+                                    let divTableSidebar = document.getElementById("div_sidebar_table");
+
+                                    pSidebar.style.display = (myCmp.CPUs.length < 2) ? "block" : "none";
+                                    divTableSidebar.style.display = "block";
+                                    buttonSidebar.style.display = "block";
+
+                                    // Remove all previous rows
+                                    while (tableSidebar.hasChildNodes())
+                                        tableSidebar.removeChild(tableSidebar.lastChild);
+
+                                    // Header
+                                    let header = tableSidebar.createTHead();
+                                    let headRow = header.insertRow();
+
+                                    let headCell = document.createElement("th");
+                                    let col2 = headRow.insertCell();
+                                    let col1 = headRow.insertCell();
+                                    col1.setAttribute("class", "ta-center");
+                                    col2.appendChild(document.createTextNode("Compare List"));
+                                    col1.appendChild(document.createTextNode(""));
+                                    // Create new rows for CPUs
+                                    let body = tableSidebar.createTBody();
+                                    let i;
+                                    for (i = 0; i < myCmp.CPUs.length; i++) {
+                                        row = body.insertRow(-1);
+                                        row.setAttribute("id", "" + myCmp.CPUs[i].CPUId);
+                                        if (i % 2) row.setAttribute("class", "alt");
+
+                                        col2 = row.insertCell();
+                                        col2.appendChild(document.createTextNode("" + (i + 1) + ": " + myCmp.CPUs[i].CPUName));
+
+                                        col1 = row.insertCell(-1);
+                                        col1.setAttribute("class", "ta-center");
+                                        let but = document.createElement("button");
+                                        but.appendChild(document.createTextNode("X"));
+                                        but.onclick = function (id, numCPUs) {
+                                            return function () {
+                                                myCmp.removeCPU(id, numCPUs);
+                                                anim();
+                                            };
+                                        }(myCmp.CPUs[i].CPUId, myCmp.CPUs[i].CPUCount > 1 ? myCmp.CPUs[i].CPUCount : 1);
+                                        col1.appendChild(but);
+                                    }
+
+                                    if (i < MAX_COMPARE) {
+                                        let row = body.insertRow(-1);
+                                        row.setAttribute("id", "selectCPU");
+
+                                        if (i % 2)
+                                            row.setAttribute("class", "alt");
+
+                                        let label = document.createElement("label");
+                                        label.setAttribute("for", "autocomplete");
+                                        label.setAttribute("style", "color: #00496B; font-size:10px;");
+                                        label.appendChild(document.createTextNode("Add other CPU:"));
+                                        let img = document.createElement("img");
+                                        img.setAttribute("class", "icon-s-comp");
+                                        img.setAttribute("src", "/img/compsearch.svg");
+                                        let x = document.createElement("input");
+
+                                        x.setAttribute("id", "autocomplete");
+                                        x.setAttribute("placeholder", "Intel Core ...");
+                                        x.setAttribute("type", "text");
+                                        //x.setAttribute( "class", "input-box" );
+
+                                        let col = row.insertCell();
+                                        col.setAttribute("colspan", 2);
+                                        col.appendChild(label);
+                                        col.appendChild(document.createElement("br"));
+                                        col.appendChild(img);
+                                        col.appendChild(x);
+                                    }
+                                }
+
+                                var myCmp = new MyCompare();
+
+
+                                $(document).ready(function ($) {
+                                    // Floating sidebar
+                                    $('#sidebar').portamento();
+                                    myCmp.UpdateGUI();
+                                });
+
+
+                                $(document).on('keydown.autocomplete', '#autocomplete', function () {
+                                    jQuery(this).autocomplete({
+                                        //lookup: lookupCPUs,
+                                        serviceUrl: '/autocomplete/cpu/',
+                                        onSelect: function (suggestion) {
+                                            myCmp.addCPU(suggestion.data, suggestion.value, 1);
+                                        },
+                                        showNoSuggestionNotice: true,
+                                        noSuggestionNotice: "<span style=\"color: red\">Failed to locate CPU model. Try looking at <a style=\"font-size: 1em;\" href=\"/CPU_mega_page.html\">mega list</a> to see all names instead.</span>",
+                                        width: 300,
+                                        minChars: 3,
+                                        preventBadQueries: true,
+                                        deferRequestBy: 200
+                                    });
+                                });
+
+                                $("#sidebar_minimize, #sidebar_restore").click(function (event) {
+                                    event.preventDefault();
+                                    jQuery('#portamento_container').toggle();
+                                    jQuery('#sb_restore').toggle();
+                                });
+
+
+                                $("#sidebar_button").on("click", function () {
+                                    myCmp.CompareCPUs(true);
+                                });
+
+                                function anim() {
+
+                                    var indexcmp = document.getElementById('indexcmp');
+                                    if (indexcmp.innerHTML < MAX_COMPARE) {
+                                        $(".cmp-header a svg").addClass("anim-class");
+                                        $(".cmp-header .number-cmp").addClass("anim-bounce-class");
+                                        setTimeout(function () {
+                                            $(".cmp-header a svg").removeClass('anim-class');
+                                        }, 1500);
+                                    }
+
+                                }
+
+                                function anim2() {
+
+                                    $(".cmp-header a svg").addClass("anim-class");
+                                    setTimeout(function () {
+                                        $(".cmp-header a  svg").removeClass('anim-class');
+                                    }, 1500);
+
+                                }
+
+                                function launch_toast(toastID) {
+                                    //var indexcmp = document.getElementById("indexcmp");
+                                    var toast = document.getElementById("toast");
+                                    //toast.top = indexcmp.top+30;
+                                    toast.className = "show";
+                                    toast.style.display = "block";
+                                    setTimeout(function () {
+                                        toast.className = toast.className.replace("show", "");
+                                    }, 5000);
+                                }
+                            </script>
+                        </div>
+                        <h2 style="margin-top: 0">Most Popular Benchmarks</h2>
+                        <div class="main-charts">
+                            <div class="column column-two">
+                                <a href="cpu_list.php">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bglblue.jpg)">
+                                            <img src="img/icon/icon-cpu.png" alt="Search for your CPU model here!"
+                                                 title="Search for your CPU model here!" width="120" height="120">
+                                        </div>
+                                        <h2>Search for your CPU Model</h2>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-two">
+                                <a class="chartlink" href="high_end_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-1bg.jpg)">
+                                            <img src="/img/icon/Icon_1.svg"
+                                                 alt="Click here to view the benchmark chart for High End CPUs."
+                                                 title="Click here to view the benchmark chart for High End CPUs."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>High End <span> &nbsp;CPU Chart </span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-two">
+                                <a href="cpu_value_alltime.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg5.jpg)">
+                                            <img src="img/icon/icon-6.svg"
+                                                 alt="Click here to view all CPUs for which we at some point in time had a price, sorted by value (Performance / $Price)."
+                                                 title="Click here to view all CPUs for which we at some point in time had a price, sorted by value (Performance / $Price)."
+                                                 width="120" height="120"></div>
+                                        <h2>Best Value (All time) <span>&nbsp;CPU Chart</span></h2>
+
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-two">
+                                <a href="singleThread.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="/img/icon/Icon_3.svg"
+                                                 alt="Click here to view the benchmark chart for single thread performance."
+                                                 title="Click here to view the benchmark chart for single thread performance"
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Single Thread<span>&nbsp;CPU Chart</span></h2>
+
+                                    </div>
+
+                                </a>
+                            </div>
+
+                        </div>
+
+
+                        <h2>CPUs by Performance</h2>
+                        <div class="search-cmps">
+                            <div class="column column-two">
+                                <a class="chartlink" href="high_end_cpus.html">
+
+
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-1bg.jpg)">
+                                            <img src="/img/icon/Icon_1.svg"
+                                                 alt="Click here to view the benchmark chart for High End CPUs."
+                                                 title="Click here to view the benchmark chart for High End CPUs."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>High End <span>CPU Chart </span></h2>
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div class="column column-1">
+                                <a href="mid_range_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-1bg.jpg)">
+                                            <img src="img/icon/icon-5.svg"
+                                                 alt="Click here to view the benchmark chart for Mid-range to High End CPUs."
+                                                 title="Click here to view the benchmark chart for Mid-range to High End CPUs."
+                                                 width="120" height="120"></div>
+
+                                        <h2>High to Mid Range <span>CPU Chart</span></h2>
+
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+                                <a href="midlow_range_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-1bg.jpg)">
+                                            <img src="img/icon/icon-9.svg"
+                                                 alt="Click here to view the benchmark chart for Mid-range to Low End CPUs."
+                                                 title="Click here to view the benchmark chart for Mid-range to Low End CPUs."
+                                                 width="120" height="120"></div>
+                                        <h2>Low to Mid Range<span>CPU Chart</span></h2>
+
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+                                <a href="low_end_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-1bg.jpg)">
+                                            <img src="img/icon/icon-13.svg"
+                                                 alt="Click here to view the benchmark chart for Low End CPUs."
+                                                 title="Click here to view the benchmark chart for Low End CPUs."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Low End <span>CPU Chart</span></h2>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                        </div>
+                        <h2>Best Value</h2>
+                        <div class="search-cmps">
+                            <div class="column column-2-b">
+                                <a href="cpu_value_available.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-2bg.jpg)">
+                                            <img src="/img/icon/Icon_2.svg"
+                                                 alt="Click here to view CPUs which are currently available for sale sorted by value (Performance / $Price)."
+                                                 title="Click here to view CPUs which are currently available for sale sorted by value (Performance / $Price)."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Best Value <span>&nbsp;CPU Chart (On Market)</span></h2>
+
+                                    </div>
+
+                                </a>
+                            </div>
+                            <div class="column column-2-c-mid">
+                                <a href="cpu_value_available.html#xy_scatter_graph">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-2bg.jpg)">
+                                            <img src="img/icon/icon-15.png" alt="Best value CPU XY Scatter graph"
+                                                 title="Best value CPU XY Scatter graph" width="120" height="120">
+                                        </div>
+                                        <h2>Best Value <span>&nbsp;CPU XY Scatter</span></h2>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-two">
+                                <a href="cpu_value_alltime.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-2bg.jpg)">
+                                            <img src="img/icon/icon-6.svg"
+                                                 alt="Click here to view all CPUs for which we at some point in time had a price, sorted by value (Performance / $Price)."
+                                                 title="Click here to view all CPUs for which we at some point in time had a price, sorted by value (Performance / $Price)."
+                                                 width="120" height="120"></div>
+                                        <h2>Best Value (All time) <span>CPU Chart</span></h2>
+
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+
+                            </div>
+                        </div>
+                        <h2>Latest and hottest</h2>
+                        <div class="search-cmps">
+                            <div class="column column-3">
+                                <a href="desktop.html">
+
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg6.jpg)">
+                                            <img src="/img/icon/Icon_4.svg"
+                                                 alt="Click here to view the benchmark chart for Desktop CPUs."
+                                                 title="Click here to view the benchmark chart for Desktop CPUs"
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>New Desktop<span>&nbsp;CPUs Chart</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-3">
+                                <a href="laptop.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg6.jpg)">
+                                            <img src="img/icon/icon-7.svg"
+                                                 alt="Click here to view the benchmark chart for Portable CPUs."
+                                                 title="Click here to view the benchmark chart for Laptop CPUs"
+                                                 width="120" height="120"></div>
+
+                                        <h2>New Laptop <span>CPUs Chart</span></h2>
+
+
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-2-c">
+                                <a href="common_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg6.jpg)">
+                                            <img src="img/icon/icon-10.svg"
+                                                 alt="Click here to view the benchmark chart for Common CPUs."
+                                                 title="Click here to view the benchmark chart for Common CPUs."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Common<span>CPU Chart</span></h2>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+                                <a href="share30.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg6.jpg)">
+                                            <img src="img/icon/icon-14.svg"
+                                                 alt="Click here to view the benchmark chart for Low End CPUs."
+                                                 title="Click here to view the benchmark chart for Low End CPUs."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2 class="no-flex">Most Benchmarked (90 Days) <span>CPUs</span></h2>
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <h2>Specific Performance</h2>
+                        <div class="search-cmps">
+                            <div class="column column-4">
+                                <a href="singleThread.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="/img/icon/Icon_3.svg"
+                                                 alt="Click here to view the benchmark chart for single thread performance."
+                                                 title="Click here to view the benchmark chart for single thread performance"
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Single Thread<span>&nbsp;CPU Chart</span></h2>
+                                    </div>
+
+                                </a>
+                            </div>
+
+                            <div class="column column-4">
+                                <a href="multi_cpu.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-8.png"
+                                                 alt="Click here to view the benchmark chart for Multiple CPUs."
+                                                 title="Click here to view the benchmark chart for Multiple CPUs."
+                                                 width="120" height="120"></div>
+                                        <h2>Systems with <span>Multiple CPUs</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-4">
+                                <a href="overclocked_cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-12.svg"
+                                                 alt="Click here to view the benchmark chart for Overclocked CPUs."
+                                                 title="Click here to view the benchmark chart for Overclocked CPUs."
+                                                 width="120" height="120"></div>
+                                        <h2>Overclocked <span>CPU Chart</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-3-b">
+                                <a href="power_performance.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-15.png"
+                                                 alt="Detailed information for all CPU models!"
+                                                 title="Detailed information for all CPU models!" width="120"
+                                                 height="120"></div>
+                                        <h2>Power Performance <span>CPU Chart</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-1">
+                                <a href="socketType.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-15.png"
+                                                 alt="Click here to view the benchmark chart for CPU Mark by Socket Type"
+                                                 title="Click here to view the benchmark chart for CPU Mark by Socket Type."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>CPU Mark <span>by Socket Type</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-1">
+                                <a href="cross-platform.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-35.png"
+                                                 alt="Click here to view the benchmark chart for cross-platform CPU performance."
+                                                 title="Click here to view the benchmark chart for cross-platform CPU performance."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Cross-Platform <span>CPU Performance</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-1">
+                                <a href="top-gaming-cpus.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bglblue.jpg)">
+                                            <img src="img/icon/icon-14.svg"
+                                                 alt="Click here to view the benchmark chart for Top Gaming CPU Chart."
+                                                 title="Click here to view the benchmark chart for Top Gaming CPU Chart."
+                                                 width="120" height="120">
+                                        </div>
+                                        <h2>Top Gaming<span>CPU Chart</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-1">
+
+                            </div>
+
+                        </div>
+
+                        <h2>Trends</h2>
+                        <div class="search-cmps">
+                            <div class="column column-4">
+                                <a href="market_share.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-4bg.jpg)">
+                                            <img src="img/icon/icon-33.png" alt="AMD vs Intel Market Share"
+                                                 title="AMD vs Intel Market Share" width="120" height="120">
+                                        </div>
+                                        <h2>AMD vs Intel Market Share</h2>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-4">
+                                <a href="year-on-year.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bggreen.jpg)">
+                                            <img src="img/icon/icon-19.png"
+                                                 alt="Click here to view the chart for year on year performance."
+                                                 title="Click here to view the chart for year on year performance."
+                                                 width="120" height="120"></div>
+                                        <h2>Year on Year <span>CPU Performance</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-4">
+                                <a href="https://www.pcbenchmarks.net/number-of-cpu-cores.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bg6.jpg)">
+                                            <img src="img/icon/icon-31.png"
+                                                 alt="Click here to view the chart for number of CPU Cores usage."
+                                                 title="Click here to view the chart for number of CPU Cores usage."
+                                                 width="120" height="120"></div>
+                                        <h2>Number of<span>CPU Cores</span></h2>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1"></div>
+                        </div>
+
+
+                        <h2>Search &amp; Compare</h2>
+                        <div class="search-cmps">
+                            <div class="column column-3-c ">
+                                <a href="CPU_mega_page.html">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bggreen.jpg)">
+                                            <img src="img/icon/icon-16.svg" alt="Search for your CPU model here!"
+                                                 title="Search for your CPU model here!" width="120" height="120">
+                                        </div>
+                                        <h2>CPU Mega List Page with Filters</h2>
+
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="column column-3-c">
+                                <a href="cpu_list.php">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart" style="background-image: url(/img/chart-bglblue.jpg)">
+                                            <img src="img/icon/icon-cpu.png" alt="Search for your CPU model here!"
+                                                 title="Search for your CPU model here!" width="120" height="120">
+                                        </div>
+                                        <h2>Search for your CPU Model</h2>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+                                <a href="/compare">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart"
+                                             style="background-image: url(/img/chart-bgdgreen.jpg)">
+                                            <img src="img/icon/icon-18.png" alt="Search for your CPU model here!"
+                                                 title="Search for your CPU model here!" width="120" height="120">
+                                        </div>
+                                        <h2>Compare CPUs</h2>
+
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="column column-1">
+
+                            </div>
+                        </div>
+
+
+                        <h2>Historical</h2>
+                        <div class="search-cmps">
+                            <div class="column column-1-b">
+                                <a href="/pt9_cpu_list.php">
+                                    <div class="chart">
+                                        <div class="wrap-bgchart"
+                                             style="background-image: url(/img/chart-bgdgreen.jpg)">
+                                            <img src="img/icon/icon-16.svg" alt="PerformanceTest V9 archived results"
+                                                 title="PerformanceTest V9 archived results" width="120" height="120">
+                                        </div>
+                                        <h2>PerformanceTest V9 archived CPU List</h2>
+
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <div class="column column-1">
+
+                            </div>
+                        </div>
+
+
+                        <!-- 71161633/PMS_cpub/home_hrec_2 -->
+                        <div data-fuse="21826789685"></div><!-- 71161633/PMS_cpub/mob_home_mrec_2 -->
+                        <div data-fuse="21854472826"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-44160635-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-44160635-7');
+    </script>
+
+{% endblock %}

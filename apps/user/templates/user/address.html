@@ -1,0 +1,79 @@
+{% extends 'user/base.html' %}
+{% block title %}{% endblock %}
+{% block panel %}
+    <div class="col-lg-9">
+        <div class="content-box" style="padding:40px 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <div class="ui-boxs">
+                        <div class="ui-box">
+                            <div class="ui-box-item ui-box-white">
+                                <div class="ui-box-item-title" style="padding: 15px;">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="fw-bold">
+                                            آدرس ها
+                                        </h4>
+                                        <a class="btn btn-danger btn-sm waves-effect waves-light" onclick="addAddressView()">ثبت آدرس جدید <i
+                                                class="bi bi-plus-circle-dotted"></i></a>
+                                    </div>
+                                </div>
+                                <div class="ui-box-item-desc">
+                                    <div class="orders">
+                                        {% for address in addresses %}
+                                            <div class="order-item">
+                                                <div class="order-item-status flex-nowrap">
+                                                    <div class="order-item-status-item">
+                                                        <p>{{ address.address }}</p>
+                                                    </div>
+                                                    <div class="order-item-status-item dropd-status">
+                                                        <div class="dropdown">
+                                                            <a class="" href="#" role="button"
+                                                               id="dropdownMenuLink"
+                                                               data-bs-toggle="dropdown"
+                                                               aria-expanded="false">
+                                                                <i class="bi bi-three-dots-vertical text-dark fs-5"></i>
+                                                            </a>
+                                                            <ul class="dropdown-menu flex-column" aria-labelledby="dropdownMenuLink">
+                                                                <li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> ویرایش
+                                                                </a></li>
+                                                                <li><a class="dropdown-item" href="#"><i
+                                                                        class="bi bi-trash text-danger"></i>
+                                                                    حذف </a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="order-item-detail border-0">
+                                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                                        <div class="d-flex flex-column">
+                                                            <div class="text-muted mb-2">
+                                                                <i class="bi bi-pin-map me-1"></i>
+                                                                <p>استان:{{ address.state }}</p>
+                                                            </div>
+                                                            <div class="text-muted mb-2">
+                                                                <i class="bi bi-pin-map me-1"></i>
+                                                                <p>شهر:{{ address.city }}</p>
+                                                            </div>
+                                                            <div class="text-muted mb-2">
+                                                                <i class="bi bi-envelope me-1"></i>
+                                                                <p>کد پستی:{{ address.post_code }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <img src="img/default-icon/map.jpg" alt=""
+                                                             height="150" width="150" class="img-thumbnail"
+                                                             style="pointer-events: none;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                <div id="neshan"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

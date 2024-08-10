@@ -1,0 +1,944 @@
+@media screen and (max-width:1199.98px) {
+    .box-show-namberofComment, .box-showNamberofOrders {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    .cd-close-form {
+        display: none;
+    }
+}
+
+@media screen and (max-width:991.98px) {
+    .info-Business-us h2.text-white {
+        text-align: center;
+    }
+    .box-our-mission .text-our-servives {
+        margin: 0 auto;
+    }
+
+    .box-our-mission {
+        text-align: center;
+    }
+
+    .card-our-mission .card {
+        padding: 3rem 1.5rem;
+    }
+
+    .item_slider_about-us .card2-blockquote {
+        top: 80%;
+        transform: translatex(-50%) scale(0.6);
+        left: 50%;
+    }
+
+    .area-portfolio, .area-about-us {
+        padding: 4rem 0;
+    }
+
+    .item_slider_about-us img {
+        width: 100% !important;
+    }
+
+    .card.Pricing {
+        margin-bottom: 2rem;
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .col_menu_top {
+        display: flex;
+        justify-content: center;
+    }
+
+    .area-address-contact-v2 .grid-gutter.last-grid-gutter {
+        margin-bottom: 0;
+    }
+
+    .item-card-info-contact {
+        margin-bottom: 1.875rem;
+    }
+
+    .area-address-contact-v2 .grid-gutter {
+        margin-bottom: 1.875rem;
+    }
+
+    .area-content-paccount {
+        margin-top: -22rem;
+    }
+
+    .navbar-tool-account a.link-name-user-account::after {
+        content: "";
+    }
+
+    .tab-content-account-user {
+        height: auto;
+    }
+
+    .area-counterUp, .area-card-pepleCompany, .area-our-mission, .area-counseling {
+        margin-bottom: 3.5rem;
+    }
+
+    .area-details-product::before {
+        display: none !important;
+    }
+
+    .area-content-checkout::before {
+        display: none !important;
+    }
+
+    .area-sidebarContent::before {
+        display: none;
+    }
+
+    div#v-pills-tab .nav-link {
+        max-width: 17rem;
+        margin: .5rem;
+    }
+
+    .arealogo img {
+        width: 4rem !important;
+    }
+
+    .container {
+        max-width: 99% !important;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .slider_customers_comments {
+        width: 90% !important;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 576px) {
+    .info-Business-us h2 {
+        font-size: 2rem;
+    }
+
+    .item_slider_about-us .card {
+        width: 28rem
+    }
+
+    .area-btn-addtocart-wishlist .btn-5 {
+        padding: 0.6rem 1.5rem;
+    }
+
+    .modal-footer {
+        padding: 2rem 0 !important;
+    }
+
+    #cd-login, #cd-reset-password, #cd-signup {
+        padding: 2.5rem 2rem;
+    }
+
+    .form-modal .group {
+        margin-top: 1.5rem;
+    }
+/* 
+    article.card-post {
+        height: 16rem;
+    } */
+
+    .card-post .hover01 figure {
+        border-bottom-right-radius: calc(1rem - 2px);
+        border-top-right-radius: calc(1rem - 2px);
+    }
+
+    .card-post-conversely .hover01 figure {
+        border-bottom-left-radius: calc(1rem - 2px);
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: calc(1rem - 2px);
+    }
+}
+
+@media screen and (max-width:442.98px) {
+    .slider_about-us .owl-stage-outer {
+        height: 600px;
+    }
+
+    .item_slider_about-us .card {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 443px) and (max-width:575.98px) {
+    .slider_about-us .owl-stage-outer {
+        height: 550px;
+    }
+
+    .item_slider_about-us .card {
+        width: 25rem;
+    }
+}
+
+@media screen and (max-width:575.98px) {
+    .title-counseling h2, .phone-counseling {
+        text-align: center;
+    }
+
+    .box2-newsletter2 {
+        background-image: none !important;
+        justify-content: center;
+    }
+
+    .box2-newsletter2 div.mg-non {
+        margin-right: 0 !important;
+    }
+
+    .card-our-mission .card {
+        align-items: center;
+    }
+
+    .card-our-mission .card p {
+        text-align: center;
+    }
+
+    .bg.parallax.header .parallax-layer {
+        top: 0;
+    }
+
+    .info-Business-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .parallax-layer {
+        top: 10%;
+    }
+
+    .item_slider_about-us {
+        height: 300px;
+    }
+
+    .item_slider_about-us img {
+        height: 18rem;
+    }
+
+    .sidebar-drawer {
+        width: 20rem;
+    }
+
+    .item-card-info-contact:last-child {
+        margin-bottom: 0;
+    }
+
+    .header-tab-content-account span.count-content-tab {
+        display: none !important;
+    }
+
+    .header-content-orders .item-header-orders {
+        display: inline-block;
+        margin-left: 1rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .area-details-bottom-orders .details-bottom-content {
+        display: inline-block;
+        margin-bottom: 0.4rem;
+    }
+
+    ul.table-wishlist.responsive-mobile li {
+        padding: 0.5rem;
+    }
+
+    .area-btn-addtocart-wishlist .btn-5 {
+        padding: 0.6rem 1rem;
+    }
+
+    .modal-footer {
+        padding: 1.2rem 0 !important;
+    }
+
+    #cd-login, #cd-reset-password, #cd-signup {
+        padding: 0.5rem 2rem;
+    }
+
+    .form-modal .group {
+        margin-top: 0.7rem;
+    }
+
+    .card-post-conversely .hover01 figure {
+        border-top-right-radius: calc(1rem - 2px);
+        border-top-left-radius: calc(1rem - 2px);
+    }
+
+    .card-post .hover01 figure {
+        border-top-left-radius: calc(1rem - 2px);
+        border-top-right-radius: calc(1rem - 2px);
+    }
+
+    .card-post .hover01 {
+        width: 100%;
+    }
+
+    /* article.card-post {
+        height: 32rem;
+    } */
+
+    .area_add-t-cart {
+        width: 19rem !important;
+    }
+
+    .menu_mobile {
+        width: 19rem !important;
+    }
+
+    .box_product_special {
+        padding: 2.5rem 1.5rem 0 1.5rem !important;
+    }
+
+    .details_product_special p {
+        max-width: 100% !important;
+    }
+
+    .peygiry_sefareshat {
+        position: absolute;
+        left: 0;
+    }
+
+    .product_cart {
+        width: 25rem;
+    }
+
+    .details_product_special {
+        width: 100%;
+    }
+
+    .customers_comments {
+        padding: 3rem 0;
+    }
+}
+
+@media screen and (max-width:1199.98px) {
+    .area_element-multi {
+        padding: 3.54rem 0 2rem 0 !important;
+    }
+}
+
+@media screen and (max-width:767.98px) {
+    .area-card-our-mission.sty2 .card-our-mission.one, .area-card-our-mission.sty2 .card-our-mission.two {
+        right: unset;
+        transform: unset;
+    }
+
+    .area-blog.pdn {
+        padding: 0 0 7rem 0;
+    }
+
+    .contenet_widget_footer .chat {
+        text-align: center;
+    }
+
+    .container-card-portfolio {
+        margin-bottom: 1.7rem;
+    }
+
+    .item-table-cart.total {
+        display: none !important;
+    }
+
+    .area-content-table-cart {
+        height: auto;
+        position: relative;
+    }
+
+    .item-table-cart a.btn-remove-cart {
+        position: absolute;
+        left: 5%;
+        top: 7%;
+    }
+
+    .area-porofileAuthor-singlePost {
+        border-left: 0;
+    }
+
+    .box-text-recruitment {
+        margin-left: 0 !important;
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width: 576px) and (max-width:991.98px) {
+    .parallax-layer {
+        top: 7%;
+    }
+
+    .item_slider_about-us {
+        height: 350px;
+    }
+
+    .item_slider_about-us img {
+        height: 20rem;
+    }
+
+    .sidebar-drawer {
+        width: 22rem;
+    }
+
+    .item-card-info-contact:nth-child(3) {
+        margin-bottom: 0;
+    }
+
+    .item-card-info-contact:nth-child(4) {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width:767.98px) {
+    .bg.parallax.header .parallax-layer {
+        top: 20px;
+    }
+
+    .slider_about-us .owl-stage-outer {
+        height: 580px;
+    }
+
+    ul.table-wishlist.responsive-mobile li {
+        padding: 1.5rem;
+    }
+
+    .card-post .hover01 {
+        width: 45%;
+    }
+
+    .widget_footer_news2 {
+        width: 100% !important;
+    }
+
+    .peygiry_sefareshat {
+        position: absolute;
+        left: 0;
+    }
+
+    .widget_footer_downloadApp {
+        width: 50%;
+    }
+
+    .area_add-t-cart {
+        width: 22rem !important;
+    }
+
+    .menu_mobile {
+        width: 22rem !important;
+    }
+
+    .customers_comments {
+        padding: 3.5rem 0;
+    }
+}
+
+@media screen and (max-width:767.98px) {
+    #map_container .map iframe {
+        height: 350px;
+    }
+
+    a.btn-remove-wishlist {
+        position: absolute;
+    }
+
+    a.btn-remove-wishlist span.tooltip-site, .close_product_addtocart a span.tooltip-site, .btn-remove-cart span.tooltip-site {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.2rem;
+    }
+
+    .area-content-wishlist .table-wishlist {
+        display: none;
+    }
+
+    .box-cart {
+        margin-bottom: 2rem;
+    }
+
+    .title-product-cart a {
+        text-align: center;
+    }
+
+    .box-table-cart .product-price {
+        width: 100%;
+    }
+
+    .area-coupon form {
+        width: 60%;
+        margin-left: 0.5rem;
+    }
+
+    .area-coupon .form-group {
+        width: 100%;
+    }
+
+    input.input-number-custtom {
+        width: 4.5rem;
+        margin: 0 0.5rem;
+    }
+
+    .box-table-cart .item-table-cart {
+        border-left: 0;
+    }
+
+    .box-cart {
+        padding: 2rem 1rem;
+    }
+
+    .area-btn-update {
+        width: 100%;
+    }
+
+    .area-btn-update .btn-5 {
+        width: 100% !important;
+    }
+
+    .box-coupon-cart {
+        padding: 2rem 1rem !important;
+    }
+
+    .img-product-cart img {
+        width: 9rem;
+    }
+
+    .menu_footer ul li {
+        float: right;
+        margin: 0 0 0 1.5rem;
+    }
+
+    .area-details-product {
+        margin-bottom: 3.5rem;
+    }
+
+    .area-madeProduct {
+        margin-bottom: 3.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .area-review {
+        padding-bottom: 3rem;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .area-info-introduction-us {
+        margin-left: 3rem !important;
+    }
+
+    .area-blog.pdn {
+        padding: 1.5rem 0 8rem 0;
+    }
+
+    .area_img_barand.style2 .img1_barand, .area_img_barand.style2 .img2_barand {
+        width: 180px;
+    }
+
+    .row.newsletter2 {
+        height: 300px;
+    }
+
+    #map_container .map iframe {
+        height: 450px;
+    }
+
+    a.btn-remove-wishlist {
+        position: relative;
+    }
+
+    .box-cart {
+        margin-bottom: 2.5rem;
+    }
+
+    .box-table-cart .product-price {
+        width: 20%;
+    }
+
+    .area-coupon .form-group {
+        width: 16rem;
+    }
+
+    .btn-remove-cart {
+        position: relative;
+    }
+
+    .box-table-cart .item-table-cart {
+        border-left: 1px solid #dee2e6;
+    }
+
+    .area-content-table-cart {
+        height: 13rem;
+    }
+
+    .box-cart {
+        padding: 0.5rem 1rem;
+    }
+
+    .box-coupon-cart {
+        height: 7rem;
+    }
+
+    .card-post .hover01 {
+        width: 40%;
+    }
+
+    .menu_footer ul li {
+        float: right;
+        margin: 0 1.5rem 0 0;
+    }
+
+    .area-porofileAuthor-singlePost {
+        border-left: 1px solid #dee2e6;
+    }
+
+    .area-details-product {
+        margin-bottom: 4.5rem;
+    }
+
+    .area-madeProduct {
+        margin-bottom: 4.5rem;
+        padding-bottom: 5rem;
+    }
+
+    .area-review {
+        padding-bottom: 3rem;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:991.98px) {
+    .box2-newsletter2 {
+        background-image: none !important;
+        justify-content: center;
+    }
+
+    .box2-newsletter2 div.mg-non {
+        margin-right: 0 !important;
+    }
+
+    .card-our-mission .card {
+        width: 17rem;
+    }
+
+    .bg.parallax.header .parallax-layer {
+        top: 30px;
+    }
+
+    .parallax-layer {
+        top: 11%;
+    }
+
+    .slider_about-us .owl-stage-outer {
+        height: 600px;
+    }
+
+    .item_slider_about-us {
+        height: 380px;
+    }
+
+    .item_slider_about-us img {
+        height: 25rem;
+    }
+
+    .area-information-contact {
+        margin-right: 2%;
+    }
+
+    input.input-number-custtom {
+        width: 4rem;
+        margin: 0 0.4rem;
+    }
+
+    .img-product-cart img {
+        width: 7.5rem;
+    }
+
+    .widget_footer_news2 {
+        width: 60% !important;
+    }
+
+    .widget_footer_downloadApp {
+        width: 50%;
+    }
+
+    .customers_comments {
+        padding: 4rem 0;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .content.sidebar .area-sidebarContent::before {
+        width: 27%;
+    }
+
+    .bg-card-our-mission {
+        left: 1rem;
+    }
+
+    .parallax-layer {
+        top: 6%;
+    }
+
+    .item_slider_about-us .card1-blockquote {
+        top: 50%;
+        transform: translateY(-50%) scale(0.6);
+        left: 0;
+        margin-left: .5rem;
+    }
+
+    .area-portfolio, .area-about-us {
+        padding: 5rem 0;
+    }
+
+    .item_slider_about-us {
+        height: 500px;
+    }
+
+    .item_slider_about-us {
+        margin-left: 6.5rem;
+    }
+
+    .item_slider_about-us img {
+        width: 90% !important;
+    }
+
+    .sidebar-toggle {
+        display: none;
+    }
+
+    .area-form-wrap.contact {
+        margin-right: 8.33%;
+    }
+
+    .area-content-paccount {
+        margin-top: -21rem;
+    }
+
+    .navbar-tool-account a.link-name-user-account::after {
+        content: "\f107";
+    }
+
+    .tab-content-account-user {
+        height: 100%;
+    }
+
+    .area-counterUp, .area-card-pepleCompany, .area-our-mission, .area-counseling {
+        margin-bottom: 5.5rem;
+    }
+
+    .content.left-sidebar .area-sidebarContent::before {
+        left: 0;
+    }
+
+    .content.right-sidebar .area-sidebarContent::before {
+        right: 0;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width:1199.98px) {
+
+    .area-card-our-mission.sty2 .card-our-mission.one {
+        margin-right: -1.3rem;
+    }
+
+    .area-card-our-mission.sty2 .card-our-mission.two {
+        margin-right: 1.3rem;
+    }
+
+    .Business-us .btn-5 {
+        font-size: 0.95rem;
+    }
+
+    .blog.blog-masonry-column.sidebar .card .title-post a {
+        font-size: 0.9rem;
+    }
+
+    .blog.blog-masonry-column.sidebar .card ul.post-categories li a {
+        font-size: 0.75rem;
+    }
+
+    .area-sidebar .details-Post-thumbnail a {
+        font-size: .92rem;
+    }
+
+    .area-sidebar ul.menu-categorySidebar li a {
+        font-size: 0.92rem;
+    }
+
+    .area-information-contact {
+        margin-right: 5%;
+    }
+
+    input.input-number-custtom {
+        width: 4rem;
+        margin: 0 0.4rem;
+    }
+
+    .img-product-cart img {
+        width: 7rem;
+    }
+
+    .contenet_widget_footer form.form_news_footer2 {
+        width: 50%;
+    }
+
+    .extra-controls .form-group .form-control {
+        width: 5rem;
+    }
+
+    .card-our-mission {
+        width: 33.5rem;
+    }
+
+    .area-card-our-mission {
+        padding-top: 5.5rem;
+        min-height: 34rem !important;
+    }
+
+    .card-our-mission .card {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .container {
+        max-width: 99% !important;
+    }
+
+    .box-video-productSingle {
+        padding: 0 0 0 3rem !important;
+    }
+
+    .description-singleProduct {
+        padding: 0 3rem 0 2rem !important;
+    }
+    .customers_comments {
+        padding: 4.5rem 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .area-info-introduction-us {
+        margin-left: 6rem !important;
+    }
+
+    .area-card-our-mission.sty2 .card-our-mission.one {
+        margin-right: -2.5rem;
+    }
+
+    .area-card-our-mission.sty2 .card-our-mission.two {
+        margin-right: 2.5rem;
+    }
+
+    .area-information-contact {
+        margin-right: 8.33%;
+    }
+
+    input.input-number-custtom {
+        width: 4.5rem;
+        margin: 0 0.5rem;
+    }
+
+    .img-product-cart img {
+        width: 9rem;
+    }
+
+    .extra-controls .form-group .form-control {
+        width: 6rem;
+    }
+
+    .card-our-mission {
+        width: 38.5rem;
+    }
+
+    .area-card-our-mission {
+        padding-top: 3rem;
+        min-height: 34rem !important;
+    }
+
+    .card-our-mission .card {
+        padding: 3rem 1.5rem;
+    }
+
+    .box-show-namberofComment, .box-showNamberofOrders {
+        width: 20rem;
+    }
+
+    .box-video-productSingle {
+        padding: 0 0 0 6rem;
+    }
+
+    .description-singleProduct {
+        padding: 0 6rem 0 3rem;
+    }
+
+    .modal-dialog {
+        max-width: 540px !important;
+    }
+
+    .customers_comments {
+        padding: 5rem 0;
+    }
+}
+
+/*////////////////////////style page 4/////////////////////////*/
+
+
+@media screen and (min-width:768px) {
+
+    .row.contain-boxed-two  {
+        height: 300px;
+    }
+    .box-Download-cookbook,.box-newsletter3  {
+        padding: 4rem;
+    }
+}
+@media screen and (max-width:575.98px) {
+    .box-Download-cookbook {
+        background-image: none !important;
+        justify-content: center;
+    }
+
+    .box-Download-cookbook div.mg-non {
+        margin-right: 0 !important;
+    }
+
+}
+@media screen and (min-width: 768px) and (max-width:991.98px) {
+    .box-Download-cookbook {
+        background-image: none !important;
+        justify-content: center;
+    }
+
+    .box-Download-cookbook div.mg-non {
+        margin-right: 0 !important;
+    }
+    .box-Download-cookbook img{
+        width: 50%;
+        }
+        
+        
+}
+
+
+
+@media screen and (max-width:767.98px) {
+
+.sec-first-pg-food-blog {
+    background-image: none !important;
+}
+.sec-first-pg-food-blog {
+    height: fit-content !important;
+ 
+}
+.box-newsletter3 {
+    border-radius: 0 0 1rem 1rem !important;
+
+}
+.box-Download-cookbook {
+    border-radius: 1rem 1rem 0 0 !important;
+}
+.area-des-Download-cookbook {
+    text-align: center;
+}
+
+.box-Download-cookbook,.box-newsletter3  {
+    padding: 3rem;
+}
+
+}

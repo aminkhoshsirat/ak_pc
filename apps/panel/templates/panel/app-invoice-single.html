@@ -1,0 +1,143 @@
+{% extends 'panel/parent/base.html' %}
+{% load poll_extras %}
+{% block title %}{% endblock %}
+{% block content %}
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">کاربرد</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">صورتحساب</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">کشویی را تغییر دهید</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card border shadow-none">
+    <div class="card-header py-3">
+        <div class="row align-items-center g-3">
+            <div class="col-12 col-lg-6">
+                <h5 class="mb-0">نام شرکت، تویتر</h5>
+            </div>
+            <div class="col-12 col-lg-6 text-md-end">
+                <a href="javascript:;" onclick="convertPdf({{ financial_statement.id }})" class="btn btn-sm btn-danger me-2"><i class="bi bi-file-earmark-pdf-fill"></i> دانلود به صورت PDF</a>
+                <a href="javascript:;" onclick="printFactor()" class="btn btn-sm btn-secondary"><i class="bi bi-printer-fill"></i>چاپ</a>
+            </div>
+        </div>
+    </div>
+    <div id="factor">
+    <div class="card-header py-2 bg-light">
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col">
+                <div class="">
+                    <small>از جانب</small>
+                    <address class="m-t-5 m-b-5">
+                        <strong class="text-inverse">{{ financial_statement.sender_company }}</strong><br>
+                        {{ financial_statement.sender_address }}آدرس <br>
+                        {{ financial_statement.sender_post_code }}شهر، کد پستی<br>
+                        تلفن: {{ financial_statement.sender_phone }}<br>
+                    </address>
+                </div>
+            </div>
+            <div class="col">
+                <div class="">
+                    <small>به</small>
+                    <address class="m-t-5 m-b-5">
+                        <strong class="text-inverse">{{ financial_statement.receiver_company }}</strong><br>
+                        {{ financial_statement.receiver_address }}آدرس <br>
+                        {{ financial_statement.receiver_post_code }}شهر، کد پستی<br>
+                        تلفن: {{ financial_statement.receiver_phone }}<br>
+                    </address>
+                </div>
+            </div>
+            <div class="col">
+                <div class="">
+                    <small>فاکتور / دوره تیرماه</small>
+                    <div class=""><b>{{ financial_statement.date }}</b></div>
+                    <div class="invoice-detail">
+                        #{{ financial_statement.id }}<br>
+                        خدمات محصول
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-invoice">
+                <thead>
+                <tr>
+                    <th>شرح وظیفه</th>
+                    <th class="text-center" width="10%">نرخ</th>
+                    <th class="text-center" width="10%">ساعت ها</th>
+                    <th class="text-right" width="20%">جمع کل</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for detail in financial_statement.financial_statement_objects.all  %}
+                        <tr>
+                            <td>
+                                <span class="text-inverse">{{ detail.title }}</span><br>
+                                <small></small>
+                            </td>
+                            <td class="text-center">{{ detail.price | money_format }} تومان</td>
+                            <td class="text-center">{{ detail.off | money_format }}</td>
+                            <td class="text-right">{{ detail.price_after_off | money_format }} تومان</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="row bg-light align-items-center m-0">
+            <div class="col col-auto p-4">
+                <p class="mb-0">جمع</p>
+                <h4 class="mb-0">{{ financial_statement.total_price | money_format }} تومان</h4>
+            </div>
+            <div class="col col-auto p-4">
+                <i class="bi bi-plus-lg text-muted"></i>
+            </div>
+            <div class="col col-auto me-auto p-4">
+                <p class="mb-0">تخفیف</p>
+{#                <h4 class="mb-0">1{{ financial_statement.total_off | money_format }} تومان</h4>#}
+            </div>
+            <div class="col bg-dark col-auto p-4">
+                <p class="mb-0 text-white">جمع کل</p>
+                <h4 class="mb-0 text-white">{{ financial_statement.total_price_after_off | money_format }} تومان</h4>
+            </div>
+        </div><!--end row-->
+        <hr>
+        <!-- begin invoice-note -->
+        <div class="my-3">
+            {{ financial_statement.description }}
+        </div>
+        <!-- end invoice-note -->
+    </div>
+    </div>
+    <div class="card-footer py-3">
+        <p class="text-center mb-2">
+            بابت کسب و کارتان متشکریم
+        </p>
+        <p class="text-center d-flex align-items-center gap-3 justify-content-center mb-0">
+            <span class=""><i class="bi bi-globe"></i> www.domain.com</span>
+            <span class=""><i class="bi bi-telephone-fill"></i> T:+11-0462879</span>
+            <span class=""><i class="bi bi-envelope-fill"></i> info@example.com</span>
+        </p>
+    </div>
+</div>
+    </main>
+{% endblock %}

@@ -1,0 +1,278 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+<main>
+<!-- Divider -->
+
+<div class="border-bottom border-primary border-1 opacity-1"></div>
+
+<!-- =======================
+Inner intro START -->
+<section class="pb-3 pb-lg-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+        <a href="{{ blog.category.get_absolute_url }}" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{ blog.category.title }}</a>
+				<h1>{{ blog.title }}</h1>
+			</div>
+			 <p class="lead">{{ blog.description }}</p>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Inner intro END -->
+
+<!-- =======================
+Main START -->
+<section class="pt-0">
+	<div class="container position-relative" data-sticky-container>
+		<div class="row">
+			<!-- Left sidebar START -->
+			<div class="col-lg-2">
+				<div class="text-start text-lg-center mb-5" data-sticky data-margin-top="80" data-sticky-for="991">
+					<!-- Author info -->
+					<div class="position-relative">
+						<div class="avatar avatar-xl">
+							<img class="avatar-img rounded-circle" src="{{ blog.auther.image.url }}" alt="avatar">
+						</div>
+						<a href="#" class="h5 stretched-link mt-2 mb-0 d-block">{{ blog.auther.name }}</a>
+						<p>{{ blog.auther.post }}</p>
+					</div>
+					<hr class="d-none d-lg-block">
+					<!-- Card info -->
+					<ul class="list-inline list-unstyled">
+						<li class="list-inline-item d-lg-block my-lg-2">{{ blog.published_date }}</li>
+						<li class="list-inline-item d-lg-block my-lg-2">{{ blog.read_time }}</li>
+						<li class="list-inline-item d-lg-block my-lg-2"><a href="#" class="text-body"><i class="far fa-heart me-1"></i></a>{{ blog.blog_likes.count }}</li>
+						<li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i> {{ blog.blog_view.count }} بازدید</li>
+					</ul>
+					<!-- Tags -->
+					<ul class="list-inline text-primary-hover mt-0 mt-lg-3">
+                        {% for keyword in blog.keyword.all %}
+					        <li class="list-inline-item">
+					  	    <a class="text-body" href="{{ keyword.get_absolute_url }}">#{{ keyword.title }}</a>
+					        </li>
+                        {% endfor %}
+					</ul>
+				</div>
+			</div>
+			<!-- Left sidebar END -->
+			<!-- Main Content START -->
+			<div class="col-lg-7 mb-5">
+
+                {{ blog.text | safe }}
+
+				<!-- Related post START -->
+				<div class="mt-5">
+					<h3 class="my-3"><i class="bi bi-symmetry-vertical me-2"></i>مقالات مشابه</h3>
+					<div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round">
+						<div class="tiny-slider-inner"
+							data-autoplay="true"
+							data-hoverpause="true"
+							data-gutter="24"
+							data-arrow="true"
+							data-dots="false"
+							data-items-xl="2" 
+							data-items-xs="1">
+
+							<!-- Card item START -->
+							<div class="card">
+								<!-- Card img -->
+								<div class="position-relative">
+									<img class="card-img" src="assets/images/blog/4by3/07.jpg" alt="Card image">
+									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
+										<!-- Card overlay Top -->
+										<div class="w-100 mb-auto d-flex justify-content-end">
+											<div class="text-end ms-auto">
+												<!-- Card format icon -->
+												<div class="icon-md bg-white bg-opacity-10 bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
+											</div>
+										</div>
+										<!-- Card overlay bottom -->
+										<div class="w-100 mt-auto">
+											<a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>سیاست</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body px-0 pt-3">
+									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">طرح مجلس برای گرفتن مالیات از سفته بازها</a></h5>
+									<!-- Card info -->
+									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+										<li class="nav-item">
+											<div class="nav-link">
+												<div class="d-flex align-items-center position-relative">
+													<div class="avatar avatar-xs">
+														<img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
+													</div>
+													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">مریم ترابی</a></span>
+												</div>
+											</div>
+										</li>
+										<li class="nav-item">7 دی، 1400</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Card item END -->
+							<!-- Card item START -->
+							<div class="card">
+								<!-- Card img -->
+								<div class="position-relative">
+									<img class="card-img" src="assets/images/blog/4by3/08.jpg" alt="Card image">
+									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
+										<!-- Card overlay bottom -->
+										<div class="w-100 mt-auto">
+											<a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>ورزش</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body px-0 pt-3">
+									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">آمار فرزندان حاصل از روش‌های کمک‌ باروری</a></h5>
+									<!-- Card info -->
+									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+										<li class="nav-item">
+											<div class="nav-link">
+												<div class="d-flex align-items-center position-relative">
+													<div class="avatar avatar-xs">
+														<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
+													</div>
+													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">سارا موحد</a></span>
+												</div>
+											</div>
+										</li>
+										<li class="nav-item">15 مهر، 1400</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Card item END -->
+							<!-- Card item START -->
+							<div class="card">
+								<!-- Card img -->
+								<div class="position-relative">
+									<img class="card-img" src="assets/images/blog/4by3/09.jpg" alt="Card image">
+									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
+										<!-- Card overlay bottom -->
+										<div class="w-100 mt-auto">
+											<a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>اقتصاد</a>
+										</div>
+									</div>
+								</div>
+								<div class="card-body px-0 pt-3">
+									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">سال 2022 رویایی و فوق العاده برای طارمی</a></h5>
+									<!-- Card info -->
+									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+										<li class="nav-item">
+											<div class="nav-link">
+												<div class="d-flex align-items-center position-relative">
+													<div class="avatar avatar-xs">
+														<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
+													</div>
+													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">لیلا رزاق</a></span>
+												</div>
+											</div>
+										</li>
+										<li class="nav-item">1 تیر، 1400</li>
+									</ul>
+								</div>
+							</div>
+							<!-- Card item END -->
+						</div>
+					</div> <!-- Slider END -->
+				</div>
+				<!-- Related post END -->
+
+				<!-- Divider -->
+				<hr>
+
+				<!-- Author info START -->
+				<div class="d-flex py-4">
+					<!-- Avatar -->
+					<a href="#">
+						<div class="avatar avatar-xxl me-4">
+							<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
+						</div>
+					</a>
+					<!-- Info -->
+					<div>
+						<div class="d-sm-flex align-items-center justify-content-between">
+							<div>
+								<h4 class="m-0"><a href="#" class="text-reset">روزنامه نگار</a></h4>
+								<small>روزنامه نگار سایت Blogzine</small>
+							</div>
+							<a href="#" class="btn btn-xs btn-primary-soft">مشاهده اخبار</a>
+						</div>
+						<p class="my-2">مهدی علیزاده سردبیر ارشد این وبلاگ است و همچنین اخبار فوری مستقر در لندن را گزارش می دهد. او از سال 2015 درباره دولت، عدالت کیفری و نقش پول در سیاست نوشته است.</p>
+						<!-- Social icons -->
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
+							</li>
+						</ul>					
+					</div>
+				</div>
+				<!-- Author info END -->
+
+				<!-- Divider -->
+				<hr>
+				<!-- Comments START -->
+				<div id="comments">
+
+                </div>
+				<!-- Reply END -->
+            <div id="comment-status"></div>
+			</div>
+			<!-- Main Content END -->
+			
+			<!-- Right sidebar START -->
+			<div class="col-lg-3">
+				<div data-sticky data-margin-top="80" data-sticky-for="991">
+	      	<h4>اشتراک گذاری</h4>
+					<ul class="nav text-white-force">
+						<li class="nav-item">
+							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-facebook" href="#">
+								<i class="fab fa-facebook-square align-middle"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-twitter" href="#">
+								<i class="fab fa-twitter-square align-middle"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-linkedin" href="#">
+								<i class="fab fa-linkedin align-middle"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-pinterest" href="#">
+								<i class="fab fa-pinterest align-middle"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-primary" href="#">
+								<i class="far fa-envelope align-middle"></i>
+							</a>
+						</li>
+					</ul>
+					<!-- Advertisement -->
+					<div class="mt-4">
+						<a href="#" class="d-block card-img-flash">
+							<img src="assets/images/adv.png" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- Right sidebar END -->
+		</div>
+	</div>
+<input id="blog-id" type="hidden" value="{{ blog.id }}">
+</section>
+<!-- =======================
+Main END -->
+</main>
+{% endblock %}

@@ -1,0 +1,222 @@
+{% extends 'panel/parent/base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <div class="chat-wrapper">
+            <div class="chat-sidebar">
+                <div class="chat-sidebar-header">
+                    <div class="d-flex align-items-center">
+                        <div class="chat-user-online">
+                            {% if user.profile_image %}
+                                <img src="{{ user.profile_image.url }}" width="45" height="45" class="rounded-circle" alt="" />
+                            {% endif %}
+                        </div>
+                        <div class="flex-grow-1 ms-2">
+                            <p class="mb-0">{{ user.fullname }}</p>
+                        </div>
+                        <div class="dropdown">
+                            <div class="cursor-pointer font-24 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded'></i>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-end"> <a class="dropdown-item" href="javascript:;">تنظیمات</a>
+                                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">راهنما و بازخورد</a>
+                                <a class="dropdown-item" href="javascript:;"> اسپلیت ویو را فعال کنید</a>
+                                <a class="dropdown-item" href="javascript:;">میانبرهای صفحه کلید</a>
+                                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">خروج از سیستم</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3"></div>
+                    <div class="input-group input-group-sm"> <span class="input-group-text bg-transparent"><i class='bx bx-search'></i></span>
+                        <input type="text" class="form-control" placeholder="افراد، گروه‌ها و پیام‌ها"> <span class="input-group-text bg-transparent"><i class='bx bx-dialpad'></i></span>
+                    </div>
+                    <div class="chat-tab-menu mt-3">
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="pill" href="javascript:;">
+                                    <div class="font-24"><i class='bx bx-conversation'></i>
+                                    </div>
+                                    <div><small>چت ها</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="javascript:;">
+                                    <div class="font-24"><i class='bx bx-phone'></i>
+                                    </div>
+                                    <div><small>تماس می گیرد</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="javascript:;">
+                                    <div class="font-24"><i class='bx bxs-contact'></i>
+                                    </div>
+                                    <div><small>مخاطب</small>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="javascript:;">
+                                    <div class="font-24"><i class='bx bx-bell'></i>
+                                    </div>
+                                    <div><small>اطلاعیه</small>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="chat-sidebar-content">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-Chats">
+                            <div class="p-3">
+                                <div class="meeting-button d-flex justify-content-between">
+                                    <div class="dropdown"> <a href="#" class="btn btn-white btn-sm radius-30 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"><i class='bx bx-video me-2'></i>اکنون ملاقات کنید<i class='bx bxs-chevron-down ms-2'></i></a>
+                                        <div class="dropdown-menu"> <a class="dropdown-item" href="#">میزبانی جلسه</a>
+                                            <a class="dropdown-item" href="#">به یک جلسه بپیوندید</a>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown"> <a href="#" class="btn btn-white btn-sm radius-30 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown" data-display="static"><i class='bx bxs-edit me-2'></i>چت جدید<i class='bx bxs-chevron-down ms-2'></i></a>
+                                        <div class="dropdown-menu dropdown-menu-right">	<a class="dropdown-item" href="#">چت گروهی جدید</a>
+                                            <a class="dropdown-item" href="#">گروه جدید تعدیل شده</a>
+                                            <a class="dropdown-item" href="#">چت جدید</a>
+                                            <a class="dropdown-item" href="#">مکالمه خصوصی جدید</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dropdown mt-3"> <a href="#" class="text-uppercase text-secondary dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown">چت های اخیر <i class='bx bxs-chevron-down'></i></a>
+                                    <div class="dropdown-menu">	<a class="dropdown-item" href="#">چت های اخیر</a>
+                                        <a class="dropdown-item" href="#">چت های پنهان</a>
+                                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="#">مرتب سازی بر اساس زمان</a>
+                                        <a class="dropdown-item" href="#">مرتب سازی بر اساس خوانده نشده</a>
+                                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="#">نمایش موارد دلخواه</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chat-list">
+                                <div class="list-group list-group-flush">
+                                    {% for room in chat_rooms %}
+                                        <a onclick="selectChat({{ room.id }})" class="list-group-item">
+                                            <div class="d-flex">
+                                                {% if room.online %}
+                                                    <div class="chat-user-online">
+                                                        {% if room.user.profile_image %}
+                                                            <img src="{{ room.user.profile_image.url }}" width="42" height="42" class="rounded-circle" alt="" />
+                                                        {% endif %}
+                                                    </div>
+                                                {% else %}
+                                                    <div>
+                                                        {% if room.user.profile_image %}
+                                                            <img src="{{ room.user.profile_image.url }}" width="42" height="42" class="rounded-circle" alt="" />
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                                <div class="flex-grow-1 ms-2">
+                                                    <h6 class="mb-0 chat-title">{{ room.user.fullname | truncatechars:15 }}</h6>
+                                                    <p class="mb-0 chat-msg">{{ room.last_text | truncatechars:15 }}</p>
+                                                </div>
+                                                <div class="chat-time">{{ room.date }}</div>
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div id="chat-page">
+
+        </div>
+
+
+            <!--start chat overlay-->
+            <div class="overlay chat-toggle-btn-mobile"></div>
+            <!--end chat overlay-->
+        </div>
+
+    </main>
+
+    <script src="{% static 'reconnecting-websocket.js' %}"></script>
+{#    <script>#}
+{##}
+{#      var username = {{ username }}#}
+{#      const roomName = JSON.parse(document.getElementById('room-name').textContent);#}
+{##}
+{#      const chatSocket = new ReconnectingWebSocket(#}
+{#            'ws://'#}
+{#            + window.location.host#}
+{#            + '/ws/chat/'#}
+{#            + roomName#}
+{#            + '/'#}
+{#        );#}
+{##}
+{#      chatSocket.onopen = function(e) {#}
+{#          chatSocket.send(JSON.stringify({'command': 'fetch_message'}));#}
+{#      }#}
+{##}
+{##}
+{##}
+{#      chatSocket.onmessage = function(e) {#}
+{##}
+{##}
+{#          var data = JSON.parse(e.data);#}
+{#            console.log(data)#}
+{#          if (data['command'] === 'fetch_message') {#}
+{#              for (let i=data['message'].length-1; i>=0 ; i--) {#}
+{#              createMessage(data['message'][i]);#}
+{#            }#}
+{#          }#}
+{##}
+{#          else {#}
+{#            createMessage(data);#}
+{#            }#}
+{##}
+{#      };#}
+{##}
+{##}
+{#      chatSocket.onclose = function(e) {#}
+{#          console.error('Chat socket closed unexpectedly');#}
+{#      };#}
+{##}
+{#      document.querySelector('#chat-message-input').focus();#}
+{#      document.querySelector('#chat-message-input').onkeyup = function(e) {#}
+{#          if (e.keyCode === 13) {  // enter, return#}
+{#              document.querySelector('#chat-message-submit').click();#}
+{#          }#}
+{#      };#}
+{##}
+{#      document.querySelector('#chat-message-submit').onclick = function(e) {#}
+{#          const messageInputDom = document.querySelector('#chat-message-input');#}
+{#          const message = messageInputDom.value;#}
+{#          chatSocket.send(JSON.stringify({#}
+{#              'message': message,#}
+{#              'command': 'new_message',#}
+{#              'username' : username,#}
+{#          }));#}
+{#          messageInputDom.value = '';#}
+{#      };#}
+{##}
+{#      function createMessage(data) {#}
+{#        var author = data["__str__"];#}
+{#        var msgListTag = document.createElement('li');#}
+{#        var imgTag = document.createElement('img');#}
+{#        var pTag = document.createElement('p');#}
+{#        pTag.textContent = data.content;#}
+{#        imgTag.src = "";#}
+{##}
+{#        if (author === username) {#}
+{#          msgListTag.className = 'sent';#}
+{#        } else {#}
+{#          msgListTag.className = 'replies';#}
+{#        }#}
+{#        msgListTag.appendChild(pTag);#}
+{#        document.querySelector('#chat-log').appendChild(msgListTag);#}
+{#      }#}
+{##}
+{#    </script>#}
+    <!--end page main-->
+{% endblock %}

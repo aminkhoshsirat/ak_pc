@@ -1,0 +1,45 @@
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+
+const xValues = JSON.parse("{{ x }}");
+const yValues = JSON.parse("{{ y }}");
+
+console.log(xValues)
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }],
+      options: {
+        scales: {
+            x: {
+                type: 'time',
+                time: {
+                    unit: 'month'
+                }
+            }
+        }
+    }
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 0, max:100000}}],
+    }
+  }
+});
+</script>
+
+</body>
+</html>

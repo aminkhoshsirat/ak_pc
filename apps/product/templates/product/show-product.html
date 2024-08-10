@@ -1,0 +1,77 @@
+{% load poll_extras %}
+<div class="modal-content rounded-4">
+    <div class="modal-header">
+        <h1 class="modal-title fs-6">{{ product.title }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-3 mb-md-0 mb-3">
+                <div class="swiper sw-modal-product">
+                    <div class="swiper-wrapper" title="برای بزرگنمایی تصویر دابل کلیک کنید">
+                        <div class="swiper-slide">
+                            <div class="swiper-zoom-container">
+                                <img class="img-fluid" src="{{ product.image.url }}" />
+                            </div>
+                        </div>
+                        {% for image in images %}
+                            <div class="swiper-slide">
+                                <div class="swiper-zoom-container">
+                                    <img class="img-fluid" src="{{ image.image.url }}" />
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-next"></div><div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="product-meta">
+                    <div class="feature py-3">
+                        <nav class="navbar">
+                            <ul class="navbar-nav">
+                                {% for field in fields %}
+                                    <li class="nav-item pb-1 font-14">
+                                        <span class="nav-title me-1 fw-bold">{{ field.name }}:</span>
+                                        <span class="nav-title-desc text-muted">{{ field.amount }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="product-action py-3">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <form action="">
+                                <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                    <div class="cart-counter mb-2 me-2">
+                                        <input type="text" name="count" class="counter" value="1">
+                                    </div>
+                                    <button class="btn border-0 mb-2 main-color-one-bg flex-grow-1 rounded-pill py-2 font-14 waves-effect waves-light">
+                                        <i class="bi bi-cart-plus"></i>
+                                        افزودن به سبد خرید</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="price d-flex flex-column justify-content-end">
+                                <div class="text-end">
+                                    <span class="fw-bold font-20 main-color-two-color">{{ product.price_after_off | money_format }}</span>
+                                    <span class="badge main-color-two-bg rounded-pill">{{ product.off }}%</span>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="text-muted font-14 text-decoration-line-through">{{ product.price | money_format }}</span>
+                                    <span class="text-muted font-14 ms-2">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

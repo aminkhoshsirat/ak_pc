@@ -1,0 +1,186 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!--start content-->
+    <main class="page-content">
+        <!--start email wrapper-->
+        <div class="email-wrapper">
+            <div class="email-sidebar">
+                <div class="email-sidebar-header d-grid"> <a href="javascript:;" class="btn btn-primary compose-mail-btn"><i class="bi bi-plus-lg me-2"></i>ساختن</a>
+                </div>
+                <div class="email-sidebar-content">
+                    <div class="email-navigation">
+                        <div class="list-group list-group-flush"> <a href="app-emailbox.html" class="list-group-item active d-flex align-items-center"><i class='bx bxs-inbox me-3 font-20'></i><span>صندوق ورودی</span><span class="badge bg-primary rounded-pill ms-auto">7,513</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-star me-3 font-20'></i><span>ستاره دار</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-alarm-snooze me-3 font-20'></i><span>به تعویق افتاد</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-send me-3 font-20'></i><span>ارسال شد</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-file-blank me-3 font-20'></i><span>پیش نویس</span><span class="badge bg-primary rounded-pill ms-auto">4</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-bookmark me-3 font-20'></i><span>مهم</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-message-rounded-error me-3 font-20'></i><span>چت ها</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bx-mail-send me-3 font-20'></i><span>برنامه ریزی شده است</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-envelope-open me-3 font-20'></i><span>همه نامه ها</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-info-circle me-3 font-20'></i><span>هرزنامه ها</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-trash-alt me-3 font-20'></i><span>زباله ها</span></a>
+                        </div>
+                    </div>
+                    <div class="email-meeting">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item"><span>ملاقات</span>
+                            </div> <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-video me-3 font-20'></i><span>جلسه ای را شروع کنید</span></a>
+                            <a href="javascript:;" class="list-group-item d-flex align-items-center"><i class='bx bxs-group me-3 font-20'></i><span>به یک جلسه بپیوندید</span></a>
+                            <div class="list-group-item email-hangout cursor-pointer border-top">
+                                <div class="d-flex align-items-center">
+                                    <div class="chat-user-online">
+                                        <img src="assets/images/avatars/avatar-1.png" width="42" height="42" class="rounded-circle" alt="" />
+                                    </div>
+                                    <div class="flex-grow-1 ms-2">
+                                        <p class="mb-0">جسیکا دو</p>
+                                    </div>
+                                    <div class="dropdown">
+                                        <div class="font-24 dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"><i class='bx bx-plus'></i>
+                                        </div>
+                                        <div class="dropdown-menu dropdown-menu-end">	<a class="dropdown-item" href="javascript:;">تنظیمات</a>
+                                            <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">راهنما و بازخورد</a>
+                                            <a class="dropdown-item" href="javascript:;">اسپلیت ویو را فعال کنید</a>
+                                            <a class="dropdown-item" href="javascript:;">میانبرهای صفحه کلید</a>
+                                            <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">خروج از سیستم</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="email-header d-xl-flex align-items-center">
+                <div class="d-flex align-items-center">
+                    <div class="email-toggle-btn"><i class='bx bx-menu'></i>
+                    </div>
+                    <div class="btn btn-white">
+                        <input class="form-check-input" type="checkbox">
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-white ms-2"><i class="bi bi-arrow-repeat me-0"></i>
+                        </button>
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-white ms-2"><i class="bi bi-cloud-download-fill me-0"></i>
+                        </button>
+                    </div>
+                    <div class="d-none d-md-flex">
+                        <button type="button" class="btn btn-white ms-2"><i class="bi bi-file-earmark-bar-graph-fill me-0"></i>
+                        </button>
+                    </div>
+                    <div class="">
+                        <button type="button" class="btn btn-white ms-2"><i class="bi bi-trash-fill me-0"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-grow-1 mx-xl-2 my-2 my-xl-0">
+                    <div class="input-group">	<span class="input-group-text bg-transparent"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" placeholder="جستجو ایمیل">
+                    </div>
+                </div>
+                <div class="ms-auto d-flex align-items-center">
+                    <button class="btn btn-sm btn-light">1-50 از 8740</button>
+                    <button class="btn btn-white px-2 ms-2"><i class="bi bi-chevron-left me-0"></i>
+                    </button>
+                    <button class="btn btn-white px-2 ms-2"><i class="bi bi-chevron-right me-0"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="email-content">
+                <div class="email-read-box p-3">
+                    <h4>این یک واقعیت ثابت شده است که خواننده حواسش پرت می شود.</h4>
+                    <hr>
+                    <div class="d-flex align-items-center">
+                        <img src="assets/images/avatars/avatar-1.png" width="42" height="42" class="rounded-circle" alt="" />
+                        <div class="flex-grow-1 ms-2">
+                            <p class="mb-0 font-weight-bold">هیمالیا هند</p>
+                            <div class="dropdown">
+                                <div class="dropdown-toggle" data-bs-toggle="dropdown">به من</div>
+                                <div class="dropdown-menu">	<a class="dropdown-item" href="javascript:;">تنظیمات</a>
+                                    <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">راهنما و بازخورد</a>
+                                    <a class="dropdown-item" href="javascript:;">اسپلیت ویو را فعال کنید</a>
+                                    <a class="dropdown-item" href="javascript:;">میانبرهای صفحه کلید</a>
+                                    <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">خروج از سیستم</a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-0 chat-time ps-5 ms-auto">15 شهریور 1400.ساعت 11:04 بعدازظهر(3 ساعت پیش)</p>
+                    </div>
+                    <div class="email-read-content px-md-5 py-5">
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد.</p>
+                        <h5>از کجا می توانم تهیه کنم؟</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+                        <hr>
+                        <h5>از کجا آمده است؟</h5>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد.</p>
+                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد.</p>
+                    </div>
+                </div>
+            </div>
+            <!--start compose mail-->
+            <div class="compose-mail-popup">
+                <div class="card">
+                    <div class="card-header bg-dark text-white py-2 cursor-pointer">
+                        <div class="d-flex align-items-center">
+                            <div class="compose-mail-title">پیام جدید</div>
+                            <div class="compose-mail-close ms-auto">x</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="email-form">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="به" />
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="موضوع" />
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="پیام" rows="10" cols="10"></textarea>
+                            </div>
+                            <div class="mb-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">عمل</button>
+                                            <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+                                            <div class="dropdown-menu">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                                                <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                                                <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                                                <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ms-2">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="lni lni-text-format"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class='bx bx-link-alt'></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="lni lni-emoji-tounge"></i>
+                                        </button>
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="lni lni-google-drive"></i>
+                                        </button>
+                                    </div>
+                                    <div class="ms-auto">
+                                        <button type="button" class="btn border-0 btn-sm btn-white"><i class="lni lni-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end compose mail-->
+            <!--start email overlay-->
+            <div class="overlay email-toggle-btn-mobile"></div>
+            <!--end email overlay-->
+        </div>
+        <!--end email wrapper-->
+    </main>
+    <!--end page main-->
+{% endblock %}

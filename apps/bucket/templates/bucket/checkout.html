@@ -1,0 +1,250 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <style>
+                    .line-step-box.complete:nth-child(1):before {
+                        width: 100%;
+                    }
+                </style>
+                <div class="line-step-container d-sm-block d-none">
+                    <div class="line-step">
+                        <div class="line-step-boxs">
+                            <div class="line-step-box complete">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-bag"></i>
+                                    </div>
+                                    <p>سبد خرید</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box complete">
+                                <a href="checkout.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <p>جزییات پرداخت</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box disabled">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-break"></i>
+                                    </div>
+                                    <p>تکمیل سفارش</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkout-content">
+                    <div class="alert alert-dark rounded-3 shadow-inner font-14" role="alert">
+                        کوپن تخفیف دارید <span class="alert-link pointer font-15" id="showFormDiscount">برای نوشتن کد
+                            اینجا کلیک
+                            کنید</span>
+                    </div>
+                    <div id="discountForm" style="display:none;">
+                        <div class="item-box bg-white shadow-box">
+                            <div class="title mb-2">
+                                <h6 class="fw-bold font-14">
+                                    اگر شما کد تخفیف دارید ، برای ثبت آن از طریق زیر اقدام کنید.
+                                </h6>
+                            </div>
+                            <div class="desc">
+                                <form action="">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-8">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputDiscount" placeholder="کد تخفیف خود را وارد کنید">
+                                                <label for="floatingInputDiscount">کد تخفیف خود را وارد کنید</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button class="btn main-color-one-bg btn-sm rounded-pill mt-sm-3 mt-0">ثبت
+                                                کد
+                                                تخفیف</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="checkout-form-parent mt-5">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="checkout-forms">
+                                    <div class="checkout-form-title">
+                                        <h5 class="font-18 mb-3 slider-title def-color">جزییات پرداخت</h5>
+                                    </div>
+                                    <div class="checkout-form">
+                                        <form action="">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control float-input"
+                                                                id="floatingInputFname"
+                                                                placeholder="نام خود را وارد کنید">
+                                                            <label for="floatingInputFname">نام خود را وارد کنید</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-floating mb-3">
+                                                            <input type="text" class="form-control float-input"
+                                                                id="floatingInputLname"
+                                                                placeholder="نام خانوادگی خود را وارد کنید">
+                                                            <label for="floatingInputLname">نام خانوادگی خود را وارد
+                                                                کنید</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="ostan" class="form-label">استان <span
+                                                                    class="text-danger ms-1">*</span></label>
+                                                            <select id="ostan" class="w-100">
+                                                                <option>تهران</option>
+                                                                <option>یزد</option>
+                                                                <option>اصفهان</option>
+                                                                <option>لرستان</option>
+                                                                <option>کردستان</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group">
+                                                            <label for="city" class="form-label me-lg-0 me-3">شهر <span
+                                                                    class="text-danger ms-1">*</span></label>
+                                                            <select id="city" class="w-100">
+                                                                <option>کرج</option>
+                                                                <option>خرم آباد</option>
+                                                                <option>کرمانشاه</option>
+                                                                <option>مهاباد</option>
+                                                                <option>بروجرد</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputStreet" placeholder="خیابان">
+                                                <label for="floatingInputStreet">خیابان</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputPelak"
+                                                    placeholder="شماره واحد ، بلوک ، پلاک (دلخواه)">
+                                                <label for="floatingInputPelak">شماره واحد ، بلوک ، پلاک
+                                                    (دلخواه)</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputMobile" placeholder="تلفن همراه">
+                                                <label for="floatingInputMobile">تلفن همراه</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputEmail" placeholder="ایمیل">
+                                                <label for="floatingInputEmail">ایمیل</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control float-input"
+                                                    id="floatingInputPelak"
+                                                    placeholder="شماره واحد ، بلوک ، پلاک (دلخواه)">
+                                                <label for="floatingInputPelak">شماره واحد ، بلوک ، پلاک
+                                                    (دلخواه)</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control float-input" id="floatingInputDesc"
+                                                    style="height: 100px;"
+                                                    placeholder="نکاتی در مورد سفارش به عنوان مثال نکاتی برای تحویل"></textarea>
+                                                <label for="floatingInputDesc">نکاتی در مورد سفارش به عنوان مثال نکاتی
+                                                    برای تحویل</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="checkout-payment">
+                                    <div class="title text-center">
+                                        <h4 class="fw-bold slider-title def-color">مجموع کل سبد خرید</h4>
+                                    </div>
+                                    <table class="table main-table table-striped text-center">
+                                        <tr>
+                                            <th class="pb-3">محصول</th>
+                                            <th class="pb-3">قیمت کل</th>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">
+                                                <img src="img/product/product-image1.jpg" class="img-fluid align-middle"
+                                                    alt="" width="80">
+                                            </td>
+                                            <td class="txt"><span class="fw-bold">42,000,000</span> <span
+                                                    class="text-muted font-10">تومان</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">قیمت کل</td>
+                                            <td class="txt"><span class="fw-bold">42,000,000</span> <span
+                                                    class="text-muted font-10">تومان</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">حمل و نقل</td>
+                                            <td class="txt"><span class="fw-bold">2,000,000</span> <span
+                                                    class="text-muted font-10">تومان</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="fw-bold">مجموع</td>
+                                            <td class="txt"><span class="fw-bold">70,000,000</span> <span
+                                                    class="text-muted font-10">تومان</span></td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="checkout-bank mt-3">
+                                        <div class="item-box">
+                                            <div class="title">
+                                                <h4 class="font-16">
+                                                    انتخاب بانک
+                                                </h4>
+                                            </div>
+                                            <div class="desc">
+                                                <form action="">
+                                                    <div class="form-group form-check">
+                                                        <input class="form-check-input" type="radio" id="bankOne"
+                                                            checked name="available">
+                                                        <label class="form-check-label" for="bankOne">بانک ملت</label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input class="form-check-input" type="radio" id="bankTwo"
+                                                            name="available">
+                                                        <label class="form-check-label" for="bankTwo">بانک تجارت</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <form action="">
+                                        <button
+                                            class="btn border-0 w-100 main-color-two-bg waves-effect waves-light py-3">اقدام
+                                            به پرداخت</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

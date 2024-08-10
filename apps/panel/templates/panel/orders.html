@@ -1,0 +1,153 @@
+{% extends 'panel/parent/base.html' %}
+{% load poll_extras %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">تجارت الکترونیک</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">سفارشات</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="ms-auto">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">تنظیمات</button>
+                    <button type="button" class="btn btn-primary split-bg-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">	<span class="visually-hidden">کشویی را تغییر دهید</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-end">	<a class="dropdown-item" href="javascript:;">عمل</a>
+                        <a class="dropdown-item" href="javascript:;">یک اقدام دیگر</a>
+                        <a class="dropdown-item" href="javascript:;">یه چیز دیگه اینجا</a>
+                        <div class="dropdown-divider"></div>	<a class="dropdown-item" href="javascript:;">لینک جدا شده</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+        <div class="row">
+            <div class="col-12 col-lg-9 d-flex">
+                <div class="card w-100">
+                    <div class="card-header py-3">
+                        <div class="row g-3">
+                            <div class="col-lg-4 col-md-6 me-auto">
+                                <div class="ms-auto position-relative">
+                                    <div class="position-absolute top-50 translate-middle-y search-icon px-3"><i class="bi bi-search"></i></div>
+                                    <input class="form-control ps-5" type="text" placeholder="محصولات را جستجو کنید">
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-6 col-md-3">
+                                <select class="form-select">
+                                    <option>وضعیت</option>
+                                    <option>فعال</option>
+                                    <option>معلول</option>
+                                    <option>انتظار</option>
+                                    <option>نمایش همه</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-6 col-md-3">
+                                <select class="form-select">
+                                    <option>نمایش 10</option>
+                                    <option>نمایش 30</option>
+                                    <option>نمایش 50</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table align-middle">
+                                <thead class="table-light">
+                                <tr>
+                                    <th>شناسه</th>
+                                    <th>نام مشتری</th>
+                                    <th>قیمت</th>
+                                    <th>وضعیت</th>
+                                    <th>تاریخ</th>
+                                    <th>عمل</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders %}
+                                        <tr>
+                                            <td>#{{ order.id }}</td>
+                                            <td>{{ order.user.fullname }}</td>
+                                            <td>{{ order.price_paid | money_format }} تومان</td>
+                                            <td><span class="badge rounded-pill alert-success">{{ order.status }}</span></td>
+                                            <td>{{ order.paid_date }}</td>
+                                            <td>
+                                                <div class="d-flex align-items-center gap-3 fs-6">
+                                                    <a href="javascript:;" class="text-primary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="نمایش جزئیات" aria-label="Views"><i class="bi bi-eye-fill"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <nav class="float-end" aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li class="page-item disabled"><a class="page-link" href="#">قبلی</a></li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">بعد</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 d-flex">
+                <div class="card w-100">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">محدود شده توسط</h5>
+                    </div>
+                    <div class="card-body">
+                        <form class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">شماره سفارش</label>
+                                <input type="text" class="form-control" placeholder="شماره سفارش">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">مشتری</label>
+                                <input type="text" class="form-control" placeholder="نام مشتری">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">وضعیت سفارش</label>
+                                <select class="form-select">
+                                    <option>منتشر شده</option>
+                                    <option>پیش نویس</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">جمع</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">تاریخ اضافه شده</label>
+                                <input type="text"  class="form-control persianDate" placeholder="تاریخ">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">تاریخ اصلاح</label>
+                                <input type="text"  class="form-control persianDate" placeholder="تاریخ">
+                            </div>
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">فیلتر محصول</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!--end row-->
+
+    </main>
+    <!--end page main-->
+{% endblock %}

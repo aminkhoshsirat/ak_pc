@@ -1,0 +1,5 @@
+<form action="/panel/product/add-new?category={{ category_url }}" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit">submit</button>
+</form>

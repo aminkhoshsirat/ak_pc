@@ -1,0 +1,288 @@
+{% load poll_extras %}
+<div class="comment-form py-20">
+    <h6 class="font-16">نظرت در مورد این محصول چیه؟</h6>
+    <p class="font-14 text-muted mt-2">برای ثبت نظر، از طریق دکمه افزودن دیدگاه جدید
+        نمایید. اگر این محصول را قبلا خریده باشید، نظر شما به عنوان خریدار ثبت خواهد
+        شد.</p>
+    <div class="row gy-4">
+        <div class="col-md-4">
+            <div class="product-rateing position-sticky top-0">
+                <div class="row gy-2 align-items-center">
+                    <div class="number">
+                        <p class="font-14 text-muted">متوسط امتیاز ها</p>
+                        <h2>3.00</h2>
+                        <div class="star">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+                    <div class="prog-rating">
+                        <div class="item w-100 mb-2">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <span class="font-14">5 ستاره</span>
+                                <div class="progress flex-grow-1 mx-2"
+                                     style="height: 7px;">
+                                    <div class="progress-bar" role="progressbar"
+                                         style="width: 25%" aria-valuenow="25"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="font-14">0</span>
+                            </div>
+                        </div>
+                        <div class="item w-100 mb-2">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <span class="font-14">5 ستاره</span>
+                                <div class="progress flex-grow-1 mx-2"
+                                     style="height: 7px;">
+                                    <div class="progress-bar" role="progressbar"
+                                         style="width: 25%" aria-valuenow="25"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="font-14">0</span>
+                            </div>
+                        </div>
+                        <div class="item w-100 mb-2">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <span class="font-14">5 ستاره</span>
+                                <div class="progress flex-grow-1 mx-2"
+                                     style="height: 7px;">
+                                    <div class="progress-bar" role="progressbar"
+                                         style="width: 25%" aria-valuenow="25"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="font-14">0</span>
+                            </div>
+                        </div>
+                        <div class="item w-100 mb-2">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <span class="font-14">5 ستاره</span>
+                                <div class="progress flex-grow-1 mx-2"
+                                     style="height: 7px;">
+                                    <div class="progress-bar" role="progressbar"
+                                         style="width: 25%" aria-valuenow="25"
+                                         aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="font-14">0</span>
+                            </div>
+                        </div>
+                        <div class="item w-100">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <span class="font-14">5 ستاره</span>
+                                <div class="progress flex-grow-1 mx-2"
+                                     style="height: 7px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="font-14">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-floating mb-3 form-group">
+                        <input type="email" class="form-control"
+                               id="floatingInputEmail"
+                               placeholder="ایمیل خود را وارد کنید">
+                        <label for="floatingInputEmail">ایمیل خود را وارد
+                            کنید</label>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-floating mb-3 form-group">
+                        <input type="text" class="form-control"
+                               id="floatingInputName"
+                               placeholder="نام خود را وارد کنید">
+                        <label for="floatingInputName">نام خود را وارد کنید</label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input"
+                               id="rememberComment">
+                        <label for="rememberComment"
+                               class="form-check-label d-block">
+                            ذخیره
+                            نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره
+                            دیدگاهی می‌نویسم.
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="commentRating" class="my-3">امتیاز شما</label>
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5"
+                                   required />
+                            <label for="star5">5 stars</label>
+                            <input type="radio" id="star4" name="rating" value="4"
+                                   required />
+                            <label for="star4">4 stars</label>
+                            <input type="radio" id="star3" name="rating" value="3" required />
+                                                                <label for="star3">3 stars</label>
+                                                                <input type="radio" id="star2" name="rating" value="2"
+                                                                    required />
+                                                                <label for="star2">2 stars</label>
+                                                                <input type="radio" id="star1" name="rating" value="1"
+                                                                    required />
+                                                                <label for="star1">1 star</label>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-floating">
+                                                            <textarea class="form-control"
+                                                                placeholder="Leave a comment here"
+                                                                id="floatingTextarea2" style="height: 150px"></textarea>
+                                                            <label for="floatingTextarea2">متن نظر!</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-3">
+                                                            <label for="tags-pos" class="text-success mb-2">نقاط
+                                                                قوت</label>
+                                                            <input name="tags-pos" id="tags-pos"
+                                                                class="commentTags form-control"
+                                                                placeholder="با کلید اینتر اضافه کنید">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group mt-3">
+                                                            <label for="tags-neg" class="text-danger mb-2">نقاط
+                                                                ضعف</label>
+                                                            <input name="tags-neg" id="tags-neg"
+                                                                class="commentTags form-control"
+                                                                placeholder="با کلید اینتر اضافه کنید">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <a href=""
+                                                            class="btn border-0 main-color-three-bg my-3 mx-auto d-block waves-effect waves-light">ثبت
+                                                            نظر</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+{% for comment in comments %}
+    <div class="comment bg-light shadow-inner mb-4">
+        <div class="title">
+            <div class="row align-items-center">
+                <div class="col-sm-10">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar p-2 bg-white shadow-box rounded-circle">
+                            <img src="{{ comment.user.profile_image.url }}" alt=""
+                                 class="img-fluid rounded-circle">
+                        </div>
+                        <div class="d-flex flex-wrap align-items-center ms-2">
+                            <h6 class="text-muted font-14">{{ comment.user.fullname }}</h6>
+                            <h6 class="text-muted font-14 ms-2">{{ comment.published_date }}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="d-flex star justify-content-end">
+{#                        {% for i in  %}#}
+{#                            <i class="bi bi-star"></i>#}
+{#                        {% endfor %}#}
+{#                        {%  for i in comment.get_range_grade %}#}
+{#                            <i class="bi bi-star-fill"></i>#}
+{#                        {% endfor %}#}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="desc py-3">
+            <p class="font-14 text-muted">
+                {{ comment.text }}
+            </p>
+        </div>
+        <div class="foot">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="comment-rates">
+                        <div class="positive rounded-4 py-md-0 py-3">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <h6 class="font-14">نقاط قوت</h6>
+                                <nav class="navbar navbar-expand positive-nav">
+                                    <ul class="navbar-nav flex-wrap">
+                                        {% for point in comment.comment_positive_points.get_list %}
+                                            <li class="nav-item ps-md-2 ps-0"><span
+                                                    class="nav-link font-14">{{ point }}</span>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="negitive rounded-4 mt-3 py-md-0 py-3">
+                            <div class="d-flex align-items-center flex-wrap">
+                                <h6 class="font-14">نقاط صعف</h6>
+                                <nav class="navbar navbar-expand negitive-nav">
+                                    <ul class="navbar-nav flex-wrap">
+                                        {% for point in comment.comment_negative_points.get_list %}
+                                            <li class="nav-item ps-md-2 ps-0"><span
+                                                    class="nav-link font-14">{{ point }}</span>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-likes mt-3">
+                    <div class="col-12">
+                        <div class="d-flex align-items-center flex-wrap">
+                            <div class="right">
+                                <h6 class="font-14">
+                                    آیا این نظر به شما کمکی کرد؟</h6>
+                            </div>
+                            <div class="left mx-sm-3 mx-auto">
+                                <a href=""
+                                   class="btn btn-sm border-0 main-color-one-bg waves-effect waves-light text-nowrap">
+                                    <span>{{ comment.like_num }}</span>
+                                    <i class="bi bi-hand-thumbs-up"></i>
+                                </a>
+                                <a href=""
+                                   class="btn btn-sm border-0 main-color-two-bg ms-3 waves-effect waves-light text-nowrap">
+                                    <span>{{ comment.dislike_num }}</span>
+                                    <i class="bi bi-hand-thumbs-down"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if comment.admin_solve %}
+                <div class="comment shadow-inner mb-4" style="background: #11c56b1f;">
+                    <div class="title">
+                        <div class="row align-items-center">
+                            <div class="col-sm-10">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar p-2 bg-white shadow-box rounded-circle">
+                                        <img src="{{ comment.admin_solve.profile_image.url }}" alt=""
+                                             class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center ms-2">
+                                        <h6 class="text-muted font-14">{{ comment.admin_solve.fullname }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc py-3">
+                        <p class="font-14 text-muted">
+                            {{ comment.admin_solve_text }}
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

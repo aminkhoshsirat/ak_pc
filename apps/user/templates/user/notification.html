@@ -1,0 +1,118 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="#" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">پنل کاربری </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row gy-2">
+                <div class="col-lg-3">
+                    <div class="content-box">
+                        <div class="panel-box">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/image/user-profile.png" class="img-fluid rounded-circle me-2 shadow-sm"
+                                    alt="">
+                                <div class="d-grid gap-2">
+                                    <h4 class="font-16">امیر رضایی</h4>
+                                    <a href="" class="font-14 main-color-one-color"><i class="bi bi-pencil-square"></i>
+                                        مشخصات و تنظیمات</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="profile-box">
+                            <nav class="navbar profile-box-nav">
+                                <ul class="navbar-nav flex-column">
+                                    <li class="nav-item active"><a href="" class="nav-link">
+                                            <i class="bi bi-house-door"></i>پروفایل</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-cart-check"></i>سفارش های من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-pin-map"></i>آدرس های من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-bell"></i>پیام ها و اطلاعیه ها</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-chat-dots"></i>نظرات من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-question-circle"></i>درخواست پشتیبانی</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-heart"></i>محصولات مورد علاقه</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link">
+                                            <i class="bi bi-gift"></i>کد های تخفیف من</a>
+                                    </li>
+                                    <li class="nav-item"><a href="" class="nav-link mct-hover">
+                                            <i class="bi bi-arrow-right-square"></i>خروج از حساب کاربری</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="content-box">
+                        <div class="item-box shadow-box">
+                            <div class="title border-bottom border-muted">
+                                <h6 class="font-14">آخرین اطلاعیه ها</h6>
+                            </div>
+                            <div class="desc shadow-none">
+                                {% for notification in notifications %}
+                                    <div class="alert alert-warning shadow-inner" role="alert">
+                                        <div class="d-flex align-items-center justify-content-between flex-wrap">
+                                            <p class="alert-link">{{ notification.title }}</p>
+                                            <p class="text-muted font-14">{{ notification.date }}</p>
+                                        </div>
+                                        <div class="notifi-desc">
+                                            <p class="font-14">{{ notification.description }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="my-paginate pb-3">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item disabled">
+                                            <a class="page-link rounded-3" href="#"><i
+                                                    class="bi bi-chevron-right"></i></a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link rounded-3" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">...</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">14</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">15</a></li>
+                                        <li class="page-item"><a class="page-link rounded-3" href="#">16</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link rounded-3" href="#"><i
+                                                    class="bi bi-chevron-left"></i></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

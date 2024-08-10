@@ -1,0 +1,40 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <main class="page-content">
+        <aside class="add-product-wrapper" data-simplebar="true">
+            <ul class="metismenu" id="menu">
+                {% for main_category in main_categories %}
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                            </div>
+                            <div class="menu-title">{{ main_category.title }}</div>
+                        </a>
+                    <button>add Main Category</button>
+                    <button>add Child Category</button>
+                        <ul>
+                            {% for child_category in main_category.base_category_child.all %}
+                                {% if child_category.parent_category == None %}
+                                    <a href="javascript:;" class="has-arrow">
+                                        <div class="parent-icon"><i class="bi bi-grid-fill"></i>
+                                        </div>
+                                        <div class="menu-title">{{ child_category.title }}</div>
+                                    </a>
+                                    <ul>
+                                        {% for child_category in child_category.child_category.all %}
+                                            <li onclick="addProductForm('{{ child_category.url }}')">{{ child_category.title }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </aside>
+    <div id="product-add-form">
+
+    </div>
+    </main>
+{% endblock %}
