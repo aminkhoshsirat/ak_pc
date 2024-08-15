@@ -1,278 +1,454 @@
 {% extends 'parent/base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
-<main>
-<!-- Divider -->
 
-<div class="border-bottom border-primary border-1 opacity-1"></div>
 
-<!-- =======================
-Inner intro START -->
-<section class="pb-3 pb-lg-5">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-        <a href="{{ blog.category.get_absolute_url }}" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{ blog.category.title }}</a>
-				<h1>{{ blog.title }}</h1>
-			</div>
-			 <p class="lead">{{ blog.description }}</p>
-		</div>
-	</div>
-</section>
-<!-- =======================
-Inner intro END -->
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'blog:blog' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item active main-color-one-color font-14" aria-current="page">وبلاگ</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
-<!-- =======================
-Main START -->
-<section class="pt-0">
-	<div class="container position-relative" data-sticky-container>
-		<div class="row">
-			<!-- Left sidebar START -->
-			<div class="col-lg-2">
-				<div class="text-start text-lg-center mb-5" data-sticky data-margin-top="80" data-sticky-for="991">
-					<!-- Author info -->
-					<div class="position-relative">
-						<div class="avatar avatar-xl">
-							<img class="avatar-img rounded-circle" src="{{ blog.auther.image.url }}" alt="avatar">
-						</div>
-						<a href="#" class="h5 stretched-link mt-2 mb-0 d-block">{{ blog.auther.name }}</a>
-						<p>{{ blog.auther.post }}</p>
-					</div>
-					<hr class="d-none d-lg-block">
-					<!-- Card info -->
-					<ul class="list-inline list-unstyled">
-						<li class="list-inline-item d-lg-block my-lg-2">{{ blog.published_date }}</li>
-						<li class="list-inline-item d-lg-block my-lg-2">{{ blog.read_time }}</li>
-						<li class="list-inline-item d-lg-block my-lg-2"><a href="#" class="text-body"><i class="far fa-heart me-1"></i></a>{{ blog.blog_likes.count }}</li>
-						<li class="list-inline-item d-lg-block my-lg-2"><i class="far fa-eye me-1"></i> {{ blog.blog_view.count }} بازدید</li>
-					</ul>
-					<!-- Tags -->
-					<ul class="list-inline text-primary-hover mt-0 mt-lg-3">
-                        {% for keyword in blog.keyword.all %}
-					        <li class="list-inline-item">
-					  	    <a class="text-body" href="{{ keyword.get_absolute_url }}">#{{ keyword.title }}</a>
-					        </li>
-                        {% endfor %}
-					</ul>
-				</div>
-			</div>
-			<!-- Left sidebar END -->
-			<!-- Main Content START -->
-			<div class="col-lg-7 mb-5">
-
-                {{ blog.text | safe }}
-
-				<!-- Related post START -->
-				<div class="mt-5">
-					<h3 class="my-3"><i class="bi bi-symmetry-vertical me-2"></i>مقالات مشابه</h3>
-					<div class="tiny-slider arrow-hover arrow-blur arrow-white arrow-round">
-						<div class="tiny-slider-inner"
-							data-autoplay="true"
-							data-hoverpause="true"
-							data-gutter="24"
-							data-arrow="true"
-							data-dots="false"
-							data-items-xl="2" 
-							data-items-xs="1">
-
-							<!-- Card item START -->
-							<div class="card">
-								<!-- Card img -->
-								<div class="position-relative">
-									<img class="card-img" src="assets/images/blog/4by3/07.jpg" alt="Card image">
-									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
-										<!-- Card overlay Top -->
-										<div class="w-100 mb-auto d-flex justify-content-end">
-											<div class="text-end ms-auto">
-												<!-- Card format icon -->
-												<div class="icon-md bg-white bg-opacity-10 bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
-											</div>
-										</div>
-										<!-- Card overlay bottom -->
-										<div class="w-100 mt-auto">
-											<a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>سیاست</a>
-										</div>
-									</div>
-								</div>
-								<div class="card-body px-0 pt-3">
-									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">طرح مجلس برای گرفتن مالیات از سفته بازها</a></h5>
-									<!-- Card info -->
-									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-										<li class="nav-item">
-											<div class="nav-link">
-												<div class="d-flex align-items-center position-relative">
-													<div class="avatar avatar-xs">
-														<img class="avatar-img rounded-circle" src="assets/images/avatar/07.jpg" alt="avatar">
-													</div>
-													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">مریم ترابی</a></span>
-												</div>
-											</div>
-										</li>
-										<li class="nav-item">7 دی، 1400</li>
-									</ul>
-								</div>
-							</div>
-							<!-- Card item END -->
-							<!-- Card item START -->
-							<div class="card">
-								<!-- Card img -->
-								<div class="position-relative">
-									<img class="card-img" src="assets/images/blog/4by3/08.jpg" alt="Card image">
-									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
-										<!-- Card overlay bottom -->
-										<div class="w-100 mt-auto">
-											<a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>ورزش</a>
-										</div>
-									</div>
-								</div>
-								<div class="card-body px-0 pt-3">
-									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">آمار فرزندان حاصل از روش‌های کمک‌ باروری</a></h5>
-									<!-- Card info -->
-									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-										<li class="nav-item">
-											<div class="nav-link">
-												<div class="d-flex align-items-center position-relative">
-													<div class="avatar avatar-xs">
-														<img class="avatar-img rounded-circle" src="assets/images/avatar/08.jpg" alt="avatar">
-													</div>
-													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">سارا موحد</a></span>
-												</div>
-											</div>
-										</li>
-										<li class="nav-item">15 مهر، 1400</li>
-									</ul>
-								</div>
-							</div>
-							<!-- Card item END -->
-							<!-- Card item START -->
-							<div class="card">
-								<!-- Card img -->
-								<div class="position-relative">
-									<img class="card-img" src="assets/images/blog/4by3/09.jpg" alt="Card image">
-									<div class="card-img-overlay d-flex align-items-start flex-column p-3">
-										<!-- Card overlay bottom -->
-										<div class="w-100 mt-auto">
-											<a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>اقتصاد</a>
-										</div>
-									</div>
-								</div>
-								<div class="card-body px-0 pt-3">
-									<h5 class="card-title"><a href="post-single-2.html" class="btn-link text-reset stretched-link">سال 2022 رویایی و فوق العاده برای طارمی</a></h5>
-									<!-- Card info -->
-									<ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-										<li class="nav-item">
-											<div class="nav-link">
-												<div class="d-flex align-items-center position-relative">
-													<div class="avatar avatar-xs">
-														<img class="avatar-img rounded-circle" src="assets/images/avatar/09.jpg" alt="avatar">
-													</div>
-													<span class="ms-3">با <a href="#" class="stretched-link text-reset btn-link">لیلا رزاق</a></span>
-												</div>
-											</div>
-										</li>
-										<li class="nav-item">1 تیر، 1400</li>
-									</ul>
-								</div>
-							</div>
-							<!-- Card item END -->
-						</div>
-					</div> <!-- Slider END -->
-				</div>
-				<!-- Related post END -->
-
-				<!-- Divider -->
-				<hr>
-
-				<!-- Author info START -->
-				<div class="d-flex py-4">
-					<!-- Avatar -->
-					<a href="#">
-						<div class="avatar avatar-xxl me-4">
-							<img class="avatar-img rounded-circle" src="assets/images/avatar/03.jpg" alt="avatar">
-						</div>
-					</a>
-					<!-- Info -->
-					<div>
-						<div class="d-sm-flex align-items-center justify-content-between">
-							<div>
-								<h4 class="m-0"><a href="#" class="text-reset">روزنامه نگار</a></h4>
-								<small>روزنامه نگار سایت Blogzine</small>
-							</div>
-							<a href="#" class="btn btn-xs btn-primary-soft">مشاهده اخبار</a>
-						</div>
-						<p class="my-2">مهدی علیزاده سردبیر ارشد این وبلاگ است و همچنین اخبار فوری مستقر در لندن را گزارش می دهد. او از سال 2015 درباره دولت، عدالت کیفری و نقش پول در سیاست نوشته است.</p>
-						<!-- Social icons -->
-						<ul class="nav">
-							<li class="nav-item">
-								<a class="nav-link ps-0 pe-2 fs-5" href="#"><i class="fab fa-facebook-square"></i></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-twitter-square"></i></a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link px-2 fs-5" href="#"><i class="fab fa-linkedin"></i></a>
-							</li>
-						</ul>					
-					</div>
-				</div>
-				<!-- Author info END -->
-
-				<!-- Divider -->
-				<hr>
-				<!-- Comments START -->
-				<div id="comments">
-
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row gy-2">
+                <div class="col-lg-3 order-lg-1 order-2">
+                    <div class="item-boxs">
+                        <div class="item-box bg-white shadow-box">
+                            <div class="title">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h6 class="font-14">جستجو</h6>
+                                    <a class="btn border-0" data-bs-toggle="collapse" href="#collapseItemBoxSearch"
+                                       role="button" aria-expanded="false">
+                                        <i class="bi bi-chevron-down"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="desc collapse show" id="collapseItemBoxSearch">
+                                <form action="/blog">
+                                    <div class="position-relative">
+                                        <input type="text" name="search"
+                                               class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
+                                               placeholder="نام مقاله مورد نظر خود را وارد کنید">
+                                        <button type="submit"
+                                                class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
+                                                style="left: 5px;">
+                                            <i class="bi bi-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-box bg-white shadow-box">
+                            <div class="title">
+                                <h6 class="font-14">پر بازدید ترین مطالب ماه</h6>
+                            </div>
+                            <div class="desc">
+                                <form action="">
+                                    {% for blog in most_view_blogs %}
+                                        <a href="{{ blog.get_absolute_url }}">
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="box-icon"><img width="50px" height="60px"
+                                                                               src="{{ blog.image.url }}"
+                                                                               alt="{{ blog.title }}"></div>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                </form>
+                            </div>
+                        </div>
+                        <div class="item-box bg-white shadow-box">
+                            <div class="title">
+                                <h6 class="font-14">برچسب ها</h6>
+                            </div>
+                            <div class="desc">
+                                <div class="d-flex align-items-center flex-wrap">
+                                    {% for tag in tags %}
+                                        <div class="blog-tag">
+                                            <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item-box bg-white shadow-box">
+                            <div class="title">
+                                <h6 class="font-14">جدید ترین ها</h6>
+                            </div>
+                            <div class="desc">
+                                <form action="">
+                                    {% for blog in new_blogs %}
+                                        <a href="{{ blog.get_absolute_url }}">
+                                            <div class="d-flex align-items-center justify-content-between flex-wrap mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="box-icon"><img width="50px" height="60px"
+                                                                               src="{{ blog.image.url }}"
+                                                                               alt="{{ blog.title }}"></div>
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    {% endfor %}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-				<!-- Reply END -->
-            <div id="comment-status"></div>
-			</div>
-			<!-- Main Content END -->
-			
-			<!-- Right sidebar START -->
-			<div class="col-lg-3">
-				<div data-sticky data-margin-top="80" data-sticky-for="991">
-	      	<h4>اشتراک گذاری</h4>
-					<ul class="nav text-white-force">
-						<li class="nav-item">
-							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-facebook" href="#">
-								<i class="fab fa-facebook-square align-middle"></i>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-twitter" href="#">
-								<i class="fab fa-twitter-square align-middle"></i>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-linkedin" href="#">
-								<i class="fab fa-linkedin align-middle"></i>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-pinterest" href="#">
-								<i class="fab fa-pinterest align-middle"></i>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-5 bg-primary" href="#">
-								<i class="far fa-envelope align-middle"></i>
-							</a>
-						</li>
-					</ul>
-					<!-- Advertisement -->
-					<div class="mt-4">
-						<a href="#" class="d-block card-img-flash">
-							<img src="assets/images/adv.png" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-			<!-- Right sidebar END -->
-		</div>
-	</div>
-<input id="blog-id" type="hidden" value="{{ blog.id }}">
-</section>
-<!-- =======================
-Main END -->
-</main>
+                <div class="col-lg-9 order-lg-2 order-1">
+                    <div class="content-box">
+                        <div class="row gy-2">
+                            <div class="col-12">
+                                <div class="blog-detail-title mb-4">
+                                    <h3 class="main-title">{{ blog.title }}</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="shadow-box">
+                                    <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="img-fluid rounded-3">
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="blog-meta w-100">
+                                    <ul class="navbar-nav flex-row w-100 justify-content-around">
+                                        <li class="nav-item">
+                                            <div class="item">
+                                                <div class="title d-grid gap-2">
+                                                    <h6 class="font-12 text-muted fw-normal">دسته بندی ها</h6>
+                                                    <h6 class="font-16">{{ blog.category.title }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="item">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="icon">
+                                                        <div class="box-icon rounded-circle"
+                                                             style="width: 50px; height:50px ;">
+                                                            <i class="bi bi-person fs-3 main-color-one-color"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="title d-grid gap-2">
+                                                        <h6 class="font-12 text-muted fw-normal">نویسنده</h6>
+                                                        <h6 class="font-16">{{ blog.auther.fullname }}</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <div class="item">
+                                                <div class="title d-grid gap-2">
+                                                    <div class="d-flex justify-content-center">
+                                                        <h6
+                                                                class="font-12 text-muted badge rounded-pill bg-light fw-normal py-2">
+                                                            زمان مورد نیاز برای مطالعه</h6>
+                                                    </div>
+                                                    <h6 class="font-16 text-center">{{ blog.read_time }}</h6>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div
+                                        class="blog-desc-short font-14 bg-light p-4 shadow-box text-justify rounded-4 my-3">
+                                    <p>
+                                        {{ blog.description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blog-desc">
+                            {{ blog.text | safe }}
+                        </div>
+                        <div class="blog-desc-foot">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <a href="">
+                                        <div class="item right">
+                                            <div class="card mb-3 shadow-md">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img src="assets/image/blog-5.jpg"
+                                                             class="img-fluid rounded-start h-100"
+                                                             style="object-fit: cover;" alt="">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title font-16">نوشته قبلی</h5>
+                                                            <p class="card-text text-overflow-2 font-14 text-muted">
+                                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                                                چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
+                                                                بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                                                برای شرایط فعلی تکنولوژی مورد
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-4 offset-lg-4">
+                                    <a href="">
+                                        <div class="item left">
+                                            <div class="card mb-3 shadow-md">
+                                                <div class="row g-0">
+                                                    <div class="col-md-4">
+                                                        <img src="assets/image/blog-1.jpg"
+                                                             class="img-fluid rounded-start h-100"
+                                                             style="object-fit: cover;" alt="">
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="card-body">
+                                                            <h5 class="card-title font-16">نوشته بعدی</h5>
+                                                            <p class="card-text text-overflow-2 font-14 text-muted">
+                                                                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                                                                چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
+                                                                بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
+                                                                برای شرایط فعلی تکنولوژی مورد
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="right"></div>
+                        </div>
+                        <div class="blog-desc-tag my-3">
+                            <h3 class="font-16 mb-2"><i class="bi bi-tag me-1"></i> برجسب ها</h3>
+                            <div class="d-flex align-items-center flex-wrap">
+                                {% for key in blog.keyword.all %}
+                                    <div class="blog-tag">
+                                        <a href="">{{ key.title }}</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="blog-desc-tag my-3">
+                            <h3 class="font-16 mb-2"><i class="bi bi-folder me-1"></i>دسته بندی</h3>
+                            <div class="d-flex align-items-center flex-wrap">
+                                <div class="blog-tag">
+                                    <a href="{{ blog.category.get_absolute_url }}">{{ blog.category.title }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+
+    <!-- start slider -->
+    <div class="content">
+        <div class="product-box blog-box">
+            <div class="container-fluid">
+                <div class="parent">
+                    <div class="content-title">
+                        <div class="item">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                 class="bi bi-box-seam" viewBox="0 0 16 16">
+                                <path
+                                        d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                            </svg>
+                            <h5 class="title">مطالب مرتبط</h5>
+                        </div>
+                        <div class="item">
+                            <i class="bi bi-box-arrow-in-left fs-5"></i>
+                            <a href="">
+                                <h5 class="title">مشاهده همه</h5>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="swiper py-5" id="swiper-box-two">
+                        <div class="swiper-wrapper">
+                            {% for blog in new_blogs %}
+                                <div class="swiper-slide">
+                                    <a href="{{ blog.get_absolute_url }}">
+                                        <div class="image-blog text-center">
+                                            <img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}">
+                                            <div class="blog-desc position-absolute bottom-0">
+                                                <h6 class="font-14">{{ blog.title }}
+                                                </h6>
+                                                <div class="d-flex justify-content-between align-items-center my-2">
+                                                    <div class="like">
+                                                    <span class="icon">
+                                                        <i class="bi bi-heart"></i>
+                                                    </span>
+                                                        <span class="counter font-12">{{ blog.like }}</span>
+                                                    </div>
+                                                    <div class="date d-flex align-items-center">
+                                                        <div class="icon me-1"><i class="bi bi-calendar-event"></i>
+                                                        </div>
+                                                        <span class="font-12">3 روز پیش</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-next d-sm-flex d-none"></div>
+                        <div class="swiper-button-prev d-sm-flex d-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end slider -->
+
+    <!-- FORM -->
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="comment-form py-20">
+                    <h6 class="font-16">نظرت در مورد این مطلب چیه؟</h6>
+                    <p class="font-14 text-muted mt-2">برای ثبت نظر، از طریق دکمه افزودن دیدگاه جدید
+                        نمایید. اگر این محصول را قبلا خریده باشید، نظر شما به عنوان خریدار ثبت خواهد
+                        شد.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-floating mb-3 form-group">
+                                        <input type="email" class="form-control" id="floatingInputEmail"
+                                               placeholder="ایمیل خود را وارد کنید">
+                                        <label for="floatingInputEmail">ایمیل خود را وارد
+                                            کنید</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-floating mb-3 form-group">
+                                        <input type="text" class="form-control" id="floatingInputName"
+                                               placeholder="نام خود را وارد کنید">
+                                        <label for="floatingInputName">نام خود را وارد کنید</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group form-check">
+                                        <input type="checkbox" class="form-check-input" id="rememberComment">
+                                        <label for="rememberComment" class="form-check-label d-block"> ذخیره
+                                            نام، ایمیل و وبسایت من در مرورگر برای زمانی که دوباره
+                                            دیدگاهی می‌نویسم.
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="my-3">امتیاز شما</label>
+                                        <fieldset class="rating">
+                                            <input type="radio" id="star5" name="rating" value="5" required/>
+                                            <label for="star5">5 stars</label>
+                                            <input type="radio" id="star4" name="rating" value="4" required/>
+                                            <label for="star4">4 stars</label>
+                                            <input type="radio" id="star3" name="rating" value="3" required/>
+                                            <label for="star3">3 stars</label>
+                                            <input type="radio" id="star2" name="rating" value="2" required/>
+                                            <label for="star2">2 stars</label>
+                                            <input type="radio" id="star1" name="rating" value="1" required/>
+                                            <label for="star1">1 star</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here"
+                                                  id="floatingTextarea2" style="height: 150px"></textarea>
+                                        <label for="floatingTextarea2">متن نظر!</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <a href=""
+                                       class="btn border-0 main-color-three-bg my-3 mx-auto d-block waves-effect waves-light">ثبت
+                                        نظر</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment bg-light shadow-inner mb-4">
+                    <div class="title">
+                        <div class="row align-items-center">
+                            <div class="col-sm-10">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar p-2 bg-white shadow-box rounded-circle">
+                                        <img src="assets/image/user-profile.png" alt=""
+                                             class="img-fluid rounded-circle">
+                                    </div>
+                                    <div class="d-flex flex-wrap align-items-center ms-2">
+                                        <h6 class="text-muted font-14">امیر رضایی</h6>
+                                        <h6 class="text-muted font-14 ms-2">1 دی ماه 1401</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="d-flex star justify-content-end">
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="desc py-3">
+                        <p class="font-14 text-muted">
+                            بنده این گوشی را خریداری کردم و کاملا راضی هشتم و بهترین گارانتی را دارد
+                            و پلپ بود و حتما به شما هم پیشنهاد می نمایم که چنانچه قصد خرید این کالا
+                            را دارید از دیجی کالا تهیه نمایید ؛پارت نامبر من هم سنگاپور بود که
+                            بهترین پارت نامبر در بازار است و هیچ محدودیتی ندارد.
+                        </p>
+                    </div>
+                    <div class="foot">
+                        <div class="comment-likes mt-3">
+                            <div class="col-12">
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <div class="right">
+                                        <h6 class="font-14">
+                                            آیا این نظر به شما کمکی کرد؟</h6>
+                                    </div>
+                                    <div class="left mx-sm-3 mx-auto">
+                                        <a href=""
+                                           class="btn btn-sm border-0 main-color-one-bg waves-effect waves-light text-nowrap">
+                                            <span>70</span>
+                                            <i class="bi bi-hand-thumbs-up"></i>
+                                        </a>
+                                        <a href=""
+                                           class="btn btn-sm border-0 main-color-two-bg ms-3 waves-effect waves-light text-nowrap">
+                                            <span>70</span>
+                                            <i class="bi bi-hand-thumbs-down"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="comment-reply">
+                                <a href="" class="btn border-0 btn-sm rounded-pill main-color-two-bg px-4">پاسخ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- end FORM -->
 {% endblock %}

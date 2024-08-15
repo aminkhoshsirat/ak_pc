@@ -2,6 +2,7 @@ from django.db import models
 from django.shortcuts import reverse
 from django_jalali.db import models as jmodels
 from apps.user.models import UserModel
+from ckeditor.fields import RichTextField
 
 
 class BannerPlaceChoices(models.Choices):
@@ -55,6 +56,7 @@ class BlogModel(models.Model):
     title = models.CharField(max_length=10000)
     image = models.ImageField(upload_to='blog/image')
     description = models.TextField()
+    text = RichTextField()
     category = models.ForeignKey(BlogCategoryModel, on_delete=models.DO_NOTHING, related_name='category_blogs')
     url = models.SlugField(unique=True, allow_unicode=True)
     published_date = jmodels.jDateTimeField(auto_now_add=True)
@@ -63,6 +65,8 @@ class BlogModel(models.Model):
     conclusion = models.TextField()
     keyword = models.ManyToManyField(BlogKeyWordModel, related_name='blog_keywords')
     active = models.BooleanField(default=True)
+    view_count = models.IntegerField(default=0)
+    like = models.IntegerField(default=0)
 
     def get_absolute_url(self):
         return reverse('blog:detail_blog', args=[self.url])
@@ -73,6 +77,11 @@ class BlogLikeModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='user_blog_likes')
     like = models.BooleanField(default=False)
     dislike = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        self.blog.like += 1
+        self.blog.save()
+        super().save(*args, **kwargs)
 
 
 class BlogCommentModel(models.Model):
@@ -90,6 +99,11 @@ class BlogViewModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='user_blog_view', null=True, blank=True)
     blog = models.ForeignKey(BlogModel, on_delete=models.CASCADE, related_name='blog_view')
     date_view = jmodels.jDateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        self.blog.view_count += 1
+        self.blog.save()
+        super().save(*args, **kwargs)
 
 
 class SuggestedBlogModel(models.Model):

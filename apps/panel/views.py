@@ -1,4 +1,5 @@
 import json
+import requests
 
 from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.views.generic import View, ListView, DetailView
@@ -7,7 +8,7 @@ from itertools import chain
 from operator import attrgetter
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
+from django.db.models import Q, Sum
 from apps.bucket.models import BucketProductsModel
 from apps.product.models import ProductCommentModel, ProductModel
 from apps.blog.models import BlogCommentModel
@@ -35,11 +36,25 @@ from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models.functions import Greatest
 from utils.create_base_categories import create_categories
 from apps.notification.models import AdminNotificationModel
+from akurtekPC.config import ghasedak_api_key
+from apps.user.forms import AddAdminForm, AddUserForm
+from apps.blog.models import BlogCategoryModel, BlogCommentModel, BlogModel, AutherModel
+from apps.blog.forms import AutherForm, BlogForm, BlogCategoryForm
 
 
 class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
+        return self.request.user.is_admin
+
+
+class SuperRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
         return self.request.user.is_superuser
+
+
+class AutherRequiredMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.is_superuser or self.request.user.is_auther
 
 
 class HeaderView(AdminRequiredMixin, View):
@@ -51,20 +66,57 @@ class HeaderView(AdminRequiredMixin, View):
         return render(request, 'panel/partial/header.html', context)
 
 
+class SideBarView(AdminRequiredMixin, View):
+    def get(self, request):
+        context = {
+            'site_detail': SiteDetailModel.objects.first()
+        }
+        return render(request, 'panel/partial/sidebar.html', context)
+
+
 class IndexView(AdminRequiredMixin, View):
     def get(self, request):
         recently_sell_products = BucketProductsModel.objects.filter(bucket__is_paid=True).order_by('-id')
         max_sell = ProductModel.objects.filter(sell__gt=0).aggregate(max=Max('sell'))
         most_sell_products = ProductModel.objects.filter(sell__gt=0).annotate(persent=(F('sell') * 100 / max_sell['max'])).order_by('-sell')[0:10]
+        buckets = BuketModel.objects.filter(is_paid=True)
+        users = UserModel.objects.filter(is_admin=False, is_superuser=False)
+        order_paid = buckets.aggregate(total=Sum('price_paid'))
+
+        try:
+            order_user = int(order_paid.get('total') / users.count())
+        except:
+            order_user = 0
+
+        # ghasedak
+        try:
+            url = "http://api.ghasedaksms.com/v2/credit"
+
+            headers = {
+                'apikey': "RjZN5VorYOuI01duQPGOT5cE+DfLh6PDwPyEKYDpDwI",
+            }
+            response = requests.request("POST", url, headers=headers)
+            ghasedak_amount = int(json.loads(response.text)['credit'] / 10)
+
+            ghasedak_amount = f'{ghasedak_amount:,}'
+        except:
+            ghasedak_amount = 0
+
         context = {
             'recently_sell_products': recently_sell_products,
             'most_sell_products': most_sell_products,
             'room_name': 'broadcast',
+            'order_num': buckets.count,
+            'order_paid': order_paid,
+            'users_num': users.count,
+            'order_user': order_user,
+            'ghasedak_amount': ghasedak_amount,
         }
         return render(request, 'panel/index.html', context)
 
 
 class ProductCategoryView(AdminRequiredMixin, View):
+
     def get(self, request):
         main_categories = MainCategoryModel.objects.prefetch_related('base_category_child').all()
         context = {
@@ -252,6 +304,11 @@ class DailyWorksViews(AdminRequiredMixin, ListView):
                                            description=cd['description'], date=cd['date'])
 
 
+class CalendarView(AdminRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'panel/app-fullcalender.html')
+
+
 class OldDailyWorksViews(AdminRequiredMixin, ListView):
     model = DailyWorksModel
     template_name = 'panel/app-to-do.html'
@@ -324,6 +381,119 @@ class FactorPdfView(AdminRequiredMixin, View):
         pisa.CreatePDF(html, dest=response)
 
         return response
+
+
+class FaqView(AdminRequiredMixin, View):
+    def get(self, request):
+        faqs = FaqQuestionModel.objects.all()
+        form = FaqQuestionForm()
+        context = {
+            'faqs': faqs,
+            'form': form
+        }
+        return render(request, 'panel/faq.html', context)
+
+    def post(self, request):
+        form = FaqQuestionForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect('panel:faq')
+
+
+class UserListView(AdminRequiredMixin, ListView):
+    template_name = 'panel/users.html'
+    context_object_name = 'users'
+    paginate_by = 20
+    queryset = UserModel.objects.filter(is_admin=False, is_superuser=False, is_staff=False)
+
+
+class AdminView(AdminRequiredMixin, ListView):
+    template_name = 'panel/admins.html'
+    context_object_name = 'admins'
+    paginate_by = 20
+    queryset = UserModel.objects.filter(Q(is_admin=True) | Q(is_superuser=True) | Q(is_staff=True))
+
+
+class AddAdminView(SuperRequiredMixin, View):
+    def get(self, request):
+        form = AddAdminForm()
+        return render(request, 'panel/add-admin.html', {'form': form})
+
+    def post(self, request):
+        form = AddAdminForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+
+            return redirect('panel:admin')
+        return redirect('panel:add_admin')
+
+
+class AddUserView(AdminRequiredMixin, View):
+    def get(self, request):
+        form = AddUserForm()
+        return render(request, 'panel/add-admin.html', {'form': form})
+
+    def post(self, request):
+        form = AddUserForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+            return redirect('panel:users')
+        return redirect('panel:add_user')
+
+
+class BlogCategoryView(AdminRequiredMixin, View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, '', context)
+
+
+class BlogListView(AdminRequiredMixin, ListView):
+    template_name = ''
+    context_object_name = 'blogs'
+    paginate_by = 20
+    model = BlogModel
+    queryset = BlogModel.objects.all()
+
+
+class BlogAddView(AutherRequiredMixin, View):
+    def get(self, request):
+        context = {
+
+        }
+        return render(request, '', context)
+
+
+class AutherListView(AdminRequiredMixin, ListView):
+    template_name = 'panel/authors.html'
+    context_object_name = 'authors'
+    paginate_by = 20
+    model = AutherModel
+    queryset = AutherModel.objects.all()
+
+
+class AddAutherView(SuperRequiredMixin, View):
+    def get(self, request):
+        context = {
+            'form': AutherForm()
+        }
+        return render(request, 'panel/add-auther.html', context)
+
+    def post(self, request):
+        form = AutherForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+            user.set_password(form.cleaned_data['password'])
+            user.is_admin = True
+            user.is_auther = True
+            user.save()
+            return redirect('panel:auther')
+        return redirect('panel:add_auther')
 
 
 class AddProductView(AdminRequiredMixin, View):

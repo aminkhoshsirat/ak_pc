@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.postgres',
     'django.contrib.sites',
+    'ckeditor',
 
     # Internal Apps
     'django_jalali',
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_celery_beat',
     'azbankgateways',
+    'django_ckeditor_5',
 
     # External Apps
 
@@ -47,6 +49,7 @@ INSTALLED_APPS = [
     'apps.benchmark.apps.BenchmarkConfig',
     'apps.notification.apps.NotificationConfig',
     'apps.chat.apps.ChatConfig',
+    'apps.video.apps.VideoConfig',
 ]
 
 AUTH_USER_MODEL = 'user.UserModel'
@@ -239,5 +242,5 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 #     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 # }
 
-
+CK_EDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"
 

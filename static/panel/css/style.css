@@ -1,10 +1,36 @@
 
+/*
+Template Name: Onedash Admin
+Author: codervent
+Email: codervent@gmail.com
+File: style.css
+*/
+
+
+/*
+- General
+- Header
+- Sidebar
+- Page Content
+- Utilities
+- Widgets
+- Chips
+- Email
+- chat box
+- Authentication
+- swicther
+- Responsive
+
+ */
+
+
+/* General */
 @font-face {
     font-family: "irsans";
     font-style: normal;
     font-weight: 300;
-    src: url(../fonts/iranSans/irsans.eot);
-    src: url(../fonts/iranSans/irsans.eot) format("embedded-opentype"), url(../fonts/iranSans/irsans.woff) format("woff"), url(../fonts/iranSans/irsans.ttf) format("truetype");
+    src: url(../fonts/irsans.eot);
+    src: url(../fonts/irsans.eot) format("embedded-opentype"), url(../fonts/irsans.woff) format("woff"), url(../fonts/irsans.ttf) format("truetype");
 }
 body {
     font-size: 14px;
@@ -417,19 +443,6 @@ a {
     position: fixed;
     top: 0;
     right: 0;
-    width: 260px;
-    height: 100%;
-    background-color: #f7f8fa;
-    background-clip: padding-box;
-    border-left: 1px solid #e2e3e4;
-    transition: all .2s;
-    z-index: 16;
-}
-
-.add-product-wrapper {
-    position: fixed;
-    top: 50px;
-    right: 100px;
     width: 260px;
     height: 100%;
     background-color: #f7f8fa;

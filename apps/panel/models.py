@@ -17,9 +17,11 @@ class SiteDetailModel(models.Model):
     phone = models.CharField(max_length=11)
     email = models.EmailField()
     address = models.TextField()
+    work_time = models.TextField()
     empty_cart_image = models.ImageField(upload_to='site_detail/image')
     footer_title = models.CharField(max_length=1000)
     footer_text = models.TextField()
+    about_us_text = models.TextField()
     copy_right = models.TextField()
     enamad_image = models.ImageField(upload_to='site_detail/image', null=True, blank=True)
     enamad_url = models.URLField(null=True, blank=True)
@@ -120,3 +122,15 @@ class FinancialStatementObjectsModel(models.Model):
         super().save(*args, **kwargs)
 
 
+class FaqQuestionModel(models.Model):
+    title = models.TextField()
+    answer = models.TextField()
+
+
+class ContactUsModel(models.Model):
+    name = models.CharField(max_length=1000)
+    family_name = models.CharField(max_length=1000)
+    email = models.EmailField()
+    phone = models.CharField(max_length=11)
+    subject = models.TextField()
+    message = models.TextField()

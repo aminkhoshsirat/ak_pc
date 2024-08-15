@@ -3,7 +3,7 @@
 {% load poll_extras %}
 {% block title %}{% endblock %}
 {% block content %}
-<div class="content">
+    <div class="content">
         <!-- start bradcrumb -->
         <div class="category-bread">
             <div class="container-fluid">
@@ -30,10 +30,10 @@
                                         {% if child_category.parent_category %}
 
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
+                                                <a href="{{ child_category.base_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.parent_category.title }}</span></a>
+                                                <a href="{{ child_category.parent_category.get_absolute_url }}"><span>{{ child_category.parent_category.title }}</span></a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
                                                 <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.title }}</span></a>
@@ -41,7 +41,7 @@
 
                                         {% else %}
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                <a href="{{ main_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
+                                                <a href="{{ child_category.base_category.get_absolute_url }}"><span>{{ child_category.base_category.title }}</span></a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
                                                 <a href="{{ child_category.get_absolute_url }}"><span>{{ child_category.title }}</span></a>
@@ -57,6 +57,61 @@
             </div>
         </div>
         <!-- end bradcrumb -->
+
+        <div class="main-category">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    {% if main_category %}
+                        <div class="main-category-title">
+                            <h4 class="main-title">{{ main_category.title }}</h4>
+                        </div>
+                        {% for category in main_category.base_category_child.all %}
+                            {% if category.parent_category == None %}
+                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-0 mb-3">
+                                    <a href="{{ category.get_absolute_url }}">
+                                        <div class="cart-small">
+                                            <div class="cart-small-icon">
+                                                <img width="50" src="{{ category.child_category_image.image.url }}"
+                                                     alt="{{ category.title }}" class="img-fluid">
+                                            </div>
+                                            <div class="cart-small-desc ms-lg-3 text-center">
+                                                <h6>{{ category.title }}</h6>
+                                                <p class="text-muted d-none d-lg-block">{{ category.child_category_products.count }}
+                                                    محصول</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% elif child_category %}
+                        <div class="main-category-title">
+                            <h4 class="main-title">{{ child_category.title }}</h4>
+                        </div>
+
+                            {% for category in child_category.child_category.all %}
+                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-0 mb-3">
+                                    <a href="{{ category.get_absolute_url }}">
+                                        <div class="cart-small">
+                                            <div class="cart-small-icon">
+                                                <img width="50" src="{{ category.child_category_image.image.url }}"
+                                                     alt="{{ category.title }}" class="img-fluid">
+                                            </div>
+                                            <div class="cart-small-desc ms-lg-3 text-center">
+                                                <h6>{{ category.title }}</h6>
+                                                <p class="text-muted d-none d-lg-block">{{ category.child_category_products.count }}
+                                                    محصول</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endfor %}
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
 
         <!-- start category -->
         <div class="category">
@@ -90,173 +145,168 @@
                 </div>
 
 
-
-
-
-
-
                 <div class="row">
-{#                    <div class="col-lg-3">#}
-{#                        <div class="category-filters">#}
-{#                            <div class="category-filter">#}
-{#                                <div class="category-filter-box">#}
-{#                                    <div class="category-filter-box-title">#}
-{#                                        <h4 class="fw-bold">#}
-{#                                            فیلتر موجودی و حراجی#}
-{#                                        </h4>#}
-{#                                    </div>#}
-{#                                    <div class="category-filter-box-desc">#}
-{#                                        <form action="">#}
-{#                                            <div class="form-group form-check">#}
-{#                                                <input class="form-check-input" type="radio" id="ProductOfferd"#}
-{#                                                    name="available">#}
-{#                                                <label class="form-check-label" for="ProductOfferd">محصولات تخفیف#}
-{#                                                    خورده</label>#}
-{#                                            </div>#}
-{#                                            <div class="form-group">#}
-{#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
-{#                                                    name="available">#}
-{#                                                <label class="form-check-label" for="availableInStock">موجود در#}
-{#                                                    انبار</label>#}
-{#                                            </div>#}
-{#                                        </form>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="category-filter">#}
-{#                                <div class="category-filter-box">#}
-{#                                    <div class="category-filter-box-title">#}
-{#                                        <h4 class="fw-bold">#}
-{#                                            فیلتر متنوع#}
-{#                                        </h4>#}
-{#                                    </div>#}
-{#                                    <div class="category-filter-box-desc">#}
-{#                                        <form action="">#}
-{#                                            <div class="form-group form-check form-switch">#}
-{#                                                <input class="form-check-input" type="checkbox"#}
-{#                                                    id="flexSwitchCheckDefault">#}
-{#                                                <label class="form-check-label" for="flexSwitchCheckDefault">ریجیستر#}
-{#                                                    شده</label>#}
-{#                                            </div>#}
-{#                                            <div class="form-group form-check form-switch">#}
-{#                                                <input class="form-check-input" type="checkbox"#}
-{#                                                    id="flexSwitchCheckChecked" checked>#}
-{#                                                <label class="form-check-label" for="flexSwitchCheckChecked">طرح اصلی#}
-{#                                                    بودن کالا</label>#}
-{#                                            </div>#}
-{#                                        </form>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{##}
-{##}
-{##}
-{#                            <div class="category-filter">#}
-{#                                <form>#}
-{#                                <div class="form-group">#}
-{#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
-{#                                                    name="available" value="1">#}
-{#                                                <label class="form-check-label" for="availableInStock">موجود در#}
-{#                                                    انبار</label>#}
-{#                                            </div>#}
-{#                                    {% for filter in filters %}#}
-{#                                        <div class="category-filter-box">#}
-{#                                            <div class="category-filter-box-title">#}
-{#                                                <h4 class="fw-bold">#}
-{#                                                    {{ filter.name }}#}
-{#                                                </h4>#}
-{#                                            </div>#}
-{#                                            <div class="category-filter-box-desc">#}
-{#                                                    <div class="form-group">#}
-{#                                                    {% if filter.list %}#}
-{#                                                        {% for field in filter.list %}#}
-{#                                                            {{ field.title }}#}
-{#                                                            <input title="{{ field.title }}" type="checkbox" name="{{ filter.title }}" value="{{ field.id }}">#}
-{#                                                        {% endfor %}#}
-{#                                                    {% else %}#}
-{##}
-{#                                                            <input type="checkbox" name="{{ filter.title }}" value="1">#}
-{##}
-{#                                                    {% endif %}#}
-{#                                                    </div>#}
-{##}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    {% endfor %}#}
-{#                                    <button type="submit">submit</button>#}
-{#                                </form>#}
-{#                            </div>#}
-{##}
-{#                        </div>#}
-                    </div>
-                    <div class="col-lg-9">
-                        <div class="category-item">
-                            <div class="row">
-                                {% for product in products %}
+                    {#                    <div class="col-lg-3">#}
+                    {#                        <div class="category-filters">#}
+                    {#                            <div class="category-filter">#}
+                    {#                                <div class="category-filter-box">#}
+                    {#                                    <div class="category-filter-box-title">#}
+                    {#                                        <h4 class="fw-bold">#}
+                    {#                                            فیلتر موجودی و حراجی#}
+                    {#                                        </h4>#}
+                    {#                                    </div>#}
+                    {#                                    <div class="category-filter-box-desc">#}
+                    {#                                        <form action="">#}
+                    {#                                            <div class="form-group form-check">#}
+                    {#                                                <input class="form-check-input" type="radio" id="ProductOfferd"#}
+                    {#                                                    name="available">#}
+                    {#                                                <label class="form-check-label" for="ProductOfferd">محصولات تخفیف#}
+                    {#                                                    خورده</label>#}
+                    {#                                            </div>#}
+                    {#                                            <div class="form-group">#}
+                    {#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
+                    {#                                                    name="available">#}
+                    {#                                                <label class="form-check-label" for="availableInStock">موجود در#}
+                    {#                                                    انبار</label>#}
+                    {#                                            </div>#}
+                    {#                                        </form>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {#                            <div class="category-filter">#}
+                    {#                                <div class="category-filter-box">#}
+                    {#                                    <div class="category-filter-box-title">#}
+                    {#                                        <h4 class="fw-bold">#}
+                    {#                                            فیلتر متنوع#}
+                    {#                                        </h4>#}
+                    {#                                    </div>#}
+                    {#                                    <div class="category-filter-box-desc">#}
+                    {#                                        <form action="">#}
+                    {#                                            <div class="form-group form-check form-switch">#}
+                    {#                                                <input class="form-check-input" type="checkbox"#}
+                    {#                                                    id="flexSwitchCheckDefault">#}
+                    {#                                                <label class="form-check-label" for="flexSwitchCheckDefault">ریجیستر#}
+                    {#                                                    شده</label>#}
+                    {#                                            </div>#}
+                    {#                                            <div class="form-group form-check form-switch">#}
+                    {#                                                <input class="form-check-input" type="checkbox"#}
+                    {#                                                    id="flexSwitchCheckChecked" checked>#}
+                    {#                                                <label class="form-check-label" for="flexSwitchCheckChecked">طرح اصلی#}
+                    {#                                                    بودن کالا</label>#}
+                    {#                                            </div>#}
+                    {#                                        </form>#}
+                    {#                                    </div>#}
+                    {#                                </div>#}
+                    {#                            </div>#}
+                    {##}
+                    {##}
+                    {##}
+                    {#                            <div class="category-filter">#}
+                    {#                                <form>#}
+                    {#                                <div class="form-group">#}
+                    {#                                                <input class="form-check-input" type="radio" id="availableInStock"#}
+                    {#                                                    name="available" value="1">#}
+                    {#                                                <label class="form-check-label" for="availableInStock">موجود در#}
+                    {#                                                    انبار</label>#}
+                    {#                                            </div>#}
+                    {#                                    {% for filter in filters %}#}
+                    {#                                        <div class="category-filter-box">#}
+                    {#                                            <div class="category-filter-box-title">#}
+                    {#                                                <h4 class="fw-bold">#}
+                    {#                                                    {{ filter.name }}#}
+                    {#                                                </h4>#}
+                    {#                                            </div>#}
+                    {#                                            <div class="category-filter-box-desc">#}
+                    {#                                                    <div class="form-group">#}
+                    {#                                                    {% if filter.list %}#}
+                    {#                                                        {% for field in filter.list %}#}
+                    {#                                                            {{ field.title }}#}
+                    {#                                                            <input title="{{ field.title }}" type="checkbox" name="{{ filter.title }}" value="{{ field.id }}">#}
+                    {#                                                        {% endfor %}#}
+                    {#                                                    {% else %}#}
+                    {##}
+                    {#                                                            <input type="checkbox" name="{{ filter.title }}" value="1">#}
+                    {##}
+                    {#                                                    {% endif %}#}
+                    {#                                                    </div>#}
+                    {##}
+                    {#                                            </div>#}
+                    {#                                        </div>#}
+                    {#                                    {% endfor %}#}
+                    {#                                    <button type="submit">submit</button>#}
+                    {#                                </form>#}
+                    {#                            </div>#}
+                    {##}
+                    {#                        </div>#}
+                </div>
+                <div class="col-lg-9">
+                    <div class="category-item">
+                        <div class="row">
+                            {% for product in products %}
 
-                                    <div class="col-md-4">
-                                        <div class="product-box-item">
-                                            <div class="product-box-item-img">
-                                                <a href="">
+                                <div class="col-md-4">
+                                    <div class="product-box-item">
+                                        <div class="product-box-item-img">
+                                            <a href="">
 
 
-                                                        <img src="{{ product.image.url }}" alt="" class="img-fluid one-image">
-                                                        <img src="{{ product.image.url }}" alt="" class="img-fluid two-image">
-                                                </a>
-                                                <div class="product-box-item-hover">
-                                                    <div class="product-box-item-hover-btn">
+                                                <img src="{{ product.image.url }}" alt="" class="img-fluid one-image">
+                                                <img src="{{ product.image.url }}" alt="" class="img-fluid two-image">
+                                            </a>
+                                            <div class="product-box-item-hover">
+                                                <div class="product-box-item-hover-btn">
                                                         <span class="see-more hint--right" data-hint="مشاهده سریع"
-                                                            data-bs-toggle="modal" data-bs-target="#productModal"><i
+                                                              data-bs-toggle="modal" data-bs-target="#productModal"><i
                                                                 class="bi bi-eye"></i></span>
-                                                        <span class="favorite hint--right"
-                                                            data-hint="افزودن به برگزیده ها"><i
-                                                                class="bi bi-heart"></i></span>
-                                                        <span class="comparison hint--right" data-hint="مقایسه محصول"><i
-                                                                class="bi bi-arrow-left-right"></i></span>
-                                                        <span class="add-cart hint--right" data-hint="افزودن به سبد خرید"><i
-                                                                class="bi bi-cart-plus"></i></span>
-                                                    </div>
+                                                    <span class="favorite hint--right"
+                                                          data-hint="افزودن به برگزیده ها"><i
+                                                            class="bi bi-heart"></i></span>
+                                                    <span class="comparison hint--right" data-hint="مقایسه محصول"><i
+                                                            class="bi bi-arrow-left-right"></i></span>
+                                                    <span class="add-cart hint--right" data-hint="افزودن به سبد خرید"><i
+                                                            class="bi bi-cart-plus"></i></span>
                                                 </div>
                                             </div>
-                                            <a href="{{ product.get_absolute_url }}">
-                                                <div class="product-box-item-desc">
-                                                    <div class="product-box-item-title">
-                                                        <h6>
-                                                            {{ product.title }}
-                                                        </h6>
-                                                    </div>
-                                                    <div class="product-box-price">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            {% if product.off %}
-                                                                <div class="d-flex flex-column">
-                                                                    <span class="text-danger fw-bold fs-5">٪{{ product.off }}</span>
-                                                                    <span class="fw-bold">تخفیف</span>
-                                                                </div>
-                                                            {% endif %}
+                                        </div>
+                                        <a href="{{ product.get_absolute_url }}">
+                                            <div class="product-box-item-desc">
+                                                <div class="product-box-item-title">
+                                                    <h6>
+                                                        {{ product.title }}
+                                                    </h6>
+                                                </div>
+                                                <div class="product-box-price">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        {% if product.off %}
                                                             <div class="d-flex flex-column">
-                                                                {% if product.off %}
-                                                                    <span class="new-price">{{ product.price_after_off|money_format }} تومان</span>
-                                                                    <span class="old-price">{{ product.price|money_format }} تومان</span>
-                                                                {% else %}
-                                                                    <span class="new-price">{{ product.price|money_format }} تومان</span>
-                                                                {% endif %}
-
+                                                                <span class="text-danger fw-bold fs-5">٪{{ product.off }}</span>
+                                                                <span class="fw-bold">تخفیف</span>
                                                             </div>
+                                                        {% endif %}
+                                                        <div class="d-flex flex-column">
+                                                            {% if product.off %}
+                                                                <span class="new-price">{{ product.price_after_off|money_format }} تومان</span>
+                                                                <span class="old-price">{{ product.price|money_format }} تومان</span>
+                                                            {% else %}
+                                                                <span class="new-price">{{ product.price|money_format }} تومان</span>
+                                                            {% endif %}
+
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
-                                        </div>
+                                            </div>
+                                        </a>
                                     </div>
+                                </div>
 
-                                {% endfor %}
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- end category -->
+    </div>
+    <!-- end category -->
 
     </div>
 
@@ -278,7 +328,7 @@
                 rtl: 'false',
                 formatter: function formatter(val) {
                     if (Array.isArray(val)) {
-                        return " تومان " +val[0] +" - " + val[1] + " تومان ";
+                        return " تومان " + val[0] + " - " + val[1] + " تومان ";
                     } else {
                         return val;
                     }
@@ -291,25 +341,24 @@
     <script src="{% static 'js/plugin/select2/fa.js' %}"></script>
     <script>
         var page = 1;
-      var empty_page = false;
-      var block_request = false;
+        var empty_page = false;
+        var block_request = false;
 
-      $(window).scroll(function() {
-        var margin = $(document).height() - $(window).height() - 200;
-        if  ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
-            block_request = true;
-            page += 1;
-            $.get('?page=' + page, function(data) {
-                if(data == '') {
-                    empty_page = true;
-                }
-                else {
-                    block_request = false;
-                    $('#image-list').append(data)
-                }
-            });
-        }
-      });
+        $(window).scroll(function () {
+            var margin = $(document).height() - $(window).height() - 200;
+            if ($(window).scrollTop() > margin && empty_page == false && block_request == false) {
+                block_request = true;
+                page += 1;
+                $.get('?page=' + page, function (data) {
+                    if (data == '') {
+                        empty_page = true;
+                    } else {
+                        block_request = false;
+                        $('#image-list').append(data)
+                    }
+                });
+            }
+        });
     </script>
 
 

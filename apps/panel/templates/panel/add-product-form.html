@@ -1,5 +1,5 @@
-<form action="/panel/product/add-new?category={{ category_url }}" method="post" enctype="multipart/form-data" >
+<form style="margin-left: 200px" action="/panel/product/add-new?category={{ category_url }}" method="post" enctype="multipart/form-data" >
     {% csrf_token %}
-    {{ form.as_div }}
+    {{ form.as_ul }}
     <button type="submit">submit</button>
 </form>

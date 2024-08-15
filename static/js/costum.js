@@ -218,7 +218,9 @@ function register(id){
     const password = $('#password-field').val();
     const confirm_password = $('#confirm-password-field').val();
     $.post('/user/register/activate', {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value, phone, email, fullname, password, confirm_password, code}).then(res =>{
-        console.log(res);
+        if (res === 'ok'){
+            console.log(res);
+        }
     })
 }
 

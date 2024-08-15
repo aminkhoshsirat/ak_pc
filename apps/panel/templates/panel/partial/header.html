@@ -17,28 +17,6 @@
                             </div>
                         </a>
                     </li>
-                    <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;" data-bs-toggle="dropdown"><img src="assets/images/county/02.png" width="22" alt="">
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end p-2">
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/01.png" width="20" alt=""><span class="ms-2">انگلیسی</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/02.png" width="20" alt=""><span class="ms-2">کاتالان</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/03.png" width="20" alt=""><span class="ms-2">فرانسوی</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/04.png" width="20" alt=""><span class="ms-2">بلیز</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/05.png" width="20" alt=""><span class="ms-2">کلمبیا</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/06.png" width="20" alt=""><span class="ms-2">اسپانیایی</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/07.png" width="20" alt=""><span class="ms-2">گرجی</span></a>
-                            </li>
-                            <li><a class="dropdown-item d-flex align-items-center py-2" href="javascript:;"><img src="assets/images/county/08.png" width="20" alt=""><span class="ms-2">هندی</span></a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="nav-item dark-mode d-none d-sm-flex">
                         <a class="nav-link dark-mode-icon" href="javascript:;">
                             <div class="">
@@ -218,10 +196,12 @@
             <div class="dropdown dropdown-user-setting">
                 <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown">
                     <div class="user-setting d-flex align-items-center gap-3">
-                        <img src="assets/images/avatars/avatar-1.png" class="user-img" alt="">
+                        {% if user.profile_image %}
+                        <img src="{{ user.profile_image.url }}" class="user-img" alt="{{ user.fullname }}">
+                        {% endif %}
                         <div class="d-none d-sm-block">
-                            <p class="user-name mb-0">جان دیو</p>
-                            <small class="mb-0 dropdown-user-designation">مدیریت منابع انسانی</small>
+                            <p class="user-name mb-0">{{ user.fullname }}</p>
+                            <small class="mb-0 dropdown-user-designation">{{ user.designation }}</small>
                         </div>
                     </div>
                 </a>
@@ -243,7 +223,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="index2.html">
+                        <a class="dropdown-item" href="{% url 'panel:index' %}">
                             <div class="d-flex align-items-center">
                                 <div class=""><i class="bi bi-speedometer"></i></div>
                                 <div class="ms-3"><span>داشبورد</span></div>

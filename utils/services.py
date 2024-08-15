@@ -1,5 +1,6 @@
 from django.http import HttpRequest
-import ghasedakpack
+import http.client
+from akurtekPC.config import ghasedak_api_key, ghasedak_template
 
 
 def get_client_ip(request: HttpRequest):
@@ -12,9 +13,12 @@ def get_client_ip(request: HttpRequest):
 
 
 def send_otp(phone, message):
-    sms = ghasedakpack.Ghasedak("z+leT7/tRRarXFn4e5IV1QfyiOIx7raK555uEVqFCGI")
-    sms.send({
-        'message': message,
-        'receptor': phone,
-        'linenumber': 10008566
-    })
+    conn = http.client.HTTPConnection("api.ghasedaksms.com")
+    payload = f"receptor={phone}&type=1&template={ghasedak_template}&param1={message}"
+    headers = {
+        'apikey': ghasedak_api_key,
+        'content-type': "application/x-www-form-urlencoded"
+    }
+    conn.request("POST", "/v2/send/verify", payload, headers)
+    res = conn.getresponse()
+    data = res.read()

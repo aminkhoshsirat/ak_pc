@@ -24,6 +24,12 @@ class DailyWorksForm(forms.ModelForm):
         fields = '__all__'
 
 
+class ContactUsForm(forms.ModelForm):
+    class Meta:
+        model = ContactUsModel
+        fields = '__all__'
+
+
 class MainCategoryForm(forms.ModelForm):
     image = forms.ImageField()
     description = forms.CharField(widget=forms.TextInput())
@@ -240,3 +246,9 @@ class OpticalDriveForm(forms.ModelForm):
     class Meta:
         model = OpticalDriveModel
         exclude = ['main_category', 'child_category', 'price_after_off']
+
+
+class FaqQuestionForm(forms.ModelForm):
+    class Meta:
+        model = FaqQuestionModel
+        fields = '__all__'

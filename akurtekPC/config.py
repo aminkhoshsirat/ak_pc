@@ -2,6 +2,10 @@ NESHAN_API_KEY = 'web.65f0a4266dd8482b8151f738821a5554'
 
 NESHAN_SERVICE_KEY = 'service.b617d02811a44be2999e57c3151f36ce'
 
+ghasedak_api_key = 'RjZN5VorYOuI01duQPGOT5cE+DfLh6PDwPyEKYDpDwI'
+
+ghasedak_template = 'akurtek'
+
 # ArvanCloud
 arvan_cloud_config = {
     'access_key': "5de4b746-59da-4a18-bec9-411c09793550",

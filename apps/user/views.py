@@ -94,7 +94,7 @@ class UserRegisterView(View):
                 if time < 420:
                     code = random.randint(100000, 999999)
                     r.set(f'{phone}:activation_code', code, ex=600)
-                    send_otp(phone, code)
+                    send_otp(phone, str(code))
                     return render(request, 'user/send-code.html')
                 else:
                     return render(request, 'user/send-code.html')
@@ -116,14 +116,13 @@ class UserRegisterActivationView(View):
             print(sending_code)
             if sending_code:
                 if sending_code == code:
-                    UserModel.objects.create_user(fullname=cd['fullname'], email=cd['email'], phone=phone, password=cd['password'])
+                    user = UserModel.objects.create_user(fullname=cd['fullname'], email=cd['email'], phone=phone, password=cd['password'])
                     r.delete(f'{phone}:activation_code')
-                    return redirect('index')
+                    login(request, user)
+                    return HttpResponse('ok')
                 else:
                     return HttpResponse('code is incorrect')
             return HttpResponse('failed')
-
-
 
         else:
             return render(request, 'user/register.html')

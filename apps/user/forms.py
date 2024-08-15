@@ -107,3 +107,29 @@ class AddressForm(forms.Form):
 
 class SendOtpForm(forms.Form):
     phone = forms.CharField(max_length=11)
+
+
+class AddAdminForm(forms.ModelForm):
+    class Meta:
+        model = UserModel
+        exclude = ['ban']
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
+            raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
+        else:
+            return password
+
+
+class AddUserForm(forms.ModelForm):
+    class Meta:
+        model = UserModel
+        exclude = ['ban', 'groups', 'is_staff', 'is_superuser', 'user_permissions', 'is_staff', 'designation', 'is_admin']
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
+            raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
+        else:
+            return password

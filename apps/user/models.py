@@ -32,6 +32,7 @@ class CustomUserManager(BaseUserManager):
         """
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
+        extra_fields.setdefault("is_admin", True)
 
         if extra_fields.get("is_staff") is not True:
             raise ValueError(_("Superuser must have is_staff=True."))
@@ -64,6 +65,8 @@ class UserModel(CustomUser):
     register_date = jmodels.jDateTimeField(auto_now_add=True)
     post_code = models.CharField(max_length=10, validators=[MinLengthValidator(10)], null=True)
     address = models.TextField()
+    designation = models.CharField(max_length=10000, null=True, blank=True)
+    is_auther = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.phone} - {self.fullname}'

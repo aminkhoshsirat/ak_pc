@@ -22,7 +22,7 @@
 
     <!-- loader-->
     <link href="{% static 'panel/css/pace.min.css' %}" rel="stylesheet" />
-
+    <link rel="stylesheet" href="{% static 'panel/css/calendar.css' %}">
     <!--Theme Styles-->
     <link href="{% static 'panel/css/dark-theme.css' %}" rel="stylesheet" />
     <link href="{% static 'panel/css/light-theme.css' %}" rel="stylesheet" />
@@ -38,7 +38,7 @@
     <!--end top header-->
 
     <!--start sidebar -->
-    {% include 'panel/partial/sidebar.html' %}
+    {% render_partial 'apps.panel.views.SideBarView' %}
     <!--end sidebar -->
 
     <!--start content-->
@@ -116,7 +116,6 @@
         </div>
     </div>
     <!--end switcher-->
-<!-- Bootstrap bundle JS -->
 <script src="{% static 'panel/js/bootstrap.bundle.min.js' %}"></script>
 <!--plugins-->
 <script src="{% static 'panel/js/jquery.min.js' %}"></script>
@@ -134,6 +133,8 @@
 <script src="{% static 'panel/js/index4.js' %}"></script>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/costum.js' %}"></script>
+<script src="{% static 'panel/js/calendarObject.js' %}"></script>
+<script src="{% static 'panel/js/calendar.js' %}"></script>
 
 <script>
     new PerfectScrollbar(".best-product")

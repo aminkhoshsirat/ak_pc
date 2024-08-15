@@ -1,0 +1,146 @@
+{% extends 'parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="contact-us">
+                    <div>
+                        <h3 class="h3 main-title">تماس با ما</h3>
+                        <p class="font-16" style="line-height: 40px;">
+                            {{ site_detail.about_us_text }}
+                        </p>
+                    </div>
+                    <div class="row gy-3 my-3">
+                        <div class="col-md-4">
+                            <div class="contact-box  p-4 bg-light shadow-inner">
+                                <div class="icon text-center">
+                                    <i class="bi bi-chat-dots fs-1"></i>
+                                </div>
+                                <div class="title my-3">
+                                    <h4 class="h4">چت زنده</h4>
+                                </div>
+                                <div class="desc">
+                                    <p class="text-overflow-2 font-14">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است.
+
+                                    </p>
+                                </div>
+                                <div class="link mt-3">
+                                    <a href="" class="btn border-0 main-color-one-bg waves-effect waves-light">بزن
+                                        بریم</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-box  p-4 bg-light shadow-inner">
+                                <div class="icon text-center">
+                                    <i class="bi bi-phone fs-1"></i>
+                                </div>
+                                <div class="title my-3">
+                                    <h4 class="h4">پشتیبان فنی</h4>
+                                </div>
+                                <div class="desc">
+                                    <p class="text-overflow-2 font-14">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است.
+
+                                    </p>
+                                </div>
+                                <div class="link mt-3">
+                                    <a href="" class="btn border-0 main-color-one-bg waves-effect waves-light">بزن
+                                        بریم</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="contact-box  p-4 bg-light shadow-inner">
+                                <div class="icon text-center">
+                                    <i class="bi bi-envelope fs-1"></i>
+                                </div>
+                                <div class="title my-3">
+                                    <h4 class="h4">از من سوال بپرس</h4>
+                                </div>
+                                <div class="desc">
+                                    <p class="text-overflow-2 font-14">
+                                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان
+                                        گرافیک است.
+
+                                    </p>
+                                </div>
+                                <div class="link mt-3">
+                                    <a href="" class="btn border-0 main-color-one-bg waves-effect waves-light">بزن
+                                        بریم</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comment-form py-20">
+                        <h6 class="fs-3 text-center">فرم تماس با پشتیبانی</h6>
+                        <p class="font-14 text-muted mt-2 text-center">اگر نظری انتقادی ، پیشنهادی داری از طریق فرم
+                            پایین به ما بگو!</p>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div >
+                                    <form class="row" method="post">
+                                        {% csrf_token %}
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3 form-group">
+                                            <input type="text" name="name" class="form-control" id="floatingInputName"
+                                                   placeholder="نام خود را وارد کنید">
+                                            <label for="floatingInputName">نام خود را وارد کنید</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3 form-group">
+                                            <input type="text" name="family_name" class="form-control" id="floatingInputName"
+                                                   placeholder="نام خانوادگی خود را وارد کنید">
+                                            <label for="floatingInputName">نام خانوادگی خود را وارد کنید</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3 form-group">
+                                            <input type="text" name="phone" class="form-control" id="floatingInputName"
+                                                   placeholder="تلفن خود را وارد کنید">
+                                            <label for="floatingInputName">تلفن خود را وارد
+                                                کنید</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3 form-group">
+                                            <input type="email" name="email" class="form-control" id="floatingInputEmail"
+                                                   placeholder="ایمیل خود را وارد کنید">
+                                            <label for="floatingInputEmail">ایمیل خود را وارد
+                                                کنید</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-floating mb-3 form-group">
+                                            <input type="text" name="subject" class="form-control" id="floatingInputName"
+                                                   placeholder="موضوع خود را وارد کنید">
+                                            <label for="floatingInputName">موضوع خود را وارد
+                                                کنید</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea name="message" class="form-control" placeholder="Leave a comment here"
+                                                      id="floatingTextarea2" style="height: 150px"></textarea>
+                                            <label for="floatingTextarea2">متن نظر!</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn border-0 main-color-three-bg my-3 mx-auto d-block waves-effect waves-light" >ثبت نظر<button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+{% endblock %}

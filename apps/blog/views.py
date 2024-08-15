@@ -10,6 +10,9 @@ from rest_framework.pagination import LimitOffsetPagination
 from .serializers import *
 from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models.functions import Greatest
+from django.db.models import Q
 
 
 class BlogView(ListView):
@@ -20,31 +23,39 @@ class BlogView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        blogs = (BlogModel.objects.prefetch_related('blog_view', 'blog_likes').
-                 annotate(count_likes=Count('blog_likes'), count_views=Count('blog_view')).filter(active=True))
+        blogs = BlogModel.objects.prefetch_related('blog_comments').filter(active=True)
 
         blog_categories = BlogCategoryModel.objects.filter(active=True)
-        context['popular_blogs'] = blogs.order_by('-count_likes')[0: 15]
-        context['most_view_blogs'] = blogs.order_by('-count_views')[0:15]
-        context['suggested_blogs'] = SuggestedBlogModel.objects.all().order_by('order')[0:15]
+        context['popular_blogs'] = blogs.order_by('-like')[:15]
+        context['most_view_blogs'] = blogs.order_by('-view_count')[:15]
+        context['suggested_blogs'] = SuggestedBlogModel.objects.all().order_by('order')[:15]
         context['keywords'] = BlogKeyWordModel.objects.all()[0:15]
         context['blog_categories'] = blog_categories
-        # context['banner_blog1'] = get_object_or_404(BannerBlogModel, place='place1')
-        # context['banner_blog2'] = get_object_or_404(BannerBlogModel, place='place2')
-        # context['banner_blog3'] = get_object_or_404(BannerBlogModel, place='place3')
-        # context['banner_blog4'] = get_object_or_404(BannerBlogModel, place='place4')
         return context
 
     def get_queryset(self):
         category_url = self.kwargs.get('category')
+        keyword = self.kwargs.get('keyword')
+        search = self.request.GET.get('search')
+
+        blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True)
+
+        if search:
+            blogs = blogs.objects.annotate(similar=Greatest(
+                TrigramSimilarity('title', search),
+                TrigramSimilarity('url', search),
+                TrigramSimilarity('category__title', search),
+            )).filter(similar__gt=0.1).order_by('-similar')
+
         if category_url:
-            blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True, category__url=category_url)
-        else:
-            blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True)
+            blogs = blogs.filter(category__url=category_url)
+
+        if keyword:
+            blogs = blogs.filter(keyword__url=keyword)
         return blogs
 
 
-class BlogDetailView(FormMixin, DetailView):
+class BlogDetailView(DetailView):
     template_name = 'blog/blog_detail.html'
     model = BlogModel
     queryset = BlogModel.objects.prefetch_related('blog_comments').filter(active=True)
@@ -55,6 +66,7 @@ class BlogDetailView(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         ip = get_client_ip(self.request)
         user = self.request.user
+
         if user.is_authenticated:
             blog_view, created = BlogViewModel.objects.get_or_create(blog_id=self.get_object().id, user=user, ip=ip)
             blog_view.date_view = timezone.now()
@@ -68,6 +80,11 @@ class BlogDetailView(FormMixin, DetailView):
         comments = context['blog'].blog_comments.prefetch_related('comment_child').filter(active=True, parent=None)
         context['comments'] = comments
         context['comments_count'] = context['blog'].blog_comments.filter(active=True).count
+        blogs = BlogModel.objects.filter(active=True)
+        context['most_view_blogs'] = blogs.order_by('-view_count')[:5]
+        context['new_blogs'] = blogs.order_by('-published_date')[:5]
+        context['tags'] = BlogKeyWordModel.objects.all()[:20]
+        context['likely_blogs'] = blogs.filter(category=context['blog'].category)
         return context
 
 
@@ -155,20 +172,6 @@ class BlogDetailApiView(RetrieveAPIView):
             comment.save()
             return Response(comment.data)
         return Response(comment.errors)
-
-
-class TagView(ListView):
-    template_name = 'blog/tag.html'
-    model = BlogKeyWordModel
-    paginate_by = 15
-    context_object_name = 'blogs'
-
-    def get_queryset(self):
-        keyword = self.kwargs.get('keyword')
-        tag = get_object_or_404(BlogKeyWordModel, url=keyword)
-        self.extra_context = {'tag': tag}
-        blogs = tag.blog_keywords.filter(active=True)
-        return blogs
 
 
 class TagApiView(ListAPIView):

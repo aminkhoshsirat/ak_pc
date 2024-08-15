@@ -1,10 +1,10 @@
 import json
 
-from django.shortcuts import render, HttpResponse, Http404
+from django.shortcuts import render, HttpResponse, Http404, redirect
 from django.views.generic import View, ListView, DetailView
 from apps.blog.models import BlogCategoryModel, BlogModel
 from apps.panel.models import SiteDetailModel, SuggestedProductsModel
-from apps.panel.models import AmazingOfferModel, AdvertisingBannerModel, InstantOfferModel
+from apps.panel.models import AmazingOfferModel, AdvertisingBannerModel, InstantOfferModel, FaqQuestionModel
 from django.db.models.aggregates import Count, Max, Min
 from .utils import *
 from .serializers import *
@@ -23,6 +23,7 @@ import redis
 from json import dumps
 from utils.services import get_client_ip
 from .forms import *
+from apps.panel.forms import ContactUsForm
 
 
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -51,6 +52,35 @@ class FooterView(View):
         return render(request, 'partial/footer.html', context)
 
 
+class FaqsView(View):
+    def get(self, request):
+        questions = FaqQuestionModel.objects.all()
+        return render(request, 'faq.html', {'questions': questions})
+
+
+class ContactUsView(View):
+    def get(self, request):
+        context = {
+            'site_detail': SiteDetailModel.objects.first()
+        }
+        return render(request, 'contact-us.html', context)
+
+    def post(self, request):
+        form = ContactUsForm(request.POST)
+        print(form)
+        if form.is_valid():
+            form.save()
+            return redirect('contact_us')
+
+        else:
+            return redirect('contact_us')
+
+
+class AboutUsView(View):
+    def get(self, request):
+        return render(request, 'about-us.html')
+
+
 class ProductListView(ListView):
     template_name = 'product/products.html'
     queryset = ProductModel.objects.filter(active=True)
@@ -64,7 +94,7 @@ class ProductListView(ListView):
         child_category_url = self.kwargs.get('child_category')
 
         if main_category_url:
-            main_category = MainCategoryModel.objects.filter(url=main_category_url, active=True).first()
+            main_category = MainCategoryModel.objects.prefetch_related('base_category_child').filter(url=main_category_url, active=True).first()
             context['main_category'] = main_category
 
         elif child_category_url:

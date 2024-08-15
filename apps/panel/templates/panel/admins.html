@@ -1,0 +1,57 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <h5 class="mb-0">اطلاعات ادمین</h5>
+                   <form class="ms-auto position-relative" method="post" >
+                       {% csrf_token %}
+                        <div class="position-absolute top-50 translate-middle-y search-icon px-3"><button type="submit" style="border: none;background-color: white" class="bi bi-search"></button></div>
+                        <input class="form-control ps-5" type="text" placeholder="جستجوکردن">
+                    </form>
+                </div>
+                <div class="table-responsive mt-3">
+                    <table class="table align-middle">
+                        <thead class="table-secondary">
+                        <tr>
+                            <th>#</th>
+                            <th>نام نام خانوادگی</th>
+                            <th>شماره تلفن</th>
+                            <th>ایمیل</th>
+                            <th>بن</th>
+                            <th>ادرس</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in admins %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>
+                                <div class="d-flex align-items-center gap-3 cursor-pointer">
+                                    {% if user.profile_image %}
+                                    <img src="{{ user.profile_image.url }}" class="rounded-circle" width="44" height="44" alt="{{ user.fullname }}">
+                                    {% endif %}
+                                    <div class="">
+                                        <p class="mb-0">{{ user.fullname }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>{{ user.phone }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.ban }}</td>
+                            <td>{{ user.address }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!--end page main-->
+{% endblock %}
