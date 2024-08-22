@@ -1,15 +1,4 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ==========================================================================
-   Fonts
-   ========================================================================== */
-.whitedropdown-menu{
-        display: none;
-    }
+﻿
 
 @font-face {
     font-family: IRANSans;
@@ -126,37 +115,6 @@
     /* border */
     --border-muted: #ced4da;
 }
-
-header {
-    font-family: "IRANSans", irsans, sans-serif;
-    background: var(--bg-site);
-    color: var(--color-site);
-    position: relative;
-}
-
-footer {
-    font-family: "IRANSans", irsans, sans-serif;
-    background: var(--bg-site);
-    color: var(--color-site);
-    position: relative;
-}
-
-body {
-    font-family: "IRANSans", irsans, sans-serif;
-    background: var(--bg-site);
-    color: var(--color-site);
-    position: relative;
-}
-
-main {
-    font-family: "IRANSans", irsans, sans-serif;
-    background: var(--bg-site);
-    color: var(--color-site);
-    position: relative;
-}
-
-
-
 
 *{
     font-family: "IRANSans", irsans, sans-serif;

@@ -186,6 +186,37 @@ function gridSearch(){
     });
 }
 
+// function blogSearch(){
+//     const search = $('#blog-search').val();
+//     $.get('/panel/blog?search=' + search).then(res =>{
+//         $('#blog-grid-body').html(res);
+//     });
+// }
+
+function getCategoryBlogs(category_id){
+    const type = $('#blog-type-category').val();
+    if (category_id === null){
+        $.get('/panel/blog-body?category=' + 0 + '&type=' + type).then(res =>{
+            $('#blog-category-num').val(0);
+            $('#blog-grid-body').html(res);
+        });
+    }
+    else{
+        $.get('/panel/blog-body?category=' + category_id + '&type=' + type).then(res =>{
+            $('#blog-category-num').val(category_id);
+            $('#blog-grid-body').html(res);
+        });
+    }
+}
+
+function sortGridBlogs(type){
+    const category_id = $('#blog-category-num').val();
+    $.get('/panel/blog-body?category=' + category_id + '&type=' + type).then(res =>{
+        $('#blog-type-grid').val(type);
+        $('#blog-grid-body').html(res);
+    });
+}
+
 function deleteProduct(id){
     $.get('/panel/product/delete/' + id).then(res =>{
         console.log(res);
@@ -250,12 +281,6 @@ $('input[type="checkbox"]').change(function(){
 function sendOtp(id){
     const phone = $('#phone-forget').val();
     $.post('/user/register/activate', {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value, phone, email, fullname, password, confirm_password, code}).then(res =>{
-        console.log(res);
-    })
-}
-
-function sortProducts(sort){
-    $.get('/product/', {sort}).then(res =>{
         console.log(res);
     })
 }

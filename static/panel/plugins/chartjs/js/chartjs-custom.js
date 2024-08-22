@@ -1,23 +1,18 @@
 $(function () {
     "use strict";
     // chart 1
+    var blog_count = JSON.parse(document.getElementById("blog-count").innerHTML);
+    var blog_month = JSON.parse(document.getElementById("blog-month").innerHTML);
     var ctx = document.getElementById('chart1').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه', 'یکشنبه'],
+            labels: blog_month,
             datasets: [{
-                label: 'گوگل',
-                data: [6, 20, 14, 12, 17, 8, 10],
+                label: 'وبلاگ',
+                data: blog_count,
                 backgroundColor: "transparent",
                 borderColor: "#3461ff",
-                pointRadius: "0",
-                borderWidth: 4
-            }, {
-                label: 'فیسبوک',
-                data: [5, 30, 16, 23, 8, 14, 11],
-                backgroundColor: "transparent",
-                borderColor: "#0c971a",
                 pointRadius: "0",
                 borderWidth: 4
             }]
@@ -65,17 +60,12 @@ $(function () {
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['دوشنبه', 'سه شنبه', 'چهارشنبه', 'پنجشنبه', 'جمعه', 'شنبه', 'یکشنبه'],
+            labels: blog_month,
             datasets: [{
                 label: 'گوگل',
-                data: [13, 8, 20, 4, 18, 29, 25],
+                data: blog_count,
                 barPercentage: .5,
                 backgroundColor: "#3461ff"
-            }, {
-                label: 'فیسبوک',
-                data: [31, 20, 6, 16, 21, 4, 11],
-                barPercentage: .5,
-                backgroundColor: "#7997ff"
             }]
         },
         options: {
@@ -93,16 +83,6 @@ $(function () {
             scales: {
                 xAxes: [{
                     barPercentage: .4,
-                    ticks: {
-                        beginAtZero: true,
-                        fontColor: '#585757'
-                    },
-                    gridLines: {
-                        display: true,
-                        color: "rgba(0, 0, 0, 0.07)"
-                    },
-                }],
-                yAxes: [{
                     ticks: {
                         beginAtZero: true,
                         fontColor: '#585757'
@@ -205,14 +185,17 @@ $(function () {
         }
     });
     // chart 7
+    var auther_name = JSON.parse(document.getElementById("auther-name").innerHTML);
+    var auther_blogs = JSON.parse(document.getElementById("auther-blogs").innerHTML);
+    console.log(typeof(auther_blogs));
     new Chart(document.getElementById("chart7"), {
         type: 'horizontalBar',
         data: {
-            labels: ["آفریقا", "آسیا", "اروپا", "آمریکای لاتین", "آمریکای شمالی"],
+            labels: auther_name,
             datasets: [{
                 label: "جمعیت (میلیون نفر)",
-                backgroundColor: ["#0d6efd", "#212529", "#17a00e", "#f41127", "#ffc107"],
-                data: [2478, 5267, 734, 784, 433]
+                backgroundColor: ["#0c7be8", "#17a00e", "#f41127"],
+                data: auther_blogs
             }]
         },
         options: {
@@ -222,7 +205,7 @@ $(function () {
             },
             title: {
                 display: true,
-                text: 'پیش بینی جمعیت جهان (میلیون ها) در سال 2050'
+                text: 'مقالات نوشته شده توسط نویسنده ها'
             }
         }
     });

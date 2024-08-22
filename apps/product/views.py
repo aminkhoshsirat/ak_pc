@@ -90,16 +90,7 @@ class ProductListView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        main_category_url = self.kwargs.get('main_category')
         child_category_url = self.kwargs.get('child_category')
-
-        if main_category_url:
-            main_category = MainCategoryModel.objects.prefetch_related('base_category_child').filter(url=main_category_url, active=True).first()
-            context['main_category'] = main_category
-
-        elif child_category_url:
-            child_category = ChildCategoryModel.objects.filter(url=child_category_url, active=True).first()
-            context['child_category'] = child_category
 
         context['count_products'] = context['products'].count
         context['products_price'] = context['products'].aggregate(max=Max('price_after_off'), min=Min('price_after_off'))
@@ -116,6 +107,8 @@ class ProductListView(ListView):
 
         filter_dict = self.request.GET
 
+        products = ProductModel.objects.filter(active=True)
+
         new_filter_dict = {}
 
         for i in filter_dict:
@@ -123,13 +116,18 @@ class ProductListView(ListView):
                 new_filter_dict[f'{i}__in'] = filter_dict.getlist(i)
 
         if main_category_url:
-            products = ProductModel.objects.filter(main_category__url=main_category_url)
+            main_category = MainCategoryModel.objects.prefetch_related('base_category_child').filter(
+                url=main_category_url, active=True).first()
+            self.extra_context = {'main_category': main_category}
+            products = products.filter(main_category=main_category)
 
         elif child_category_url:
-            products = get_category_products(child_category_url)
+            child_category = ChildCategoryModel.objects.filter(url=child_category_url, active=True).first()
+            self.extra_context = {'child_category': child_category}
+            products = products.filter(child_category=child_category)
 
         else:
-            products = ProductModel.objects.filter(active=True)
+            products = products.filter(active=True)
 
         if new_filter_dict:
             try:
@@ -243,7 +241,6 @@ class ProductCommentView(ListView):
     #         form.save()
     #     else:
     #         return render(request, 'product/comments.html')
-
 
 
 class ProductLikeView(View):

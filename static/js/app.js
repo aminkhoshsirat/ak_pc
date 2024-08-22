@@ -1,8 +1,9 @@
-//========= start home slider =========///
-var swiper = new Swiper("#homeSlider", {
+///main slider
+var swiperMainSlider = new Swiper("#mainSlider", {
   spaceBetween: 30,
   centeredSlides: true,
   loop: true,
+  a11y: false,
   autoplay: {
     delay: 3000,
     disableOnInteraction: false,
@@ -18,169 +19,365 @@ var swiper = new Swiper("#homeSlider", {
   },
 });
 
-///=============end home slider ============/
-
-/// ============= start sugget ============ /
-
-var swiper = new Swiper(".sugget-slider", {
-  slidesPerView: 1,
-  speed: 1000,
-  spaceBetween: 30,
-  loop: true,
-  centeredSlides: true,
+///product box one slider
+var swiper = new Swiper(".prodcut-box-one-slider", {
+  slidesPerView: 5,
+  spaceBetween: 10,
+  slidesPerGroup: 1,
+  loop: false,
+  a11y: false,
+  loopFillGroupWithBlank: true,
   autoplay: {
-    delay: 3500,
+    enabled: false,
+    delay: 2000,
     disableOnInteraction: false,
   },
-});
-
-/// ============= end sugget ============ /
-
-//===========feature in home page ===========//
-var swiper = new Swiper("#feature", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  freeMode: true,
+  speed: 500,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
   breakpoints: {
-    200: {
+    // when window width is >= 320px
+    220: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    600: {
       slidesPerView: 2,
-      spaceBetween: 20,
+      spaceBetween: 20
     },
-    576: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    },
+    // when window width is >= 640px
     768: {
-      slidesPerView: 4,
-      spaceBetween: 40,
+      slidesPerView: 3,
+      spaceBetween: 20
     },
-    1024: {
+    1000: {
       slidesPerView: 5,
-      spaceBetween: 50,
+      spaceBetween: 20
+    }
+  },
+});
+
+
+///product box two slider
+var swiper = new Swiper(".product-box-two-slider", {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  slidesPerGroup: 1,
+  loop: false,
+  a11y: false,
+  speed: 500,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    220: {
+      slidesPerView: 1,
+      spaceBetween: 20
     },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    1000: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    }
   },
 });
-//===========end feature in home page ===========//
 
-//=========== amazing slider ===========//
-var swiper = new Swiper("#amazing", {
-  slidesPerView: "auto",
+///product box three slider in index2
+var swiper = new Swiper(".product-box-three-slider", {
+  slidesPerView: 4,
   spaceBetween: 10,
-  freeMode: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-//===========end amazing slider ===========//
-
-//========= start product box ==============/
-var swiper = new Swiper("#product-box", {
-  slidesPerView: "auto",
-  spaceBetween: 10,
-  // loop: true,
-  // speed: 1000,
-  // centeredSlides: true,
-  // autoplay: {
-  //   delay: 3500,
-  //   disableOnInteraction: false,
-  // },
-  freeMode: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
-//========= end product box ==============/
-
-//=========== swiper box ===========//
-var swiper = new Swiper("#swiper-box", {
-  slidesPerView: 1,
-  spaceBetween: 10,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  loop: true,
-  speed: 1000,
+  slidesPerGroup: 1,
+  a11y: false,
+  loop: false,
+  loopFillGroupWithBlank: true,
   autoplay: {
-    delay: 3500,
+    enabled: false,
+    delay: 2000,
     disableOnInteraction: false,
   },
-  breakpoints: {
-    200: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    576: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 4,
-      spaceBetween: 40,
-    },
-    1024: {
-      slidesPerView: 5,
-      spaceBetween: 50,
-    },
-  },
-});
-//=========== end swiper-box ===========//
-
-//=========== swiper box ===========//
-var swiper = new Swiper("#swiper-box-two", {
-  spaceBetween: 10,
+  speed: 500,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    220: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    1200: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    1500: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    },
+    1768: {
+      slidesPerView: 5,
+      spaceBetween: 20
+    }
+  },
+});
+
+///product box two custom slider
+var swiper = new Swiper(".product-box-two-custom", {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  slidesPerGroup: 1,
+  loop: false,
+  a11y: false,
+  loopFillGroupWithBlank: true,
+  autoplay: {
+    enabled: false,
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+  speed: 500,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    220: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    1000: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    }
+  },
+});
+
+///offer
+///offer gallery
+var swiper = new Swiper("#offerItemLink", {
+  spaceBetween: 10,
+  slidesPerView: 4,
+  a11y: false,
+  freeMode: true,
+  watchSlidesProgress: true,
+  allowTouchMove: false,
+});
+var swiper2 = new Swiper("#offerItem", {
+  effect: "fade",
+  speed: 1000,
+  a11y: false,
+  loop: true,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  spaceBetween: 10,
+  thumbs: {
+    swiper: swiper,
   },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
   },
-  loop: true,
-  speed: 1000,
-  breakpoints: {
-    200: {
-      slidesPerView: 1,
-      spaceBetween: 20,
-    },
-    576: {
-      slidesPerView: 2,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    }
-  },
 });
-//=========== end swiper-box ===========//
 
-//=========== swiper-small-slider ===========//
-var swiper = new Swiper(".swiper-small-slider", {
-  spaceBetween: 10,
-  slidesPerView: 1,
+///run tooltip
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+///product modal
+var swiperMainSlider = new Swiper(".product-modal", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  a11y: false,
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+  },
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
-  loop: true,
-  speed: 2500,
+});
+
+///article
+
+var swiper = new Swiper("#article", {
+  slidesPerView: 4,
+  spaceBetween: 10,
+  slidesPerGroup: 1,
+  loop: false,
+  a11y: false,
+  loopFillGroupWithBlank: true,
   autoplay: {
-    delay: 3500,
+    enabled: false,
+    delay: 2000,
     disableOnInteraction: false,
   },
+  speed: 500,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    1000: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    }
+  },
 });
-//=========== end swiper-small-slider ===========//
 
-//=========== product gallery ===================//
+///partner section
 
+var swiper = new Swiper(".partnerSwipper", {
+  slidesPerView: 5,
+  spaceBetween: 10,
+  slidesPerGroup: 1,
+  loop: false,
+  a11y: false,
+  loopFillGroupWithBlank: true,
+  autoplay: {
+    enabled: false,
+    delay: 2000,
+    disableOnInteraction: false,
+  },
+  speed: 500,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 2,
+      spaceBetween: 20
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 20
+    },
+    // when window width is >= 640px
+    768: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    },
+    1000: {
+      slidesPerView: 5,
+      spaceBetween: 20
+    }
+  },
+});
+
+//sugget moment in home page
+
+var swiperSugget = new Swiper("#suggetMoment", {
+  slidesPerView: 1,
+  spaceBetween: 30,
+  loop: true,
+  a11y: false,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  speed: 500,
+  on: {
+    init: function () {
+      $(".swiper-progress-bar").removeClass("animate");
+      $(".swiper-progress-bar").removeClass("active");
+      $(".swiper-progress-bar").eq(0).addClass("animate");
+      $(".swiper-progress-bar").eq(0).addClass("active");
+    },
+    slideChangeTransitionStart: function () {
+      $(".swiper-progress-bar").removeClass("animate");
+      $(".swiper-progress-bar").removeClass("active");
+      $(".swiper-progress-bar").eq(0).addClass("active");
+    },
+    slideChangeTransitionEnd: function () {
+      $(".swiper-progress-bar").eq(0).addClass("animate");
+    }
+  }
+});
+
+///home slider
+var swiperMainSlider = new Swiper(".homeSlider", {
+  spaceBetween: 30,
+  centeredSlides: true,
+  loop: true,
+  a11y: false,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  effect: "fade",
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
+////cart slide
+
+///product gallery
 var proSwiper = new Swiper(".product-gallery-thumb", {
   spaceBetween: 10,
   slidesPerView: 4,
   freeMode: true,
+  a11y: false,
   watchSlidesProgress: true,
   breakpoints: {
     // when window width is >= 320px
@@ -211,64 +408,5 @@ var proThumbswiper = new Swiper(".product-gallery", {
   },
   thumbs: {
     swiper: proSwiper,
-  },
-});
-
-//=========== end product gallery ===================//
-
-//=========== modal product ===========//
-var swiper = new Swiper(".sw-modal-product", {
-  spaceBetween: 10,
-  slidesPerView: 1,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  loop: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
-//=========== end modal product ===========//
-
-//========= start new category ==============/
-var swiper = new Swiper(".free-mode", {
-  slidesPerView: "auto",
-  spaceBetween: 10,
-  freeMode: true,
-});
-//========= end new category ==============/
-
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
-
-///offer
-///offer gallery
-var swiper = new Swiper("#offerItemLink", {
-  spaceBetween: 10,
-  slidesPerView: 4,
-  freeMode: true,
-  watchSlidesProgress: true,
-  allowTouchMove: false,
-});
-var swiper2 = new Swiper("#offerItem", {
-  effect: "fade",
-  speed: 1000,
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false,
-  },
-  spaceBetween: 10,
-  thumbs: {
-    swiper: swiper,
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
   },
 });

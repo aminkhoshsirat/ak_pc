@@ -1,27 +1,6 @@
 from django.db import models
 
 
-class CpuBrandsModel(models.Model):
-    title = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return self.title
-
-
-class CpuSocketModel(models.Model):
-    brand = models.ForeignKey(CpuBrandsModel, on_delete=models.DO_NOTHING, related_name='brands_socket')
-    title = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return self.title
-
-
-class CpuModel(models.Model):
-    socket = models.ForeignKey(CpuSocketModel, on_delete=models.DO_NOTHING, related_name='socket_cpus')
-    title = models.CharField(max_length=1000)
-    power = models.PositiveIntegerField()
-
-
 class GpuBrandsModel(models.Model):
     title = models.CharField(max_length=1000)
 
