@@ -1,0 +1,36 @@
+services:
+  redis:
+    container_name: redis
+    image: redis:latest
+    enviroment:
+      - REDIS_PASSWORD=redis
+      - REDIS_PORT=6379
+      - REDIS_DATABASES=16
+    networks: - main
+    ports:
+      - "6379:6379"
+    volumes:
+      - /path/to/local/dаta:/root/redis
+      - /path/to/local/redis.conf:/usr/local/etc/redis/redis.conf
+    
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    enviroment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+     - main
+    ports:
+     - "5432:5432"
+    restart: always
+    volumes: 
+      - postgres_data: /var/lib/postgresql/data
+
+
+networks:
+  main
+
+volumes:
+  - postgres_data:
