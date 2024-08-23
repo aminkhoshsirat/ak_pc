@@ -84,12 +84,12 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">نوع</label>
                                         <div class="template__base__select">
-                                            <button onclick="mainBoardFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="mainBoardFunction()" class="checked__item"><p id="main-board-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="main-board-list" class="dropdown__options__container" style="display: none;">
                                                 {% for board in main_boards %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectMainBoard('{{ board.title }}', {{ board.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
                                                                                                id="gpu-0-{{ board.title }}"
                                                                                                value="{{ board.title }}"
@@ -119,12 +119,12 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">برند</label>
                                         <div class="template__base__select">
-                                            <button onclick="gpuBrandFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="gpuBrandFunction()" class="checked__item"><p id="gpu-brand-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="gpu-brand-list" class="dropdown__options__container" style="display: none;">
                                                 {% for brand in gpu_brands %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="getGpuSeries('{{ brand.title }}', '{{ brand.id }}')" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
                                                                                                id="gpu-0-{{ brand.title }}"
                                                                                                value="{{ brand.title }}"
@@ -138,7 +138,7 @@
                                     </div>
                                     <div class="row"><label class="label" for="">سری</label>
                                         <div class="template__base__select">
-                                            <button onclick="gpuSeriesFunction()" class="checked__item"><p class="dropdown__btn__text">
+                                            <button onclick="gpuSeriesFunction()" class="checked__item"><p id="gpu-series-btn-text" class="dropdown__btn__text">
                                                 Select</p><span class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="gpu-series-list" class="dropdown__options__container" style="display: none;">
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="row"><label class="label" for="">مدل</label>
                                         <div class="template__base__select">
-                                            <button onclick="gpuModelFunction()" class="checked__item"><p class="dropdown__btn__text">
+                                            <button onclick="gpuModelFunction()" class="checked__item"><p id="gpu-model-btn-text" class="dropdown__btn__text">
                                                 Select</p><span class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="gpu-model-list" class="dropdown__options__container" style="display: none;">
@@ -171,18 +171,18 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">ماژول </label>
                                         <div class="template__base__select">
-                                            <button onclick="moduleRamFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="moduleRamFunction()" class="checked__item"><p id="ram-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="module-ram-list" class="dropdown__options__container" style="display: none;">
                                                 {% for ram in rams %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectRam('{{ ram.type }}', {{ ram.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
-                                                                                               id="ram-0-{{ ram.title }}"
-                                                                                               value="{{ ram.title }}"
-                                                                                               name="ram-0-{{ ram.title }}"><label
-                                                            class="checked__option" for="ram-0-{{ ram.title }}">
-                                                        <p>{{ ram.title }}</p></label>
+                                                                                               id="ram-0-{{ ram.type }}"
+                                                                                               value="{{ ram.type }}"
+                                                                                               name="ram-0-{{ ram.type }}"><label
+                                                            class="checked__option" for="ram-0-{{ ram.type }}">
+                                                        <p>{{ ram.type }}</p></label>
                                                     </li>
                                                 {% endfor %}
 
@@ -263,18 +263,18 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">نوع</label>
                                         <div class="template__base__select">
-                                            <button onclick="ssdTypeFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="ssdTypeFunction()" class="checked__item"><p id="ssd-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="ssd-type-list" class="dropdown__options__container" style="display: none;">
                                                 {% for ssd in ssds %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectSSD('{{ ssd.type }}', {{ ssd.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
-                                                                                               id="storage-0-{{ ssd.title }}"
-                                                                                               value="{{ ssd.title }}"
-                                                                                               name="storage-0-{{ ssd.title }}"><label
+                                                                                               id="storage-0-{{ ssd.type }}"
+                                                                                               value="{{ ssd.type }}"
+                                                                                               name="storage-0-{{ ssd.type }}"><label
                                                             class="checked__option" for="storage-0-HDD Drive">
-                                                        <p>{{ ssd.title }}</p></label></li>
+                                                        <p>{{ ssd.type }}</p></label></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
@@ -303,32 +303,30 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">نوع</label>
                                         <div class="template__base__select">
-                                            <button onclick="hddTypeFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="hddTypeFunction()" class="checked__item"><p id="hdd-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="hdd-type-list" class="dropdown__options__container" style="display: none;">
                                                 {% for hard in hards %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectHDD('{{ hard.type }}', {{ hard.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
-                                                                                               id="storage-0-{{ hard.title }}"
-                                                                                               value="{{ hard.title }}"
-                                                                                               name="storage-0-{{ hard.title }}"><label
+                                                                                               id="storage-0-{{ hard.type }}"
+                                                                                               value="{{ hard.type }}"
+                                                                                               name="storage-0-{{ hard.type }}"><label
                                                             class="checked__option" for="storage-0-HDD Drive">
-                                                        <p>{{ hard.title }}</p></label></li>
+                                                        <p>{{ hard.type }}</p></label></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="row"><label class="label" for="">تعداد</label>
                                         <div class="template__base__select">
-                                            <button disabled="" class="checked__item"><p class="dropdown__btn__text">
+                                            <button onclick="hddNumberFunction()" class="checked__item"><p class="dropdown__btn__text">
                                                 Select</p><span class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
-                                            <ul class="dropdown__options__container" style="display: none;"></ul>
+                                            <ul id="hdd-number-list" class="dropdown__options__container" style="display: none;"></ul>
                                         </div>
                                     </div>
-                                    <button class="delete__icon" style="display: none;"><i class="icon-msi-close"></i>
-                                    </button>
                                 </div>
                             </div>
                         </section>
@@ -345,25 +343,23 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">نوع</label>
                                         <div class="template__base__select">
-                                            <button onclick="opticalDriveFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="opticalDriveFunction()" class="checked__item"><p id="optical-drive-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="optical-drive-list" class="dropdown__options__container" style="display: none;">
                                                 {% for drive in drives %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectOpticalDrive('{{ drive.type }}', {{ drive.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
-                                                                                               value="drive.title"
-                                                                                               name="drive-0-{{ drive.title }}"><label
+                                                                                               value="{{ drive.type }}"
+                                                                                               name="drive-0-{{ drive.type }}"><label
                                                             class="checked__option" for="drive-0-No Select">
-                                                        <p>{{ drive.title }}</p>
+                                                        <p>{{ drive.type }}</p>
                                                     </label></li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="row"><!----><!----></div>
-                                    <button class="delete__icon" style="display: none;"><i class="icon-msi-close"></i>
-                                    </button>
                                 </div>
                             </div>
                         </section>
@@ -378,18 +374,18 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">نوع</label>
                                         <div class="template__base__select">
-                                            <button onclick="liquidFanFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="liquidFanFunction()" class="checked__item"><p id="liquid-fan-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="liquid-fan-list" class="dropdown__options__container" style="display: none;">
                                                 {% for fan in liquid_fans %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectLiquidFan('{{ fan.type }}', {{ fan.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
                                                                                                id="fan-numQuantity-0"
-                                                                                               value="{{ fan.title }}"
+                                                                                               value="{{ fan.type }}"
                                                                                                name="fan-numQuantity-0"><label
                                                             class="checked__option" for="fan-numQuantity-0">
-                                                        <p>{{ fan.title }}</p>
+                                                        <p>{{ fan.type }}</p>
                                                     </label></li>
                                                 {% endfor %}
                                             </ul>
@@ -398,7 +394,6 @@
                                 </div>
                             </div>
                         </section>
-                        <div class="divider"></div>
                         <section class="component__group">
                             <div class="template__other__filter">
                                 <div class="category">
@@ -409,18 +404,16 @@
                                 <div class="filter">
                                     <div class="row"><label class="label" for="">سایز</label>
                                         <div class="template__base__select">
-                                            <button onclick="fanFunction()" class="checked__item"><p class="dropdown__btn__text">Select</p><span
+                                            <button onclick="fanFunction()" class="checked__item"><p id="fan-btn-text" class="dropdown__btn__text">Select</p><span
                                                     class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
                                             <ul id="fan-list" class="dropdown__options__container" style="display: none;">
                                                 {% for fan in fans %}
-                                                    <li class="dropdown__options__cell"><input class="checkbox"
+                                                    <li onclick="selectFan('{{ fan.size }}', {{ fan.power }})" class="dropdown__options__cell"><input class="checkbox"
                                                                                                type="radio"
-                                                                                               id="fan-numQuantity-0"
-                                                                                               value="{{ fan.title }}"
-                                                                                               name="fan-numQuantity-0"><label
-                                                            class="checked__option" for="fan-numQuantity-0">
-                                                        <p>{{ fan.title }}</p>
+                                                                                               value="{{ fan.size }}"><label
+                                                            class="checked__option">
+                                                        <p>{{ fan.size }}</p>
                                                     </label></li>
                                                 {% endfor %}
                                             </ul>

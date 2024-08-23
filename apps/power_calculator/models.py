@@ -26,7 +26,7 @@ class GpuModel(models.Model):
 
 
 class MainBoardModel(models.Model):
-    form_factor = models.CharField(max_length=500)
+    title = models.CharField(max_length=500)
     power = models.IntegerField()
 
 

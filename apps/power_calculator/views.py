@@ -2,8 +2,13 @@ import json
 
 from django.shortcuts import render, HttpResponse
 from django.views.generic import View
+from rest_framework import status
+
 from .models import *
 from redis import Redis
+from .serializers import *
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 re = Redis(host='localhost', port=6379, db=0)
 
@@ -59,3 +64,22 @@ class CpusView(View):
             if i['socket'].replace("Socket", "").lstrip(" ") == title:
                 objects.append(i)
         return HttpResponse(json.dumps(objects))
+
+
+class GpuSeriesView(APIView):
+    def get(self, request, id):
+        series = GpuSeriesModel.objects.filter(brand__id=id)
+        data = {
+            'objects': GpuSeriesSerializer(series, many=True).data
+        }
+        return Response(data=data, status=status.HTTP_200_OK)
+
+
+class GpusView(APIView):
+    def get(self, request, id):
+        gpus = GpuModel.objects.filter(series_id=id)
+        data = {
+            'objects': GpuSerializer(gpus, many=True).data
+        }
+        return Response(data, status=status.HTTP_200_OK)
+
