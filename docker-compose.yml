@@ -1,82 +1,22 @@
 services:
-  redis:
-    container_name: redis
-    image: redis:latest
-    enviroment:
-      - REDIS_PASSWORD=redis
-      - REDIS_PORT=6379
-      - REDIS_DATABASES=16
-    networks:
-      - main
-    ports:
-      - "6379:6379"
+  db:
+    image: postgres
     volumes:
-      - /path/to/local/dаta:/root/redis
-      - /path/to/local/redis.conf:/usr/local/etc/redis/redis.conf
-    
-  postgres:
-    container_name: postgres
-    image: postgres:latest
-    enviroment:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-    networks:
-     - main
-    ports:
-     - "5432:5432"
-    restart: always
-    volumes: 
-      - postgres_data:/var/lib/postgresql/data
-
-
-volumes:
-  - postgres_data:
-  - /path/to/local/dаta:
-  - /path/to/local/redis.conf:services:
-  postgres:
-    image: postgres:alpine
-    environment:
-      POSTGRES_DB: database-name
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: username
-    ports:
-      - 5435:5432
-    restart: on-failure:3
-  pgweb:
-    image: sosedoff/pgweb
-    depends_on:
-      - postgres
-    environment:
-      PGWEB_DATABASE_URL: postgres://username:password@postgres:5432/database-name?sslmode=disable
-    ports:
-      - 8085:8081
-    restart: on-failure:3
-  redis:
-    image: redis:latest
-    command: redis-server
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - redis:/var/lib/redis
-      - redis-config:/usr/local/etc/redis/redis.conf
+      - .:/code
     ports:
-      - 6379:6379
-    networks:
-      - redis-network
-  redis-commander:
-    image: rediscommander/redis-commander:latest
+      - "8000:8000"
     environment:
-      - REDIS_HOSTS=local:redis:6379
-      - HTTP_USER=root
-      - HTTP_PASSWORD=qwerty
-    ports:
-      - 8081:8081
-    networks:
-      - redis-network
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
     depends_on:
-      - redis
-volumes:
-  redis:
-  redis-config:
-networks:
-  redis-network:
-    driver: bridge
+      - db

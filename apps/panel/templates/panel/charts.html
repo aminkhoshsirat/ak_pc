@@ -1,0 +1,161 @@
+{% extends 'panel/parent/base.html' %}
+{% load admin_chart_tags %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block content %}
+    <!--start content-->
+    <main class="page-content">
+
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">نمودار</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">نمودارها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+        <h6 id="blog-count">{{ blog_count | safe }}</h6>
+        <h6 id="blog-month">{{ blog_month | safe }}</h6>
+
+        <div class="row">
+            <div class="col-xl-9 mx-auto">
+                <h6 class="mb-0 text-uppercase">نمودار میله ای</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار خطی</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار دایره ای</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار رادار</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار ناحیه قطبی</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart5"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار دونات</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart6"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 style="display: none" id="auther-name">{{ auther_name | safe }}</h1>
+                <h1 style="display: none" id="auther-blogs">{{ auther_blogs | safe }}</h1>
+                <h6 class="mb-0 text-uppercase">نویسنده ها</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart7"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+
+                <h6 class="mb-0 text-uppercase">نمودار میله ای گروه بندی شده</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart8"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار ترکیبی</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart9"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <h6 class="mb-0 text-uppercase">نمودار حباب</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="chart-container1">
+                            <canvas id="chart10"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end row-->
+    </main>
+    {% block js %}
+        <script src="{% static 'panel/plugins/apexcharts-bundle/js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'panel/plugins/chartjs/js/chartjs-custom.js' %}"></script>
+        <script src="{% static 'panel/plugins/apexcharts-bundle/js/apexcharts.min.js' %}"></script>
+        <script src="{% static 'panel/plugins/apexcharts-bundle/js/apex-custom.js' %}"></script>
+    {% endblock %}
+
+    {{ block.super }}
+    <script src="{% static "admin/js/vendor/jquery/jquery.js" %}"></script>
+    <link media="all" href="{% set_nvd3_css_path %}" type="text/css" rel="stylesheet"/>
+    <script src="{% set_d3_js_path %}" type="text/javascript"></script>
+    <script src="{% set_nvd3_js_path %}" type="text/javascript"></script>
+    <script>
+        window.onload = function () {
+            $(".admin_chanrts_dynamic").each(function () {
+                var chart_key = $(this).data("chart-key");
+                loadAdminChart(chart_key);
+            });
+        };
+    </script>
+
+    <script src="{% url 'admin-charts' %}" type="text/javascript"></script>
+    <style>
+        .admin_charts {
+            padding: 20px 40px;
+        }
+    </style>
+
+    {% block footer %}
+        {% if request.resolver_match.view_name == 'admin:index' %}
+            {% chart_containers %}
+        {% endif %}
+        {{ block.super }}
+    {% endblock %}
+{% endblock %}

@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+    path('admin_tools_stats/', include('admin_tools_stats.urls')),
     path('', IndexView.as_view(), name='index'),
     path('faq', FaqsView.as_view(), name='faq'),
     path('contact-us', ContactUsView.as_view(), name='contact_us'),

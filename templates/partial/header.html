@@ -183,8 +183,8 @@
                             <li class="position-relative m-0"></li>
                             <li class="nav-item main-menu-head"><a href=""
                                                                    class="nav-link border-animate fromRight fw-bold"><i
-                                    class="bi bi-list"></i>
-                                دسته بندی محصولات
+                                    class="bi bi-list-ul"></i>
+                                 دسته بندی محصولات
                             </a>
                                 <ul class="main-menu mega-container">
                                     {% for main_category in main_categories %}
@@ -211,26 +211,40 @@
 
                                 </ul>
                             </li>
-                            <li class="nav-item"><a href="" class="nav-link border-animate fromRight">دسته بندی مقالات<i
-                                    class="bi bi-tablet"></i></a>
-                                <ul class="list-unstyled shadow-lg back-menu sub-menu mega-container"
-                                    style="background: #fff url('assets/image/mega-img-1.jpg') no-repeat;background-size: 400px !important;">
-
+                        <li class="position-relative m-0"></li>
+                            <li class="nav-item main-menu-head"><a href=""
+                                                                   class="nav-link border-animate fromRight fw-bold"><i
+                                    class="bi bi-substack"></i>
+                                 دسته بندی مقالات
+                            </a>
+                                <ul class="main-menu mega-container">
                                     {% for category in blog_categories %}
-                                        <li><a href="{{ category.get_absolute_url }}"
-                                               class="title">{{ category.title }}</a></li>
+                                        <li class="main-menu-sub-active-li"><a
+                                                href="{{ category.get_absolute_url }}"><i
+                                                class="bi bi-phone"></i>{{ category.title }}</a>
+                                            <ul class="main-menu-sub back-menu"
+                                                style=" background: #fff url('{{ category.image.url }}') no-repeat;">
+                                                {% for child_category in category.child.all %}
+                                                    {% if child_category.active %}
+                                                        <li><a class="title my-flex-baseline"
+                                                               href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
                                     {% endfor %}
 
                                 </ul>
                             </li>
                             <li class="nav-item"><a href="{% url 'asemble:index' %}"
-                                                    class="nav-link border-animate fromRight"><i class="bi bi-tag"></i>اسمبل
+                                                    class="nav-link border-animate fromRight"><i class="bi bi-puzzle-fill"></i>  اسمبل
                                 کیس</a></li>
                             <li class="nav-item"><a href="{% url 'power:caculator' %}"
-                                                    class="nav-link border-animate fromRight"><i class="bi bi-tag"></i>محاسبه
-                                گر پاور</a></li>
+                                                    class="nav-link border-animate fromRight"><i class="bi bi-calculator"></i>محاسبه
+                                     گر پاور    </a></li>
                             <li class="nav-item"><a href="{% url 'benchmark:index' %}"
-                                                    class="nav-link border-animate fromRight">بنجمارک</a></li>
+                                                    class="nav-link border-animate fromRight"><i class="bi bi-speedometer"></i> بنجمارک   </a></li>
                         </ul>
                     </div>
                 </div>

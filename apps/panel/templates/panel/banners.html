@@ -1,0 +1,109 @@
+{% extends 'panel/parent/base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+    <!--start content-->
+    <main class="page-content">
+        <!--breadcrumb-->
+        <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+            <div class="breadcrumb-title pe-3">اجزاء</div>
+            <div class="ps-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 p-0">
+                        <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">چرخ فلک ها</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!--end breadcrumb-->
+
+
+        <div class="row">
+            <div class="col col-lg-9 mx-auto">
+                <h6 class="mb-0 text-uppercase">بنرهای اصلی(Desktop)</h6>
+                <hr/>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for banner in banners_desktop %}
+                                    <div class="carousel-item active">
+                                        <img src="{{ banner.image.url }}" class="d-block w-100" width="532px"
+                                             height="300px" alt="{{ banner.title }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                               data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">قبلی</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                               data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">بعد</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end-->
+        <div class="row">
+            <div class="col col-lg-9 mx-auto">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                    <input type="hidden" name="type" value="desktop">
+                    <button type="submit" class="btn-success" style="width: 50px">ثبت</button>
+                </form>
+            </div>
+        </div>
+
+        <br><br>
+        <div class="row">
+            <div class="col col-lg-9 mx-auto">
+                <h6 class="mb-0 text-uppercase">بنرهای اصلی(Phone)</h6>
+                <hr/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-3 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                {% for banner in banners_phone %}
+                                    <div class="carousel-item active">
+                                        <img src="{{ banner.image.url }}" class="d-block" width="400px"
+                                             height="250px" alt="{{ banner.title }}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                               data-bs-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">قبلی</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                               data-bs-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">بعد</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--end-->
+        <div class="row">
+            <div class="col col-lg-9 mx-auto">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_div }}
+                    <input type="hidden" name="type" value="phone">
+                    <button type="submit" class="btn-success">ثبت</button>
+                </form>
+            </div>
+        </div>
+
+
+    </main>
+    <!--end page main-->
+{% endblock %}

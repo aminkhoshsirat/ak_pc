@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from .config import *
@@ -11,6 +12,9 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'django_light',
+    'admin_tools_stats',
+    'django_nvd3',
     'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -21,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django.contrib.sites',
     'ckeditor',
+    'djangobower',
 
     # Internal Apps
     'django_jalali',
@@ -36,6 +41,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'azbankgateways',
     'django_ckeditor_5',
+    "django_htmx",
 
     # External Apps
 
@@ -63,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 
 ROOT_URLCONF = 'akurtekPC.urls'
@@ -161,6 +168,26 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_QUERYSTRING_AUTH = False
 
 
+
+# Liara Storages
+
+# AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
+# AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
+# AWS_STORAGE_BUCKET_NAME = 'akurtek'
+# AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
+# AWS_S3_REGION_NAME = 'us-east-1'
+#
+# # Django-storages configuration
+# STORAGES = {
+#   "default": {
+#       "BACKEND": "storages.backends.s3.S3Storage",
+#   },
+#   "staticfiles": {
+#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#   },
+# }
+
+
 # Ckeditor Config
 
 CKEDITOR_CONFIGS = {
@@ -243,4 +270,3 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 # }
 
 CK_EDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"
-

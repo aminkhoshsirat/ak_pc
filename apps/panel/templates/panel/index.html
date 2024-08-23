@@ -439,25 +439,25 @@
 
     <script>
 
-        const notificationSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/notification/'
-            + 'comment_notification'
-            + '/'
-        );
-        console.log(1);
-
-        notificationSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            //document.querySelector('#chat-log').value += (data.message + '\n');
-            console.log(data);
-            console.log(2);
-        };
-
-        notificationSocket.onclose = function(e) {
-            console.error('notification socket closed unexpectedly');
-        };
+        {#const notificationSocket = new WebSocket(#}
+        {#    'ws://'#}
+        {#    + window.location.host#}
+        {#    + '/ws/notification/'#}
+        {#    + 'comment_notification'#}
+        {#    + '/'#}
+        {#);#}
+        {#console.log(1);#}
+        {##}
+        {#notificationSocket.onmessage = function(e) {#}
+        {#    const data = JSON.parse(e.data);#}
+        {#    //document.querySelector('#chat-log').value += (data.message + '\n');#}
+        {#    console.log(data);#}
+        {#    console.log(2);#}
+        {#};#}
+        {##}
+        {#notificationSocket.onclose = function(e) {#}
+        {#    console.error('notification socket closed unexpectedly');#}
+        {#};#}
 
 
 

@@ -1,0 +1,11 @@
+--2024-08-22 00:35:22--  https://api.iran.liara.ir/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NmM1ZGRmODlmYzExMGVmMWQyYzFjYTciLCJpYXQiOjE3MjQyNzM5MzB9.oonFkoLo98H_4UUbIowC_zQBlzU4KqekIyMHtBjBDyQ
+Resolving api.iran.liara.ir (api.iran.liara.ir)... 185.208.182.250, 185.208.182.249, 185.208.182.248
+Connecting to api.iran.liara.ir (api.iran.liara.ir)|185.208.182.250|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 136 [application/json]
+Saving to: ‘index.html?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NmM1ZGRmODlmYzExMGVmMWQyYzFjYTciLCJpYXQiOjE3MjQyNzM5MzB9.oonFkoLo98H_4UUbIowC_zQBlzU4KqekIyMHtBjBDyQ’
+
+         index.ht   0%[              ]       0  --.-KB/s               index.html?token= 100%[=============>]     136  --.-KB/s    in 0s      
+
+2024-08-22 00:35:22 (55.3 MB/s) - ‘index.html?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2NmM1ZGRmODlmYzExMGVmMWQyYzFjYTciLCJpYXQiOjE3MjQyNzM5MzB9.oonFkoLo98H_4UUbIowC_zQBlzU4KqekIyMHtBjBDyQ’ saved [136/136]
+
