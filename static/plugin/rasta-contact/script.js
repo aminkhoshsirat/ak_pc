@@ -22,18 +22,17 @@
                 'bottom': '45px',
                 'text-align': 'center',
                 'padding': '0px 8px',
-                'display': 'block',
                 'margin-bottom': '34px',
                 'display': 'flex',
                 'justify-content': 'flex-end',
-                'z-index': '99999999999999999',
+                'z-index': '801',
             },
             _child_attribute: [{
                 'label': 'Post',
                 'url': '/',
                 'icon': '&#xE150;'
             }],
-            _main_btn_color: '#008749;',
+            _main_btn_color: '#0b8502;',
             _child_btn_color: '#0761f6;'
         }, options);
 
@@ -46,10 +45,10 @@
                 _base.collapz_btn(ths, _settings._child_attribute);
             });
         };
-        // toggle button 
+        // toggle button
         _base.collapz_btn = function (_element, child_attribute) {
             if (_element.hasClass('_close')) {
-                
+
                 _element.removeClass('_close');
                 _element.addClass('_open');
 

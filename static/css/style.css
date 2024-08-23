@@ -1,89 +1,61 @@
-﻿
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Fonts
+   ========================================================================== */
 
 @font-face {
-    font-family: IRANSans;
-    font-style: normal;
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Fat.woff2") format('woff2');
     font-weight: 900;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Black.eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Black.eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Black.woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Black.woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Black.ttf') format('truetype');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: IRANSans;
-    font-style: normal;
-    font-weight: bold;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Bold.eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: IRANSans;
-    font-style: normal;
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Medium.woff2") format('woff2');
     font-weight: 500;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Medium.eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Medium.eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Medium.woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Medium.woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Medium.ttf') format('truetype');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: IRANSans;
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Bold.woff2") format('woff2');
+    font-weight: bold;
     font-style: normal;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Heavy.woff2") format('woff2');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Light.woff2") format('woff2');
     font-weight: 300;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Light.eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Light.eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Light.woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Light.woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
+    font-style: normal;
 }
 
 @font-face {
-    font-family: IRANSans;
-    font-style: normal;
-    font-weight: 200;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_UltraLight.eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_UltraLight.eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_UltraLight.woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_UltraLight.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: IRANSans;
-    font-style: normal;
+    font-display: swap;
+    font-family: "yekan-bakh";
+    src: url("../font/yekan-bakh/YekanBakhFaNum-Regular.woff2") format('woff2');
     font-weight: normal;
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum).eot');
-    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
-        /* IE6-8 */
-        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum).woff2') format('woff2'),
-        /* FF39+,Chrome36+, Opera24+*/
-        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum).woff') format('woff'),
-        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
-        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
+    font-style: normal;
 }
-
 
 
 :root {
@@ -99,7 +71,7 @@
     --main-color-three-hover: #099f54;
     --bg-site: #f4f5f9;
     --color-site: #515151;
-    --font-site: 'IRANSans';
+    --font-site: 'yekan-bakh';
     /* shadow */
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -116,14 +88,32 @@
     --border-muted: #ced4da;
 }
 
-*{
-    font-family: "IRANSans", irsans, sans-serif;
+
+body {
+    font-family: var(--font-site), serif;
+    background: var(--bg-site);
+    color: var(--color-site);
+    position: relative;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 600;
     margin-bottom: 0;
 }
 
 .tooltip {
-    font-family: "IRANSans", irsans, sans-serif;
+    font-family: var(--font-site), serif;
 }
 
 input[type=checkbox] {
@@ -155,7 +145,20 @@ input[type=checkbox] {
 }
 
 .font-en {
-    font-family: "IRANSans", irsans, sans-serif;
+    font-family: var(--font-site), serif !important;
+}
+
+.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons, serif !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 a {
@@ -748,7 +751,7 @@ a:hover {
     content: '';
     position: absolute;
     right: -10px;
-    width: 2.5px;
+    width: 3px;
     height: 100%;
     background: var(--main-color-one);
 }
@@ -915,7 +918,7 @@ a:hover {
     content: '';
     position: absolute;
     right: 0;
-    width: 2.5px;
+    width: 2px;
     height: 100%;
     background: var(--main-color-one);
 }
@@ -1716,7 +1719,7 @@ figure.avatar img {
 
 /* start amazing */
 .amazing {
-    background: var(--main-color-two) url('../images/patterns.png');
+    background: var(--main-color-two) url('../image/patterns.png');
 }
 
 .free-mode .swiper-slide {
@@ -1727,7 +1730,7 @@ figure.avatar img {
 
 /* start fresh */
 .fresh .parent {
-    background: var(--main-color-one) url('../images/patterns.png');
+    background: var(--main-color-one) url('../image/patterns.png');
 }
 
 .fresh .left img {
@@ -1740,7 +1743,7 @@ figure.avatar img {
 /* product banner */
 
 .prodcut-banner-item {
-    background: url('../images/wave-card.svg') no-repeat center center;
+    background: url('../image/wave-card.svg') no-repeat center center;
     background-size: 500px;
     padding: 10px;
     border-radius: 10px;
@@ -2105,7 +2108,7 @@ figure.avatar img {
 
 /* product-box-two */
 .product-box-two .parents {
-    background: url('../images/patern2.png') var(--bs-gray-dark);
+    background: url('../image/patern2.png') var(--bs-gray-dark);
     padding: 20px;
     box-shadow: var(--shadow-box);
     border-radius: 10px;
@@ -2130,7 +2133,7 @@ figure.avatar img {
     border-radius: 1rem;
     opacity: .4;
     z-index: -1;
-    background: #fff url('../images/wave-card.svg') no-repeat center center;
+    background: #fff url('../image/wave-card.svg') no-repeat center center;
     background-size: cover;
 }
 
@@ -3584,7 +3587,7 @@ ul.show {
 /* start page 404 */
 
 .not-found {
-    background-image: url('../images/404.gif');
+    background-image: url('../image/404.gif');
     background-repeat: no-repeat;
     background-position: center;
     height: 400px;
@@ -4064,7 +4067,7 @@ ul.show {
     color: #6b6b6b;
     font-size: 22px;
     font-weight: 800;
-    font-family: "irsans", irsans, sans-serif;
+    font-family: var(--font-site), serif;
 }
 
 .blog-featured .title span {
@@ -4373,6 +4376,8 @@ ul.show {
 
 .border_right_custom1 {
     border-right: 3px solid var(--main-color-one);
+    font-weight: bold;
+    font-size: 17px !important;
 }
 
 .border_right_custom2 {

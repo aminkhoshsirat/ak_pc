@@ -8,7 +8,9 @@ from apps.product.models import ProductCommentModel
 from apps.blog.models import BlogCommentModel
 
 
-banner_order = [(str(i), str(i)) for i in range(1, 11)]
+banner_order = [(str(i), str(i)) for i in range(1, 5)]
+
+type_banner = [('desktop', 'desktop'), ('phone', 'phone')]
 
 
 class SiteDetailModel(models.Model):
@@ -45,6 +47,7 @@ class AdvertisingBannerModel(models.Model):
     title = models.CharField(max_length=1000)
     url = models.SlugField(unique=True, allow_unicode=True)
     image = models.ImageField(upload_to='panel/banners')
+    type = models.CharField(max_length=1000, choices=type_banner)
     order = models.CharField(max_length=1000, choices=banner_order)
     active = models.BooleanField(default=True)
 
