@@ -1,61 +1,89 @@
-﻿* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ==========================================================================
-   Fonts
-   ========================================================================== */
+﻿
 
 @font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Fat.woff2") format('woff2');
+    font-family: IRANSans;
+    font-style: normal;
     font-weight: 900;
-    font-style: normal;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Black.eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Black.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Black.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Black.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Black.ttf') format('truetype');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Medium.woff2") format('woff2');
-    font-weight: 500;
+    font-family: IRANSans;
     font-style: normal;
-}
-
-@font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Bold.woff2") format('woff2');
     font-weight: bold;
-    font-style: normal;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Bold.eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Bold.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Bold.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Bold.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Bold.ttf') format('truetype');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Heavy.woff2") format('woff2');
-    font-weight: 800;
+    font-family: IRANSans;
     font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Medium.eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Medium.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Medium.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Medium.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Medium.ttf') format('truetype');
 }
 
-
 @font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Light.woff2") format('woff2');
+    font-family: IRANSans;
+    font-style: normal;
     font-weight: 300;
-    font-style: normal;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Light.eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_Light.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_Light.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_Light.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "yekan-bakh";
-    src: url("../font/yekan-bakh/YekanBakhFaNum-Regular.woff2") format('woff2');
-    font-weight: normal;
+    font-family: IRANSans;
     font-style: normal;
+    font-weight: 200;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_UltraLight.eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum)_UltraLight.eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum)_UltraLight.woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum)_UltraLight.woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum)_UltraLight.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum).eot');
+    src: url('../fonts/iransans-farsi-numbers/eot/IRANSansWeb(FaNum).eot?#iefix') format('embedded-opentype'),
+        /* IE6-8 */
+        url('../fonts/iransans-farsi-numbers/woff2/IRANSansWeb(FaNum).woff2') format('woff2'),
+        /* FF39+,Chrome36+, Opera24+*/
+        url('../fonts/iransans-farsi-numbers/woff/IRANSansWeb(FaNum).woff') format('woff'),
+        /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url('../fonts/iransans-farsi-numbers/ttf/IRANSansWeb(FaNum).ttf') format('truetype');
+}
+
 
 
 :root {
@@ -71,7 +99,7 @@
     --main-color-three-hover: #099f54;
     --bg-site: #f4f5f9;
     --color-site: #515151;
-    --font-site: 'yekan-bakh';
+    --font-site: 'IRANSans';
     /* shadow */
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -88,32 +116,14 @@
     --border-muted: #ced4da;
 }
 
-
-body {
-    font-family: var(--font-site), serif;
-    background: var(--bg-site);
-    color: var(--color-site);
-    position: relative;
-}
-
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+*{
+    font-family: "IRANSans", irsans, sans-serif;
     font-weight: 600;
     margin-bottom: 0;
 }
 
 .tooltip {
-    font-family: var(--font-site), serif;
+    font-family: "IRANSans", irsans, sans-serif;
 }
 
 input[type=checkbox] {
@@ -145,20 +155,7 @@ input[type=checkbox] {
 }
 
 .font-en {
-    font-family: var(--font-site), serif !important;
-}
-
-.bi::before, [class^="bi-"]::before, [class*=" bi-"]::before {
-    display: inline-block;
-    font-family: bootstrap-icons, serif !important;
-    font-style: normal;
-    font-weight: normal !important;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    vertical-align: middle;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: "IRANSans", irsans, sans-serif;
 }
 
 a {
