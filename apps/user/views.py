@@ -6,15 +6,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.views.generic import View, TemplateView, ListView, DetailView
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
-from rest_framework import status
 from apps.blog.models import BlogCommentModel
 from apps.bucket.models import BuketModel
 from apps.product.models import UserFavoriteProductModel, ProductCommentModel
 from .forms import *
-from .serializers import *
 from django.utils.safestring import mark_safe
 from akurtekPC.config import NESHAN_API_KEY
 from apps.panel.models import SiteDetailModel
@@ -335,28 +330,3 @@ class NotificationView(ListView):
         notifications = UserNotificationModel.objects.filter(Q(user=self.request.user) | Q(user=None), expire_date__gt=timezone.now()).order_by('-published_date')
         return notifications
 
-# ---------------------------- DRF --------------------------
-
-
-class LoginView(APIView):
-    def post(self, request):
-        data = request.data
-        user_serializer = LoginSerializers(data=data)
-
-        if user_serializer.is_valid():
-            user = UserModel.objects.filter(Q(phone=data['phone_or_email']) | Q(email=data['phone_or_email']))
-            if user:
-                check_pass = user.check_password(data['password'])
-
-                if check_pass:
-                    login(request, user)
-                    token = Token(user=user).key
-                    return Response({'token': token, 'detail': 'login success'}, status=status.HTTP_202_ACCEPTED)
-
-                else:
-                    return Response({'detail': 'password incorrect'}, status=status.HTTP_404_NOT_FOUND)
-
-            else:
-                return Response({'detail': 'user not found'}, status=status.HTTP_404_NOT_FOUND)
-
-        return Response(user_serializer.errors)

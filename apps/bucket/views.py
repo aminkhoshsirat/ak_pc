@@ -1,12 +1,8 @@
 from django.shortcuts import render, redirect, HttpResponse
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 from .models import *
 from apps.panel.models import SiteDetailModel
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from apps.product.serializers import ProductSerializers
 import requests
 import json
 import redis
@@ -140,41 +136,3 @@ class OrderPayView(View):
             return {'status': False, 'code': 'timeout'}
         except requests.exceptions.ConnectionError:
             return {'status': False, 'code': 'connection error'}
-
-
-#------------------------------------Api Views-----------------------------------
-
-
-class BucketApiView(APIView):
-    def get(self, request):
-        user = request.user
-        products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{user.phone}:product:*')]
-        products = ProductModel.objects.filter(id__in=products_ids)
-
-        if products.exists():
-            total_price = 0
-            total_price_after_off = 0
-            bucket_products = [{'product': ProductSerializers(products.get(id=int(r.hget(i, 'product')))),
-                                'num': json.dumps(int(r.hget(i, 'num')))}
-                               for i in r.keys(f'bucket:user:{user.phone}:product:*')]
-            for product in products:
-                total_price += product.price
-                total_price_after_off += product.price_after_off
-
-            off = total_price - total_price_after_off
-
-            data = {
-                'bucket_products': bucket_products,
-                'total_price': json.dumps(total_price),
-                'total_price_after_off': json.dumps(total_price_after_off),
-                'off': json.dumps(off),
-            }
-
-            return Response(data, status=status.HTTP_200_OK)
-
-
-class DeleteProductBucketApiView(APIView):
-    def get(self, request, id):
-        user = request.user
-        r.delete(f'bucket:user:{user.phone}:product:{id}')
-        return Response('success')

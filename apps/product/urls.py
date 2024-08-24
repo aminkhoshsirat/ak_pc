@@ -16,8 +16,4 @@ urlpatterns = [
     path('delete/<id>', ProductDeleteView.as_view()),
     path('show/<id>', ShowProductView.as_view()),
     path('chart/<id>', ProductChartView.as_view()),
-    path('api/header/', HeaderApiView.as_view(), name='header'),
-    path('api/footer/', FooterApiView.as_view(), name='footer'),
-    path('api/product/', ProductListApiView.as_view()),
-    path('api/category/<main_category>', ProductMainCategoryApiView.as_view()),
 ]

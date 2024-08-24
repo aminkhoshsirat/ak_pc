@@ -48,7 +48,6 @@ class PowerView(View):
 
 class CpuSocketView(View):
     def get(self, request, title):
-        print(title)
         if title == 'Intel':
             objects = re.get('intel_socket')
         else:
@@ -82,4 +81,3 @@ class GpusView(APIView):
             'objects': GpuSerializer(gpus, many=True).data
         }
         return Response(data, status=status.HTTP_200_OK)
-

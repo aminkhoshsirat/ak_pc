@@ -8,7 +8,7 @@
                         <div class="header-bottom-btn">
                             {% if request.user.is_authenticated %}
                                 {% if user.is_superuser %}
-                                    <a href="/admin"
+                                    <a href="{% url 'panel:index' %}"
                                    class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
                                     پنل ادمین
                                 </a>
@@ -145,7 +145,7 @@
                 </div>
                 <div class="col-lg-2 col-5 order-lg-1 order-2">
                     <div class="row">
-                        <a href="" class="text-lg-start text-end d-block">
+                        <a href="{% url 'index' %}" class="text-lg-start text-end d-block">
                             <img src="{{ site_detail.logo.url }}" alt="" class="img-fluid">
                         </a>
                     </div>

@@ -4,10 +4,7 @@ from django.views.generic.edit import FormMixin
 from django.db.models.aggregates import Count
 from utils.services import get_client_ip
 from django.utils import timezone
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.views import Response
 from rest_framework.pagination import LimitOffsetPagination
-from .serializers import *
 from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.postgres.search import TrigramSimilarity
@@ -129,68 +126,6 @@ class BlogCommentView(LoginRequiredMixin, View):
         return HttpResponse('failed')
 
 
-class BlogDetailApiView(RetrieveAPIView):
-    serializer_class = BlogSerializers
-    queryset = BlogModel.objects.prefetch_related('blog_comments').filter(active=True)
-    lookup_field = 'url'
-    lookup_url_kwarg = 'slug'
-
-    def get_serializer_context(self):
-        # get blog view
-        ip = get_client_ip(self.request)
-        user = self.request.user
-        if user.is_authenticated:
-            blog_view, created = BlogViewModel.objects.get_or_create(blog_id=self.get_object().id, user=user, ip=ip)
-            blog_view.date_view = timezone.now()
-            blog_view.save()
-        else:
-            blog_view, created = BlogViewModel.objects.get_or_create(blog_id=self.get_object().id, user=None, ip=ip)
-            blog_view.date_view = timezone.now()
-            blog_view.save()
-
-        context = super().get_serializer_context()
-        print(context)
-        comments = self.get_object().blog_comments.prefetch_related('comment_child').filter(active=True, parent=None)
-        context['comments'] = BlogCommentSerializers(comments, many=True)
-        return context
-
-    def post(self, request, slug):
-        parent = ''
-        replay_to = request.data.get('parent')
-
-        if replay_to:
-            parent = replay_to
-
-        data = {
-            'blog': self.get_object().id,
-            'user': request.user.id,
-            'text': request.data['text'],
-            'parent': parent,
-        }
-        comment = BlogCommentSerializers(data=data)
-        if comment.is_valid():
-            comment.save()
-            return Response(comment.data)
-        return Response(comment.errors)
-
-
-class TagApiView(ListAPIView):
-    serializer_class = BlogKeyWordSerializers
-
-    def get_queryset(self):
-        keyword = self.kwargs.get('keyword')
-        tag = get_object_or_404(BlogKeyWordModel, url=keyword)
-        blogs = tag.blog_keywords.filter(active=True)
-        return blogs
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        keyword = self.kwargs.get('keyword')
-        tag = get_object_or_404(BlogKeyWordModel, url=keyword)
-        context['tag'] = tag
-        return context
-
-
 class AutherView(ListView):
     model = BlogModel
     template_name = 'blog/author.html'
@@ -207,53 +142,3 @@ class AutherView(ListView):
 
 class AutherPaginationClass(LimitOffsetPagination):
     page_size = 15
-
-
-class AutherApiView(ListAPIView):
-    serializer_class = BlogSerializers
-    pagination_class = AutherPaginationClass
-
-
-    def get_queryset(self):
-        auther_url = self.kwargs.get('url')
-        blogs = BlogModel.objects.annotate(count_view=Count('blog_view')).filter(auther__url=auther_url,
-                                                                                 active=True).order_by('-count_view')
-        return blogs
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        auther_url = self.kwargs['url']
-        context['auther'] = AutherSerializers(get_object_or_404(AutherModel, url=auther_url, active=True))
-        return context
-
-
-#----------------------------------------Api Views---------------------------------------------
-
-class BlogAPIView(ListAPIView):
-    queryset = BlogModel.objects.prefetch_related('blog_view', 'blog_likes', 'blog_comments').filter(active=True)
-
-    def get_queryset(self):
-        category_url = self.kwargs.get('category')
-        if category_url:
-            blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True,
-                                                                                         category__url=category_url)
-        else:
-            blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True)
-        return blogs
-
-    def get_serializer_context(self):
-        context = super().get_serializer_context()
-        blogs = (BlogModel.objects.prefetch_related('blog_view', 'blog_likes').
-                 annotate(count_likes=Count('blog_likes'), count_views=Count('blog_view')).filter(active=True))
-        blog_categories = BlogCategorySerializers(BlogCategoryModel.objects.filter(active=True), many=True)
-        context['popular_blogs'] = BlogSerializers(blogs.order_by('-count_likes')[0: 15], many=True)
-        context['most_view_blogs'] = BlogSerializers(blogs.order_by('-count_views')[0:15], many=True)
-        context['suggested_blogs'] = SuggestedBlogSerializers(SuggestedBlogModel.objects.all().order_by('order')[0:15],
-                                                              many=True)
-        context['keywords'] = BlogKeyWordSerializers(BlogKeyWordModel.objects.all()[0:15], many=True)
-        context['blog_categories'] = blog_categories
-        context['banner_blog1'] = BannerBlogSerializers(get_object_or_404(BannerBlogModel, place='place1'))
-        context['banner_blog2'] = BannerBlogSerializers(get_object_or_404(BannerBlogModel, place='place2'))
-        context['banner_blog3'] = BannerBlogSerializers(get_object_or_404(BannerBlogModel, place='place3'))
-        context['banner_blog4'] = BannerBlogSerializers(get_object_or_404(BannerBlogModel, place='place4'))
-        return context

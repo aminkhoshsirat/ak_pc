@@ -48,68 +48,68 @@
                             id="offerItem">
                             <div class="swiper-wrapper">
                                 {% for product in amazing_offers %}
-                                <div class="swiper-slide">
-                                    <div class="offer-item">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="offer-discount">
-                                                    <span>٪{{ product.product.off }} تخفیف</span>
-                                                </div>
-                                                <div class="offer-img">
-                                                    <img src="{{ product.product.image.url }}" alt="{{ product.product.title }}" class="img-fluid">
-                                                    <div class='countdown' data-date="{{ product.date | date:"%Y-%m-%d" }}" data-time="{{ product.date | date:"%H:%M" }}">
+                                    <div class="swiper-slide">
+                                        <div class="offer-item">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="offer-discount">
+                                                        <span>٪{{ product.product.off }} تخفیف</span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="offer-content">
-                                                    <div class="offer-title d-md-inline-block d-none">
-                                                        <h4>پیشنهاد شگفت انگیز <span>فروشگاه</span></h4>
-                                                    </div>
-                                                    <div class="offer-desc">
-                                                        <div class="se-title">
-                                                            <h5>{{ product.product.title }}
-                                                            </h5>
-                                                            
+                                                    <div class="offer-img">
+                                                        <img src="{{ product.product.image.url }}" alt="{{ product.product.title }}" class="img-fluid">
+                                                        <div class='countdown' data-date="{{ product.date | date:"%Y-%m-%d" }}" data-time="{{ product.date | date:"%H:%M" }}">
                                                         </div>
-                                                        <div class="se-desc">
-                                                            <h6>ویژگی محصول:</h6>
-                                                            <ul>
-                                                                {% for field in product.fields %}
-                                                                <li>
-                                                                    <span class="title">{{ field.name }} :</span>
-                                                                    <span class="desc">{{ field.amount }}</span>
-                                                                </li>
-                                                                    {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="offer-content">
+                                                        <div class="offer-title d-md-inline-block d-none">
+                                                            <h4>پیشنهاد شگفت انگیز <span>فروشگاه</span></h4>
+                                                        </div>
+                                                        <div class="offer-desc">
+                                                            <div class="se-title">
+                                                                <h5>{{ product.product.title }}
+                                                                </h5>
                                                                 
-                                                            </ul>
-                                                            <div class="order-progress py-3">
-                                                                <h6 class="fw-bold mb-2">63% فروش رفته</h6>
-                                                                <div class="progress">
-                                                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                                        role="progressbar" aria-valuenow="63"
-                                                                        aria-valuemin="0" aria-valuemax="100"
-                                                                        style="width: 63%;background-color: #007fee;">
+                                                            </div>
+                                                            <div class="se-desc">
+                                                                <h6>ویژگی محصول:</h6>
+                                                                <ul>
+                                                                    {% for field in product.fields %}
+                                                                    <li>
+                                                                        <span class="title">{{ field.name }} :</span>
+                                                                        <span class="desc">{{ field.amount }}</span>
+                                                                    </li>
+                                                                        {% endfor %}
+                                                                    
+                                                                </ul>
+                                                                <div class="order-progress py-3">
+                                                                    <h6 class="fw-bold mb-2">63% فروش رفته</h6>
+                                                                    <div class="progress">
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                                                            role="progressbar" aria-valuenow="63"
+                                                                            aria-valuemin="0" aria-valuemax="100"
+                                                                            style="width: 63%;background-color: #007fee;">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="offer-desc-price">
+                                                                <span class="old">{{ product.product.price | money_format }} تومان</span>
+                                                                <span class="new">{{ product.product.price_after_off | money_format }} تومان</span>
+                                                            </div>
                                                         </div>
-                                                        <div class="offer-desc-price">
-                                                            <span class="old">{{ product.product.price | money_format }} تومان</span>
-                                                            <span class="new">{{ product.product.price_after_off | money_format }} تومان</span>
+    
+                                                        <div class="offer-btn">
+                                                            <a href="{{ product.product.get_absolute_url }}"><i class="bi bi-cart-plus"></i> بریم
+                                                                واسه
+                                                                خرید!</a>
                                                         </div>
-                                                    </div>
-
-                                                    <div class="offer-btn">
-                                                        <a href="{{ product.product.get_absolute_url }}"><i class="bi bi-cart-plus"></i> بریم
-                                                            واسه
-                                                            خرید!</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 {% endfor %}
                                 
                             </div>

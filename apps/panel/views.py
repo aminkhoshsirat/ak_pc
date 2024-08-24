@@ -18,14 +18,7 @@ from django.utils import timezone
 from apps.product.models import *
 from .forms import *
 from .models import *
-from apps.product.serializers import ProductCommentSerializers
-from apps.blog.serializers import BlogCommentSerializers
-from apps.bucket.serializers import BucketProductSerializers
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from rest_framework.response import Response
 from django.db.models.aggregates import Max
 from django.db.models import F
 from django.template.loader import get_template
@@ -540,7 +533,6 @@ class AddNewProductView(AdminRequiredMixin, View):
             'form': form,
             'category_url': category
         }
-        print(form)
 
         return render(request, 'panel/add-product-form.html', context)
 
@@ -767,68 +759,3 @@ class AddNewProductView(AdminRequiredMixin, View):
                 form.save()
             else:
                 return redirect(request.META['HTTP_REFERER'])
-
-
-class HeaderApiView(IsAdminUser, APIView):
-    permission_classes = [IsAdminUser]
-
-    def get(self, request):
-        comments = sorted(
-            chain(ProductCommentSerializers(ProductCommentModel.objects.filter(admin_seen=False), many=True).data,
-                  BlogCommentSerializers(BlogCommentModel.objects.filter(admin_seen=False), many=True).data))
-        context = {
-            'comments': comments,
-            'comments_count': json.dumps(len(comments)),
-        }
-        return Response(context)
-
-
-class IndexApiView(APIView):
-    permission_classes = [IsAdminUser]
-
-    def get(self, request):
-        recently_sell_products = BucketProductSerializers(BucketProductsModel.objects.filter(bucket__is_paid=True).order_by('-id'), many=True).data
-        context = {
-            'recently_sell_products': recently_sell_products,
-        }
-        return Response(context)
-
-
-class ProductCategoryApiView(View):
-    def get(self, request):
-        main_categories = MainCategoryModel.objects.prefetch_related('base_category_child').all()
-        context = {
-            'main_categories': main_categories,
-            'main_category_form': MainCategoryForm,
-            'child_category_form': ChildCategoryForm,
-        }
-        return render(request, 'panel/products-categories.html', context)
-
-    def post(self, request):
-        if 'base_category' in request.POST:
-            form = ChildCategoryForm(request.POST, self.request.FILES)
-            if form.is_valid():
-                cd = form.cleaned_data
-                child_category = ChildCategoryModel.objects.create(title=cd['title'], url=cd['url'],
-                                                                   base_category=cd['base_category'],
-                                                                   parent_category=cd['parent_category'],
-                                                                   active=cd['active'])
-                ChildCategoryImageModel.objects.create(child_category=child_category, image=cd['image'],
-                                                       description=cd['description'])
-                messages.add_message(request, messages.SUCCESS, 'دسته بندی اضافه شد')
-                redirect('panel:products_category')
-            else:
-                redirect('panel:products_category')
-
-        else:
-            form = MainCategoryForm(request.POST, self.request.FILES)
-            if form.is_valid():
-                cd = form.cleaned_data
-                main_category = MainCategoryModel.objects.create(title=cd['title'], url=cd['url'],
-                                                                 active=cd['active'])
-                MainCategoryImageModel.objects.create(main_category=main_category,
-                                                      image=cd['image'], description=cd['description'])
-                return redirect('panel:products_category')
-            else:
-                return redirect('panel:products_category')
-        return redirect('panel:products_category')

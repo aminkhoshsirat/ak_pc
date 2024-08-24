@@ -1,10 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from django.views.generic import View, ListView, DetailView
 from apps.product.models import *
-from apps.product.serializers import ProductSerializers
 from apps.product.category_fields import product_fields
-from rest_framework.views import APIView
-from rest_framework.generics import ListAPIView
 
 
 class AsembleView(View):
@@ -129,13 +126,3 @@ class ProductDetailView(DetailView):
         context['fields'] = product_fields(context['product'])
         return context
 
-
-
-#--------------------------------------Api Views --------------------------------------------------
-
-class ProductDetailApiView(ListAPIView):
-
-    def get_serializer_context(self, **kwargs):
-        context = super().get_context_data()
-        context['fields'] = product_fields(context['product'])
-        return context

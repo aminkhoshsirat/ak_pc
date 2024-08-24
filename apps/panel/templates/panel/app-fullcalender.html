@@ -54,4 +54,8 @@
 
 
     </main>
+    {% block extra_js %}
+        <script src="{% static 'panel/js/calendarObject.js' %}"></script>
+        <script src="{% static 'panel/js/calendar.js' %}"></script>
+    {% endblock %}
 {% endblock %}
