@@ -172,6 +172,7 @@ class ChangePasswordView(LoginRequiredMixin, View):
             user = self.request.user
             password = cd['password']
             user.set_password(password)
+            user.save()
             return redirect('user:dashboard')
         return render(request, 'user/change-password.html')
 
@@ -247,7 +248,7 @@ class OrderDetailView(DetailView):
     context_object_name = 'order'
 
     def get_queryset(self):
-        orders = BuketModel.objects.prefetch_related('bucket_products').filter(is_paid=True, user=self.request.user)
+        orders = BuketModel.objects.prefetch_related('user_bucket_products').filter(is_paid=True, user=self.request.user)
         return orders
 
 

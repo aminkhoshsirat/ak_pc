@@ -313,129 +313,8 @@
 
     <!-- FORM -->
 
-    <div class="blog-comments">
-        <div class="container-fluid">
-            <div class="blog-comment shadow-box">
-                <div class="row">
-                    <div class="col-12">
-                        <h6 class="tab-title">
-                            <span>{{ comments.count }}</span>
-                            <span>دیدگاه برای</span>
-                            <span>{{ blog.title }}
-                                </span>
-                        </h6>
-                        {% for comment in comments %}
-                            <div class="comment-item">
-                                <div class="comment-item-avatar d-sm-flex d-none">
+    <div class="blog-comments" id="blog-comments-box">
 
-                                    <div class="comment-item-avatar-img ">
-                                        {% if comment.user.profile_image %}
-                                            <img src="{{ comment.user.profile_image.url }}" class="rounded circle"
-                                                 width="40"
-                                                 alt="{{ comment.user.fullname }}">
-                                        {% else %}
-                                            <i class="bi bi-person-circle" style="font-size: 40px"></i>
-                                        {% endif %}
-                                    </div>
-
-                                </div>
-                                <div class="comment-item-desc">
-                                    <div class="comment-item-avatar d-sm-none d-flex mb-2">
-
-
-                                        <div class="comment-item-avatar-img ">
-                                            {% if comment.user.profile_image %}
-                                                <img src="{{ comment.user.profile_image.url }}" class="rounded circle"
-                                                     width="40"
-                                                     alt="{{ comment.user.fullname }}">
-                                            {% else %}
-                                                <i class="bi bi-person-circle" style="font-size: 40px"></i>
-                                            {% endif %}
-                                        </div>
-
-                                    </div>
-                                    <div class="comment-item-title">
-                                        <div class="comment-date">
-                                            <p class="text-muted comment-date-auther">{{ comment.user.fullname }}</p>
-                                            <p class="text-muted comment-date-speractor">–</p>
-                                            <p class="text-muted comment-date-date">{{ comment.published_date | date:"Y-m-d" }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="comment-item-content">
-                                        <p>{{ comment.text }}
-                                        </p>
-                                        {% for child in comment.comment_child.all %}
-                                            {% if child.active %}
-                                                <div class="comment-item">
-                                                    <div class="comment-item-avatar d-sm-flex d-none">
-
-                                                        <div class="comment-item-avatar-img ">
-                                                            {% if child.user.profile_image %}
-                                                                <img src="{{ child.user.profile_image.url }}"
-                                                                     class="rounded circle"
-                                                                     width="40"
-                                                                     alt="{{ child.user.fullname }}">
-                                                            {% else %}
-                                                                <i class="bi bi-person-circle"
-                                                                   style="font-size: 40px"></i>
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="comment-item-desc" style="background: #eee;">
-                                                        <div class="comment-item-avatar d-sm-none d-flex mb-2">
-
-                                                            <div class="comment-item-avatar-img ">
-                                                                {% if child.user.profile_image %}
-                                                                    <img src="{{ child.user.profile_image.url }}"
-                                                                         class="rounded circle"
-                                                                         width="40"
-                                                                         alt="{{ child.user.fullname }}">
-                                                                {% else %}
-                                                                    <i class="bi bi-person-circle"
-                                                                       style="font-size: 40px"></i>
-                                                                {% endif %}
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-item-title">
-                                                            <div class="comment-date">
-                                                                <p class="text-muted comment-date-auther">{{ child.user.fullname }}</p>
-                                                                <p class="text-muted comment-date-speractor">–</p>
-                                                                <p class="text-muted comment-date-date">{{ child.published_date | date:"Y-m-d" }}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-item-content">
-                                                            <p>{{ child.text }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </div>
-                                    <a href="" class="btn btn-success px-4 btn-sm rounded-pill">پاسخ</a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <div class="comment-form">
-                            <h6 class="tab-title mt-3">دیدگاه خود را بنویسید</h6>
-                            <form method="post" action="/blog/comment/{{ blog.id }}">
-                                {% csrf_token %}
-                                <div class="form-group mb-2">
-                                    <label for="commentbody" class="form-label my-3">دیدگاه شما <span
-                                            class="text-danger ms-1">*</span></label>
-                                    <textarea id="commentbody" rows="7" name="text" class="form-control"
-                                              placeholder="دیدگاه شما"
-                                              required=""></textarea>
-                                </div>
-                                <input type="hidden" name="replay_to">
-                                <input type="submit" value="ثبت"
-                                       class="btn btn-success rounded-pill w-100 mt-3 shadow-sm">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <style>
@@ -492,5 +371,19 @@
             padding: 20px 0;
         }
     </style>
+    {% block extra_js %}
+        <script>
+            var isAjaxCalled = false;
+            $(window).scroll(function () {
+                if (($(window).scrollTop() >= ($(document).height() - $(window).height()) * 0.55) && !isAjaxCalled) {
+                    isAjaxCalled = true;
+                    $.get('/blog/comment/{{ blog.id }}').then(res => {
+                        console.log(res);
+                        $('#blog-comments-box').html(res);
+                    })
+                }
+            });
+        </script>
+        {% endblock %}
     <!-- end FORM -->
 {% endblock %}

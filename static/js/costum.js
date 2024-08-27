@@ -32,7 +32,6 @@ $(function () {
     });
 });
 
-
 function showProduct(id){
     $.get("/product/show/" + id).then(res => {
         $('#show-product').html(res);
@@ -64,38 +63,33 @@ function productChart(id){
 function blogComment(id){
     const text = $('#blog-comment-text').val();
     const replay_to = $('#blog-replay-id').val();
-    $.post('/blog/comment/' + id, {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value, text:text, replay_to:replay_to}).then(res =>{
+    if (text === ""){
+        $('#comment-status').html(`<h2>لطفا نظر خود را بنویسید</h2>`);
+    }
+    else{
+        $.post('/blog/comment/' + id, {csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value, text:text, replay_to:replay_to}).then(res =>{
         console.log(res);
         if (res === 'success'){
-            $('#comment-status').html(`<h2>....کامنت شما با موفقیت ثبت شد و در حال بررسی</h2>`);
+            $('#comment-status').html(`<h2> نظر شما با موفقیت ثبت شد و در حال بررسی ...</h2>`);
             $('#blog-comment-text').val('');
         }
         if (res === 'failed'){
-             $('#comment-status').html(`<h2>مشکلی در ثبت کامنت وجود دارد</h2>`);
+             $('#comment-status').html(`<h2>مشکلی در ثبت نظر وجود دارد</h2>`);
         }
     })
+    }
+
 }
 
 function replayComment(name, id){
     $('#blog-replay-id').val(id);
-    $('#user-replay').html(`<h3>در پاسخ: ${ name } </h3>><button onclick="deleteReplayComment()">حذف</button>`);
+    $('#user-replay').html(`<h4 style="display: inline-block;">در پاسخ: ${ name } </h4><button style="display: inline-block;color: red;background-color: white;border: none" onclick="deleteReplayComment()">لغو</button>`);
 }
 
 function deleteReplayComment(){
     $('#blog-replay-id').val('');
     $('#user-replay').html('');
 }
-
-
-// $(window).scroll(function() {
-//         const id = $('#blog-id').val();
-//         var margin = $(document).height() - $(window).height() - 150;
-//         if ($(window).scrollTop() > margin) {
-//             $.get('/blog/comment/' + id).then(res => {
-//                 $('#comments').html(res);
-//             })
-//         }
-//     });
 
 
 function addAddressView(){

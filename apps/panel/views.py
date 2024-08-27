@@ -37,17 +37,20 @@ from apps.blog.forms import AutherForm, BlogForm, BlogCategoryForm
 
 class AdminRequiredMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.is_admin
+        if self.request.user.is_authenticated:
+            return self.request.user.is_admin
 
 
 class SuperRequiredMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.is_superuser
+        if self.request.user.is_authenticated:
+            return self.request.user.is_superuser
 
 
 class AutherRequiredMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.is_superuser or self.request.user.is_auther
+        if self.request.user.is_authenticated:
+            return self.request.user.is_superuser or self.request.user.is_auther
 
 
 class HeaderView(AdminRequiredMixin, View):

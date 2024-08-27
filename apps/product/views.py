@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, Http404, redirect
 from django.views.generic import View, ListView, DetailView
 from apps.blog.models import BlogCategoryModel, BlogModel
-from apps.panel.models import SiteDetailModel, SuggestedProductsModel
+from apps.panel.models import SiteDetailModel, SuggestedProductsModel, AboutUsModel
 from apps.panel.models import AmazingOfferModel, AdvertisingBannerModel, InstantOfferModel, FaqQuestionModel
 from django.db.models.aggregates import Count, Max, Min
 from .utils import *
@@ -58,7 +58,6 @@ class ContactUsView(View):
 
     def post(self, request):
         form = ContactUsForm(request.POST)
-        print(form)
         if form.is_valid():
             form.save()
             return redirect('contact_us')
@@ -69,7 +68,8 @@ class ContactUsView(View):
 
 class AboutUsView(View):
     def get(self, request):
-        return render(request, 'about-us.html')
+        objects = AboutUsModel.objects.all()
+        return render(request, 'about-us.html', {'objects': objects})
 
 
 class ProductListView(ListView):
@@ -93,6 +93,7 @@ class ProductListView(ListView):
     def get_queryset(self):
         main_category_url = self.kwargs.get('main_category')
         child_category_url = self.kwargs.get('child_category')
+        brand = self.kwargs.get('brand')
         search = self.request.GET.get('search')
         sort = self.request.GET.get('sort')
 
@@ -116,6 +117,9 @@ class ProductListView(ListView):
             child_category = ChildCategoryModel.objects.filter(url=child_category_url, active=True).first()
             self.extra_context = {'child_category': child_category}
             products = products.filter(child_category=child_category)
+
+        if brand:
+            products = products.filter(brand__url=brand)
 
         else:
             products = products.filter(active=True)
@@ -189,8 +193,12 @@ class ProductDetailView(DetailView):
             product.save()
 
         try:
-            context['product_in_bucket'] = int(r.hget(
-                f'bucket:user:{self.request.user.phone}:product:{product.id}', 'num'))
+            if user.is_authenticated:
+                context['product_in_bucket'] = int(r.hget(
+                    f'bucket:user:{user.phone}:product:{product.id}', 'num'))
+            else:
+                context['product_in_bucket'] = int(r.hget(
+                    f'bucket:user:{ip}:product:{product.id}', 'num'))
 
         except:
             context['product_in_bucket'] = None
@@ -202,10 +210,12 @@ class ProductDetailView(DetailView):
 
 
 class SuggestedProductView(View):
-    def get(self, request, child_category):
-        title = request.GET.get('title')
-        products = ProductModel.objects.annotate(similar=TrigramSimilarity('title', title)).filter(
-            child_category__url=child_category).order_by('-similar')[0:20]
+    def get(self, request, category, title):
+        # products = ProductModel.objects.annotate(similar=TrigramSimilarity('title', title)).filter(
+        #     child_category__url=category).order_by('-similar')[0:20]
+        products = ProductModel.objects.all()
+        print(category)
+        print(title)
         return render(request, 'product/suggested-products.html', {'products': products})
 
 
@@ -217,7 +227,7 @@ class ProductCommentView(ListView):
     #     context = super(*args, **kwargs)
     #     context['comment_average_grade'] = ProductCommentModel.objects.aggregate(Avg('grade'))
     #     return context
-
+    #
     # def get_queryset(self):
     #     product_id = self.kwargs.get('product_id')
     #     comments = ProductCommentModel.objects.prefetch_related('comment_positive_points', 'comment_negative_points').filter(product_id=product_id, active=True, admin_seen=True)
@@ -252,14 +262,22 @@ class ProductLikeView(View):
 class ProductAddView(View):
     def get(self, request, id):
         user = request.user
-        r.hset(f'bucket:user:{user.phone}:product:{id}', mapping={'product': id, 'num': 1})
+        if user.is_authenticated:
+            r.hset(f'bucket:user:{user.phone}:product:{id}', mapping={'product': id, 'num': 1})
+        else:
+            ip = get_client_ip(request)
+            r.hset(f'bucket:user:{ip}:product:{id}', mapping={'product': id, 'num': 1})
         return HttpResponse('success')
 
 
 class ProductDeleteView(View):
     def get(self, request, id):
         user = request.user
-        r.delete(f'bucket:user:{user.phone}:product:{id}')
+        if user.is_authenticated:
+            r.delete(f'bucket:user:{user.phone}:product:{id}')
+        else:
+            ip = get_client_ip(request)
+            r.delete(f'bucket:user:{ip}:product:{id}')
         return HttpResponse('success')
 
 
@@ -274,7 +292,11 @@ class ProductChangeView(View):
         if num < 1:
             num = 1
         user = request.user
-        r.hset(f'bucket:user:{user.phone}:product:{id}', mapping={'product': id, 'num': num})
+        if user.is_authenticated:
+            r.hset(f'bucket:user:{user.phone}:product:{id}', mapping={'product': id, 'num': num})
+        else:
+            ip = get_client_ip(request)
+            r.hset(f'bucket:user:{ip}:product:{id}', mapping={'product': id, 'num': num})
         return HttpResponse('success')
 
 
@@ -291,13 +313,12 @@ class ShowProductView(View):
 
 class ProductChartView(View):
     def get(self, request, id):
-        products = ProductPriceChartModel.objects.all()
+        products = ProductPriceChartModel.objects.filter(product_id=id)
         x = []
         y = []
         for i in products:
             x.append(i.date.strftime("%Y-%m-%d"))
             y.append(i.price)
-        print(x)
         context = {
             'x': dumps(x),
             'y': dumps(y),

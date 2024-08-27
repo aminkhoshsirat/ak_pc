@@ -3,6 +3,7 @@ from .models import *
 from apps.panel.models import SiteDetailModel
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
+from utils.services import get_client_ip
 import requests
 import json
 import redis
@@ -14,14 +15,24 @@ r = redis.Redis(host='localhost', port=6379, db=0)
 class BucketView(View):
     def get(self, request):
         user = request.user
-        products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{user.phone}:product:*')]
+        if user.is_authenticated:
+            products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{user.phone}:product:*')]
+        else:
+            ip = get_client_ip(request)
+            products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{ip}:product:*')]
         products = ProductModel.objects.filter(id__in=products_ids)
 
         if products.exists():
             total_price = 0
             total_price_after_off = 0
-            bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))} for i in
-                               r.keys(f'bucket:user:{user.phone}:product:*')]
+            if user.is_authenticated:
+                bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))} for i in
+                                   r.keys(f'bucket:user:{user.phone}:product:*')]
+            else:
+                ip = get_client_ip(request)
+                bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))}
+                                   for i in
+                                   r.keys(f'bucket:user:{ip}:product:*')]
             for product in products:
                 total_price += product.price
                 total_price_after_off += product.price_after_off
@@ -48,15 +59,25 @@ class BucketView(View):
 class SmallBucketView(View):
     def get(self, request):
         user = request.user
-        products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{user.phone}:product:*')]
+        if user.is_authenticated:
+            products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{user.phone}:product:*')]
+        else:
+            ip = get_client_ip(request)
+            products_ids = [int(r.hget(i, 'product')) for i in r.keys(f'bucket:user:{ip}:product:*')]
         products = ProductModel.objects.filter(id__in=products_ids)
 
         if products.exists():
             total_price = 0
             total_price_after_off = 0
-            bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))} for
-                               i in
-                               r.keys(f'bucket:user:{user.phone}:product:*')]
+            if user.is_authenticated:
+                bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))}
+                                   for i in
+                                   r.keys(f'bucket:user:{user.phone}:product:*')]
+            else:
+                ip = get_client_ip(request)
+                bucket_products = [{'product': products.get(id=int(r.hget(i, 'product'))), 'num': int(r.hget(i, 'num'))}
+                                   for i in
+                                   r.keys(f'bucket:user:{ip}:product:*')]
             for product in products:
                 total_price += product.price
                 total_price_after_off += product.price_after_off
@@ -79,7 +100,11 @@ class SmallBucketView(View):
 class DeleteProductBucketView(View):
     def get(self, request, id):
         user = request.user
-        r.delete(f'bucket:user:{user.phone}:product:{id}')
+        if user.is_authenticated:
+            r.delete(f'bucket:user:{user.phone}:product:{id}')
+        else:
+            ip = get_client_ip(request)
+            r.delete(f'bucket:user:{ip}:product:{id}')
         return HttpResponse('success')
 
 

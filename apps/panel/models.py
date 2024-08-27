@@ -137,3 +137,8 @@ class ContactUsModel(models.Model):
     phone = models.CharField(max_length=11)
     subject = models.TextField()
     message = models.TextField()
+
+
+class AboutUsModel(models.Model):
+    title = models.TextField()
+    description = models.TextField()

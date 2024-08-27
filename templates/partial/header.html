@@ -9,15 +9,15 @@
                             {% if request.user.is_authenticated %}
                                 {% if user.is_superuser %}
                                     <a href="{% url 'panel:index' %}"
-                                   class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
-                                    پنل ادمین
-                                </a>
-                                    {% else %}
+                                       class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
+                                        پنل ادمین
+                                    </a>
+                                {% else %}
                                     <a href="{% url 'user:dashboard' %}"
-                                   class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
-                                    پنل کاربری
-                                </a>
-                                    {% endif %}
+                                       class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
+                                        پنل کاربری
+                                    </a>
+                                {% endif %}
                                 <a class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap"
                                    data-bs-toggle="offcanvas" href="#cartCanvas" onclick="showSmallBucket()"
                                    role="button"
@@ -82,13 +82,15 @@
                                     </form>
                                 </div>
                                 <ul class="rm-item-menu navbar-nav">
-                                {% if request.user.is_authenticated %}
-                                    <li class="nav-item bg-ul-f7"><a href="{% url 'user:dashboard' %}" class="nav-link">پنل کاربری
+                                    {% if request.user.is_authenticated %}
+                                        <li class="nav-item bg-ul-f7"><a href="{% url 'user:dashboard' %}"
+                                                                         class="nav-link">پنل کاربری
                                         </a></li>
                                     {% else %}
-                                    <li class="nav-item bg-ul-f7"><a href="{% url 'user:login' %}" class="nav-link">ورود کاربر
+                                        <li class="nav-item bg-ul-f7"><a href="{% url 'user:login' %}" class="nav-link">ورود
+                                            کاربر
                                         </a></li>
-                                {% endif %}
+                                    {% endif %}
                                     <li class="nav-item bg-ul-f7">
                                         <a href="" class="nav-link">دسته بندی محصولات</a>
                                         <span class="showSubMenu"><i class="bi bi-chevron-left"></i></span>
@@ -174,86 +176,93 @@
     </div>
 
     <!-- start mege menu -->
-    <div class="mega-menu d-lg-flex d-none">
+    <div class="mega-menu d-lg-block d-none">
         <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-10">
-                    <div class="top-menu-menu">
-                        <ul class="navbar-nav">
-                            <li class="position-relative m-0"></li>
-                            <li class="nav-item main-menu-head"><a href=""
-                                                                   class="nav-link border-animate fromRight fw-bold"><i
-                                    class="bi bi-list-ul"></i>
-                                 دسته بندی محصولات
-                            </a>
-                                <ul class="main-menu mega-container">
-                                    {% for main_category in main_categories %}
-                                        <li class="main-menu-sub-active-li"><a
-                                                href="{{ main_category.get_absolute_url }}"><i
-                                                class="bi bi-phone"></i>{{ main_category.title }}</a>
-                                            <ul class="main-menu-sub back-menu"
-                                                style=" background: #fff url('{{ main_category.main_category_image.image.url }}') no-repeat;">
-                                                {% for child_category in main_category.base_category_child.all %}
-                                                    {% if child_category.parent_category == None %}
-                                                        <li><a class="title my-flex-baseline"
-                                                               href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
-                                                        </li>
-                                                        {% for child_child_category in child_category.child_category.all %}
-                                                            <li>
-                                                                <a href="{{ child_child_category.get_absolute_url }}">{{ child_child_category.title }}</a>
+            <div class="top-menu-parent">
+                <div class="row align-items-center">
+                    <div class="col-lg-9">
+                        <div class="top-menu-menu">
+                            <ul class="navbar-nav align-items-center">
+                                <li class="position-relative m-0"></li>
+
+                                <li class="nav-item main-menu-head"><a href=""
+                                                                       class="nav-link border-animate fromRight fw-bold"><i
+                                        class="bi bi-list-ul"></i>
+                                    دسته بندی محصولات
+                                </a>
+                                    <ul class="main-menu mega-container">
+                                        {% for main_category in main_categories %}
+                                            <li class="main-menu-sub-active-li"><a
+                                                    href="{{ main_category.get_absolute_url }}"><i
+                                                    class="bi bi-phone"></i>{{ main_category.title }}</a>
+                                                <ul class="main-menu-sub back-menu"
+                                                    style=" background: #fff url('{{ main_category.main_category_image.image.url }}') no-repeat;">
+                                                    {% for child_category in main_category.base_category_child.all %}
+                                                        {% if child_category.parent_category == None %}
+                                                            <li><a class="title my-flex-baseline"
+                                                                   href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
                                                             </li>
-                                                        {% endfor %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
+                                                            {% for child_child_category in child_category.child_category.all %}
+                                                                <li>
+                                                                    <a href="{{ child_child_category.get_absolute_url }}">{{ child_child_category.title }}</a>
+                                                                </li>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endfor %}
 
-                                </ul>
-                            </li>
-                        <li class="position-relative m-0"></li>
-                            <li class="nav-item main-menu-head"><a href=""
-                                                                   class="nav-link border-animate fromRight fw-bold"><i
-                                    class="bi bi-substack"></i>
-                                 دسته بندی مقالات
-                            </a>
-                                <ul class="main-menu mega-container">
-                                    {% for category in blog_categories %}
-                                        <li class="main-menu-sub-active-li"><a
-                                                href="{{ category.get_absolute_url }}"><i
-                                                class="bi bi-phone"></i>{{ category.title }}</a>
-                                            <ul class="main-menu-sub back-menu"
-                                                style=" background: #fff url('{{ category.image.url }}') no-repeat;">
-                                                {% for child_category in category.child.all %}
-                                                    {% if child_category.active %}
-                                                        <li><a class="title my-flex-baseline"
-                                                               href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
-                                                        </li>
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        </li>
-                                    {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="position-relative m-0"></li>
+                                <li class="nav-item main-menu-head"><a href=""
+                                                                       class="nav-link border-animate fromRight fw-bold"><i
+                                        class="bi bi-substack"></i>
+                                    دسته بندی مقالات
+                                </a>
+                                    <ul class="main-menu mega-container">
+                                        {% for category in blog_categories %}
+                                            <li class="main-menu-sub-active-li"><a
+                                                    href="{{ category.get_absolute_url }}"><i
+                                                    class="bi bi-phone"></i>{{ category.title }}</a>
+                                                <ul class="main-menu-sub back-menu"
+                                                    style=" background: #fff url('{{ category.image.url }}') no-repeat;">
+                                                    {% for child_category in category.child.all %}
+                                                        {% if child_category.active %}
+                                                            <li><a class="title my-flex-baseline"
+                                                                   href="{{ child_category.get_absolute_url }}">{{ child_category.title }}</a>
+                                                            </li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                        {% endfor %}
 
-                                </ul>
-                            </li>
-                            <li class="nav-item"><a href="{% url 'asemble:index' %}"
-                                                    class="nav-link border-animate fromRight"><i class="bi bi-puzzle-fill"></i>  اسمبل
-                                کیس</a></li>
-                            <li class="nav-item"><a href="{% url 'power:caculator' %}"
-                                                    class="nav-link border-animate fromRight"><i class="bi bi-calculator"></i>محاسبه
-                                     گر پاور    </a></li>
-                            <li class="nav-item"><a href="{% url 'benchmark:index' %}"
-                                                    class="nav-link border-animate fromRight"><i class="bi bi-speedometer"></i> بنجمارک   </a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a href="{% url 'asemble:index' %}"
+                                                        class="nav-link border-animate fromRight"><i
+                                        class="bi bi-puzzle-fill"></i> اسمبل
+                                    کیس</a></li>
+                                <li class="nav-item"><a href="{% url 'power:caculator' %}"
+                                                        class="nav-link border-animate fromRight"><i
+                                        class="bi bi-calculator"></i>محاسبه
+                                    گر پاور </a></li>
+                                <li class="nav-item"><a href="{% url 'benchmark:index' %}"
+                                                        class="nav-link border-animate fromRight"><i
+                                        class="bi bi-speedometer"></i> بنجمارک </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <ul class="navbar-nav text-end">
+                            <li class="nav-item"><a href="" class="nav-item def-color"><i
+                                    class="bi bi-telephone me-2"></i>
+                                <span>{{ site_detail.phone }}</span>
+                            </a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-2">
-                    <ul class="navbar-nav text-end">
-                        <li class="nav-item"><a href="" class="nav-item def-color"><i class="bi bi-telephone me-2"></i>
-                            <span>{{ site_detail.phone }}</span>
-                        </a></li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -284,10 +293,10 @@
             </a></li>
             <li class="d-table-cell"><a href="{% url 'blog:blog' %}" class="mf-link nav-link text-center">
 
-                    <div class="position-relative mf-link-icon d-table mx-auto">
-                        <span class="d-block mf-link-icon"><i class="bi bi-book-half font-20"></i></span>
-                    </div>
-                    <span class="mt-1 font-12 fw-bold mf-link-title">وبلاگ</span>
+                <div class="position-relative mf-link-icon d-table mx-auto">
+                    <span class="d-block mf-link-icon"><i class="bi bi-book-half font-20"></i></span>
+                </div>
+                <span class="mt-1 font-12 fw-bold mf-link-title">وبلاگ</span>
             </a></li>
             <li class="d-table-cell"><a class="mf-link nav-link text-center" data-bs-toggle="offcanvas"
                                         href="#cartCanvas" role="button" aria-controls="cart canvas">

@@ -62,7 +62,7 @@ class BrandModel(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        pass
+        return reverse('product:brand', args=[self.url])
 
 
 class ProductPriceChartModel(models.Model):
@@ -151,7 +151,6 @@ class ProductCommentModel(models.Model):
     grade = models.PositiveIntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     like_num = models.PositiveIntegerField(default=0)
     dislike_num = models.PositiveIntegerField(default=0)
-
 
 
 class ProductCommentPositivePointsView(models.Model):

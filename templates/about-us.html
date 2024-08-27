@@ -1,116 +1,18 @@
 {% extends 'parent/base.html' %}
 {% block title %}{% endblock %}
 {% block content %}
-       <div class="content">
-        <!-- start bradcrumb -->
-        <div class="category-bread">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="product-meta-breadcrumb shadow-sm">
-                            <nav>
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">خانه</a>
-                                    </li>
-                                    <li class="breadcrumb-item">
-                                        <a href="{% url 'product:product_list_view' %}">محصولات</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                        <span>درباره ما</span>
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="about-us">
+                    {% for object in objects %}
+                        <h3 class="h3 main-title">{{ object.title }}</h3>
+                        <p class="font-16" style="line-height: 40px;">
+                            {{ object.description }}
+                        </p>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        <!-- end bradcrumb -->
-
-        <!-- start about us -->
-
-        <div class="about-us py-3">
-            <div class="container-fluid">
-                <div class="content-box shadow-box px-3">
-                    <h4 class="text-muted-2 fw-bold title-heading">
-                        درباره ما
-                    </h4>
-                    <p class="text-muted-2 lh-lg my-3" style="text-align: justify;">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                    </p>
-                    <h5 class="text-muted-2 fw-bold title-heading">اینجا پیداش میکنی!</h5>
-                    <p class="text-muted-2 lh-lg my-3" style="text-align: justify;">
-                        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- end about us -->
-
-
     </div>
-    <div class="container-fluid">
-            <div class="footer-feature">
-                <div class="info-bar">
-                    <div class="row justify-content-center">
-                        <div class="col-md-3 col-6 text-center">
-                            <div class="info-bar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-bag" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
-                                </svg>
-                            </div>
-                            <div class="info-bar-desc">
-                                <h6 class="counter">751</h6>
-                                <p>محصولات</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 text-center">
-                            <div class="info-bar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-box2-heart" viewBox="0 0 16 16">
-                                    <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z" />
-                                    <path
-                                        d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5Zm0 1H7.5v3h-6l2.25-3ZM8.5 4V1h3.75l2.25 3h-6ZM15 5v10H1V5h14Z" />
-                                </svg>
-                            </div>
-                            <div class="info-bar-desc">
-                                <h6 class="counter">325</h6>
-                                <p>سفارش تکمیل شده</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 text-center">
-                            <div class="info-bar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-people" viewBox="0 0 16 16">
-                                    <path
-                                        d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" />
-                                </svg>
-                            </div>
-                            <div class="info-bar-desc">
-                                <h6 class="counter">2762</h6>
-                                <p>کاربران</p>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-6 text-center">
-                            <div class="info-bar-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-file-earmark-text" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
-                                    <path
-                                        d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
-                                </svg>
-                            </div>
-                            <div class="info-bar-desc">
-                                <h6 class="counter">82</h6>
-                                <p>مطالب وبلاگ</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 {% endblock %}

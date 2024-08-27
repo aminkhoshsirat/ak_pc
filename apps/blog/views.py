@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models.functions import Greatest
 from django.db.models import Q
+from .models import *
 
 
 class BlogView(ListView):
@@ -74,9 +75,6 @@ class BlogDetailView(DetailView):
             blog_view.save()
 
         context = super().get_context_data(**kwargs)
-        comments = context['blog'].blog_comments.prefetch_related('comment_child').filter(active=True, parent=None)
-        context['comments'] = comments
-        context['comments_count'] = context['blog'].blog_comments.filter(active=True).count
         blogs = BlogModel.objects.filter(active=True)
         context['most_view_blogs'] = blogs.order_by('-view_count')[:5]
         context['new_blogs'] = blogs.order_by('-published_date')[:5]
@@ -85,7 +83,7 @@ class BlogDetailView(DetailView):
         return context
 
 
-class BlogCommentView(LoginRequiredMixin, View):
+class BlogCommentView(View):
     def get(self, request, id):
         try:
             id = int(id)
@@ -114,14 +112,15 @@ class BlogCommentView(LoginRequiredMixin, View):
         if form.is_valid():
             cd = form.cleaned_data
             user = request.user
-            text = cd['text']
-            parent = None
-            replay_to = cd['replay_to']
-            if replay_to:
-                parent = get_object_or_404(BlogCommentModel, id=replay_to)
-            BlogCommentModel.objects.create(user=user, blog=blog, text=text, parent=parent)
+            if user.is_authenticated:
+                text = cd['text']
+                parent = None
+                replay_to = cd['replay_to']
+                if replay_to:
+                    parent = get_object_or_404(BlogCommentModel, id=replay_to)
+                BlogCommentModel.objects.create(user=user, blog=blog, text=text, parent=parent)
 
-            return HttpResponse('success')
+                return HttpResponse('success')
 
         return HttpResponse('failed')
 
@@ -138,7 +137,3 @@ class AutherView(ListView):
         blogs = BlogModel.objects.annotate(count_view=Count('blog_view')).filter(auther__url=auther_url,
                                                                                  active=True).order_by('-count_view')
         return blogs
-
-
-class AutherPaginationClass(LimitOffsetPagination):
-    page_size = 15
