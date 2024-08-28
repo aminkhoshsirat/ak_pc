@@ -1,25 +1,88 @@
-<button class="open-btn" onclick="openChatWindow()"><i class="fa fa-comment"></i>Chat</button>
+<div class="product-box py-20">
+        <div class="container-fluid">
+            <div class="parent">
+                <div class="content-title">
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-box-seam" viewBox="0 0 16 16">
+                            <path
+                                d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+                        </svg>
+                        <h5 class="title">جدیدترین محصولات</h5>
+                    </div>
+                    <div class="item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
+                            <path fill-rule="evenodd"
+                                d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                        </svg>
+                        <a href="">
+                            <h5 class="title">مشاهده همه</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="swiper free-mode">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="product-box-item bg-white">
+                                <div class="hover">
+                                    <div class="hover-btn">
+                                        <a href="" data-hint="مقایسه محصول" class="hint--right"><i
+                                                class="bi bi-arrow-left-right"></i></a>
+                                        <a href="" data-hint="افزودن به علاقه مندی" class="hint--right"><i
+                                                class="bi bi-heart"></i></a>
+                                        <a href="#productModal" data-hint="مشاهده سریع" class="hint--right"
+                                            data-bs-toggle="modal" data-bs-target="#productModal"><i
+                                                class="bi bi-eye"></i></a>
+                                    </div>
+                                    <div class="hover-color">
+                                        <span style="background-color: #10b663;" data-hint="رنگ سبز"
+                                            class="hint--left"></span>
+                                        <span style="background-color: #e2350a;" data-hint="رنگ قرمز"
+                                            class="hint--left"></span>
+                                        <span style="background-color: #fafafa;" data-hint="رنگ سفید"
+                                            class="hint--left"></span>
+                                    </div>
+                                </div>
+                                <a href="">
+                                    <div class="image text-center">
+                                        <img src="assets/image/product/laptop1.jpg" alt="" class="img-fluid one-image">
+                                        <img src="assets/image/product/laptop2.jpg" alt="" class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                ساعت هوشمند سامسونگ مدل Galaxy Watch3 SM-R840 45mm بند چرمی
+                                            </h6>
 
-<div class="chat-popup" id="chat-form-container">
-    <form action="#" class="form-container">
-        <div class="chat-window-head">
-            <h4><i class="fa fa-comment"></i>Chat Window</h4>
-            <span class="close-btn" onclick="closeChatWindow()">
-                <i class="fa fa-items"></i>
-            </span>
-        </div>
-        <div class="msg-container">
-            <div class="msg">
-                <p>hello</p>
-                <span>9:34 pm</span>
-            </div>
-        </div>
-        <div class="chat-box-container">
-            <div class="chat-box">
-                <input type="text" placeholder="write message" name="msg" required>
-                <button type="submit" class="btn"><i class="fa fa-chevron-circle-right send-btn"></i></button>
+                                        </div>
+                                        <div class="foot d-flex justify-content-between align-items-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <div class="add" data-hint="افزودن به سبد خرید" class="hint--right">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                        fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                                                    </svg>
+                                                </div>
 
-            </div>
-        </div>
-    </form>
-</div>
+                                            </div>
+                                            <div class="price d-flex flex-column justify-content-end">
+                                                <div>
+                                                    <span class="fw-bold font-18 def-color">299,000</span>
+                                                    <span class="badge main-color-two-bg rounded-pill">25%</span>
+                                                </div>
+                                                <div class="d-flex justify-content-center align-items-center">
+                                                    <span
+                                                        class="text-muted font-14 text-decoration-line-through">150,000</span>
+                                                    <span class="text-muted font-14 ms-2">تومان</span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>

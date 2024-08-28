@@ -29,13 +29,16 @@ def product_fields(product):
     elif product.child_category.url == 'case':
         product = CaseModel.objects.get(id=product.id)
 
+    elif product.main_category.url == 'laptop':
+        product = LaptopModel.objects.get(id=product.id)
+
     else:
         fields = [{'name': i.field.title, 'amount': i.amount} for i in ProductFieldModel.objects.filter(product=product)]
         return fields
 
     fields = []
 
-    for i in product._meta.get_fields()[27:]:
+    for i in product._meta.get_fields()[30:]:
         if hasattr(i, 'verbose_name'):
             if i.verbose_name != 'productmodel ptr':
                 fields.append({'name': i.verbose_name , 'amount': '' if str(product.__getattribute__(i.name)).endswith('None')else product.__getattribute__(i.name)})

@@ -81,6 +81,7 @@ class ProductModel(models.Model):
     brand = models.ForeignKey(to=BrandModel, on_delete=models.DO_NOTHING, related_name='brands_products',
                               verbose_name='برند')
     description = models.TextField(verbose_name='توضیحات')
+    introduce = models.TextField(verbose_name='معرفی')
     url = models.SlugField(unique=True, allow_unicode=True, verbose_name='لینک')
     image = models.ImageField(upload_to='product/product_images', verbose_name='تصویر')
     published_date = jmodels.jDateTimeField(auto_now_add=True, verbose_name='تاریخ انتشار')
@@ -684,13 +685,26 @@ class LaptopModel(ProductModel):
     ssd = models.ForeignKey(LaptopSSDModel, on_delete=models.DO_NOTHING, verbose_name='اس اس دی')
     hard = models.ForeignKey(LaptopHardModel, on_delete=models.DO_NOTHING, verbose_name='هارد')
     gpu = models.ForeignKey(LaptopGpuModel, on_delete=models.DO_NOTHING, verbose_name='گرافیک')
-    on_site_gpu = models.BooleanField(verbose_name='گرافیک مجزا')
+    on_site_gpu = models.BooleanField(verbose_name='گرافیک OnBoard')
     gpu_storage = models.ForeignKey(LaptopGpuStorageModel, on_delete=models.DO_NOTHING, verbose_name='حافظه پردازنده گرافیکی')
     screen_size = models.ForeignKey(LaptopScreenSizeModel, on_delete=models.DO_NOTHING, verbose_name='ابعاد صفحه نمایش')
     resolution = models.ForeignKey(LaptopResolutionModel, on_delete=models.DO_NOTHING, verbose_name='رزولوشن')
     weight = models.FloatField(verbose_name='وزن')
     battery_storage = models.PositiveIntegerField(verbose_name='ظرفیت باتری')
     power_adaptor = models.PositiveIntegerField(verbose_name='اداپتور پاور')
+
+    def save(self, *args, **kwargs):
+        main_category, status = MainCategoryModel.objects.get_or_create(title='لپتاپ', url='laptop', active=True)
+        child_category, status = ChildCategoryModel.objects.get_or_create(title=f'{self.brand.title}', url=f'{self.brand.url}',
+                                                                    base_category=main_category, active=True)
+
+        self.main_category = main_category
+        self.child_category = child_category
+        self.price_after_off = self.price * (100 - self.off) / 100
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
 
 
 class AllInOneModel(ProductModel):

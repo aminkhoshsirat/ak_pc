@@ -12,7 +12,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    'django_light',
     'admin_tools_stats',
     'django_nvd3',
     'daphne',
@@ -35,12 +34,8 @@ INSTALLED_APPS = [
     'django_render_partial',
     'rest_framework',
     'boto3',
-    'rest_framework_swagger',
-    'drf_spectacular',
-    'rest_framework_simplejwt',
     'django_celery_beat',
     'azbankgateways',
-    'django_ckeditor_5',
     "django_htmx",
 
     # External Apps
@@ -102,15 +97,8 @@ CHANNEL_LAYERS = {
     },
 }
 
-# DATABASES = {
-#     'default': postgres_config
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': postgres_config
 }
 
 CACHES = {
@@ -149,43 +137,24 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Arvan Storage
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_ACCESS_KEY_ID = arvan_cloud_config.get('access_key')
-
-AWS_SECRET_ACCESS_KEY = arvan_cloud_config.get('secret_key')
-
-AWS_S3_ENDPOINT_URL = arvan_cloud_config.get('simin_domain')
-
-AWS_STORAGE_BUCKET_NAME = arvan_cloud_config.get('bucket_name')
-
-AWS_SERVICE_NAME = 's3'
-
-AWS_S3_FILE_OVERWRITE = False
-
-AWS_QUERYSTRING_AUTH = False
-
-
-
 # Liara Storages
 
-# AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
-# AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
-# AWS_STORAGE_BUCKET_NAME = 'akurtek'
-# AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
-# AWS_S3_REGION_NAME = 'us-east-1'
-#
-# # Django-storages configuration
-# STORAGES = {
-#   "default": {
-#       "BACKEND": "storages.backends.s3.S3Storage",
-#   },
-#   "staticfiles": {
-#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-#   },
-# }
+AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
+AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
+AWS_STORAGE_BUCKET_NAME = 'akurtek'
+AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
+AWS_S3_REGION_NAME = 'us-east-1'
+
+# Django-storages configuration
+
+STORAGES = {
+  "default": {
+      "BACKEND": "storages.backends.s3.S3Storage",
+  },
+  "staticfiles": {
+      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+  },
+}
 
 
 # Ckeditor Config
@@ -228,45 +197,3 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_ENABLE_UTC = False
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-
-# SPECTACULAR_SETTINGS = {
-#     'TITLE': 'AKURTEK Project API',
-#     'DESCRIPTION': '',
-#     'VERSION': '1.0.0',
-#     'SERVE_INCLUDE_SCHEMA': False,
-#     # OTHER SETTINGS
-# }
-#
-#
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
-#     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-#     "ROTATE_REFRESH_TOKENS": False,
-#     "BLACKLIST_AFTER_ROTATION": False,
-#     "UPDATE_LAST_LOGIN": False,
-#
-#     "AUTH_HEADER_TYPES": ("Bearer",),
-#     "AUTH_HEADER_NAME": "HTTP_AUTHORIZATION",
-#     "USER_ID_FIELD": "id",
-#     "USER_ID_CLAIM": "user_id",
-#     "USER_AUTHENTICATION_RULE": "rest_framework_simplejwt.authentication.default_user_authentication_rule",
-#
-#     "AUTH_TOKEN_CLASSES": ("rest_framework_simplejwt.tokens.AccessToken",),
-#     "TOKEN_TYPE_CLAIM": "token_type",
-#     "TOKEN_USER_CLASS": "rest_framework_simplejwt.models.TokenUser",
-#
-#     "JTI_CLAIM": "jti",
-#
-#     "SLIDING_TOKEN_REFRESH_EXP_CLAIM": "refresh_exp",
-#     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
-#     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
-#
-#     "TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainPairSerializer",
-#     "TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSerializer",
-#     "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
-#     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
-#     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
-#     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
-# }
-
-CK_EDITOR_5_UPLOAD_FILE_VIEW_NAME = "custom_upload_file"

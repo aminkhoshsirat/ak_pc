@@ -19,8 +19,8 @@ arvan_cloud_config = {
 postgres_config = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'akurtek',
-        'USER': 'amin',
+        'USER': 'amin_ak',
         'PASSWORD': 'aminkh1110',
-        'HOST': '127.0.0.1',
+        'HOST': 'localhost',
         'PORT': '5432'
     }

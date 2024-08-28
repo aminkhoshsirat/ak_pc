@@ -272,3 +272,4 @@ var swiper2 = new Swiper("#offerItem", {
     clickable: true,
   },
 });
+

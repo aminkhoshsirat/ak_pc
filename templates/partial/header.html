@@ -31,15 +31,18 @@
                                 <a href="{% url 'user:logout' %}">خروج</a>
                             {% else %}
                                 <a href="{% url 'user:login' %}"
-                                   class="header-bottom-link-cat waves-effect waves-light rounded-pill ms-1 font-14 d-flex align-items-center justify-content-center flex-wrap"
-                                   data-bs-toggle="modal" data-bs-target="#loginModal" role="button">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                         class="bi bi-person-circle me-2" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"></path>
-                                        <path fill-rule="evenodd"
-                                              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"></path>
+                                       class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap">
+                                        ورود | ثبت نام
+                                    </a>
+                                <a class="header-bottom-link waves-effect waves-light d-flex align-items-center justify-content-center flex-wrap"
+                                   data-bs-toggle="offcanvas" href="#cartCanvas" onclick="showSmallBucket()"
+                                   role="button"
+                                   aria-controls="cart canvas">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="currentColor"
+                                         class="bi bi-bag me-2" viewBox="0 0 16 16">
+                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
                                     </svg>
-                                    <span class="fw-bold text-overflow">حساب کاربری</span>
+                                    <span class="text-overflow fw-bold font-14">سبد خرید</span>
                                 </a>
                             {% endif %}
                         </div>
@@ -56,7 +59,7 @@
                         <div class="offcanvas offcanvas-start" tabindex="-1" id="responsiveMenu"
                              aria-labelledby="responsive menu">
                             <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasRightLabel">{{ site_detail.title }}</h5>
+                                <h5 class="offcanvas-title" id="offcanvasRightLabel"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
                                         aria-label="Close"></button>
                             </div>
@@ -137,9 +140,14 @@
 
                                         </ul>
                                     </li>
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'asemble:index' %}"
+                                                                     class="nav-link">اسمبل کیس</a></li>
                                     <li class="nav-item bg-ul-f7"><a href="{% url 'power:caculator' %}"
                                                                      class="nav-link">محاسبه گر پاور</a></li>
-
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'benchmark:index' %}"
+                                                                     class="nav-link">بنجمارک</a></li>
+                                    <li class="nav-item bg-ul-f7"><a href="{% url 'contact_us' %}"
+                                                                     class="nav-link">ارتباط با ما</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -252,6 +260,10 @@
                                 <li class="nav-item"><a href="{% url 'benchmark:index' %}"
                                                         class="nav-link border-animate fromRight"><i
                                         class="bi bi-speedometer"></i> بنجمارک </a></li>
+                                <li>|</li>
+                                <li class="nav-item"><a href="{% url 'contact_us' %}"
+                                                        class="nav-link border-animate fromRight">
+                                     ارتباط با ما</a></li>
                             </ul>
                         </div>
                     </div>
@@ -299,10 +311,10 @@
                 <span class="mt-1 font-12 fw-bold mf-link-title">وبلاگ</span>
             </a></li>
             <li class="d-table-cell"><a class="mf-link nav-link text-center" data-bs-toggle="offcanvas"
-                                        href="#cartCanvas" role="button" aria-controls="cart canvas">
+                                        href="#cartCanvas" onclick="showSmallBucket()" role="button" aria-controls="cart canvas">
                 <div class="position-relative mf-link-icon d-table mx-auto">
                     <span class="d-block mf-link-icon"><i class="bi bi-bag font-20"></i></span>
-                    <span class="position-absolute main-color-one-bg rounded-pill font-10 text-white badge"
+                    <span id="small-bucket-num" class="position-absolute main-color-one-bg rounded-pill font-10 text-white badge"
                           style="right:-60%;bottom:-5px;">0</span>
                 </div>
                 <span class="mt-1 font-12 fw-bold mf-link-title">سبد خرید</span>

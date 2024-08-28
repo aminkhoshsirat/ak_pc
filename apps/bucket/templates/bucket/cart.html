@@ -1,117 +1,120 @@
 {% extends 'parent/base.html' %}
+{% load poll_extras %}
 {% block title %}{% endblock %}
 {% block content %}
-    <div class="content-cart pb-4 pb-xl-5 pt-5">
-        <section>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb" class="mb-5">
-                            <ol class="breadcrumb ">
-                                <li class="breadcrumb-item"><a href="#">خانه</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'bucket:cart' %}">سبد خرید</a></li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-12 col-lg-9">
-                        <div class="area-content-cart">
 
-                            <div class="table-cart-shop ">
-                                <div class="d-none d-md-block">
-                                    <div
-                                        class="area-title-table-cart box-table-cart  box-cart d-flex align-items-center">
-                                        <div class="item-table-cart product-cart">محصول</div>
-                                        <div class="item-table-cart product-count">تعداد</div>
-                                        <div class="item-table-cart product-price">قیمت</div>
-                                        <div class="item-table-cart product-price">قیمت بعد از تخفیف</div>
-                                        <div class="item-table-cart total">جمع جزء</div>
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="line-step-container d-sm-block d-none">
+                    <div class="line-step">
+                        <div class="line-step-boxs">
+                            <div class="line-step-box complete">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-bag"></i>
                                     </div>
-                                </div>
-
-                                {% for product in bucket_products %}
-                                    <div class="area-content-table-cart box-table-cart box-cart d-flex flex-column flex-md-row align-items-center  ">
-                                        <div
-                                            class="item-table-cart product-cart  d-flex flex-column flex-md-row align-items-center">
-                                            <a onclick="deleteProduct({{ product.product.id }})" href="#" class="btn btn-remove-cart btn-remove">
-                                                <i class="fas fa-trash-alt"></i>
-                                                <span class="tooltip-site">حذف</span>
-                                            </a>
-                                            <div class="img-product-cart mb-4 mb-md-0 mx-1">
-                                                <a href="{{ product.product.get_absolute_url }}"><img src="{{ product.product.image.url }}"></a>
-                                            </div>
-                                            <div class="title-product-cart mb-4 mb-md-0 ms-0 ms-md-2">
-                                                <a href="{{ product.product.get_absolute_url }}">
-                                                    <h3>{{ product.product.title }}</h3>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="item-table-cart product-count  mb-4 mb-md-0">
-                                            <div
-                                                class="input-number-wrapper d-flex justify-content-center align-items-center">
-                                                <span class="quanti-invitati-op increase">+</span>
-                                                <input id="product-num-{{ product.product.id }}" onchange="changeProductNum({{ product.product.id }})" class="input-number-custtom" type="text" value="{{ product.num }}"/>
-                                                <span class="quanti-invitati-op decrease">-</span>
-                                            </div>
-                                        </div>
-                                        <div class="item-table-cart product-price ">
-                                            {{ product.product.price }} تومان
-                                        </div>
-                                        <div class="item-table-cart product-price ">
-                                            {{ product.product.price_after_off }} تومان
-                                        </div>
-                                        <div class="item-table-cart total ">
-                                            {{ product.get_total_price }} تومان
-                                        </div>
-                                    </div>
-                                {% endfor %}
-
+                                    <p>سبد خرید</p>
+                                </a>
                             </div>
-                            <div
-                                class="box-coupon-cart box-cart d-flex flex-column flex-md-row justify-content-between align-items-center">
-                                <div
-                                    class="area-coupon d-flex justify-content-between  justify-content-md-start align-items-center mb-4 mb-md-0 w-100">
-                                    <form>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="input-coupon" placeholder="کد تخفیف">
-                                        </div>
-                                    </form>
-
-                                    <button type="submit" class="btn btn-5"> اعمال کوپن</button>
-                                </div>
-                                <div class="area-btn-update">
-                                    <button type="submit" class="btn btn-5">بروزرسانی سبد خرید</button>
-                                </div>
+                            <div class="line-step-box disabled">
+                                <a href="checkout.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <p>جزییات پرداخت</p>
+                                </a>
+                            </div>
+                            <div class="line-step-box disabled">
+                                <a href="cart.html">
+                                    <div class="icon">
+                                        <i class="bi bi-file-earmark-break"></i>
+                                    </div>
+                                    <p>تکمیل سفارش</p>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <div class="area-checkout-cart box-cart">
-                            <div class="cart-subtotal d-flex justify-content-between align-items-center ">
-                                <span>قیمت</span>
+                </div>
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-8">
+                        <div class="cart-detail">
+                            <div class="responsive-table">
+                                <table class="table main-table table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+                                            <th>محصول</th>
+                                            <th>قیمت</th>
+                                            <th>قیمت بعد از تخفیف</th>
+                                            <th>تعداد</th>
+                                            <th>قیمت کل</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in bucket_products %}
+                                        <tr>
+                                            <td><a onclick="deleteProductUser({{ product.product.id }})" data-hint="حذف محصول از سبد خرید" class="hint--left"><i
+                                                        class="bi bi-x-circle-fill"></i></a></td>
+                                            <td><a href="{{ product.product.get_absolute_url }}"><img src="{{ product.product.image.url }}" width="60" class="" alt="{{ product.product.title }}"></a>
+                                            </td>
+                                            <td class="title">{{ product.product.title }}</td>
+                                            <td><span class="num">{{ product.product.price | money_format }}</span><span
+                                                    class="text-muted font-10"> تومان </span></td>
+                                            <td><span class="num">{{ product.product.price_after_off | money_format }}</span><span
+                                                    class="text-muted font-10"> تومان </span></td>
+                                            <td class="counter"><input onchange="changeNumBucket({{ product.product.id }})" name="count"
+                                                   id="product-count-{{ product.product.id }}" type="text"
+                                                   value="{{ product.num }}"></td>
+                                            <td><span class="num"></span><span
+                                                    class="text-muted font-10">تومان</span></td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cart-payment mt-lg-0 mt-3">
+                            <div class="title text-center">
+                                <h4 class="slider-title fw-900 def-color mb-3">مجموع کل سبد خرید</h4>
+                            </div>
+                            <table class="table main-table text-center">
+                                <tr>
+                                    <td class="fw-bold">قیمت کل</td>
+                                    <td><span id="bucket_total_price" class="fw-bold">{{ total_price | money_format }}</span> <span
+                                            class="text-muted font-10">تومان</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">تخفیف</td>
+                                    <td><span class="fw-bold">{{ off | money_format }}</span> <span
+                                            class="text-muted font-10">تومان</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-bold">قیمت بعد از تخفیف</td>
+                                    <td><span class="fw-bold">{{ total_price_after_off | money_format }}</span> <span
+                                            class="text-muted font-10">تومان</span></td>
+                                </tr>
 
-                                <span class="subtotal">{{ total_price }} تومان</span>
-                            </div>
-                            <div class="amount-of-payable  d-flex justify-content-between align-items-center mt-5 mb-4">
-                                <span>تخفیف</span>
-
-                                <span class="payable">{{ off }} تومان</span>
-                            </div>
-                            <div class="amount-of-payable  d-flex justify-content-between align-items-center mt-5 mb-4">
-                                <span>قیمت پس از تخفیف</span>
-
-                                <span class="payable">{{ total_price_after_off }} تومان</span>
-                            </div>
-                            <div class="area-btn-checkout ">
-                                <button type="submit" class="btn btn-5">ادامه جهت تسویه حساب</button>
-                            </div>
+                            </table>
+                            <form action="">
+                                <button
+                                    class="btn mt-3 w-100 py-3 border-0 main-color-one-bg waves-effect waves-light">اقدام
+                                    به پرداخت
+                                    <i class="bi bi-bank2"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
+    <!-- end main-data -->
+
 
 {% endblock %}

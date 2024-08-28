@@ -283,6 +283,7 @@ class ProductDeleteView(View):
 
 class ProductChangeView(View):
     def get(self, request, id):
+        print(id)
         num = request.GET.get('num')
         try:
             num = int(num)
@@ -335,7 +336,6 @@ class IndexView(View):
         instant_offers = InstantOfferModel.objects.filter(active=True, expired_date__gt=datetime.now())
         advertising_banners = AdvertisingBannerModel.objects.filter(active=True)
         blogs = BlogModel.objects.select_related('category').prefetch_related('auther').filter(active=True)[0:10]
-        best_selling_products = products.order_by('-sell')[0:20]
         best_off_products = products.order_by('-off')[0:20]
         top_rating = products.order_by('-view_num')
         new_products = products.filter(available=True).order_by('-published_date')[0:20]
@@ -348,13 +348,11 @@ class IndexView(View):
         cpus = CpuModel.objects.filter(active=True)
         main_boards = MainBoardModel.objects.filter(active=True)
         gpus = GpuModel.objects.filter(active=True)
-        all_in_ones = AllInOneModel.objects.filter(active=True)
         context = {
             'categories': categories,
             'brands': brands,
             'blogs': blogs,
             'top_rating': top_rating,
-            'best_selling_products': best_selling_products,
             'best_off_products': best_off_products,
             'new_products': new_products,
             'amazing_offers': amazing_offers,
@@ -375,7 +373,6 @@ class IndexView(View):
             'cpus': cpus,
             'main_boards': main_boards,
             'gpus': gpus,
-            'all_in_ones': all_in_ones,
         }
         return render(request, 'index.html', context)
 
