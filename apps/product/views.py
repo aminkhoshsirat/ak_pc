@@ -15,6 +15,9 @@ from json import dumps
 from utils.services import get_client_ip
 from .forms import *
 from apps.panel.forms import ContactUsForm
+from django.db.models import Avg
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -177,6 +180,7 @@ class ProductDetailView(DetailView):
 
         context['fields'] = product_fields(product)
         context['product'] = product
+        context['product_video'] = ProductVideoModel.objects.filter(product=product).first()
 
         ip = get_client_ip(self.request)
 
@@ -202,20 +206,13 @@ class ProductDetailView(DetailView):
 
         except:
             context['product_in_bucket'] = None
-
-        for field in context['fields']:
-            if str(field['amount']).endswith('None'):
-                print(str(field['amount']))
         return context
 
 
 class SuggestedProductView(View):
     def get(self, request, category, title):
-        # products = ProductModel.objects.annotate(similar=TrigramSimilarity('title', title)).filter(
-        #     child_category__url=category).order_by('-similar')[0:20]
-        products = ProductModel.objects.all()
-        print(category)
-        print(title)
+        products = ProductModel.objects.annotate(similar=TrigramSimilarity('title', title)).filter(
+            child_category__url=category).order_by('-similar')[0:20]
         return render(request, 'product/suggested-products.html', {'products': products})
 
 
@@ -223,16 +220,15 @@ class ProductCommentView(ListView):
     template_name = 'product/comments.html'
     model = ProductCommentModel
 
-    # def get_context_data(self, *args, **kwargs):
-    #     context = super(*args, **kwargs)
-    #     context['comment_average_grade'] = ProductCommentModel.objects.aggregate(Avg('grade'))
-    #     return context
-    #
-    # def get_queryset(self):
-    #     product_id = self.kwargs.get('product_id')
-    #     comments = ProductCommentModel.objects.prefetch_related('comment_positive_points', 'comment_negative_points').filter(product_id=product_id, active=True, admin_seen=True)
-    #     print(comments)
-    #     return comments
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['comment_average_grade'] = ProductCommentModel.objects.aggregate(Avg('grade'))
+        return context
+
+    def get_queryset(self):
+        product_id = self.kwargs.get('product_id')
+        comments = ProductCommentModel.objects.prefetch_related('comment_positive_points', 'comment_negative_points').filter(product_id=product_id, active=True, admin_seen=True)
+        return comments
     #
     #
     # def post(self, request):
@@ -283,7 +279,6 @@ class ProductDeleteView(View):
 
 class ProductChangeView(View):
     def get(self, request, id):
-        print(id)
         num = request.GET.get('num')
         try:
             num = int(num)
@@ -312,7 +307,7 @@ class ShowProductView(View):
         return render(request, 'product/show-product.html', context)
 
 
-class ProductChartView(View):
+class ProductChartView(APIView):
     def get(self, request, id):
         products = ProductPriceChartModel.objects.filter(product_id=id)
         x = []
@@ -321,10 +316,11 @@ class ProductChartView(View):
             x.append(i.date.strftime("%Y-%m-%d"))
             y.append(i.price)
         context = {
-            'x': dumps(x),
-            'y': dumps(y),
+            'x': x,
+            'y': y,
+            'title': products.first().product.title
         }
-        return render(request, 'product/product-chart.html', context)
+        return Response(context)
 
 
 class IndexView(View):

@@ -15,7 +15,7 @@ arvan_cloud_config = {
 }
 
 
-# Postgresql Config
+#Postgresql Config
 postgres_config = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'akurtek',
@@ -24,3 +24,12 @@ postgres_config = {
         'HOST': 'localhost',
         'PORT': '5432'
     }
+
+
+# postgres_config = {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'akurtkpgdva_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'kIhX6ddVn7mWTBy9Fino',
+#         'HOST': 'akurtkpg-pqv-service',
+#     }

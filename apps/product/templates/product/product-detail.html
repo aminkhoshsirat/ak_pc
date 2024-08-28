@@ -58,7 +58,7 @@
                                             class="bi bi-arrow-left-right"></i></a>
                                 </div>
                                 <div class="icon-product-box-item hint--right" data-hint="نمودار قیمت"
-                                     data-bs-toggle="modal" data-bs-target="#chartModal">
+                                    data-bs-toggle="modal" data-bs-target="#chartModal">
                                     <i onclick="productChart({{ product.id }})" class="bi bi-bar-chart"></i>
                                 </div>
                             </div>
@@ -288,7 +288,7 @@
                                         تکمیلی</a></button>
                                 </li>
                                 <li class="nav-item">
-                                    <button class=" waves-effect waves-light" id="productComment" data-bs-toggle="tab"
+                                    <button onclick="productComment({{ product.id }})" class=" waves-effect waves-light" id="productComment" data-bs-toggle="tab"
                                             data-bs-target="#productComment-pane" role="tab" type="button"
                                             aria-selected="false"><a href="#prodesc"><i class="bi bi-chat-quote"></i>
                                         نظرات</a></button>
@@ -339,6 +339,12 @@
                                         <!-- پایان والد بیشتر کمتر -->
                                         <label id="long-btn2" onclick="readMore2()" style="color: #0b5ed7">بیشتر +</label>
                                         <label id="short-btn2" onclick="shortMore2()" style="display: none;color: red">بستن -</label>
+                                    </div>
+                                </div>
+                            <div class="tab-pane fade"
+                                     id="productComment-pane">
+                                    <div class="productComment-content" id="product-comment-box">
+
                                     </div>
                                 </div>
                                 <script>
@@ -478,8 +484,128 @@
     <div id="product-comments-box">
 
     </div>
+
+
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true"
+        style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-6">
+                        ویدیو معرفی
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <video class="w-100" id="videoModalPlay" src="{{ product_video.video.url }}"
+                        preload="metadata" controls="">
+                        <source src="{{ product_video.video.url }}" type="video/mp4#t=0.5">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="share-modal">
+        <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="exampleModalLabel">اشتراک گذاری</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 class="font-18 my-3">این کالا را با دوستان خود به اشتراک بگذارید!</h4>
+                        <button class="btn d-block border text-center w-100"> <i class="bi bi-clipboard2-plus me-1"></i>
+                            کپی کردن لینک</button>
+                        <div class="row mt-3 gy-3">
+                            <div class="col-6">
+                                <a href="" class="btn main-color-three-bg p-4 d-block w-100">
+                                    <i class="bi bi-whatsapp me-2 font-20"></i>
+                                    <span>واتس آپ</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="" class="btn main-color-one-bg p-4 d-block w-100">
+                                    <i class="bi bi-twitter me-2 font-20"></i>
+                                    <span>توییتر</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="" class="btn main-color-one-bg p-4 d-block w-100"
+                                    style="background-color: #005393 !important;">
+                                    <i class="bi bi-twitter me-2 font-20"></i>
+                                    <span>فیسبوک</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <a href="" class="btn main-color-two-bg p-4 d-block w-100">
+                                    <i class="bi bi-pinterest me-2 font-20"></i>
+                                    <span>پینترست</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row mt-3 gy-2 align-items-center">
+                            <div class="col-6">
+                                <h4 class="font-16 mb-3">کد تخفیف شما</h4>
+                                <p class="font-14 text-muted">
+                                    کد را برای دوستان خود بفرستید و پس از
+                                    اولین خرید آنها، کد تخفیف و امتیاز بگیرید!
+                                </p>
+                                <a href="" class="btn main-color-two-bg border-0">
+                                    <i class="bi bi-ticket me-2 font-20"></i>
+                                    <span>دریافت کد تخفیف</span>
+                                </a>
+                            </div>
+                            <div class="col-6">
+                                <img src="assets/image/share-modal.svg" class="img-fluid d-block ms-auto" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end modal share-->
+
+    <div class="modal fade" id="chartModal" tabindex="-1" aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-comment-title">
+                        <h5 class="modal-title fw-bold text-muted-2">نمودار قیمت فروش
+                        </h5>
+                        <p class="text-muted mt-1 font-14">{{ product.title }}
+                        </p>
+                    </div>
+                    <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger waves-effect waves-light"
+                        data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- end product box -->
     {% block extra_js %}
+        <script src="{% static 'plugin/tagify/jQuery.tagify.min.js' %}"></script>
+        <script>
+            $(document).ready(function () {
+                ///input tag
+                $('.commentTags').tagify();
+            });
+        </script>
+        <!-- ======== end tagify -->
+
+        <!-- chart -->
+        <script src="{% static 'plugin/chartjs/chart.js' %}"></script>
         <script>
             var isAjaxCalled = false;
             $(window).scroll(function () {
@@ -491,6 +617,7 @@
                 }
             });
         </script>
+
     {% endblock %}
     <script src="{% static 'js/costum.js' %}"></script>
 {% endblock %}

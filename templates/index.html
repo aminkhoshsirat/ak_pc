@@ -348,10 +348,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="swiper free-mode" id="product-box">
-                    <div class="swiper-wrapper">
+                <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
+                     id="product-box">
+                    <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
+                         style="transform: translate3d(0px, 0px, 0px);">
                         {% for product in assembled_cases %}
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
+                                 style="margin-left: 10px;">
                                 <div class="product-box-item bg-white">
                                     <div class="hover">
                                         <div class="hover-btn">
@@ -452,10 +455,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="swiper free-mode" id="product-box">
-                    <div class="swiper-wrapper">
+                <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
+                     id="product-box">
+                    <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
+                         style="transform: translate3d(0px, 0px, 0px);">
                         {% for product in laptops %}
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
+                                 style="margin-left: 10px;">
                                 <div class="product-box-item bg-white">
                                     <div class="hover">
                                         <div class="hover-btn">
@@ -517,8 +523,15 @@
 
                     </div>
                     <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next d-sm-flex d-none"></div>
-                    <div class="swiper-button-prev d-sm-flex d-none"></div>
+                    <div class="swiper-button-next d-sm-flex d-none" tabindex="0" role="button" aria-label="Next slide"
+                         aria-controls="swiper-wrapper-c216a34813094d4c" aria-disabled="false"></div>
+                    <div class="swiper-button-prev d-sm-flex d-none swiper-button-disabled" tabindex="-1" role="button"
+                         aria-label="Previous slide" aria-controls="swiper-wrapper-c216a34813094d4c"
+                         aria-disabled="true"></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span
+                        class="swiper-notification"
+                        aria-live="assertive"
+                        aria-atomic="true"></span>
                 </div>
             </div>
         </div>
@@ -549,10 +562,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="swiper free-mode" id="product-box">
-                    <div class="swiper-wrapper">
+                <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
+                     id="product-box">
+                    <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
+                         style="transform: translate3d(0px, 0px, 0px);">
                         {% for product in cpus %}
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
+                                 style="margin-left: 10px;">
                                 <div class="product-box-item bg-white">
                                     <div class="hover">
                                         <div class="hover-btn">
@@ -651,7 +667,8 @@
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
                          style="transform: translate3d(0px, 0px, 0px);">
                         {% for product in main_boards %}
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
+                                 style="margin-left: 10px;">
                                 <div class="product-box-item bg-white">
                                     <div class="hover">
                                         <div class="hover-btn">
@@ -804,7 +821,8 @@
                          style="transform: translate3d(0px, 0px, 0px);">
                         {% for blog in blogs %}
 
-                            <div class="swiper-slide">
+                            <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
+                                 style="margin-left: 10px;">
                                 <a href="{{ blog.get_absolute_url }}">
                                     <div class="image-blog text-center">
                                         <img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}">

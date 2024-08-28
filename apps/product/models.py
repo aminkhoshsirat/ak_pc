@@ -130,9 +130,10 @@ class ProductImageModel(models.Model):
 
 
 class ProductVideoModel(models.Model):
-    product = models.ForeignKey(to=ProductModel, on_delete=models.CASCADE, related_name='product_video',
+    product = models.OneToOneField(to=ProductModel, on_delete=models.CASCADE, related_name='product_video',
                                 verbose_name='کالا')
-    video = models.ImageField(upload_to='product/product_videos', verbose_name='ویدیو')
+    video = models.FileField(upload_to='product/product_videos', verbose_name='ویدیو')
+    poster = models.ImageField(upload_to='product/poster')
 
 
 class ProductCommentModel(models.Model):

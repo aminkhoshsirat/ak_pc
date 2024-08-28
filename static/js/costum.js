@@ -39,15 +39,6 @@ function addProduct(id) {
     })
 }
 
-// <div>
-//     <div className="input-group bootstrap-touchspin bootstrap-touchspin-injected"><span
-//         className="input-group-btn input-group-prepend"><button
-//         className="btn-counter waves-effect waves-light bootstrap-touchspin-down" type="button">-</button></span><input
-//         onChange="changeNum(2)" name="count" id="product-count-2" type="text" value="1" className="form-counter"/><span
-//         className="input-group-btn input-group-append"><button
-//         className="btn-counter waves-effect waves-light bootstrap-touchspin-up" type="button">+</button></span></div>
-// </div>
-
 function deleteProductUser(id) {
     $.get('/product/delete/' + id).then(res => {
         $('#product-bucket').html(`<button onclick="addProduct(${id})"
@@ -96,7 +87,42 @@ function changeProductNum(id) {
 
 function productChart(id) {
     $.get('/product/chart/' + id).then(res => {
-        console.log(res);
+        const ctx = document.getElementById('myChart');
+        Chart.defaults.font.family = "shabnam-fa-num";
+        Chart.defaults.font.size = 16;
+
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: res.x,
+                datasets: [{
+                    label: res.title,
+                    data: res.y,
+                    borderWidth: 4,
+                    borderColor: '#007fee',
+                    pointBackgroundColor: '#fff',
+                    pointRadius: 10,
+                    pointHoverRadius: 15,
+                    tension: 0.1,
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: false,
+                        text: (ctx) => 'نمودار فروش: ' + res.title,
+                    },
+                }
+            }
+        });
+    })
+}
+
+function productComment(id){
+    $.get('/product/comment/' + id).then(res => {
+        $('#product-comment-box').html(res);
     })
 }
 

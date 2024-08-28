@@ -41,6 +41,11 @@ class ProductFieldAdmin(admin.ModelAdmin):
     list_display = ['product', 'amount']
 
 
+@admin.register(ProductVideoModel)
+class ProductVideoAdmin(admin.ModelAdmin):
+    list_display = ['product']
+
+
 @admin.register(ProductViewModel)
 class ProductViewAdmin(admin.ModelAdmin):
     list_display = ['product']
