@@ -106,9 +106,6 @@
     <link rel="stylesheet" href="{% static 'plugin/go-to-top/style.css' %}">
     <link rel="stylesheet" href="{% static 'plugin/rasta-contact/style.css' %}">
     <script src="{% static 'js/costum.js' %}"></script>
-{% block extra_js %}
-{% endblock %}
-
 <script>
     //// config floating contact
     $('#btncollapzion').Collapzion({
@@ -131,6 +128,10 @@
         ],
     });
 </script>
+{% block extra_js %}
+{% endblock %}
+
+
 <!-- ===== end new update -->
 
 </body>

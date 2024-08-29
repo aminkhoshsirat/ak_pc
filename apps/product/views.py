@@ -1,3 +1,5 @@
+import json
+
 from django.shortcuts import render, HttpResponse, Http404, redirect
 from django.views.generic import View, ListView, DetailView
 from apps.blog.models import BlogCategoryModel, BlogModel
@@ -18,6 +20,7 @@ from apps.panel.forms import ContactUsForm
 from django.db.models import Avg
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from .serializers import *
 
 
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -373,10 +376,23 @@ class IndexView(View):
         return render(request, 'index.html', context)
 
 
-class CompareView(View):
-    def get(self, request, category):
-        id = self.request.GET.get('id')
-        cp = compare_products(category, id)
+# class CompareView(View):
+#     def get(self, request, category):
+#         id = self.request.GET.get('id')
+#         cp = compare_products(category, id)
+#         context = {
+#             'product': cp[0],
+#             'fields': cp[1],
+#         }
+#         return render(request, 'product/compare.html', context)
+
+
+class CompareProductView(View):
+    def get(self, request, category, id):
+        try:
+            cp = compare_products(category, id)
+        except:
+            raise Http404
         context = {
             'product': cp[0],
             'fields': cp[1],
@@ -385,7 +401,7 @@ class CompareView(View):
 
 
 class CompareProductListView(ListView):
-    template_name = 'product/compare.html'
+    template_name = 'product/compare-list.html'
     paginate_by = 20
     model = ProductModel
     context_object_name = 'products'
@@ -393,24 +409,61 @@ class CompareProductListView(ListView):
     def get_queryset(self):
         category = self.kwargs.get('category')
         search = self.request.GET.get('search')
-        products = ProductModel.objects.filter(child_category__url=category, active=True)
+        if category == 'laptop':
+            products = ProductModel.objects.filter(main_category__url=category, active=True)
+        else:
+            products = ProductModel.objects.filter(child_category__url=category, active=True)
+
         if search:
             products = products.annotate(similar=Greatest(
                 TrigramSimilarity('title', search),
                 TrigramSimilarity('url', search),
-                TrigramSimilarity('main_category__title', search),
-                TrigramSimilarity('child_category__title', search),
             )).filter(similar__gt=0.1).order_by('-similar')
+
         return products
 
 
-class CompareProductView(View):
-    def get(self, request):
-        category = self.request.GET.get('category')
-        id = self.request.GET.get('id')
-        cp = compare_products(category, id)
-        context = {
-            'product': cp[0],
+class CompareProductDetailView(APIView):
+    def get(self, request, category, pk):
+        print(category)
+        try:
+            cp = compare_products(category, pk)
+        except:
+            return Response(None)
+        if category == 'cpu':
+            product = CpuSerializers(cp[0]).data
+
+        elif category == 'main-board':
+            product = MainBoardSerializers(cp[0]).data
+
+        elif category == 'gpu':
+            product = GpuSerializers(cp[0]).data
+
+        elif category == 'fan-cpu':
+            product = FanCpuSerializers(cp[0]).data
+
+        elif category == 'ram':
+            product = RamSerializers(cp[0]).data
+
+        elif category == 'hard':
+            product = HardSerializers(cp[0]).data
+
+        elif category == 'ssd':
+            product = SSDSerializers(cp[0]).data
+
+        elif category == 'power':
+            product = PowerSerializers(cp[0]).data
+
+        elif category == 'case':
+            product = CaseSerializers(cp[0]).data
+
+        elif category == 'laptop':
+            product = LaptopSerializers(cp[0]).data
+
+        else:
+            product = ProductSerializers(cp[0]).data
+        data = {
+            'product': product,
             'fields': cp[1],
         }
-        return render(request, 'product/compare.html', context)
+        return Response(data)

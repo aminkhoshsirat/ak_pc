@@ -1,29 +1,255 @@
 {% extends 'parent/base.html' %}
+{% load poll_extras %}
 {% block title %}{% endblock %}
 {% block content %}
-    <div id="cp-1" style="display: inline-block;width: 200px;">
-        <img src="{{ product.image.url }}">
-        <p>{{ product.title }}</p>
+    <!-- bread croumb -->
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'product:product_list_view' %}"
+                                                   class="font-14 text-muted">فروشگاه</a></li>
+                    <li class="breadcrumb-item"><a href="" class="font-14 text-muted">مقایسه</a></li>
+                </ol>
+            </nav>
+        </div>
     </div>
-    <div id="cp-2" style="display: inline-block;width: 200px;">
 
-    </div>
-    <div id="cp-3" style="display: inline-block;width: 200px;">
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="compare-title">
+                    <h6 class="slider-title def-color mb-3">مقایسه محصولات</h6>
+                </div>
+                <div class="compare">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered fixed compare-table">
+                                    <thead>
+                                    <tr>
+                                        <th id="compare-product-1">
+                                            <div class="product-box-item bg-white w-100">
+                                                <div class="hover">
+                                                    <div class="hover-btn">
+                                                        <a href="#productModal" onclick="showProduct({{ product.id }})"
+                                                           data-hint="مشاهده سریع"
+                                                           class="hint--right" data-bs-toggle="modal"
+                                                           data-bs-target="#productModal"><i
+                                                                class="bi bi-eye"></i></a>
+                                                    </div>
+                                                </div>
+                                                <a href="{{ product.get_absolute_url }}">
+                                                    <div class="image text-center">
+                                                        <img src="{{ product.image.url }}" alt="{{ product.title }}"
+                                                             class="img-fluid one-image">
+                                                        <img src="{{ product.image.url }}" alt="{{ product.title }}"
+                                                             class="img-fluid two-image">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <div class="title">
+                                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                                {{ product.title }}
+                                                            </h6>
 
+                                                        </div>
+                                                        <div
+                                                                class="foot d-flex justify-content-between align-items-center">
+                                                            <div
+                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="add" data-hint="افزودن به سبد خرید"
+                                                                     class="hint--right">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="16" height="16" fill="currentColor"
+                                                                         class="bi bi-bag" viewBox="0 0 16 16">
+                                                                        <path
+                                                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                                                    </svg>
+                                                                </div>
+
+                                                            </div>
+                                                            <div
+                                                                    class="price d-flex flex-column justify-content-end">
+                                                                <div>
+                                                                        <span
+                                                                                class="fw-bold font-18 def-color">{{ product.price_after_off | money_format }}</span>
+                                                                    <span
+                                                                            class="badge main-color-two-bg rounded-pill">{{ product.off }}%</span>
+                                                                </div>
+                                                                <div
+                                                                        class="d-flex justify-content-center align-items-center">
+                                                                        <span
+                                                                                class="text-muted font-14 text-decoration-line-through">{{ product.price | money_format }}</span>
+                                                                    <span
+                                                                            class="text-muted font-14 ms-2">تومان</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="compare-box">
+                                                <div class="compare-delete">
+                                                    <a href="" class="hint--top" data-hint="حذف از مقایسه"><i
+                                                            class="bi bi-x-circle-fill"></i></a>
+                                                </div>
+                                            </div>
+                                        </th>
+
+                                        <th  style="display: none"  id="compare-product-2">
+                                        </th>
+                                        <th  style="display: none" id="compare-product-3">
+                                        </th>
+                                        <th  style="display: none" id="compare-product-4">
+                                        </th>
+                                        <th id="compare-add-product-btn">
+                                            <div class="compare-add">
+                                                <div class="compare-add-product">
+                                                    <div class="cap-icon">
+                                                        <i class="bi bi-box-arrow-down"></i>
+                                                    </div>
+                                                    <div class="cap-title">
+                                                        <p class="text-muted">برای افزودن محصول کلیک کنید</p>
+                                                    </div>
+
+                                                    <div class="cap-btn" data-bs-toggle="modal"
+                                                         data-bs-target="#CompareProductModal">
+                                                        {% if product.main_category == 'laptop' %}
+                                                            <button onclick="addCompareProduct('laptop')"
+                                                                    class="btn border-0 main-color-one-bg">افزودن کالا
+                                                                به مقایسه
+                                                            </button>
+                                                        {% else %}
+                                                            <button onclick="addCompareProduct('{{ product.child_category.url }}')"
+                                                                    class="btn border-0 main-color-one-bg">افزودن کالا
+                                                                به مقایسه
+                                                            </button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </th>
+                                    <input id="compare-limit" type="hidden" value="1">
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td id="compare-product-price1">
+                                                <span class="d-block fw-bold text-success">{{ product.price_after_off | money_format }}
+                                                    تومان</span>
+                                        </td>
+                                        <td id="compare-product-price2" style="display: none">
+
+                                        </td>
+                                        <td id="compare-product-price3" style="display: none">
+
+                                        </td>
+
+                                        <td id="compare-product-price4" style="display: none">
+
+                                        </td>
+                                    </tr>
+                                    {% for field in fields %}
+                                        <tr>
+                                            <td colspan="5" class="td-head">
+                                                <i class="bi bi-chevron-double-left "></i>
+                                                <span>{{ field.name }}</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                {{ field.amount }}
+                                            </td>
+                                            <td id="compare-field-2-{{ forloop.counter }}">
+
+                                            </td>
+                                            <td id="compare-field-3-{{ forloop.counter }}">
+
+                                            </td>
+                                            <td id="compare-field-4-{{ forloop.counter }}">
+
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td>
+                                            {{ field.amount }}
+                                        </td>
+                                        <div style="display: none" id="compare-field-2-{{ forloop.counter }}">
+
+                                        </div>
+                                        <div style="display: none" id="compare-field-3-{{ forloop.counter }}">
+
+                                        </div>
+                                        <div style="display: none" id="compare-field-4-{{ forloop.counter }}">
+
+                                        </div>
+
+                                        <td id="compare-add-field">
+                                            <div class="empty-cell"></div>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div id="cp-4" style="display: inline-block;width: 200px;">
-        <button>انتخاب محصول</button>
+
+    <div style="scrollbar-width: none;" class="modal fade" id="CompareProductModal" tabindex="-1"
+         aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="bottom: 50px">
+            <div class="modal-content">
+                <div class="modal-header" style="top: 50px">
+                    <br>
+                    <div class="modal-comment-title">
+                        <h5 class="modal-title fw-bold text-muted-2"> لیست محصولات
+                        </h5>
+                        <p class="text-muted mt-1 font-14">{{ product.title }}
+                        </p>
+                    </div>
+                    <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="position-relative">
+                    <input type="text" name="search" id="search-compare-text"
+                           class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
+                           placeholder="جستجو...">
+                    {% if product.main_category.url == 'laptop' %}
+                        <input id="compare-category" type="hidden" value="{{ product.main_category.url }}">
+                    {% else %}
+                        <input id="compare-category" type="hidden" value="{{ product.child_category.url }}">
+                    {% endif %}
+                    <button onclick="searchCompareProduct()"
+                            class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
+                            style="left: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="row" id="product-cp-list">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-compare-close" type="button" class="btn btn-danger waves-effect waves-light"
+                            data-bs-dismiss="modal">بستن
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-    <table>
-        <tr>
-            {% for field in fields %}
-                <th>{{ field.name }}</th>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for field in fields %}
-                <th>{{ field.amount }}</th>
-            {% endfor %}
-        </tr>
-    </table>
+    <!-- end main-data -->
+
 {% endblock %}

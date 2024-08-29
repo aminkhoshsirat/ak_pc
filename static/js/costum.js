@@ -31,11 +31,11 @@ function addProduct(id) {
                                         </div>
                                     </div>`);
         $("input[name='count']").TouchSpin({
-        min: 1,
-        max: '1000000000000000',
-        buttondown_class: "btn-counter waves-effect waves-light",
-        buttonup_class: "btn-counter waves-effect waves-light"
-    });
+            min: 1,
+            max: '1000000000000000',
+            buttondown_class: "btn-counter waves-effect waves-light",
+            buttonup_class: "btn-counter waves-effect waves-light"
+        });
     })
 }
 
@@ -120,7 +120,7 @@ function productChart(id) {
     })
 }
 
-function productComment(id){
+function productComment(id) {
     $.get('/product/comment/' + id).then(res => {
         $('#product-comment-box').html(res);
     })
@@ -376,4 +376,105 @@ function sendOtp(id) {
     }).then(res => {
         console.log(res);
     })
+}
+
+function addCompareProduct(category) {
+    $.get('/product/compare-list/' + category).then(res => {
+        $('#product-cp-list').html(res);
+    })
+}
+function searchCompareProduct(){
+    const category = $('#compare-category').val();
+    const search = $('#search-compare-text').val();
+    $.get('/product/compare-list/' + category + '?search=' + search).then(res =>{
+        $('#product-cp-list').html(res);
+    })
+}
+
+function choseProduct(id){
+    const limit = parseInt($('#compare-limit').val());
+    const new_limit = limit + 1;
+    $('#compare-limit').val(new_limit.toString());
+    const category = $('#compare-category').val();
+    if(new_limit > 3){
+        $('#compare-add-product-btn').css('display', 'none');
+    }
+    $.get('/product/compare-product-detail/' + category + '/' + id).then(res =>{
+        const product = res.product;
+        $('#compare-product-price'+ new_limit).html(`<span class="d-block fw-bold text-success">${ product.price_after_off }
+                                                    تومان</span>`).show();
+        $('#compare-product-' + new_limit.toString()).html(`
+                                            <div class="product-box-item bg-white w-100">
+                                                <div class="hover">
+                                                    <div class="hover-btn">
+                                                        <a href="#productModal" onclick="showProduct(${ id })"
+                                                           data-hint="مشاهده سریع"
+                                                           class="hint--right" data-bs-toggle="modal"
+                                                           data-bs-target="#productModal"><i
+                                                                class="bi bi-eye"></i></a>
+                                                    </div>
+                                                </div>
+                                                <a href="/product/detail/${product.url}">
+                                                    <div class="image text-center">
+                                                        
+                                                        <img src="${ product.image }" alt="${ product.title }"
+                                                             class="img-fluid one-image">
+                                                        <img src="${ product.image }" alt="${ product.title }"
+                                                             class="img-fluid two-image">
+                                               
+                                                    </div>
+                                                    <div class="desc">
+                                                        <div class="title">
+                                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                                ${ product.title }
+                                                            </h6>
+
+                                                        </div>
+                                                        <div
+                                                                class="foot d-flex justify-content-between align-items-center">
+                                                            <div
+                                                                    class="d-flex align-items-center justify-content-center">
+                                                                <div class="add" data-hint="افزودن به سبد خرید"
+                                                                     class="hint--right">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         width="16" height="16" fill="currentColor"
+                                                                         class="bi bi-bag" viewBox="0 0 16 16">
+                                                                        <path
+                                                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                                                                    </svg>
+                                                                </div>
+
+                                                            </div>
+                                                            <div
+                                                                    class="price d-flex flex-column justify-content-end">
+                                                                <div>
+                                                                        <span
+                                                                                class="fw-bold font-18 def-color">${ product.price_after_off }</span>
+                                                                    <span
+                                                                            class="badge main-color-two-bg rounded-pill">${ product.off }%</span>
+                                                                </div>
+                                                                <div
+                                                                        class="d-flex justify-content-center align-items-center">
+                                                                        <span
+                                                                                class="text-muted font-14 text-decoration-line-through">${ product.price }</span>
+                                                                    <span
+                                                                            class="text-muted font-14 ms-2">تومان</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="compare-box">
+                                                <div class="compare-delete">
+                                                    <a href="" class="hint--top" data-hint="حذف از مقایسه"><i
+                                                            class="bi bi-x-circle-fill"></i></a>
+                                                </div>
+                                            </div>
+                                        `).show();
+        for (let i = 0; i < res.fields.length; i++){
+            $('#compare-field-' + new_limit + '-' + (i + 1).toString()).html(res.fields[i].amount).show();
+        }
+    })
+    $('#btn-compare-close').click();
 }
