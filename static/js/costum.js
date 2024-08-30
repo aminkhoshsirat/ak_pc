@@ -6,7 +6,6 @@ function like(id, like_status) {
         if (like_status === 'dislike') {
             $('#like-status').html(`<i onclick="like(${id}, 'like')" class="bi-heart"></i>`);
         }
-        console.log(res);
     });
 }
 

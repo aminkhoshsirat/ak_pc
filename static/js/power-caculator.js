@@ -193,10 +193,12 @@ function getCpus(socket) {
 
 function selectCpu(title, power){
     $('#cpu-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectMainBoard(title, power){
     $('#main-board-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function getGpuSeries(title, id){
@@ -236,28 +238,41 @@ function getGpus(title, id){
 
 function selectGpu(title, power){
     $('#gpu-model-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectRam(title, power){
     $('#ram-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectSSD(title, power){
     $('#ssd-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectHDD(title, power){
     $('#hdd-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectOpticalDrive(title, power){
     $('#optical-drive-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectLiquidFan(title, power){
     $('#liquid-fan-btn-text').text(title);
+    totalPowerCaculator(power);
 }
 
 function selectFan(title, power){
     $('#fan-btn-text').text(title);
+    totalPowerCaculator(power);
+}
+
+function totalPowerCaculator(power){
+    const new_power = parseInt($('#total-power-phone').text()) + parseInt(power);
+    $('#total-power-phone').text(new_power);
+    $('#total-power-desktop').text(new_power);
 }

@@ -3,354 +3,406 @@
 {% load static %}
 {% block title %}{% endblock %}
 {% block content %}
-    <div class="container-xxl d-flex align-items-start flex-wrap">
-        <img src="catalog/view/theme/exo/image/assemble.jpg" alt="assemble" class="rounded-4 my-5">
-        <div class="col-3 col-xxl-2 sticky-top" style="top: 155px;">
-            <h4 class="fw-bold text-center">کامپیوتر شما!</h4>
-            <div class="bg-secondary bg-opacity-10 rounded-3 p-4 text-center">
-                <h4 class="fw-bold mb-4" id="price">0 تومان</h4>
-                <button onclick="$('#form-assemble').submit();" id="fixed-btn-cart" class="btn btn-primary py-2">
-                    افزودن به سبد خرید
-                </button>
-            </div>
-        </div>
-        <div class="col-7 ms-4 ps-4 border-start border-light border-2">
-            <h4 class="fw-bold text-center">جزئیات</h4>
-            <form action="https://exo.ir/index.php?route=pc/assemble/add2" method="post" enctype="multipart/form-data"
-                  id="form-assemble" class="form-horizontal">
-                <div id="categories">
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-213" style="filter: none;">
-                        <i class="icon-font icon-cpu text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">پردازنده (سی پی یو)</h5>
-                        <div>
-                            <div id="choose-213" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('cpu');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-cpu">
-
-                        </div>
-
-                        <input id="cpu-id" name="cpu" type="hidden">
-
-                    </div>
-                    <div id="product-selection-213" class="d-flex flex-column mb-3"></div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-157" style="filter: grayscale(1);">
-                        <i class="icon-font icon-motherboard text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">مادربرد</h5>
-                        <div>
-                            <div id="main-board-btn" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('main_board');" style="width: 36px; display: none;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-main-board">
-
-                        </div>
-
-                        <input id="main-board-id" name="main_board" type="hidden">
-                    </div>
-                    <div id="product-selection-157" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-227" style="filter: grayscale(1);">
-                        <i class="icon-font icon-ram text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">رم (RAM)</h5>
-                        <div>
-                            <div id="ram-btn" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('ram');" style="width: 36px; display: none;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="select-ram">
-
-                        </div>
-
-                        <input id="ram-id" name="ram" type="hidden">
-
-                    </div>
-                    <div id="product-selection-227" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-168" style="filter: none;">
-                        <i class="icon-font icon-vga text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">کارت گرافیک</h5>
-                        <div>
-                            <div id="choose-168" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('gpu');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-gpu">
-
-                        </div>
-
-                        <input id="gpu-id" name="gpu" type="hidden">
-                    </div>
-                    <div id="product-selection-168" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-206" style="filter: none;">
-                        <i class="icon-font icon-hdd text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">هارد دیسک</h5>
-                        <div>
-                            <div id="choose-206" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('hard');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-hard">
-
-                        </div>
-
-                        <input id="hard-id" name="hard" type="hidden">
-                    </div>
-                    <div id="product-selection-206" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-231" style="filter: none;">
-                        <i class="icon-font icon-ssd text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">اس اس دی (SSD)</h5>
-                        <div>
-                            <div id="choose-231" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('ssd');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-ssd">
-
-                        </div>
-
-                        <input id="ssd-id" name="ssd" type="hidden">
-                    </div>
-                    <div id="product-selection-231" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-233" style="filter: none;">
-                        <i class="icon-font icon-optical text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">درایو نوری</h5>
-                        <div>
-                            <div id="choose-233" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('drive');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-drive">
-
-                        </div>
-
-                        <input id="drive-id" name="drive" type="hidden">
-                    </div>
-                    <div id="product-selection-233" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-285" style="filter: grayscale(1);">
-                        <i class="icon-font icon-cooler text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">کولر پردازنده</h5>
-                        <div>
-                            <div id="choose-285" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('fan_cpu');" style="width: 36px; display: none;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-fan-cpu">
-
-                        </div>
-
-                        <input id="fan-cpu-id" name="fan_cpu" type="hidden">
-                    </div>
-                    <div id="product-selection-285" class="d-flex flex-column mb-3">
-                    </div>
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-190" style="filter: none;">
-                        <i class="icon-font icon-case text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">کیس</h5>
-                        <div>
-                            <div id="choose-190" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('case');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-case">
-
-                        </div>
-
-                        <input id="case-id" name="case" type="hidden">
-                    </div>
-                    <div id="product-selection-190" class="d-flex flex-column mb-3">
-                    </div>
-
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-103" style="filter: none;">
-                        <i class="icon-font icon-monitor text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">مانیتور</h5>
-                        <div>
-                            <div id="choose-103" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('monitor');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-monitor">
-
-                        </div>
-
-                        <input id="monitor-id" name="monitor" type="hidden">
-                    </div>
-                    <div id="product-selection-103" class="d-flex flex-column mb-3">
-
-
-                    </div>
-
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-263" style="filter: none;">
-                        <i class="icon-font icon-fan text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">فن کیس</h5>
-                        <div>
-                            <div id="choose-263" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('fan_cpu');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-fan-case">
-
-                        </div>
-
-                        <input id="fan-case-id" name="fan_case" type="hidden">
-                    </div>
-                    <div id="product-selection-263" class="d-flex flex-column mb-3">
-
-
-                    </div>
-
-
-                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
-                         id="category-205" style="filter: none;">
-                        <i class="icon-font icon-power text-primary fs-1"></i>
-                        <h5 class="ms-3 me-auto mb-0">پاور</h5>
-                        <div>
-                            <div id="choose-205" class="ratio ratio-1x1 bg-primary rounded-circle choose"
-                                 onclick="getCategory('power');" style="width: 36px; display: block;" role="button">
-                                <div class="d-flex p-2" style="filter: unset;">
-                                    <svg viewBox="0 0 20 20">
-                                        <path d="M10,0 L10,20 M0,10 L20,10"
-                                              style="fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round"></path>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="select-power">
-
-                        </div>
-
-                        <input id="power-id" name="power" type="hidden">
-                    </div>
-                    <div id="product-selection-205" class="d-flex flex-column mb-3">
-
-
-                    </div>
-
-                </div>
-
-                <div id="most-services" class="accordion">
-
-                    <div class="accordion-item bg-primary bg-opacity-10 border-0 rounded-4">
-                        <button class="accordion-button bg-transparent fs-5 px-4 py-3" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#technical-support"><i
-                                class="icon-font icon-technical-support text-primary fs-1 me-3"></i>خدمات فنی
-                        </button>
-                        <div class="accordion-collapse collapse show p-3" id="technical-support">
-                            <label id="1472" class="d-flex align-items-center mb-4 mx-3" role="button"
-                                   data-toggle="slide">
-                                <input id="more-product1472" type="checkbox" name="product_id[]" value="1472"
-                                       class="form-check-input">
-                                <input type="hidden" id="1472" class="more-price" value="500000.0000">
-                                <img src="https://exo.ir/image/cache/catalog/%20جانبی/assemblye-50x50.jpg" class="mx-4">
-                                <h5 class="m-0">اسمبل و نصب ویندوز و درایورها</h5>
-                                <h5 class="mb-0 ms-auto">500,000 تومان</h5>
-                            </label>
-                            <div class="product-service ms-5 mb-3 px-4" style="display:none">
-                                <label class="d-flex my-2">
-                                    <i class="icon-font icon-info text-secondary opacity-75 me-2"
-                                       data-bs-toggle="tooltip" data-bs-placement="right"
-                                       data-bs-title="1. ضمانت تعویض کامل تمامی قطعات در صورت خرابی طبق چهارچوب شرکت‌های گارانتی کننده (تا 100 روز پس از خرید)"
-                                       data-bs-custom-class="secondary-tooltip" data-bs-html="true"></i>
-                                    <input type="radio" data-price="0.0000" name="service[1472]" value="1"
-                                           class="form-check-input">
-                                    <span class="mx-2">ضمانت برنزی اگزو - تضمین تعویض قطعات در صورت خرابی تا 100 روز - </span>
-                                    <span>0  تومان</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </form>
-
-
-
-            <div id="category-model" ></div>
-            <div id="product-detail"></div>
+    <div class="content">
+        <div class="container-fluid">
+            <nav aria-label="breadcrumb" class="my-lg-0 my-2">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="{% url 'index' %}" class="font-14 text-muted">خانه</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'product:product_list_view' %}"
+                                                   class="font-14 text-muted">فروشگاه</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'asemble:index' %}" class="font-14 text-muted">اسمبل</a>
+                    </li>
+                </ol>
+            </nav>
         </div>
     </div>
-    <script src="{% static 'js/asemble.js' %}"></script>k
+
+    <!-- start main-data -->
+    <div class="content">
+        <div class="container-fluid">
+            <div class="content-box">
+                <div class="compare-title">
+                    <h6 class="slider-title def-color mb-3">مقایسه محصولات</h6>
+                </div>
+                <div class="compare">
+                    <div class="row response">
+                        <div class="col-lg-8">
+                            <div class="table-responsive">
+
+                                <div id="categories">
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-213" style="filter: none;">
+                                        <i class="icon-font icon-cpu text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">پردازنده</h5>
+                                        <div id="as-cpu-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('cpu')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="cpu-id" name="cpu" type="hidden">
+                                    <div id="select-cpu" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-213" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-157" style="filter: grayscale(1);">
+                                        <i class="icon-font icon-motherboard text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">مادربرد</h5>
+                                        <div id="as-mainboard-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('main_board')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="main-board-id" name="main_board" type="hidden">
+                                    <div id="select-main-board" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-157" class="d-flex flex-column mb-3">
+                                    </div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-227" style="filter: grayscale(1);">
+                                        <i class="icon-font icon-ram text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">رم (RAM)</h5>
+                                        <div id="as-ram-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('ram')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="ram-num" value="0">
+                                    <input id="ram-id" name="ram" type="hidden">
+                                    <div id="select-ram1" class="d-flex align-items-center"></div>
+                                    <div id="select-ram2" class="d-flex align-items-center"></div>
+                                    <div id="select-ram3" class="d-flex align-items-center"></div>
+                                    <div id="select-ram4" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-227" class="d-flex flex-column mb-3">
+                                    </div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-168" style="filter: none;">
+                                        <i class="icon-font icon-vga text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">کارت گرافیک</h5>
+                                        <div id="as-gpu-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('gpu')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="gpu-id" name="gpu" type="hidden">
+                                    <input type="hidden" id="gpu-num" value="0">
+                                    <div id="select-gpu" class="d-flex align-items-center"></div>
+                                    <div id="select-gpu2" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-168" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-206" style="filter: none;">
+                                        <i class="icon-font icon-hdd text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">هارد دیسک</h5>
+                                        <div id="as-hard-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('hard')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="hard-id" name="hard" type="hidden">
+                                    <input type="hidden" id="hdd-num" value="0">
+                                    <div id="select-hdd1" class="d-flex align-items-center"></div>
+                                    <div id="select-hdd2" class="d-flex align-items-center"></div>
+                                    <div id="select-hdd3" class="d-flex align-items-center"></div>
+                                    <div id="select-hdd4" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-206" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-231" style="filter: none;">
+                                        <i class="icon-font icon-ssd text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">اس اس دی (SSD)</h5>
+                                        <div id="as-ssd-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('ssd')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="ssd-id" name="ssd" type="hidden">
+                                    <input type="hidden" id="ssd-num" value="0">
+                                    <div id="select-ssd1" class="d-flex align-items-center"></div>
+                                    <div id="select-ssd2" class="d-flex align-items-center"></div>
+                                    <div id="select-ssd3" class="d-flex align-items-center"></div>
+                                    <div id="select-ssd4" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-231" class="d-flex flex-column mb-3">
+                                    </div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-233" style="filter: none;">
+                                        <i class="icon-font icon-optical text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">درایو نوری</h5>
+                                        <div id="as-drive-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('drive')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <input id="drive-id" name="drive" type="hidden">
+                                    <div id="select-drive" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-233" class="d-flex flex-column mb-3">
+                                    </div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-285" style="filter: grayscale(1);">
+                                        <i class="icon-font icon-cooler text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">کولر پردازنده</h5>
+                                        <div id="as-fan-cpu-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('fan_cpu')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="fan-cpu-id" name="fan_cpu" type="hidden">
+                                    <div id="select-fan-cpu" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-285" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-190" style="filter: none;">
+                                        <i class="icon-font icon-case text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">کیس</h5>
+                                        <div id="as-case-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('case')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="case-id" name="case" type="hidden">
+                                    <div id="select-case" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-190" class="d-flex flex-column mb-3">
+                                    </div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-103" style="filter: none;">
+                                        <i class="icon-font icon-monitor text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">مانیتور</h5>
+                                        <div id="as-monitor-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('monitor')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="monitor-id" name="monitor" type="hidden">
+                                    <div id="select-monitor" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-103" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-263" style="filter: none;">
+                                        <i class="icon-font icon-fan text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">فن کیس</h5>
+                                        <div id="as-fan-case-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('fan_cpu')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="fan-case-id" name="fan_case" type="hidden">
+                                    <input type="hidden" id="fan-num" value="0">
+                                    <div id="select-fan1" class="d-flex align-items-center"></div>
+                                    <div id="select-fan2" class="d-flex align-items-center"></div>
+                                    <div id="select-fan3" class="d-flex align-items-center"></div>
+                                    <div id="select-fan4" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-263" class="d-flex flex-column mb-3"></div>
+                                    <div class="d-flex bg-primary bg-opacity-10 rounded-4 mb-3 align-items-center px-4 py-3"
+                                         id="category-205" style="filter: none;">
+                                        <i class="icon-font icon-power text-primary fs-1"></i>
+                                        <h5 class="ms-3 me-auto mb-0">پاور</h5>
+                                        <div id="as-power-btn">
+                                            <div class="cap-btn" data-bs-toggle="modal"
+                                                 data-bs-target="#CompareProductModal">
+
+                                                <button onclick="getCategory('power')"
+                                                        class="btn border-0 main-color-one-bg bi bi-plus">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input id="power-id" name="power" type="hidden">
+                                    <div id="select-power" class="d-flex align-items-center"></div>
+                                    <div id="product-selection-205" class="d-flex flex-column mb-3">
+                                    </div>
+                                </div>
+                                <div id="most-services" class="accordion">
+                                    <div class="accordion-item bg-primary bg-opacity-10 border-0 rounded-4">
+                                        <button class="accordion-button bg-transparent fs-5 px-4 py-3" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#technical-support"><i
+                                                class="icon-font icon-technical-support text-primary fs-1 me-3"></i>خدمات
+                                            فنی
+                                        </button>
+                                        <div class="accordion-collapse collapse show p-3" id="technical-support">
+                                            <label id="1472" class="d-flex align-items-center mb-4 mx-3"
+                                                   role="button"
+                                                   data-toggle="slide">
+                                                <input id="more-product1472" type="checkbox" name="product_id[]"
+                                                       value="1472"
+                                                       class="form-check-input">
+                                                <input type="hidden" id="1472" class="more-price"
+                                                       value="500000.0000">
+                                                <img src="https://exo.ir/image/cache/catalog/%20جانبی/assemblye-50x50.jpg"
+                                                     class="mx-4">
+                                                <h5 class="m-0">اسمبل و نصب ویندوز و درایورها</h5>
+                                                <h5 class="mb-0 ms-auto">500,000 تومان</h5>
+                                            </label>
+                                            <div class="product-service ms-5 mb-3 px-4" style="display:none">
+                                                <label class="d-flex my-2">
+                                                    <i class="icon-font icon-info text-secondary opacity-75 me-2"
+                                                       data-bs-toggle="tooltip" data-bs-placement="right"
+                                                       data-bs-title="1. ضمانت تعویض کامل تمامی قطعات در صورت خرابی طبق چهارچوب شرکت‌های گارانتی کننده (تا 100 روز پس از خرید)"
+                                                       data-bs-custom-class="secondary-tooltip"
+                                                       data-bs-html="true"></i>
+                                                    <input type="radio" data-price="0.0000" name="service[1472]"
+                                                           value="1"
+                                                           class="form-check-input">
+                                                    <span class="mx-2">ضمانت برنزی اگزو - تضمین تعویض قطعات در صورت خرابی تا 100 روز - </span>
+                                                    <span>0  تومان</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="cart-payment mt-lg-0 mt-3">
+                                <div class="title text-center">
+                                    <h4 class="slider-title fw-900 def-color mb-3">مجموع کل سبد خرید</h4>
+                                </div>
+                                <table class="table main-table text-center col-lg-4">
+                                    <tr>
+                                        <td class="fw-bold">قیمت کل:<span id="as-total-price">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">تخفیف:<span id="as-total-off">0</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="fw-bold">قیمت بعد از تخفیف:<span id="as-total-price-off">0</span>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <form action="">
+                                    <button
+                                            class="btn mt-3 w-100 py-3 border-0 main-color-one-bg waves-effect waves-light">
+                                        اقدام
+                                        به پرداخت
+                                        <i class="bi bi-bank2"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="scrollbar-width: none;" class="modal fade" id="CompareProductModal" tabindex="-1"
+         aria-labelledby="chartModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" style="bottom: 50px">
+            <div class="modal-content">
+                <div class="modal-header" style="top: 50px">
+                    <br>
+                    <div class="modal-comment-title">
+                        <br>
+                        <h5 class="modal-title fw-bold text-muted-2"> لیست محصولات
+                        </h5>
+                        <p class="text-muted mt-1 font-14">انتخاب کنید
+                        </p>
+                    </div>
+                    <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                </div>
+                <div class="position-relative">
+                    <input type="text" name="search" id="as-search-text"
+                           class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
+                           placeholder="جستجو...">
+                    <input type="hidden" id="as-category-title" value="{{ product.child_category.url }}">
+
+                    <button onclick="searchAsembleProduct()"
+                            class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
+                            style="left: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="row" id="product-assemble-list">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-compare-close" type="button" class="btn btn-danger waves-effect waves-light"
+                            data-bs-dismiss="modal">بستن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="scrollbar-width: none;" class="modal fade" id="productAsembleModal" tabindex="-1"
+         aria-labelledby="chartModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header" style="top: 50px">
+                    <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+                            aria-label="Close" id="btn-compare-close-product"></button>
+                </div>
+                <div class="row" style="overflow-y: auto" id="show-product-asemble">
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end main-data -->
+    <style>
+        @media (max-width: 1200px) {
+            #show-product-asemble {
+                top: 1200px;
+            }
+        }
+    </style>
+    <script src="{% static 'js/asemble.js' %}"></script>
 {% endblock %}

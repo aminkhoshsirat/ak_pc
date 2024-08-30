@@ -1,66 +1,223 @@
 {% load poll_extras %}
-<div>
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable"
-         style="">
-        <div class="modal-content">
-            <div class="modal-body pb-0 mb-0" id="product">
-                <div class="modal-header w-100 mt-n3 mb-3">
-                    <div class="d-flex"><i class="icon-font icon-cpu fs-3 text-primary"></i><h5
-                            class="mb-0 ms-2">{{ product.child_category.title }}</h5></div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="nav nav-tabs" role="tablist">
-                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#product-tab" type="button" role="tab">{{ product.title }}</button>
-                </div>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="product-tab" role="tabpanel">
-                        <div class="d-flex">
-                            <div class="col-4">
-                                <img src="{{ product.image.url }}"
-                                     class="img-fluid" title="{{ product.title }}"
-                                     alt="{{ product.title }}">
+{% load static %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="content-box">
+            <div class="row gy-3">
+                <div class="col-lg-4">
+                    <div class="pro_gallery">
+                        <div class="icon-product-box">
+                            <div class="icon-product-box-item hint--right" data-bs-toggle="modal"
+                                 data-bs-target="#videoModal" data-hint="ویدیو معرفی">
+                                <i class="bi bi-play-circle"></i>
                             </div>
-                            <div class="col-8 p-4 d-flex flex-column">
-                                <div class="d-flex align-items-center border-bottom border-2 my-3 pb-2">
-                                    <a href="{{ product.get_absolute_url }}"
-                                       target="_blank"><i
-                                            class="icon-font icon-elink fs-5 text-primary me-2"></i></a>
-                                    <h4 class="m-0">{{ product.title }}</h4>
-                                </div>
+                            <div class="icon-product-box-item hint--right" data-bs-toggle="modal"
+                                 data-bs-target="#shareModal" data-hint="اشتراک گذاری">
+                                <i class="bi bi-share-fill"></i>
+                            </div>
+                            <div id="like-status">
+                                {% if favorite_product %}
+                                    <i onclick="like({{ product.id }}, 'dislike')"
+                                       class="bi-heart-fill"></i>
+                                {% else %}
+                                    <i onclick="like({{ product.id }}, 'like')" class="bi-heart"></i>
+                                {% endif %}
+                            </div>
 
-                                <div id="product-info" class="product-options">
-                                    <input type="hidden" name="product_id" value="15295">
-                                </div>
+                            <div>
 
-                                <h6 class="mb-2 mt-5">ویژگی‌ها</h6>
-                                <div class="d-flex mb-2">
-                                    {% for field in fields %}
-                                        <span class="text-black-50">{{ field.name }} : </span>
-                                        <span class="text-dark ms-2">{{ field.amount }}</span>
-                                    {% endfor %}
+                            </div>
+
+
+                            <div class="icon-product-box-item hint--right" data-hint="مقایسه محصول">
+                                {% if product.main_category.url == 'laptop' %}
+                                    <a href="{% url 'product:compare' product.main_category.url product.id %}"><i
+                                            class="bi bi-arrow-left-right"></i></a>
+                                {% else %}
+                                    <a href="{% url 'product:compare' product.child_category.url product.id %}"><i
+                                            class="bi bi-arrow-left-right"></i></a>
+                                {% endif %}
+                            </div>
+                            <div class="icon-product-box-item hint--right" data-hint="نمودار قیمت"
+                                 data-bs-toggle="modal" data-bs-target="#chartModal">
+                                <i onclick="productChart({{ product.id }})" class="bi bi-bar-chart"></i>
+                            </div>
+                        </div>
+                        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+                             class="swiper product-gallery">
+                            <div class="swiper-wrapper" title="برای بزرگنمایی تصویر دابل کلیک کنید">
+                                <div class="swiper-slide">
+                                    <div class="swiper-zoom-container">
+                                        <img class="img-fluid" src="{{ product.image.url }}"/>
+                                    </div>
                                 </div>
-                                <div class="d-flex align-items-center ms-auto mt-auto">
-                                    <input type="hidden" name="quantity" value="1">
-                                    <ul>
-                                        <li>
-                                            <h5 class="fw-bold m-0">{{ product.price_after_off | money_format }} تومان</h5>
-                                        </li>
-                                    </ul>
+{#                                {% for image in images %}#}
+{#                                    <div class="swiper-slide">#}
+{#                                        <div class="swiper-zoom-container">#}
+{#                                            <img class="img-fluid" src="{{ image.image.url }}"/>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
+
+                            </div>
+{#                            <div class="swiper-button-next d-none d-lg-flex"></div>#}
+{#                            <div class="swiper-button-prev d-none d-lg-flex"></div>#}
+{#                            <div class="swiper-pagination d-none d-lg-block"></div>#}
+                        </div>
+                        <div thumbsSlider="" class="swiper product-gallery-thumb">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img class="img-fluid" src="{{ product.image.url }}"/>
                                 </div>
+{#                                {% for image in images %}#}
+{#                                    <div class="swiper-slide">#}
+{#                                        <img class="img-fluid" src="{{ image.url }}"/>#}
+{#                                    </div>#}
+{#                                {% endfor %}#}
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="benchmark-tab" role="tabpanel">
+                </div>
+                <div class="col-lg-4">
+                    <div class="product-meta">
+                        <nav aria-label="breadcrumb" class="mb-3">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item active main-color-one-color font-16" aria-current="page">
+                                    <a style="color: #0b5ed7" href="{{ product.main_category.get_absolute_url }}">
+                                        {{ product.main_category.title }}
+                                    </a>
+
+                                </li>
+                                {% if product.child_category.parent_category %}
+                                    <li class="breadcrumb-item active main-color-one-color font-16" aria-current="page">
+                                        <a style="color: #0b5ed7"
+                                           href="{{ product.child_category.parent_category.get_absolute_url }}">
+                                            {{ product.child_category.parent_category.title }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                <li class="breadcrumb-item active main-color-one-color font-16" aria-current="page">
+                                    <a style="color: #0b5ed7" href="{{ product.child_category.get_absolute_url }}">
+                                        {{ product.child_category.title }}
+                                    </a>
+
+                                </li>
+                            </ol>
+                        </nav>
+                        <div class="title mt-md-0 mt-3">
+                            <h6 class="font-16 mb-2">{{ product.title }}</h6>
+                            <p class="font-12 text-muted font-en">{{ product.title }}</p>
+                            <div class="d-flex align-items-center pb-2">
+                                <div class="star">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-half"></i>
+                                    <i class="bi bi-star"></i>
+                                </div>
+                                <div class="ms-3">
+                                    <a href="" class="main-color-one-color font-14">
+                                        <span>{{ comment_count }}</span>
+                                        <span>دیدگاه</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-feature py-2">
+                            <nav class="navbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item pb-1 font-14">
+                                        <span class="nav-title me-1 fw-bold">برند:</span>
+                                        <span class="nav-title-desc text-muted">{{ product.brand.title }}</span>
+                                    </li>
+                                    {% for field in fields %}
+                                        {% if forloop.counter < 25 %}
+                                            <li class="nav-item pb-1 font-14">
+                                                <span class="nav-title me-1 fw-bold">{{ field.name }}</span>
+                                                <span>:</span>
+                                                {% if field.amount %}
+                                                    {% if field.amount == True %}
+                                                        <span class="nav-title-desc text-muted">دارد</span>
+                                                    {% elif field.amount == False %}
+                                                        <span class="nav-title-desc text-muted">ندارد</span>
+                                                    {% else %}
+                                                        <span class="nav-title-desc text-muted">{{ field.amount }}</span>
+                                                    {% endif %}
+
+                                                {% endif %}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </nav>
+                        </div>
+
                     </div>
                 </div>
-                <div class="modal-footer sticky-bottom bg-white justify-content-between rounded-0">
-                    <button class="btn btn-outline-secondary" id="return">بازگشت</button>
-                    <button onclick="selectProduct('{{ product.child_category.url }}', {{ product.id }}, '{{ product.title }}', '{{ product.image.url }}', {{ product.price }}, '{{ product.url }}')" class="btn btn-primary" id="button-product">انتخاب</button>
+                <div class="col-lg-4">
+                    <div class="se-cart">
+                        <div class="se-cart-item pb-0">
+                            <h4 class="font-18 mb-4">فروشنده</h4>
+                            <div class="d-flex">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                         fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                                        <path
+                                                d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="text-start ms-3">
+                                    <h6 class="fw-bold text-muted-2 font-16">آکورتک پی سی</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="se-cart-item">
+                            <i class="bi bi-shield-check me-1 font-20"></i>
+                            <h6 class="d-inline font-16 fw-normal">گارانتی اصالت و سلامت فیزیکی کالا</h6>
+                        </div>
+                        <div class="se-cart-item">
+                            <div class="d-flex">
+                                <div>
+                                    <i class="bi bi-house font-20"></i>
+                                </div>
+                                <div class="text-start ms-3">
+                                    <h6 class="fw-normal font-16">موجود در انبار فروشنده</h6>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="se-cart-item d-lg-flex d-none justify-content-between align-items-center">
+                            <div>
+                                <i class="bi bi-info-circle font-18 me-2"></i>
+                                <span class="font-12">
+                                        قیمت فروشنده
+                                    </span>
+                            </div>
+                            <div class="price d-flex flex-column justify-content-end">
+                                <div>
+                                    <span class="fw-bold font-18 def-color">{{ product.price_after_off|money_format }}</span>
+                                    <span class="badge main-color-two-bg rounded-pill">{{ product.off }}%</span>
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span class="text-muted font-14 text-decoration-line-through">{{ product.price | money_format }}</span>
+                                    <span class="text-muted font-14 ms-2">تومان</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="se-cart-item" id="product-bucket">
+                            <button onclick="selectProductAsemble('{{ product.child_category.url }}', {{ product.id }}, '{{ product.title }}',
+                                    '{{ product.image.url }}', {{ product.price }}, {{ product.price_after_off }}, '{{ product.url }}')"
+                                    class="btn counter_btn w-100 d-block border-0 main-color-two-bg rounded-3 py-3 font-16 waves-effect waves-light">
+                                <i class="bi bi-cart-plus"></i>افزودن به لیست
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
+<script src="{% static 'js/asemble.js' %}"></script>
+<!-- end meta product -->

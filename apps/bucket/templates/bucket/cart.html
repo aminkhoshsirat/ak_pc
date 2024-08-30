@@ -39,12 +39,53 @@
                     </div>
                 </div>
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8 response">
+                    <div class="product-box-item bg-white w-100">
+                                                <div class="hover">
+                                                    <div class="hover-btn">
+                                                        <a href="#productModal" onclick="showProduct(3)" data-hint="مشاهده سریع" class="hint--right" data-bs-toggle="modal" data-bs-target="#productModal"><i class="bi bi-eye"></i></a>
+                                                    </div>
+                                                </div>
+                                                <a href="/product/detail/i7-12700/">
+                                                    <div class="image col-lg-3">
+                                                        <img src="https://storage.c2.liara.space/akurtek/product/product_images/fbc02084f7825ea9293ec4d6c07baaed911c4da2_1652879908.webp?AWSAccessKeyId=s7mtd3ecb1safiaq&amp;Signature=H81Sh8f%2FNo1rdJo43Z3kVt3Dxk0%3D&amp;Expires=1725040668" alt="i7 12700" class="img-fluid one-image">
+                                                        <img src="https://storage.c2.liara.space/akurtek/product/product_images/fbc02084f7825ea9293ec4d6c07baaed911c4da2_1652879908.webp?AWSAccessKeyId=s7mtd3ecb1safiaq&amp;Signature=H81Sh8f%2FNo1rdJo43Z3kVt3Dxk0%3D&amp;Expires=1725040668" alt="i7 12700" class="img-fluid two-image">
+                                                    </div>
+                                                    <div class="desc">
+                                                        <div class="title">
+                                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                                i7 12700
+                                                            </h6>
+
+                                                        </div>
+                                                        <div class="foot d-flex justify-content-between align-items-center">
+                                                            <div class="d-flex align-items-center justify-content-center">
+                                                                <div class="add" data-hint="افزودن به سبد خرید">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
+                                                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
+                                                                    </svg>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="price d-flex flex-column justify-content-end">
+                                                                <div>
+                                                                        <span class="fw-bold font-18 def-color">14,700,000</span>
+                                                                    <span class="badge main-color-two-bg rounded-pill">2%</span>
+                                                                </div>
+                                                                <div class="d-flex justify-content-center align-items-center">
+                                                                        <span class="text-muted font-14 text-decoration-line-through">15,000,000</span>
+                                                                    <span class="text-muted font-14 ms-2">تومان</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
                         <div class="cart-detail">
                             <div class="responsive-table">
                                 <table class="table main-table table-borderless">
                                     <thead>
-                                        <tr>
+                                        <tr class="col-lg-3">
                                             <th></th>
                                             <th></th>
                                             <th>محصول</th>
@@ -56,20 +97,20 @@
                                     </thead>
                                     <tbody>
                                     {% for product in bucket_products %}
-                                        <tr>
-                                            <td><a onclick="deleteProductUser({{ product.product.id }})" data-hint="حذف محصول از سبد خرید" class="hint--left"><i
+                                        <tr class="col-lg">
+                                            <td class="col-lg-1"><a onclick="deleteProductUser({{ product.product.id }})" data-hint="حذف محصول از سبد خرید" class="hint--left"><i
                                                         class="bi bi-x-circle-fill"></i></a></td>
-                                            <td><a href="{{ product.product.get_absolute_url }}"><img src="{{ product.product.image.url }}" width="60" class="" alt="{{ product.product.title }}"></a>
+                                            <td class="col-lg-1"><a href="{{ product.product.get_absolute_url }}"><img src="{{ product.product.image.url }}" width="60" class="" alt="{{ product.product.title }}"></a>
                                             </td>
-                                            <td class="title">{{ product.product.title }}</td>
-                                            <td><span class="num">{{ product.product.price | money_format }}</span><span
+                                            <td class="title col-lg-1">{{ product.product.title | truncatewords:10 }}</td>
+                                            <td class="col-lg-1"><span class="num">{{ product.product.price | money_format }}</span><span
                                                     class="text-muted font-10"> تومان </span></td>
-                                            <td><span class="num">{{ product.product.price_after_off | money_format }}</span><span
+                                            <td class="col-lg-1"><span class="num">{{ product.product.price_after_off | money_format }}</span><span
                                                     class="text-muted font-10"> تومان </span></td>
-                                            <td class="counter"><input onchange="changeNumBucket({{ product.product.id }})" name="count"
+                                            <td class="counter col-lg-1"><input onchange="changeNumBucket({{ product.product.id }})" name="count"
                                                    id="product-count-{{ product.product.id }}" type="text"
                                                    value="{{ product.num }}"></td>
-                                            <td><span class="num"></span><span
+                                            <td class="col-lg-1"><span class="num"></span><span
                                                     class="text-muted font-10">تومان</span></td>
                                         </tr>
                                     {% endfor %}

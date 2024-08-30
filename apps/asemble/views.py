@@ -1,7 +1,9 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views.generic import View, ListView, DetailView
 from apps.product.models import *
 from apps.product.category_fields import product_fields
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models.functions import Greatest
 
 
 class AsembleView(View):
@@ -12,7 +14,6 @@ class AsembleView(View):
 class CategoryView(ListView):
     template_name = 'asemble/category.html'
     paginate_by = 20
-    queryset = ProductModel.objects.all()
     context_object_name = 'products'
 
     def get_context_data(self, *args, **kwargs):
@@ -68,6 +69,7 @@ class CategoryView(ListView):
 
     def get_queryset(self):
         category = self.request.GET.get('category')
+        search = self.request.GET.get('search')
         products = ''
 
         if category == 'cpu':
@@ -112,6 +114,12 @@ class CategoryView(ListView):
         elif category == 'power':
             products = PowerModel.objects.filter(active=True)
 
+        if search:
+            products = products.annotate(similar=Greatest(
+                TrigramSimilarity('title', search),
+                TrigramSimilarity('url', search),
+            )).filter(similar__gt=0.1).order_by('-similar')
+
         return products
 
 
@@ -119,10 +127,8 @@ class ProductDetailView(DetailView):
     template_name = 'asemble/product-detail.html'
     context_object_name = 'product'
     queryset = ProductModel.objects.filter(active=True)
-    slug_field = 'url'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['fields'] = product_fields(context['product'])
         return context
-

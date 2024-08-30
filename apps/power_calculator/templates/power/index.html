@@ -194,64 +194,18 @@
                                             <button onclick="ramNumberFunction()" class="checked__item"><p class="dropdown__btn__text">
                                                 Select</p><span class="icon-msi-down dropdown__btn__icon"><span></span></span>
                                             </button>
-                                            <ul id="ram-number-list" class="dropdown__options__container" style="display: none;"></ul>
+                                            <ul id="ram-number-list" class="dropdown__options__container" style="display: none;">
+                                                <li>
+                                                    1
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
                         <div class="divider"></div>
-                        <section class="component__group pcie">
-                            <div class="category">
-                                <div class="category__title"><i class="icon-msi-PCIe-card category__icon"></i>
-                                    <div class="title__text">Additional PCI Express Cards</div>
-                                </div>
-                            </div>
-                            <div class="filter">
 
-
-                                <div class="template__basic-select-filter"><label class="label" for="">PCI-e x8</label>
-                                    <div class="template__base__select">
-                                        <button class="checked__item"><p class="dropdown__btn__text">Select</p><span
-                                                class="icon-msi-down dropdown__btn__icon"><span></span></span></button>
-                                        <ul class="dropdown__options__container" style="display: none;">
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-0"
-                                                                                       value="No Select" name="2"><label
-                                                    class="checked__option" for="2-numQuantity-0"><p>No Select</p>
-                                            </label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-1" value="1"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-1"><p>1</p></label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-2" value="2"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-2"><p>2</p></label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-3" value="3"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-3"><p>3</p></label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-4" value="4"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-4"><p>4</p></label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-5" value="5"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-5"><p>5</p></label></li>
-                                            <li class="dropdown__options__cell"><input class="checkbox" type="radio"
-                                                                                       id="2-numQuantity-6" value="6"
-                                                                                       name="2"><label
-                                                    class="checked__option" for="2-numQuantity-6"><p>6</p></label></li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </section>
-                        <div class="divider"></div>
                         <section class="component__group">
                             <div class="template__one-select-filters white__bg">
                                 <div class="category">
@@ -440,7 +394,7 @@
                         wattage is</h3>
                         <div class="divider"></div>
                         <div class="calculator__content">
-                            <div class="calculator__wattage"><p class="text"><span class="number">0</span> Watts</p>
+                            <div class="calculator__wattage"><p class="text"><span id="total-power-desktop" class="number">0</span> Watts</p>
                             </div>
                             <button class="btn-reset"><i class="icon-msi-refresh refresh-icon"></i>Reset</button>
                         </div>
@@ -490,7 +444,7 @@
                 PSU wattage is</h3>
                 <div class="divider"></div>
                 <div class="calculator__content">
-                    <div class="calculator__wattage"><p class="text"><span class="number">0</span> Watts</p></div>
+                    <div class="calculator__wattage"><p class="text"><span id="total-power-phone" class="number">0</span> Watts</p></div>
                     <button class="btn-reset"><i class="icon-msi-refresh refresh-icon"></i>Reset</button>
                 </div>
             </div>
