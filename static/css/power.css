@@ -650,7 +650,7 @@ body button {
 }
 
 #power__calculator .banner {
-    background-image: url("https://storage-asset.msi.com/global/picture/power_calculator/kv.jpg");
+    background-image: url("../images/power-background.jpg");
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

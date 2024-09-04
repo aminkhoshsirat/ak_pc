@@ -122,7 +122,7 @@ class ProductListView(ListView):
         elif child_category_url:
             child_category = ChildCategoryModel.objects.filter(url=child_category_url, active=True).first()
             self.extra_context = {'child_category': child_category}
-            products = products.filter(child_category=child_category)
+            products = products.filter(Q(child_category=child_category) | Q(child_category__parent_category=child_category))
 
         if brand:
             products = products.filter(brand__url=brand)
@@ -222,24 +222,34 @@ class SuggestedProductView(View):
 class ProductCommentView(ListView):
     template_name = 'product/comments.html'
     model = ProductCommentModel
+    context_object_name = 'comments'
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['comment_average_grade'] = ProductCommentModel.objects.aggregate(Avg('grade'))
+        context['comment_average_grade'] = context['comments'].aggregate(avg=Avg('grade'))
+        context['star5_num'] = context['comments'].filter(grade=5).count()
+        context['star4_num'] = context['comments'].filter(grade=4).count()
+        context['star3_num'] = context['comments'].filter(grade=3).count()
+        context['star2_num'] = context['comments'].filter(grade=2).count()
+        context['star1_num'] = context['comments'].filter(grade=1).count()
         return context
 
     def get_queryset(self):
         product_id = self.kwargs.get('product_id')
-        comments = ProductCommentModel.objects.prefetch_related('comment_positive_points', 'comment_negative_points').filter(product_id=product_id, active=True, admin_seen=True)
+        comments = ProductCommentModel.objects.filter(product_id=product_id, active=True, admin_seen=True)
         return comments
-    #
-    #
-    # def post(self, request):
-    #     form = ProductCommentForm(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #     else:
-    #         return render(request, 'product/comments.html')
+
+    def post(self, request, product_id):
+        form = ProductCommentForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            positive = [i.get('value') for i in cd['positive_votes']]
+            negative = [i.get('value') for i in cd['negative_votes']]
+            ProductCommentModel.objects.create(user=request.user, product_id=product_id, text=cd['text'],
+                                               grade=cd['grade'], positive_votes=positive,
+                                               negative_votes=negative)
+            return HttpResponse('success')
+        return HttpResponse('failed')
 
 
 class ProductLikeView(View):

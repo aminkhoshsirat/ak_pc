@@ -14,9 +14,9 @@ class TypeNotification(models.Choices):
 class AdminNotificationModel(models.Model):
     title = models.CharField(max_length=10000)
     type = models.CharField(max_length=1000, choices=TypeNotification.choices)
-    blog_comment = models.ForeignKey(BlogCommentModel, on_delete=models.DO_NOTHING,
+    blog_comment = models.ForeignKey(BlogCommentModel, on_delete=models.CASCADE,
                                      related_name='blog_comment_admin_notification', null=True, blank=True)
-    product_comment = models.ForeignKey(ProductCommentModel, on_delete=models.DO_NOTHING,
+    product_comment = models.ForeignKey(ProductCommentModel, on_delete=models.CASCADE,
                                         related_name='product_comment_admin_notification', null=True, blank=True)
     admin_description = models.TextField(null=True, blank=True)
     text = models.TextField(null=True, blank=True)

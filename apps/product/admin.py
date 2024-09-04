@@ -19,6 +19,11 @@ class ChildCategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'url': ('title', )}
 
 
+@admin.register(ChildCategoryImageModel)
+class ChildCategoryImageAdmin(admin.ModelAdmin):
+    list_display = ['child_category']
+
+
 @admin.register(BrandModel)
 class BrandAdmin(admin.ModelAdmin):
     list_display = ['title', 'image', 'url', 'active']

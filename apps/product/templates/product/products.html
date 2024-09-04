@@ -67,14 +67,14 @@
                         </div>
                         {% for category in main_category.base_category_child.all %}
                             {% if category.parent_category == None %}
-                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-0 mb-3">
+                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-20 mb-3">
                                     <a href="{{ category.get_absolute_url }}">
                                         <div class="cart-small">
                                             <div class="cart-small-icon">
-                                                <img width="50" src="{{ category.child_category_image.image.url }}"
+                                                <img width="120" src="{{ category.child_category_image.image.url }}"
                                                      alt="{{ category.title }}" class="img-fluid">
                                             </div>
-                                            <div class="cart-small-desc ms-lg-3 text-center">
+                                            <div class="cart-small-desc mt-2 text-center">
                                                 <h6>{{ category.title }}</h6>
                                                 <p class="text-muted d-none d-lg-block">{{ category.child_category_products.count }}
                                                     محصول</p>
@@ -90,14 +90,14 @@
                         </div>
 
                             {% for category in child_category.child_category.all %}
-                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-0 mb-3">
+                                <div class="col-lg-2 col-sm-4 col-6 mb-lg-20 mb-3">
                                     <a href="{{ category.get_absolute_url }}">
                                         <div class="cart-small">
                                             <div class="cart-small-icon">
-                                                <img width="50" src="{{ category.child_category_image.image.url }}"
+                                                <img width="120" src="{{ category.child_category_image.image.url }}"
                                                      alt="{{ category.title }}" class="img-fluid">
                                             </div>
-                                            <div class="cart-small-desc ms-lg-3 text-center">
+                                            <div class="cart-small-desc mt-2 text-center">
                                                 <h6>{{ category.title }}</h6>
                                                 <p class="text-muted d-none d-lg-block">{{ category.child_category_products.count }}
                                                     محصول</p>
@@ -106,11 +106,26 @@
                                     </a>
                                 </div>
                             {% endfor %}
-
                     {% endif %}
                 </div>
             </div>
         </div>
+    <style>
+        .cart-small {
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #fff;
+    box-shadow: var(--shadow-box);
+    height: 100%;
+}
+    </style>
+
 
 
         <!-- start category -->

@@ -14,8 +14,8 @@ arvan_cloud_config = {
     'bucket_name': "akurtek-pc"
 }
 
-
 #Postgresql Config
+
 postgres_config = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'akurtek',

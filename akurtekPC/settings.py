@@ -14,7 +14,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'admin_tools_stats',
     'django_nvd3',
-    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -25,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'ckeditor',
     'djangobower',
+    'django_template_maths',
+
 
     # Internal Apps
     'django_jalali',
@@ -86,7 +87,7 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'akurtekPC.asgi.application'
+WSGI_APPLICATION = 'akurtekPC.wsgi.application'
 
 CHANNEL_LAYERS = {
     "default": {

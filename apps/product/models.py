@@ -3,6 +3,7 @@ from django_jalali.db import models as jmodels
 from django.shortcuts import reverse
 from apps.user.models import UserModel
 from django.core.validators import MaxValueValidator, MinValueValidator
+import json
 
 
 # This Model is main category for all products and child categories base parent
@@ -153,24 +154,8 @@ class ProductCommentModel(models.Model):
     grade = models.PositiveIntegerField(default=3, validators=[MinValueValidator(1), MaxValueValidator(5)])
     like_num = models.PositiveIntegerField(default=0)
     dislike_num = models.PositiveIntegerField(default=0)
-
-
-class ProductCommentPositivePointsView(models.Model):
-    comment = models.OneToOneField(ProductCommentModel, on_delete=models.CASCADE,
-                                   related_name='comment_positive_points')
-    text = models.TextField()
-
-    def get_list(self):
-        return self.text.split(',')
-
-
-class ProductCommentNegativePointsView(models.Model):
-    comment = models.OneToOneField(ProductCommentModel, on_delete=models.CASCADE,
-                                   related_name='comment_negative_points')
-    text = models.TextField()
-
-    def get_list(self):
-        return self.text.split(',')
+    positive_votes = models.JSONField()
+    negative_votes = models.JSONField()
 
 
 class UserFavoriteProductModel(models.Model):

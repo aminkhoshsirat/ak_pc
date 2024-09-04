@@ -27,9 +27,11 @@
                             </div>
                         {% endif %}
                         <div class="pro_gallery">
+                        {% if amazing_offer %}
                             <div class="special-label">
-                                <img src="assets/image/SpecialSell.svg" alt="">
+                                <img src="{% static 'images/SpecialSell.svg' %}" alt="">
                             </div>
+                        {% endif %}
                             <div class="icon-product-box">
                                 <div class="icon-product-box-item hint--right" data-bs-toggle="modal"
                                      data-bs-target="#videoModal" data-hint="ویدیو معرفی">
@@ -39,10 +41,10 @@
                                      data-bs-target="#shareModal" data-hint="اشتراک گذاری">
                                     <i class="bi bi-share-fill"></i>
                                 </div>
-                                <div id="like-status">
+                                <div class="icon-product-box-item hint--right" id="like-status">
                                     {% if favorite_product %}
                                         <i onclick="like({{ product.id }}, 'dislike')"
-                                                class="bi-heart-fill"></i>
+                                           class="bi-heart-fill"></i>
                                     {% else %}
                                         <i onclick="like({{ product.id }}, 'like')" class="bi-heart"></i>
                                     {% endif %}
@@ -63,7 +65,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="icon-product-box-item hint--right" data-hint="نمودار قیمت"
-                                    data-bs-toggle="modal" data-bs-target="#chartModal">
+                                     data-bs-toggle="modal" data-bs-target="#chartModal">
                                     <i onclick="productChart({{ product.id }})" class="bi bi-bar-chart"></i>
                                 </div>
                             </div>
@@ -108,13 +110,15 @@
                                 <ol class="breadcrumb mb-0">
                                     <li class="breadcrumb-item active main-color-one-color font-16" aria-current="page">
                                         <a style="color: #0b5ed7" href="{{ product.main_category.get_absolute_url }}">
-                                         {{ product.main_category.title }}
+                                            {{ product.main_category.title }}
                                         </a>
 
                                     </li>
                                     {% if product.child_category.parent_category %}
-                                        <li class="breadcrumb-item active main-color-one-color font-16" aria-current="page">
-                                            <a style="color: #0b5ed7" href="{{ product.child_category.parent_category.get_absolute_url }}">
+                                        <li class="breadcrumb-item active main-color-one-color font-16"
+                                            aria-current="page">
+                                            <a style="color: #0b5ed7"
+                                               href="{{ product.child_category.parent_category.get_absolute_url }}">
                                                 {{ product.child_category.parent_category.title }}
                                             </a>
                                         </li>
@@ -156,7 +160,7 @@
                                         {% for field in fields %}
                                             {% if forloop.counter < 25 %}
                                                 <li class="nav-item pb-1 font-14">
-                                                    <span class="nav-title me-1 fw-bold">{{ field.name }}</span>
+                                                    <div style="display: inline"><span class="nav-title me-1 fw-bold">{{ field.name }}</span></div>
                                                     <span>:</span>
                                                     {% if field.amount %}
                                                         {% if field.amount == True %}
@@ -279,6 +283,9 @@
                                             data-bs-toggle="tab" data-bs-target="#productDescLess-pane" role="tab"
                                             type="button" aria-selected="true"><a href="#prodesc"><i
                                             class="bi bi-file-richtext"></i> معرفی</a></button>
+                                    <div id="product-comments-box">
+
+                                    </div>
                                 </li>
                                 <li class="nav-item">
                                     <button class=" waves-effect waves-light" id="productDesc" data-bs-toggle="tab"
@@ -293,7 +300,8 @@
                                         تکمیلی</a></button>
                                 </li>
                                 <li class="nav-item">
-                                    <button onclick="productComment({{ product.id }})" class=" waves-effect waves-light" id="productComment" data-bs-toggle="tab"
+                                    <button onclick="productComment({{ product.id }})" class=" waves-effect waves-light"
+                                            id="productComment" data-bs-toggle="tab"
                                             data-bs-target="#productComment-pane" role="tab" type="button"
                                             aria-selected="false"><a href="#prodesc"><i class="bi bi-chat-quote"></i>
                                         نظرات</a></button>
@@ -322,7 +330,8 @@
                                         </div>
                                         <!-- پایان والد بیشتر کمتر -->
                                         <label id="long-btn" onclick="readMore()" style="color: #0b5ed7">بیشتر +</label>
-                                        <label id="short-btn" onclick="shortMore()" style="display: none;color: red">بستن -</label>
+                                        <label id="short-btn" onclick="shortMore()" style="display: none;color: red">بستن
+                                            -</label>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade"
@@ -342,36 +351,41 @@
                                             <!-- پایان متن بیشتر -->
                                         </div>
                                         <!-- پایان والد بیشتر کمتر -->
-                                        <label id="long-btn2" onclick="readMore2()" style="color: #0b5ed7">بیشتر +</label>
-                                        <label id="short-btn2" onclick="shortMore2()" style="display: none;color: red">بستن -</label>
+                                        <label id="long-btn2" onclick="readMore2()" style="color: #0b5ed7">بیشتر
+                                            +</label>
+                                        <label id="short-btn2" onclick="shortMore2()" style="display: none;color: red">بستن
+                                            -</label>
                                     </div>
                                 </div>
-                            <div class="tab-pane fade"
+                                <div class="tab-pane fade"
                                      id="productComment-pane">
                                     <div class="productComment-content" id="product-comment-box">
 
                                     </div>
                                 </div>
                                 <script>
-                                    function readMore(){
+                                    function readMore() {
                                         $('#description-short').css("display", "none");
                                         $('#long-btn').css("display", "none");
                                         $('#description-long').css("display", "block");
                                         $('#short-btn').css("display", "block");
                                     }
-                                    function shortMore(){
+
+                                    function shortMore() {
                                         $('#description-short').css("display", "block");
                                         $('#long-btn').css("display", "block");
                                         $('#description-long').css("display", "none");
                                         $('#short-btn').css("display", "none");
                                     }
-                                    function readMore2(){
+
+                                    function readMore2() {
                                         $('#description-short2').css("display", "none");
                                         $('#long-btn2').css("display", "none");
                                         $('#description-long2').css("display", "block");
                                         $('#short-btn2').css("display", "block");
                                     }
-                                    function shortMore2(){
+
+                                    function shortMore2() {
                                         $('#description-short2').css("display", "block");
                                         $('#long-btn2').css("display", "block");
                                         $('#description-long2').css("display", "none");
@@ -486,13 +500,10 @@
             </div>
         </div>
     </div>
-    <div id="product-comments-box">
-
-    </div>
 
 
     <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true"
-        style="display: none;">
+         style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content rounded-4">
                 <div class="modal-header">
@@ -503,7 +514,7 @@
                 </div>
                 <div class="modal-body">
                     <video class="w-100" id="videoModalPlay" src="{{ product_video.video.url }}"
-                        preload="metadata" controls="">
+                           preload="metadata" controls="">
                         <source src="{{ product_video.video.url }}" type="video/mp4#t=0.5">
                     </video>
                 </div>
@@ -521,8 +532,9 @@
                     </div>
                     <div class="modal-body">
                         <h4 class="font-18 my-3">این کالا را با دوستان خود به اشتراک بگذارید!</h4>
-                        <button class="btn d-block border text-center w-100"> <i class="bi bi-clipboard2-plus me-1"></i>
-                            کپی کردن لینک</button>
+                        <button class="btn d-block border text-center w-100"><i class="bi bi-clipboard2-plus me-1"></i>
+                            کپی کردن لینک
+                        </button>
                         <div class="row mt-3 gy-3">
                             <div class="col-6">
                                 <a href="" class="btn main-color-three-bg p-4 d-block w-100">
@@ -532,20 +544,23 @@
                             </div>
                             <div class="col-6">
                                 <a href="" class="btn main-color-one-bg p-4 d-block w-100"
-                                    style="background-color: #9c41ff !important;">
+                                   style="background-color: #9c41ff !important;">
                                     <i class="bi bi-instagram me-2 font-20"></i>
                                     <span>اینستاگرام</span>
                                 </a>
                             </div>
                             <div class="col-6">
-                                <a href="https://twitter.com/intent/tweet?url=akurtek.ir{{ product.get_absolute_url }}&text={{ product.title }}" class="btn main-color-one-bg p-4 d-block w-100">
+                                <a href="https://twitter.com/intent/tweet?url=akurtek.ir{{ product.get_absolute_url }}&text={{ product.title }}"
+                                   class="btn main-color-one-bg p-4 d-block w-100">
                                     <i class="bi bi-twitter me-2 font-20"></i>
                                     <span>توییتر</span>
                                 </a>
                             </div>
 
                             <div class="col-6">
-                                <a href="https://t.me/share/url?url=akurtek.ir{{ product.get_absolute_url }}&text={{ product.title }}" class="btn main-color-two-bg p-4 d-block w-100" style="background-color: #0b5ed7 !important;">
+                                <a href="https://t.me/share/url?url=akurtek.ir{{ product.get_absolute_url }}&text={{ product.title }}"
+                                   class="btn main-color-two-bg p-4 d-block w-100"
+                                   style="background-color: #0b5ed7 !important;">
                                     <i class="bi bi-telegram me-2 font-20"></i>
                                     <span>تلگرام</span>
                                 </a>
@@ -569,7 +584,7 @@
                         </p>
                     </div>
                     <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+                            aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div>
@@ -578,21 +593,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger waves-effect waves-light"
-                        data-bs-dismiss="modal">بستن</button>
+                            data-bs-dismiss="modal">بستن
+                    </button>
                 </div>
             </div>
         </div>
     </div>
     <!-- end product box -->
     {% block extra_js %}
-        <script src="{% static 'plugin/tagify/jQuery.tagify.min.js' %}"></script>
-        <script>
-            $(document).ready(function () {
-                ///input tag
-                $('.commentTags').tagify();
-            });
-        </script>
-        <!-- ======== end tagify -->
 
         <!-- chart -->
         <script src="{% static 'plugin/chartjs/chart.js' %}"></script>
@@ -607,7 +615,6 @@
                 }
             });
         </script>
-
     {% endblock %}
-    <script src="{% static 'js/costum.js' %}"></script>
+
 {% endblock %}

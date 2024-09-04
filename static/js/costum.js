@@ -121,7 +121,7 @@ function productChart(id) {
 
 function productComment(id) {
     $.get('/product/comment/' + id).then(res => {
-        $('#product-comment-box').html(res);
+        $('#productComment-pane').html(res);
     })
 }
 

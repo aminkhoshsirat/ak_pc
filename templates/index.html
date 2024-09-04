@@ -83,17 +83,33 @@
                                                                 </h5>
 
                                                             </div>
-                                                            <div class="se-desc">
+                                                            <div class="product-feature py-2">
                                                                 <h6>ویژگی محصول:</h6>
-                                                                <ul>
-                                                                    {% for field in product.fields %}
-                                                                        <li>
-                                                                            <span class="title">{{ field.name }} :</span>
-                                                                            <span class="desc">{{ field.amount }}</span>
-                                                                        </li>
-                                                                    {% endfor %}
+                                                                <nav class="navbar">
+                                                                    <ul class="navbar-nav">
+                                                                        {% for field in product.fields %}
+                                                                            {% if forloop.counter < 25 %}
+                                                                                <li class="nav-item pb-1 font-14">
+                                                                                    <div style="display: inline"><span
+                                                                                            class="nav-title me-1 fw-bold">{{ field.name }}</span>
+                                                                                    </div>
+                                                                                    <span>:</span>
+                                                                                    {% if field.amount %}
+                                                                                        {% if field.amount == True %}
+                                                                                            <span class="nav-title-desc text-muted">دارد</span>
+                                                                                        {% elif field.amount == False %}
+                                                                                            <span class="nav-title-desc text-muted">ندارد</span>
+                                                                                        {% else %}
+                                                                                            <span class="nav-title-desc text-muted">{{ field.amount }}</span>
+                                                                                        {% endif %}
 
-                                                                </ul>
+                                                                                    {% endif %}
+                                                                                </li>
+                                                                            {% endif %}
+                                                                        {% endfor %}
+
+                                                                    </ul>
+                                                                </nav>
                                                                 <div class="order-progress py-3">
                                                                     <h6 class="fw-bold mb-2">63% فروش رفته</h6>
                                                                     <div class="progress">
@@ -159,8 +175,9 @@
                 {% for category in categories %}
                     <div class="col-lg-2 col-4">
                         <div class="main-category-item">
-                            <a href="">
-                                <img src="{{ category.main_category_image.image.url }}" alt="{{ category.title }}"
+                            <a href="{{ category.get_absolute_url }}">
+                                <img src="{{ category.main_category_image.image.url }}" width="100px" height="100px"
+                                     alt="{{ category.title }}"
                                      class="img-fluid">
                                 <h6>{{ category.title }}</h6>
                             </a>
@@ -272,57 +289,57 @@
         </div>
     </div>
     <!-- end product box -->
-    <div class="product-box-two py-20">
-        <div class="container-fluid">
-            <div class="parents">
-                <div class="row">
-                    <div class="col-lg-3 col-12 mt-md-0 mt-3 order-2">
-                        <div class="swiper sugget-slider">
-                            {% for product in instant_offers %}
-                                <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="sugget-item">
-                                        <div class="timer text-center">
-                                            <div class='countdown'
-                                                 data-date="{{ product.expired_date | date:"%Y-%m-%d" }}"
-                                                 data-time="{{ product.expired_date | date:"%H:%M" }}">
-                                            </div>
-                                        </div>
-                                        <div class="image">
-                                            <img src="{{ product.product.image.url }}" alt="" class="img-fluid">
-                                        </div>
-                                        <div class="title">
-                                            <h6 class="fw-bold font-14">{{ product.product.title }}</h6>
-                                        </div>
-                                        <div class="foot d-flex justify-content-between align-items-center">
-                                            <div class="add">
-                                                <a href="{{ product.get_absolute_url }}" data-hint="افزودن به سبد خرید"
-                                                   class="hint--right">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                         fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">
-                                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                            <div class="price d-flex flex-column justify-content-end">
-                                                <div>
-                                                    <span class="fw-bold font-18">{{ product.product.price_after_off | money_format }}</span>
-                                                    <span class="badge main-color-two-bg rounded-pill">{{ product.product.off }}%</span>
-                                                </div>
-                                                <div class="text-muted font-12 text-end">تومان</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end product box two -->
+    {#    <div class="product-box-two py-20">#}
+    {#        <div class="container-fluid">#}
+    {#            <div class="parents">#}
+    {#                <div class="row">#}
+    {#                    <div class="col-lg-3 col-12 mt-md-0 mt-3 order-2">#}
+    {#                        <div class="swiper sugget-slider">#}
+    {#                            {% for product in instant_offers %}#}
+    {#                                <div class="swiper-wrapper">#}
+    {#                                <div class="swiper-slide">#}
+    {#                                    <div class="sugget-item">#}
+    {#                                        <div class="timer text-center">#}
+    {#                                            <div class='countdown'#}
+    {#                                                 data-date="{{ product.expired_date | date:"%Y-%m-%d" }}"#}
+    {#                                                 data-time="{{ product.expired_date | date:"%H:%M" }}">#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                        <div class="image">#}
+    {#                                            <img src="{{ product.product.image.url }}" alt="" class="img-fluid">#}
+    {#                                        </div>#}
+    {#                                        <div class="title">#}
+    {#                                            <h6 class="fw-bold font-14">{{ product.product.title }}</h6>#}
+    {#                                        </div>#}
+    {#                                        <div class="foot d-flex justify-content-between align-items-center">#}
+    {#                                            <div class="add">#}
+    {#                                                <a href="{{ product.get_absolute_url }}" data-hint="افزودن به سبد خرید"#}
+    {#                                                   class="hint--right">#}
+    {#                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"#}
+    {#                                                         fill="currentColor" class="bi bi-bag" viewBox="0 0 16 16">#}
+    {#                                                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>#}
+    {#                                                    </svg>#}
+    {#                                                </a>#}
+    {#                                            </div>#}
+    {#                                            <div class="price d-flex flex-column justify-content-end">#}
+    {#                                                <div>#}
+    {#                                                    <span class="fw-bold font-18">{{ product.product.price_after_off | money_format }}</span>#}
+    {#                                                    <span class="badge main-color-two-bg rounded-pill">{{ product.product.off }}%</span>#}
+    {#                                                </div>#}
+    {#                                                <div class="text-muted font-12 text-end">تومان</div>#}
+    {#                                            </div>#}
+    {#                                        </div>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            {% endfor %}#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </div>#}
+    {#    <!-- end product box two -->#}
 
     <div class="product-box py-20">
         <div class="container-fluid">
