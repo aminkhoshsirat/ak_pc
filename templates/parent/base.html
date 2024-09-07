@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-   <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'font/bootstrap-icon/bootstrap-icons.css' %}">
     <link rel="stylesheet" href="{% static 'plugin/waves/waves.min.css' %}">
     <link rel="stylesheet" href="{% static 'plugin/swiper/swiper-bundle.min.css' %}">
@@ -90,44 +90,48 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
     </svg>
 </div>
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'plugin/waves/waves.min.js' %}"></script>
-    <script src="{% static 'plugin/swiper/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'plugin/timer/timer.js' %}"></script>
-    <script src="{% static 'plugin/hint-css/hint-css.js' %}"></script>
-    <script src="{% static 'plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
-    <script src="{% static 'js/app.js' %}"></script>
-    <script src="{% static 'js/jquery-app.js' %}"></script>
+<div id="btncollapzion" data-bs-toggle="modal"
+     data-bs-target="#ChatModal" class=" btn_collapzion" onclick="showChat()"></div>
 
-    <!-- ===== start new update 3.2.0 -->
-    <script src="{% static 'plugin/go-to-top/script.js' %}"></script>
-    <script src="{% static 'plugin/rasta-contact/script.js' %}"></script>
+<div style="scrollbar-width: none; margin-bottom: 800px !important;" class="modal fade" id="ChatModal" tabindex="-1"
+     aria-labelledby="chartModalLabel" aria-hidden="true">
 
-    <link rel="stylesheet" href="{% static 'plugin/go-to-top/style.css' %}">
-    <link rel="stylesheet" href="{% static 'plugin/rasta-contact/style.css' %}">
-    <script src="{% static 'js/costum.js' %}"></script>
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+    </div>
+    <div id="live-chat" class="h-75 center col-lg-10">
+    </div>
+</div>
+<div class="" id="contactOverlay"></div>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'plugin/waves/waves.min.js' %}"></script>
+<script src="{% static 'plugin/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'plugin/timer/timer.js' %}"></script>
+<script src="{% static 'plugin/hint-css/hint-css.js' %}"></script>
+<script src="{% static 'plugin/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js' %}"></script>
+<script src="{% static 'js/app.js' %}"></script>
+<script src="{% static 'js/jquery-app.js' %}"></script>
+
+<!-- ===== start new update 3.2.0 -->
+<script src="{% static 'plugin/go-to-top/script.js' %}"></script>
+<script src="{% static 'plugin/rasta-contact/script.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'plugin/go-to-top/style.css' %}">
+<link rel="stylesheet" href="{% static 'plugin/rasta-contact/style.css' %}">
+<script src="{% static 'js/costum.js' %}"></script>
+<script>
+
+</script>
+<script>
+    function showChat(){
+        $.get('/chat').then(res => {
+            $('#live-chat').html(res);
+        })
+    }
+</script>
 <script>
     //// config floating contact
-    $('#btncollapzion').Collapzion({
-        _child_attribute: [{
-            'label': 'پشتیبانی تلفنی',
-            'url': 'tel:0930555555555',
-            'icon': 'bi bi-telephone'
-        },
-            {
-                'label': 'پشتیبانی تلگرام',
-                'url': 'https://tlgrm.me',
-                'icon': 'bi bi-telegram'
-            },
-            {
-                'label': 'پشتیبانی واتس آپ',
-                'url': 'https://wa.me/444444444',
-                'icon': 'bi-whatsapp'
-            },
-
-        ],
-    });
+    $('#btncollapzion').Collapzion({});
 </script>
 {% block extra_js %}
 {% endblock %}

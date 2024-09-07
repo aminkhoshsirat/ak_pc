@@ -16,5 +16,6 @@ class UserChatModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='send_user', blank=True, null=True)
     replay = models.ForeignKey('UserChatModel', on_delete=models.DO_NOTHING, related_name='chat_replays', blank=True, null=True)
     text = models.TextField()
+    file = models.FileField(upload_to='chat/file', null=True, blank=True)
     date = jmodels.jDateTimeField(auto_now_add=True)
     seen = models.BooleanField(default=False)

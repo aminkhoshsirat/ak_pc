@@ -1,280 +1,256 @@
-{% extends 'parent/base.html' %}
-{% block title %}{% endblock %}
-{% block content %}
-<body>
 <style>
-    @charset "utf-8";
-/* CSS Document */
+    .clearfix {
+        *zoom: 1;
+    }
 
-/* ---------- GENERAL ---------- */
+    /* For IE 6/7 */
+    .clearfix:before, .clearfix:after {
+        content: "";
+        display: table;
+    }
 
-body {
-	background: #e9e9e9;
-	color: #9a9a9a;
-	font: 100%/1.5em "Droid Sans", sans-serif;
-	margin: 0;
-}
+    .clearfix:after {
+        clear: both;
+    }
 
-a { text-decoration: none; }
+    /* ---------- LIVE-CHAT ---------- */
 
-fieldset {
-	border: 0;
-	margin: 0;
-	padding: 0;
-}
+    #live-chat {
+        bottom: 0;
+        font-size: 12px;
+        position: fixed;
+        width: 400px;
+    }
 
-h4, h5 {
-	line-height: 1.5em;
-	margin: 0;
-}
+    #live-chat header {
+        background: rgb(7, 97, 246);
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        cursor: pointer;
+        padding: 16px 24px;
+    }
 
-hr {
-	background: #e9e9e9;
-    border: 0;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 1px;
-    margin: 0;
-    min-height: 1px;
-}
+    #live-chat h4:before {
+        background: #1a8a34;
+        border-radius: 50%;
+        content: "";
+        display: inline-block;
+        height: 8px;
+        margin: 0 8px 0 0;
+        width: 8px;
+    }
 
-img {
-    border: 0;
-    display: block;
-    height: auto;
-    max-width: 100%;
-}
+    #live-chat h4 {
+        font-size: 12px;
+    }
 
-input {
-	border: 0;
-	color: inherit;
-    font-family: inherit;
-    font-size: 100%;
-    line-height: normal;
-    margin: 0;
-}
+    #live-chat h5 {
+        font-size: 10px;
+    }
 
-p { margin: 0; }
+    #live-chat form {
+        padding: 24px;
+    }
 
-.clearfix { *zoom: 1; } /* For IE 6/7 */
-.clearfix:before, .clearfix:after {
-    content: "";
-    display: table;
-}
-.clearfix:after { clear: both; }
+    #live-chat input[type="text"] {
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 8px;
+        outline: none;
+        width: 234px;
+    }
 
-/* ---------- LIVE-CHAT ---------- */
+    .chat-message-counter {
+        background: #e62727;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        display: none;
+        font-size: 12px;
+        font-weight: bold;
+        height: 28px;
+        left: 0;
+        line-height: 28px;
+        margin: -15px 0 0 -15px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 28px;
+    }
 
-#live-chat {
-	bottom: 0;
-	font-size: 12px;
-	right: 24px;
-	position: fixed;
-	width: 300px;
-}
+    .chat-close {
+        background: #1b2126;
+        border-radius: 50%;
+        color: #fff;
+        display: block;
+        float: right;
+        font-size: 10px;
+        height: 16px;
+        line-height: 16px;
+        margin: 2px 0 0 0;
+        text-align: center;
+        width: 16px;
+    }
 
-#live-chat header {
-	background: #293239;
-	border-radius: 5px 5px 0 0;
-	color: #fff;
-	cursor: pointer;
-	padding: 16px 24px;
-}
+    .chat {
+        background: #fff;
+        height: 900px;
+    }
 
-#live-chat h4:before {
-	background: #1a8a34;
-	border-radius: 50%;
-	content: "";
-	display: inline-block;
-	height: 8px;
-	margin: 0 8px 0 0;
-	width: 8px;
-}
+    .chat-history {
+        padding: 8px 2px;
+        overflow-y: scroll;
+    }
 
-#live-chat h4 {
-	font-size: 12px;
-}
+    .chat-message {
+        margin: 16px 0;
+    }
 
-#live-chat h5 {
-	font-size: 10px;
-}
+    .chat-message img {
+        border-radius: 50%;
+        float: left;
+    }
 
-#live-chat form {
-	padding: 24px;
-}
+    .chat-message-content {
+        margin-left: 56px;
+    }
 
-#live-chat input[type="text"] {
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 8px;
-	outline: none;
-	width: 234px;
-}
+    .chat-time {
+        float: right;
+        font-size: 10px;
+    }
 
-.chat-message-counter {
-	background: #e62727;
-	border: 1px solid #fff;
-	border-radius: 50%;
-	display: none;
-	font-size: 12px;
-	font-weight: bold;
-	height: 28px;
-	left: 0;
-	line-height: 28px;
-	margin: -15px 0 0 -15px;
-	position: absolute;
-	text-align: center;
-	top: 0;
-	width: 28px;
-}
-
-.chat-close {
-	background: #1b2126;
-	border-radius: 50%;
-	color: #fff;
-	display: block;
-	float: right;
-	font-size: 10px;
-	height: 16px;
-	line-height: 16px;
-	margin: 2px 0 0 0;
-	text-align: center;
-	width: 16px;
-}
-
-.chat {
-	background: #fff;
-}
-
-.chat-history {
-	height: 252px;
-	padding: 8px 24px;
-	overflow-y: scroll;
-}
-
-.chat-message {
-	margin: 16px 0;
-}
-
-.chat-message img {
-	border-radius: 50%;
-	float: left;
-}
-
-.chat-message-content {
-	margin-left: 56px;
-}
-
-.chat-time {
-	float: right;
-	font-size: 10px;
-}
-
-.chat-feedback {
-	font-style: italic;
-	margin: 0 0 0 80px;
-}
+    .chat-feedback {
+        font-style: italic;
+        margin: 0 0 0 80px;
+    }
 </style>
-    <div id="live-chat">
 
-		<header class="clearfix">
+<header class="clearfix">
+    <h4>Mehmet Mert</h4>
 
-			<a href="#" class="chat-close">x</a>
+    <span class="chat-message-counter">3</span>
+    <button style="display: inline" type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+            aria-label="Close" id="btn-compare-close-product"></button>
 
-			<h4>Mehmet Mert</h4>
+</header>
 
-			<span class="chat-message-counter">3</span>
+<div class="chat">
 
-		</header>
+    <div class="chat-history">
+        <textarea class="w-98" id="chat-log" cols="48" rows="12" readonly="readonly"></textarea>
 
-		<div class="chat">
+    </div> <!-- end chat-history -->
+    <fieldset style="bottom: 5px">
+        <input id="chat-message-input" type="text" size="100">
+        <button onclick="readfile()"><i class="bi bi-paperclip"></i></button>
+        <button id="chat-message-submit" class="btn-success"><i class="bi bi-caret-left-fill"></i></button>
+        <input type="hidden" id="chat-replay-id">
+        <input id="chat-file" type="file">
+        {{ room_id|json_script:"room-name" }}
 
-			<div class="chat-history">
-                <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-                <input id="chat-message-input" type="text" size="100"><br>
-
-			</div> <!-- end chat-history -->
-
-			<p class="chat-feedback">Yazıyor..</p>
-
-			<form action="#" method="post">
-
-				<fieldset>
-
-					<input id="chat-message-submit" type="button" value="Send">
-                    <input type="hidden" id="chat-replay-id">
-                    {{ room_id|json_script:"room-name" }}
-
-				</fieldset>
-
-			</form>
-
-		</div> <!-- end chat -->
-
-	</div> <!-- end live-chat -->
+    </fieldset>
 
 
-    <script>
-        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+</div> <!-- end chat -->
 
-        const replay_id = document.getElementById('chat-replay-id')
-
-        const chatSocket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/chat/'
-            + roomName
-            + '/'
-        );
-
-        chatSocket.onmessage = function(e) {
-            const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
-        };
-
-        chatSocket.onclose = function(e) {
-            console.error('Chat socket closed unexpectedly');
-        };
-
-        document.querySelector('#chat-message-input').focus();
-        document.querySelector('#chat-message-input').onkeyup = function(e) {
-            if (e.key === 'Enter') {  // enter, return
-                document.querySelector('#chat-message-submit').click();
-            }
-        };
-
-        document.querySelector('#chat-message-submit').onclick = function(e) {
-            const messageInputDom = document.querySelector('#chat-message-input');
-            const message = messageInputDom.value;
-            chatSocket.send(JSON.stringify({
-                'message': message
-            }));
-            messageInputDom.value = '';
-        };
-    </script>
 <script>
-    (function() {
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
-	$('#live-chat header').on('click', function() {
+    const replay_id = document.getElementById('chat-replay-id')
 
-		$('.chat').slideToggle(300, 'swing');
-		$('.chat-message-counter').fadeToggle(300, 'swing');
+    const chatSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/chat/'
+        + roomName
+        + '/'
+    );
 
-	});
+    const fileSocket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/file/'
+        + roomName
+        + '/'
+    );
 
-	$('.chat-close').on('click', function(e) {
+    chatSocket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        document.querySelector('#chat-log').value += (data.message + '\n');
+    };
 
-		e.preventDefault();
-		$('#live-chat').fadeOut(300);
+    fileSocket.onmessage = function (f) {
+        const data = JSON.parse(f.data);
+        document.querySelector('#chat-log').value += (data.message + '\n');
+    };
 
-	});
+    chatSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
 
-}) ();
+    fileSocket.onclose = function (e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-input').focus();
+    document.querySelector('#chat-message-input').onkeyup = function (e) {
+        if (e.key === 'Enter') {  // enter, return
+            document.querySelector('#chat-message-submit').click();
+        }
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function (e) {
+        const messageInputDom = document.querySelector('#chat-message-input');
+        const message = messageInputDom.value;
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'event': 'message'
+        }))
+        messageInputDom.value = '';
+    }
+
+    function readFile() {
+
+        if (this.files && this.files[0]) {
+
+            var FR = new FileReader();
+
+            FR.addEventListener("load", function (e) {
+
+                fileSocket.send(JSON.stringify({
+                    'file': e.target.result,
+                    'event': 'file'
+                }));
+            });
+
+            FR.readAsDataURL(this.files[0]);
+        }
+
+    }
+
+    document.getElementById("chat-file").addEventListener("change", readFile);
+</script>
+<script>
+    (function () {
+
+        $('#live-chat header').on('click', function () {
+
+            $('.chat').slideToggle(300, 'swing');
+            $('.chat-message-counter').fadeToggle(300, 'swing');
+
+        });
+
+        $('.chat-close').on('click', function (e) {
+
+            e.preventDefault();
+            $('#live-chat').fadeOut(300);
+
+        });
+
+    })();
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-</body>
 
-{% endblock %}
 
 
 
