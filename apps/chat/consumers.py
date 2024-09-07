@@ -1,9 +1,10 @@
 import json
-
 from channels.generic.websocket import AsyncWebsocketConsumer
 from .models import UserChatModel
 import urllib.parse as urlparse
 from apps.user.models import UserModel
+from asgiref.sync import sync_to_async
+from .tasks import send_chat_file
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -65,24 +66,16 @@ class FileConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         print(2)
         file = text_data_json["file"]
-        import base64
-
-        from django.core.files.base import ContentFile
-        format, imgstr = file.split(';base64,')
-        ext = format.split('/')[-1]
-        data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
         user = self.scope['user']
         query = self.scope['query_string'].decode('utf-8')
         params = urlparse.parse_qs(query)
         replay = params.get('replay_id', [None])[0]
         replay_object = await UserChatModel.objects.filter(id=replay, chat_room_id=self.room_group_name).afirst()
 
-        await UserChatModel.objects.acreate(chat_room_id=self.room_group_name, user=user,
-                                            replay=replay_object, file=data)
+        send_chat_file.delay(self.room_group_name, user.id, replay_object, file)
         await self.channel_layer.group_send(
             self.room_group_name, {"type": "chat.message", "message": 'file'}
         )
-
 
     # Receive message from room group
     async def chat_message(self, event):

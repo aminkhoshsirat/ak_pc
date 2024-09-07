@@ -167,14 +167,14 @@ AWS_QUERYSTRING_AUTH = False
 
 # Django-storages configuration
 
-# STORAGES = {
-#   "default": {
-#       "BACKEND": "storages.backends.s3.S3Storage",
-#   },
-#   "staticfiles": {
-#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-#   },
-# }
+STORAGES = {
+  "default": {
+      "BACKEND": "storages.backends.s3.S3Storage",
+  },
+  "staticfiles": {
+      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+  },
+}
 
 
 # Ckeditor Config

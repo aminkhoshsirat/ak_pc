@@ -179,16 +179,8 @@
         document.querySelector('#chat-log').value += (data.message + '\n');
     };
 
-    fileSocket.onmessage = function (f) {
-        const data = JSON.parse(f.data);
-        document.querySelector('#chat-log').value += (data.message + '\n');
-    };
 
     chatSocket.onclose = function (e) {
-        console.error('Chat socket closed unexpectedly');
-    };
-
-    fileSocket.onclose = function (e) {
         console.error('Chat socket closed unexpectedly');
     };
 
