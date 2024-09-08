@@ -4,6 +4,8 @@ from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.safestring import mark_safe
 from .models import *
+import base64
+from django.core.files.base import ContentFile
 
 class UserChatView(LoginRequiredMixin, View):
     def get(self, request):

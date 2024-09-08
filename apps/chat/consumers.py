@@ -34,7 +34,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await UserChatModel.objects.acreate(chat_room_id=self.room_group_name, user=user,
                                             replay=replay_object, text=message)
-        print(1)
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name, {"type": "chat.message", "message": message}
@@ -64,17 +63,17 @@ class FileConsumer(AsyncWebsocketConsumer):
     # Receive message from WebSocket
     async def receive(self, text_data):
         text_data_json = json.loads(text_data)
-        print(2)
         file = text_data_json["file"]
+        name = str(text_data_json["name"]).replace('C:\\fakepath\\', '')
         user = self.scope['user']
         query = self.scope['query_string'].decode('utf-8')
         params = urlparse.parse_qs(query)
         replay = params.get('replay_id', [None])[0]
         replay_object = await UserChatModel.objects.filter(id=replay, chat_room_id=self.room_group_name).afirst()
 
-        send_chat_file.delay(self.room_group_name, user.id, replay_object, file)
+        send_chat_file.delay(self.room_group_name, user.id, replay_object, file, name)
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat.message", "message": 'file'}
+            self.room_group_name, {"type": "chat.message", "message": name}
         )
 
     # Receive message from room group

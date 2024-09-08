@@ -202,15 +202,15 @@
     }
 
     function readFile() {
-
         if (this.files && this.files[0]) {
-
+            var file = document.getElementById("chat-file")
             var FR = new FileReader();
 
             FR.addEventListener("load", function (e) {
 
                 fileSocket.send(JSON.stringify({
                     'file': e.target.result,
+                    'name': file.value,
                     'event': 'file'
                 }));
             });
