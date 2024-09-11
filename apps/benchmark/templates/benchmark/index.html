@@ -23,7 +23,7 @@
                                     <div class="desc">
                                         <div class="title">
                                             <h6 class="title-fa def-color fw-bold text-overflow-2">
-                                                 بنجمارک پردازنده
+                                                بنجمارک پردازنده
                                             </h6>
                                         </div>
                                     </div>
@@ -43,7 +43,7 @@
                                     <div class="desc">
                                         <div class="title">
                                             <h6 class="title-fa def-color fw-bold text-overflow-2">
-                                                 بنجمارک کارت گرافیک
+                                                بنجمارک کارت گرافیک
                                             </h6>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                     <div class="desc">
                                         <div class="title">
                                             <h6 class="title-fa def-color fw-bold text-overflow-2">
-                                                 بنجمارک رم
+                                                بنجمارک رم
                                             </h6>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                     <div class="desc">
                                         <div class="title">
                                             <h6 class="title-fa def-color fw-bold text-overflow-2">
-                                                 بنجمارک هارد و SSD
+                                                بنجمارک هارد و SSD
                                             </h6>
                                         </div>
                                     </div>
@@ -103,47 +103,42 @@
                                     <div class="desc">
                                         <div class="title">
                                             <h6 class="title-fa def-color fw-bold text-overflow-2">
-                                                 بنجمارک کامپیوتر
+                                                بنجمارک کامپیوتر
                                             </h6>
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="table-responsive">
-                                <table class="table table-bordered fixed compare-table">
-                            <thead>
-                            <tr>
-                                <th>type</th>
-                                <th>url</th>
-                                <th>grade</th>
-                                <th>rank</th>
-                                <th>rank</th>
-                                <th>rank</th>
-                                <th>rank</th>
-
+                    </div>
+                </div>
+                <br><br>
+                <div class="table-responsive">
+                    <table class="table table-bordered fixed compare-table table-striped">
+                        {% block table %}
+                            <thead style="color: #0a53be!important">
+                            <tr class="table-primary">
+                                <th>عنوان</th>
+                                <th>امتیاز</th>
+                                <th>رنکینگ</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for detail in details %}
                                 <tr>
-                                    <th>{{ detail.cpu }}</th>
                                     <th><a href="">{{ detail.name }}</a></th>
-                                    <th>{{ detail.count }}</th>
-                                    <th>{{ detail.main_board }}</th>
-                                    <th>{{ detail.vga }}</th>
-                                    <th>{{ detail.ram }}</th>
-                                    <th>{{ detail.os }}</th>
+                                    <th>{{ detail.grade }}</th>
+                                    <th>{{ detail.rank }}</th>
                                 </tr>
                             {% endfor %}
 
                             </tbody>
-                        </table>
-                    </div>
-                    </div>
+                        {% endblock %}
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <!-- end main-data -->
+
 {% endblock %}

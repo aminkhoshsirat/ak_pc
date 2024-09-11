@@ -48,7 +48,7 @@ class IndexView(View):
             'details': details,
             'categories': categories,
         }
-        return render(request, 'benchmark/index.html', context)
+        return render(request, 'benchmark/benchmark.html', context)
 
 
 class CpuBenchmarkView(View):
@@ -71,7 +71,7 @@ class CpuBenchmarkView(View):
         except:
             details = None
 
-        return render(request, 'benchmark/index.html', {'details': details})
+        return render(request, 'benchmark/cpu-benchmark.html', {'details': details})
 
 
 class CpuSingleBenchmarkView(View):
@@ -102,7 +102,7 @@ class GpuBenchmarkView(View):
         except:
             details = None
 
-        return render(request, 'benchmark/index.html', {'details': details})
+        return render(request, 'benchmark/gpu-benchmark.html', {'details': details})
 
 
 class GpuSingleBenchmarkView(View):
@@ -129,7 +129,7 @@ class RamBenchmarkView(View):
             details = json.loads(r.get(f'benchmark:ram:{category}'))
         except:
             details = None
-        return render(request, 'benchmark/index.html', {'details': details})
+        return render(request, 'benchmark/ram-benchmark.html', {'details': details})
 
 
 class RamSingleBenchmarkView(View):
@@ -161,7 +161,7 @@ class DiskBenchmarkView(View):
             {'title': 'نوشتن و خواندن رندوم', 'url': 'random-seek-read-write'},
             {'title': 'رایج', 'url': 'common'},
         ]
-        return render(request, 'benchmark/index.html', {'details': details})
+        return render(request, 'benchmark/disk-benchmark.html', {'details': details})
 
 
 class DiskSingleBenchmarkView(View):
@@ -188,4 +188,4 @@ class PcBenchmarkView(View):
             details = json.loads(r.get(f'benchmark:pc:{category}'))
         except:
             details = None
-        return render(request, 'benchmark/index.html', {'details': details})
+        return render(request, 'benchmark/pc-benchmark.html', {'details': details})

@@ -1,25 +1,19 @@
-{% extends 'parent/base.html' %}
-{% block title %}{% endblock %}
-{% block content %}
-    <button>All</button>
-    <button>Desktop</button>
-    <button>Laptop</button>
-    <table class="table">
-    <thead>
-    <tr class="bg-light">
-        <th>type</th>
-        <th>url</th>
-        <th>grade</th>
-        <th>rank</th>
-    </tr>
+{% extends 'benchmark/benchmark.html' %}
+{% block table %}
+    <thead style="color: #0a53be!important">
+        <tr class="table-primary">
+            <th>عنوان</th>
+            <th>امتیاز</th>
+            <th>رنکینگ</th>
+        </tr>
     </thead>
+    <tbody>
         {% for detail in details %}
-            <tr class="{% cycle 'table-primary' 'table-secondary' 'table-success' %}">
-                <th>{{ detail.type }}</th>
-                <th><a href="{% url 'benchmark:single_cpu' detail.url %}">{{ detail.name }}</a></th>
+            <tr>
+                <th><a href="">{{ detail.name }}</a></th>
                 <th>{{ detail.grade }}</th>
                 <th>{{ detail.rank }}</th>
             </tr>
         {% endfor %}
-    </table>
+    </tbody>
 {% endblock %}
