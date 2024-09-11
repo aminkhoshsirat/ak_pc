@@ -184,6 +184,7 @@ def pc_scrapy_tasks():
                             'ram': i.find_all('td')[7].get_text(),
                             'os': i.find_all('td')[11].get_text(),
                             })
+        r.set(f'benchmark:pc:{category}', json.dumps(details))
 
     return 'pc scrapy task success'
 

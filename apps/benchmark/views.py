@@ -34,7 +34,10 @@ r = redis.Redis(host='localhost', port=6379, db=0)
 
 class IndexView(View):
     def get(self, request):
-        details = json.loads(r.get(f'benchmark:pc:fastest-server'))
+        try:
+            details = json.loads(r.get(f'benchmark:cpu:single-thread:once'))
+        except:
+            details = None
         categories = [
             {'title': 'پلتفرم', 'child': ['همه', 'کامپیوتر', 'لپتاپ']},
             {'title': 'گیمینگ', 'child': ['همه', 'کامپیوتر', 'لپتاپ']},
@@ -59,14 +62,16 @@ class CpuBenchmarkView(View):
         ]
         if category in ['overclock', 'single-thread']:
             once = True
+        try:
+            if once:
+                details = json.loads(r.get(f'benchmark:cpu:{category}:once'))
 
-        if once:
-            details = json.loads(r.get(f'benchmark:cpu:{category}:once'))
+            else:
+                details = json.loads(r.get(f'benchmark:cpu:{category}:{type}'))
+        except:
+            details = None
 
-        else:
-            details = json.loads(r.get(f'benchmark:cpu:{category}:{type}'))
-
-        return render(request, 'benchmark/cpu-benchmark.html', {'details': details})
+        return render(request, 'benchmark/index.html', {'details': details})
 
 
 class CpuSingleBenchmarkView(View):
@@ -92,9 +97,12 @@ class GpuBenchmarkView(View):
             {'title': 'رده پایین'},
             {'title': 'رایج'},
         ]
-        details = json.loads(r.get(f'benchmark:gpu:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:gpu:{category}'))
+        except:
+            details = None
 
-        return render(request, 'benchmark/gpu-benchmark.html', {'details': details})
+        return render(request, 'benchmark/index.html', {'details': details})
 
 
 class GpuSingleBenchmarkView(View):
@@ -117,8 +125,11 @@ class RamBenchmarkView(View):
             {'title': 'DDR 3', 'child': ['همه', 'نوشتن', 'خواندن', 'تاخیر حافظه']},
             {'title': 'DDR 2', 'child': ['همه', 'نوشتن', 'خواندن', 'تاخیر حافظه']},
         ]
-        details = json.loads(r.get(f'benchmark:ram:{category}'))
-        return render(request, 'benchmark/ram-benchmark.html', {'details': details})
+        try:
+            details = json.loads(r.get(f'benchmark:ram:{category}'))
+        except:
+            details = None
+        return render(request, 'benchmark/index.html', {'details': details})
 
 
 class RamSingleBenchmarkView(View):
@@ -135,7 +146,10 @@ class RamSingleBenchmarkView(View):
 
 class DiskBenchmarkView(View):
     def get(self, request, category):
-        details = json.loads(r.get(f'benchmark:disk:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:disk:{category}'))
+        except:
+            details = None
         categories = [
             {'title': 'SSD', 'url': 'ssd'},
             {'title': 'رده بالا', 'url': 'disk-high'},
@@ -147,7 +161,7 @@ class DiskBenchmarkView(View):
             {'title': 'نوشتن و خواندن رندوم', 'url': 'random-seek-read-write'},
             {'title': 'رایج', 'url': 'common'},
         ]
-        return render(request, 'benchmark/disk-benchmark.html', {'details': details})
+        return render(request, 'benchmark/index.html', {'details': details})
 
 
 class DiskSingleBenchmarkView(View):
@@ -170,5 +184,8 @@ class PcBenchmarkView(View):
             {'title': 'لپتاپ', 'url': 'fastest-laptops'},
             {'title': 'سرور', 'url': 'fastest-server'},
         ]
-        details = json.loads(r.get(f'benchmark:pc:{category}'))
-        return render(request, 'benchmark/pc-benchmark.html', {'details': details})
+        try:
+            details = json.loads(r.get(f'benchmark:pc:{category}'))
+        except:
+            details = None
+        return render(request, 'benchmark/index.html', {'details': details})

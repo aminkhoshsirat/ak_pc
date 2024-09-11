@@ -43,14 +43,12 @@
                                         <input type="password" name="confirm_password" class="form-control float-input" id="confirm-password-field" placeholder="تکرار کلمه عبور">
                                         <label for="floatingPasswordRe">تکرار کلمه عبور</label>
                                     </div>
-                                    <div>
-                                        <button onclick="sendCode()">send code</button>
-                                    </div>
                                     <div id="register-detail">
 
                                     </div>
                                     <div class="form-group">
-                                        <button onclick="register()" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ثبت نام</button>
+                                        <button id="send-code-btn" onclick="sendCode()" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ارسال کد</button>
+                                        <button id="register-btn" style="display: none" onclick="register()" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ثبت نام</button>
                                     </div>
 
 
@@ -58,7 +56,7 @@
                                     <span>یا</span>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <a href="">حساب کاربری دارم ! ورود به فروشگاه</a>
+                                    <a href="{% url 'user:login' %}">حساب کاربری دارم ! ورود به فروشگاه</a>
                                 </div>
                             </div>
                         </div>

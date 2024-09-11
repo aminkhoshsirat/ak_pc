@@ -298,7 +298,7 @@ function addProductForm(category) {
     })
 }
 
-function sendCode(id) {
+function sendCode() {
     const phone = $('#phone-field').val();
     const email = $('#email-field').val();
     const fullname = $('#fullname-field').val();
@@ -312,7 +312,8 @@ function sendCode(id) {
         password,
         confirm_password
     }).then(res => {
-        console.log(res);
+        $('#send-code-btn').hide();
+        $('#register-btn').show();
         $('#register-detail').html(res);
     })
 }
@@ -334,7 +335,7 @@ function register(id) {
         code
     }).then(res => {
         if (res === 'ok') {
-            console.log(res);
+            location.replace('/');
         }
     })
 }
