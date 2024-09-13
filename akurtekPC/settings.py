@@ -12,6 +12,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
+    'daphne',
     'admin_tools_stats',
     'django_nvd3',
     'django.contrib.admin',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
 
 AUTH_USER_MODEL = 'user.UserModel'
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,13 +89,13 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'akurtekPC.wsgi.application'
+ASGI_APPLICATION = 'akurtekPC.asgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [f'redis://:{redis_password}@{redis_host}:6379'],
         },
     },
 }
@@ -105,7 +107,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379',
+        'LOCATION': f'redis://:{redis_password}@{redis_host}:6379',
     }
 }
 
@@ -139,23 +141,40 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Liara Storages
+# AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
+# AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
+# AWS_STORAGE_BUCKET_NAME = 'akurtek'
+# AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
+# AWS_S3_REGION_NAME = 'us-east-1'
 
-AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
-AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
-AWS_STORAGE_BUCKET_NAME = 'akurtek'
-AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
-AWS_S3_REGION_NAME = 'us-east-1'
+# Arvan Storage
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = arvan_cloud_config.get('access_key')
+
+AWS_SECRET_ACCESS_KEY = arvan_cloud_config.get('secret_key')
+
+AWS_S3_ENDPOINT_URL = arvan_cloud_config.get('simin_domain')
+
+AWS_STORAGE_BUCKET_NAME = arvan_cloud_config.get('bucket_name')
+
+AWS_SERVICE_NAME = 's3'
+
+AWS_S3_FILE_OVERWRITE = False
+
+AWS_QUERYSTRING_AUTH = False
 
 # Django-storages configuration
 
-STORAGES = {
-  "default": {
-      "BACKEND": "storages.backends.s3.S3Storage",
-  },
-  "staticfiles": {
-      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-  },
-}
+# STORAGES = {
+#   "default": {
+#       "BACKEND": "storages.backends.s3.S3Storage",
+#   },
+#   "staticfiles": {
+#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#   },
+# }
 
 
 # Ckeditor Config
@@ -188,9 +207,10 @@ REST_FRAMEWORK = {
 }
 
 # CELERY SETTINGS
-CELERY_BACKEND = 'redis://localhost:6379/3'
-CELERY_BROKER_URL = 'redis://localhost:6379/4'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/5'
+CELERY_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/3'
+CELERY_BROKER_URL = f'redis://:{redis_password}@{redis_host}:6379/4'
+CELERY_RESULT_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/5'
+
 
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

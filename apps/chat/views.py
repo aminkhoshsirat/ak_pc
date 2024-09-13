@@ -4,23 +4,45 @@ from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.safestring import mark_safe
 from .models import *
+import base64
+from django.core.files.base import ContentFile
+from utils.services import get_client_ip
 
-class UserChatView(LoginRequiredMixin, View):
+
+class UserChatView(View):
     def get(self, request):
         user = self.request.user
-        chat_room = UserChatRoomModel.objects.filter(user=user).first()
-        if chat_room:
-            chat_room.online = True
-            context = {
-                'chats': UserChatModel.objects.filter(chat_room=chat_room).order_by('-date')[::-1],
-                'room_id': mark_safe(chat_room.id)
-            }
+        if user.is_authenticated:
+            chat_room = UserChatRoomModel.objects.filter(user=user).first()
+            if chat_room:
+                chat_room.online = True
+                chat_room.save()
+                context = {
+                    'chats': UserChatModel.objects.filter(chat_room=chat_room).order_by('-date')[::-1],
+                    'room_id': mark_safe(chat_room.id)
+                }
 
+            else:
+                chat_room = UserChatRoomModel.objects.create(user=user, online=True)
+                context = {
+                    'room_id': mark_safe(chat_room.id)
+                }
         else:
-            chat_room = UserChatRoomModel.objects.create(user=user, online=True)
-            context = {
-                'room_id': mark_safe(chat_room.id)
-            }
+            ip = get_client_ip(request)
+            chat_room = UserChatRoomModel.objects.filter(ip=ip).first()
+            if chat_room:
+                chat_room.online = True
+                chat_room.save()
+                context = {
+                    'chats': UserChatModel.objects.filter(chat_room=chat_room).order_by('-date')[::-1],
+                    'room_id': mark_safe(chat_room.id)
+                }
+
+            else:
+                chat_room = UserChatRoomModel.objects.create(ip=ip, online=True)
+                context = {
+                    'room_id': mark_safe(chat_room.id)
+                }
         return render(request, 'chat/user-chat.html', context)
 
 

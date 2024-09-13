@@ -6,10 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from utils.services import get_client_ip
 import requests
 import json
-import redis
-
-
-r = redis.Redis(host='localhost', port=6379, db=0)
+from akurtekPC.config import redis_cli as r
 
 
 class BucketView(View):

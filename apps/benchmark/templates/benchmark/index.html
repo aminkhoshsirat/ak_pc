@@ -10,129 +10,135 @@
                     <h6 class="slider-title def-color mb-3">AkurtekBenchmark</h6>
                 </div>
                 <div class="compare">
-                <div class="row">
-                        <div class="col-12">
-                            <div class="table-responsive">
-                    <table class="table table-bordered fixed compare-table" style="overflow-x: scroll">
-                        <tbody>
-                        <tr>
-                            <td><a style="display:inline-block;float:none;"
-                                   class="mfam-imglink mfam-imglink-large img-coh"><img
-                                    class="img-gs img-responsive"
-                                    src="https://www.userbenchmark.com/resources/img/icons/CPU_128.png"
-                                    alt="USB">CPU</a></td>
-                            <td><a style="display:inline-block;float:none;"
-                                   class="mfam-imglink mfam-imglink-large img-coh"><img
-                                    class="img-gs img-responsive"
-                                    src="https://www.userbenchmark.com/resources/img/icons/GPU_128.png"
-                                    alt="USB">GPU</a></td>
-                            <td><a style="display:inline-block;float:none;"
-                                   class="mfam-imglink mfam-imglink-large img-coh"><img
-                                    class="img-gs img-responsive"
-                                    src="https://www.userbenchmark.com/resources/img/icons/SSD_128.png"
-                                    alt="USB">SSD</a></td>
-                            <td><a style="display:inline-block;float:none;"
-                                   class="mfam-imglink mfam-imglink-large img-coh"><img
-                                    class="img-gs img-responsive"
-                                    src="https://www.userbenchmark.com/resources/img/icons/HDD_128.png"
-                                    alt="USB">HDD</a></td>
-                            <td><a style="display:inline-block;float:none;"
-                                   class="mfam-imglink mfam-imglink-large img-coh"><img
-                                    class="img-gs img-responsive"
-                                    src="https://www.userbenchmark.com/resources/img/icons/RAM_128.png"
-                                    alt="RAM">RAM</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                            </div>
-                        </div>
-                </div>
                     <div class="row">
-                        <div class="col-12">
-                            <div class="table-responsive">
-                                <table class="table table-bordered fixed compare-table" >
-                                    <thead>
-                                    <tr>
-                                        <th>type</th>
-                                        <th>url</th>
-                                        <th>grade</th>
-                                        <th>rank</th>
-                                        <th>rank</th>
-                                        <th>rank</th>
-                                        <th>rank</th>
+                        <div class="col-lg-2 col-sm-2 mx-auto">
+                            <div class="product-box-item bg-white w-100">
+                                <a href="{% url 'benchmark:cpu' 'single-thread' 'all' %}">
+                                    <div class="image text-center">
+                                        <img src="{% static 'images/cpu.jpeg' %}" alt=""
+                                             class="img-fluid one-image">
+                                        <img src="{% static 'images/cpu.jpeg' %}" alt=""
+                                             class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                بنجمارک پردازنده
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {% for detail in details %}
-                                        <tr class="{% cycle 'table-primary' 'table-secondary' 'table-success' %}">
-                                            <th>{{ detail.cpu }}</th>
-                                            <th><a href="">{{ detail.name }}</a></th>
-                                            <th>{{ detail.count }}</th>
-                                            <th>{{ detail.main_board }}</th>
-                                            <th>{{ detail.vga }}</th>
-                                            <th>{{ detail.ram }}</th>
-                                            <th>{{ detail.os }}</th>
-                                        </tr>
-                                    {% endfor %}
+                        <div class="col-lg-2 col-sm-2 mx-auto">
+                            <div class="product-box-item bg-white w-100">
+                                <a href="{% url 'benchmark:gpu' 'common' %}">
+                                    <div class="image text-center">
+                                        <img src="{% static 'images/graphics-card.jpg' %}" alt=""
+                                             class="img-fluid one-image">
+                                        <img src="{% static 'images/graphics-card.jpg' %}" alt=""
+                                             class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                بنجمارک کارت گرافیک
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 
-                                    </tbody>
-                                </table>
-                                </table>
+                        <div class="col-lg-2 col-sm-2 mx-auto">
+                            <div class="product-box-item bg-white w-100">
+                                <a href="{% url 'benchmark:ram' 'ddr5' %}">
+                                    <div class="image text-center">
+                                        <img src="{% static 'images/xpg-ram.webp' %}" alt=""
+                                             class="img-fluid one-image">
+                                        <img src="{% static 'images/xpg-ram.webp' %}" alt=""
+                                             class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                بنجمارک رم
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-sm-2 mx-auto">
+                            <div class="product-box-item bg-white w-100">
+                                <a href="{% url 'benchmark:disk' 'common' %}">
+                                    <div class="image text-center">
+                                        <img src="{% static 'images/ssd.webp' %}" alt=""
+                                             class="img-fluid one-image">
+                                        <img src="{% static 'images/ssd.webp' %}" alt=""
+                                             class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                بنجمارک هارد و SSD
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-sm-2 mx-auto">
+                            <div class="product-box-item bg-white w-100">
+                                <a href="{% url 'benchmark:pc' 'fastest-desktops' %}">
+                                    <div class="image text-center">
+                                        <img src="{% static 'images/pc.webp' %}" alt=""
+                                             class="img-fluid one-image">
+                                        <img src="{% static 'images/pc.webp' %}" alt=""
+                                             class="img-fluid two-image">
+                                    </div>
+                                    <div class="desc">
+                                        <div class="title">
+                                            <h6 class="title-fa def-color fw-bold text-overflow-2">
+                                                بنجمارک کامپیوتر
+                                            </h6>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <br><br>
+                <div class="table-responsive">
+                    <table class="table table-bordered fixed compare-table table-striped">
+                        {% block table %}
+                            <thead style="color: #0a53be!important">
+                            <tr class="table-primary">
+                                <th>عنوان</th>
+                                <th>امتیاز</th>
+                                <th>رنکینگ</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for detail in details %}
+                                <tr>
+                                    <th><a href="">{{ detail.name }}</a></th>
+                                    <th>{{ detail.grade }}</th>
+                                    <th>{{ detail.rank }}</th>
+                                </tr>
+                            {% endfor %}
 
-    <div style="scrollbar-width: none;" class="modal fade" id="CompareProductModal" tabindex="-1"
-         aria-labelledby="chartModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" style="bottom: 50px">
-            <div class="modal-content">
-                <div class="modal-header" style="top: 50px">
-                    <br>
-                    <div class="modal-comment-title">
-                        <h5 class="modal-title fw-bold text-muted-2"> لیست محصولات
-                        </h5>
-                        <p class="text-muted mt-1 font-14">{{ product.title }}
-                        </p>
-                    </div>
-                    <button type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
-                </div>
-                <div class="position-relative">
-                    <input type="text" name="search" id="search-compare-text"
-                           class="form-control font-14 rounded-pill text-muted py-3 border-muted bg-light"
-                           placeholder="جستجو...">
-                    {% if product.main_category.url == 'laptop' %}
-                        <input id="compare-category" type="hidden" value="{{ product.main_category.url }}">
-                    {% else %}
-                        <input id="compare-category" type="hidden" value="{{ product.child_category.url }}">
-                    {% endif %}
-                    <button onclick="searchCompareProduct()"
-                            class="position-absolute top-50 translate-middle-y btn rounded-circle border-0"
-                            style="left: 5px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                             class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
-                        </svg>
-                    </button>
-                </div>
-
-                <div class="row" id="product-cp-list">
-                    <div>
-                        <canvas id="myChart"></canvas>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="btn-compare-close" type="button" class="btn btn-danger waves-effect waves-light"
-                            data-bs-dismiss="modal">بستن
-                    </button>
+                            </tbody>
+                        {% endblock %}
+                    </table>
                 </div>
             </div>
         </div>
     </div>
     <!-- end main-data -->
+
 {% endblock %}

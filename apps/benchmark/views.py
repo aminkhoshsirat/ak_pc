@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import redis
 import json
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
+from akurtekPC.config import redis_cli as r
+
 try:
     schedule, _ = CrontabSchedule.objects.get_or_create(minute='51', hour='17', day_of_week='*', day_of_month='*',
                                                         month_of_year='*', timezone='Asia/Tehran'
@@ -29,12 +31,12 @@ except:
     pass
 
 
-r = redis.Redis(host='localhost', port=6379, db=0)
-
-
 class IndexView(View):
     def get(self, request):
-        details = json.loads(r.get(f'benchmark:pc:fastest-server'))
+        try:
+            details = json.loads(r.get(f'benchmark:cpu:single-thread:once'))
+        except:
+            details = None
         categories = [
             {'title': 'پلتفرم', 'child': ['همه', 'کامپیوتر', 'لپتاپ']},
             {'title': 'گیمینگ', 'child': ['همه', 'کامپیوتر', 'لپتاپ']},
@@ -45,7 +47,7 @@ class IndexView(View):
             'details': details,
             'categories': categories,
         }
-        return render(request, 'benchmark/index.html', context)
+        return render(request, 'benchmark/benchmark.html', context)
 
 
 class CpuBenchmarkView(View):
@@ -59,12 +61,14 @@ class CpuBenchmarkView(View):
         ]
         if category in ['overclock', 'single-thread']:
             once = True
+        try:
+            if once:
+                details = json.loads(r.get(f'benchmark:cpu:{category}:once'))
 
-        if once:
-            details = json.loads(r.get(f'benchmark:cpu:{category}:once'))
-
-        else:
-            details = json.loads(r.get(f'benchmark:cpu:{category}:{type}'))
+            else:
+                details = json.loads(r.get(f'benchmark:cpu:{category}:{type}'))
+        except:
+            details = None
 
         return render(request, 'benchmark/cpu-benchmark.html', {'details': details})
 
@@ -92,7 +96,10 @@ class GpuBenchmarkView(View):
             {'title': 'رده پایین'},
             {'title': 'رایج'},
         ]
-        details = json.loads(r.get(f'benchmark:gpu:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:gpu:{category}'))
+        except:
+            details = None
 
         return render(request, 'benchmark/gpu-benchmark.html', {'details': details})
 
@@ -117,7 +124,10 @@ class RamBenchmarkView(View):
             {'title': 'DDR 3', 'child': ['همه', 'نوشتن', 'خواندن', 'تاخیر حافظه']},
             {'title': 'DDR 2', 'child': ['همه', 'نوشتن', 'خواندن', 'تاخیر حافظه']},
         ]
-        details = json.loads(r.get(f'benchmark:ram:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:ram:{category}'))
+        except:
+            details = None
         return render(request, 'benchmark/ram-benchmark.html', {'details': details})
 
 
@@ -135,7 +145,10 @@ class RamSingleBenchmarkView(View):
 
 class DiskBenchmarkView(View):
     def get(self, request, category):
-        details = json.loads(r.get(f'benchmark:disk:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:disk:{category}'))
+        except:
+            details = None
         categories = [
             {'title': 'SSD', 'url': 'ssd'},
             {'title': 'رده بالا', 'url': 'disk-high'},
@@ -170,5 +183,8 @@ class PcBenchmarkView(View):
             {'title': 'لپتاپ', 'url': 'fastest-laptops'},
             {'title': 'سرور', 'url': 'fastest-server'},
         ]
-        details = json.loads(r.get(f'benchmark:pc:{category}'))
+        try:
+            details = json.loads(r.get(f'benchmark:pc:{category}'))
+        except:
+            details = None
         return render(request, 'benchmark/pc-benchmark.html', {'details': details})

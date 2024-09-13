@@ -52,16 +52,6 @@
                 _element.removeClass('_close');
                 _element.addClass('_open');
 
-                var _child_el = '<ul class="_child_collapzion">';
-                jQuery.each(child_attribute, function (i, val) {
-                    _child_el += '<li><a href="' + val.url + '" class=""><div class="float-contact"><span class="_title ">' + val.label + '</span><div class="icon"><i class="' + val.icon + '"></i></div></div></a></li>';
-                });
-                _child_el += '</ul>';
-
-                _element.parent().append(_child_el);
-                $("._child_collapzion").css({
-                    'transform': 'translate3d(0, -100%, 0)'
-                });
 
             } else {
                 $("._child_collapzion").css({
@@ -80,23 +70,5 @@
 
 }(jQuery));
 
-
-$(document).ready(function () {
-    $(".contactFire").click(function () {
-        /// toggle class for div #contactOverlay
-        ///location in body
-        $("#contactOverlay").toggleClass("overlay");
-
-        ///delete and collapte contact button and overlay div
-        $(".overlay").click(function () {
-            $(".contactFire").removeClass("_open");
-            $(".contactFire").addClass("_close");
-            $("#contactOverlay").removeClass("overlay");
-            $("._child_collapzion").remove();
-        })
-
-    })
-
-});
 
 //// end config floating contact

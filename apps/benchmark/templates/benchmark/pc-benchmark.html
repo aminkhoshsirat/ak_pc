@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'benchmark/benchmark.html' %}
+{% block table %}
+    <thead style="color: #0a53be!important">
+    <tr class="table-primary">
+        <th>عنوان</th>
+        <th>پردازنده</th>
+        <th>مادربرد</th>
+        <th>گرافیک</th>
+        <th>رم</th>
+        <th>سیستم عامل</th>
+        <th>امتیاز</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for detail in details %}
+        <tr>
+            <th><a href="">{{ detail.name }}</a></th>
+            <th>{{ detail.cpu }}</th>
+            <th>{{ detail.main_board }}</th>
+            <th>{{ detail.vga }}</th>
+            <th>{{ detail.ram }}</th>
+            <th>{{ detail.os }}</th>
+            <th>{{ detail.count }}</th>
+        </tr>
+    {% endfor %}
 
-</body>
-</html>
+    </tbody>
+{% endblock %}

@@ -13,13 +13,11 @@ from .forms import *
 from django.utils.safestring import mark_safe
 from akurtekPC.config import NESHAN_API_KEY
 from apps.panel.models import SiteDetailModel
-import redis
 import random
 from apps.notification.models import UserNotificationModel
 from django.utils import timezone
 from utils.services import send_otp
-
-r = redis.Redis(host='localhost', port=6379, db=0)
+from akurtekPC.config import redis_cli as r
 
 
 class UserLoginView(View):
