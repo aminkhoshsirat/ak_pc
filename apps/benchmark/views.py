@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 import redis
 import json
 from django_celery_beat.models import CrontabSchedule, PeriodicTask
+from akurtekPC.config import redis_cli as r
+
 try:
     schedule, _ = CrontabSchedule.objects.get_or_create(minute='51', hour='17', day_of_week='*', day_of_month='*',
                                                         month_of_year='*', timezone='Asia/Tehran'
@@ -27,9 +29,6 @@ try:
 
 except:
     pass
-
-
-r = redis.Redis(host='localhost', port=6379, db=0)
 
 
 class IndexView(View):

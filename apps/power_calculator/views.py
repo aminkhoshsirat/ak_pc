@@ -5,12 +5,10 @@ from django.views.generic import View
 from rest_framework import status
 
 from .models import *
-from redis import Redis
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
-re = Redis(host='localhost', port=6379, db=0)
+from akurtekPC.config import redis_cli as re
 
 
 class PowerView(View):

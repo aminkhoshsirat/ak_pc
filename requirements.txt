@@ -132,3 +132,4 @@ websockets==10.0
 xhtml2pdf==0.2.16
 zeep==4.2.1
 zope.interface==6.4.post2
+django-template-maths==0.2.0

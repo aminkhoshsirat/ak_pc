@@ -11,8 +11,7 @@ from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models.functions import Greatest
 from django.shortcuts import get_object_or_404
 from .category_fields import product_fields
-from django.utils.timezone import datetime
-import redis
+from django.utils.timezone import datetime, now
 from json import dumps
 from utils.services import get_client_ip
 from .forms import *
@@ -21,9 +20,7 @@ from django.db.models import Avg
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
-
-
-r = redis.Redis(host='localhost', port=6379, db=0)
+from akurtekPC.config import redis_cli as r
 
 
 class HeaderView(View):
@@ -341,8 +338,8 @@ class IndexView(View):
         products = ProductModel.objects.filter(active=True)
         categories = MainCategoryModel.objects.filter(active=True)
         brands = BrandModel.objects.filter(active=True)
-        amazing_offers = AmazingOfferModel.objects.filter(active=True, expired_date__gt=datetime.now())
-        instant_offers = InstantOfferModel.objects.filter(active=True, expired_date__gt=datetime.now())
+        amazing_offers = AmazingOfferModel.objects.filter(active=True, expired_date__gt=now())
+        instant_offers = InstantOfferModel.objects.filter(active=True, expired_date__gt=now())
         advertising_banners = AdvertisingBannerModel.objects.filter(active=True)
         blogs = BlogModel.objects.select_related('category').prefetch_related('auther').filter(active=True)[0:10]
         best_off_products = products.order_by('-off')[0:20]

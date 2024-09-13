@@ -129,7 +129,7 @@
     <h4>Mehmet Mert</h4>
 
     <span class="chat-message-counter">3</span>
-    <button style="display: inline" type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
+    <button onclick="closeChat()" style="display: inline" type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
             aria-label="Close" id="btn-compare-close-product"></button>
 
 </header>
@@ -137,7 +137,7 @@
 <div class="chat">
 
     <div class="chat-history">
-        <textarea class="w-98" id="chat-log" cols="48" rows="12" readonly="readonly"></textarea>
+        <textarea class="w-98" id="chat-log" cols="48" rows="12" readonly="readonly">{% for chat in chats %}{{ chat.text }}{% endfor %}</textarea>
 
     </div> <!-- end chat-history -->
     <fieldset style="bottom: 5px">
@@ -221,25 +221,10 @@
     }
 
     document.getElementById("chat-file").addEventListener("change", readFile);
-</script>
-<script>
-    (function () {
-
-        $('#live-chat header').on('click', function () {
-
-            $('.chat').slideToggle(300, 'swing');
-            $('.chat-message-counter').fadeToggle(300, 'swing');
-
-        });
-
-        $('.chat-close').on('click', function (e) {
-
-            e.preventDefault();
-            $('#live-chat').fadeOut(300);
-
-        });
-
-    })();
+    function closeChat(){
+        chatSocket.close();
+        fileSocket.close();
+    }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 

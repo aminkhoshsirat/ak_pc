@@ -3,9 +3,7 @@ import redis
 import requests
 from bs4 import BeautifulSoup
 import json
-
-r = redis.Redis(host='localhost', port=6379, db=0)
-
+from akurtekPC.config import redis_cli as r
 
 @shared_task
 def cpu_scrapy_tasks():

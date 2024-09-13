@@ -95,7 +95,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
+            "hosts": [f'redis://:{redis_password}@{redis_host}:6379'],
         },
     },
 }
@@ -107,7 +107,7 @@ DATABASES = {
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379',
+        'LOCATION': f'redis://:{redis_password}@{redis_host}:6379',
     }
 }
 
@@ -141,7 +141,6 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Liara Storages
-
 # AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
 # AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
 # AWS_STORAGE_BUCKET_NAME = 'akurtek'
@@ -168,14 +167,14 @@ AWS_QUERYSTRING_AUTH = False
 
 # Django-storages configuration
 
-STORAGES = {
-  "default": {
-      "BACKEND": "storages.backends.s3.S3Storage",
-  },
-  "staticfiles": {
-      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-  },
-}
+# STORAGES = {
+#   "default": {
+#       "BACKEND": "storages.backends.s3.S3Storage",
+#   },
+#   "staticfiles": {
+#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#   },
+# }
 
 
 # Ckeditor Config
@@ -208,9 +207,10 @@ REST_FRAMEWORK = {
 }
 
 # CELERY SETTINGS
-CELERY_BACKEND = 'redis://localhost:6379/3'
-CELERY_BROKER_URL = 'redis://localhost:6379/4'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/5'
+CELERY_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/3'
+CELERY_BROKER_URL = f'redis://:{redis_password}@{redis_host}:6379/4'
+CELERY_RESULT_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/5'
+
 
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

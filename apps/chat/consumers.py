@@ -1,10 +1,11 @@
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
-from .models import UserChatModel
+from .models import UserChatModel, UserChatRoomModel
 import urllib.parse as urlparse
 from apps.user.models import UserModel
 from asgiref.sync import sync_to_async
 from .tasks import send_chat_file
+from django.utils.timezone import now
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -19,6 +20,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         # Leave room group
+        await UserChatRoomModel.objects.filter(id=self.room_group_name).aupdate(online=False, date=now())
         await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
     # Receive message from WebSocket
@@ -26,14 +28,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
         text_data_json = json.loads(text_data)
         message = text_data_json["message"]
         user = self.scope['user']
+        print(self.scope)
         query = self.scope['query_string'].decode('utf-8')
         params = urlparse.parse_qs(query)
         replay = params.get('replay_id', [None])[0]
 
         replay_object = await UserChatModel.objects.filter(id=replay, chat_room_id=self.room_group_name).afirst()
 
-        await UserChatModel.objects.acreate(chat_room_id=self.room_group_name, user=user,
-                                            replay=replay_object, text=message)
+        if user.is_authenticated:
+            await UserChatModel.objects.acreate(chat_room_id=self.room_group_name, user=user,
+                                                replay=replay_object, text=message)
+        else:
+            await UserChatModel.objects.acreate(chat_room_id=self.room_group_name, ip=self.scope["client"][0],
+                                                replay=replay_object, text=message)
         # Send message to room group
         await self.channel_layer.group_send(
             self.room_group_name, {"type": "chat.message", "message": message}
@@ -58,6 +65,7 @@ class FileConsumer(AsyncWebsocketConsumer):
 
     async def disconnect(self, close_code):
         # Leave room group
+        await UserChatRoomModel.objects.filter(id=self.room_group_name).aupdate(online=False, date=now())
         await self.channel_layer.group_discard(self.room_group_name, self.channel_name)
 
     # Receive message from WebSocket
@@ -71,7 +79,12 @@ class FileConsumer(AsyncWebsocketConsumer):
         replay = params.get('replay_id', [None])[0]
         replay_object = await UserChatModel.objects.filter(id=replay, chat_room_id=self.room_group_name).afirst()
 
-        send_chat_file.delay(self.room_group_name, user.id, replay_object, file, name)
+        if user.is_authenticated:
+            send_chat_file.delay(room_group_name=self.room_group_name, user=user.id, ip=None,
+                                 replay_object=replay_object, file=file, name=name)
+        else:
+            send_chat_file.delay(room_group_name=self.room_group_name, user=None, ip=self.scope["client"][0],
+                                 replay_object=replay_object, file=file, name=name)
         await self.channel_layer.group_send(
             self.room_group_name, {"type": "chat.message", "message": name}
         )
