@@ -8,13 +8,13 @@ class UserChatRoomModel(models.Model):
     ip = models.CharField(max_length=1000, null=True, blank=True)
     date = jmodels.jDateTimeField(auto_now=True)
     last_text = models.TextField(null=True, blank=True)
-    admin = models.BooleanField(default=False)
     online = models.BooleanField(default=False)
 
 
 class UserChatModel(models.Model):
     chat_room = models.ForeignKey(UserChatRoomModel, on_delete=models.DO_NOTHING, related_name='room_chats')
-    user = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='send_user', blank=True, null=True)
+    user = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='user_message', blank=True, null=True)
+    admin = models.ForeignKey(UserModel, on_delete=models.DO_NOTHING, related_name='admin_message', blank=True, null=True)
     ip = models.CharField(max_length=1000, null=True, blank=True)
     replay = models.ForeignKey('UserChatModel', on_delete=models.DO_NOTHING, related_name='chat_replays', blank=True, null=True)
     text = models.TextField()

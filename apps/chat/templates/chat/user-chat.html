@@ -1,159 +1,68 @@
-<style>
-    .clearfix {
-        *zoom: 1;
-    }
+{% load static %}
+<link rel="stylesheet" href="{% static 'chat/css/style.css' %}"/>
 
-    /* For IE 6/7 */
-    .clearfix:before, .clearfix:after {
-        content: "";
-        display: table;
-    }
+<!-- Navbar -->
 
-    .clearfix:after {
-        clear: both;
-    }
+<!-- Popup chat window -->
 
-    /* ---------- LIVE-CHAT ---------- */
+<!-- chat open -->
 
-    #live-chat {
-        bottom: 0;
-        font-size: 12px;
-        position: fixed;
-        width: 400px;
-    }
+<!-- chat close -->
+<!-- chat chat-window 2 -->
+<div class="chat-window2" id="chat-window2" style="display: block;">
+    <div class="message-box" id="chat-log">
+        {% for chat in chats %}
+            {% if chat.file %}
 
-    #live-chat header {
-        background: rgb(7, 97, 246);
-        border-radius: 5px 5px 0 0;
-        color: #fff;
-        cursor: pointer;
-        padding: 16px 24px;
-    }
+            {% else %}
+                {% if chat.admin %}
+                    <div class="second-chat">
+                        <div class="circle"></div>
+                        <p>{{ chat.text }}</p>
+                        <div class="arrow"></div>
+                    </div>
+                {% else %}
+                    <div class="first-chat">
+                        <p>{{ chat.text }}</p>
+                        <div class="arrow"></div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+<script>
+</script>
+    <div class="input-box">
+        <div class="write-reply">
+            <input
+                    class="inputText"
+                    type="text"
+                    id="chat-message-input"
+                    placeholder="Write a reply..."
+            />
+        </div>
+        <div class="send-button">
+            <button
+                    type="submit"
+                    class="send-message"
+                    id="chat-message-submit"
+                    onclick="userResponse()"
+            >
+                <i class="material-icons-outlined">ارسال</i>
+            </button>
 
-    #live-chat h4:before {
-        background: #1a8a34;
-        border-radius: 50%;
-        content: "";
-        display: inline-block;
-        height: 8px;
-        margin: 0 8px 0 0;
-        width: 8px;
-    }
-
-    #live-chat h4 {
-        font-size: 12px;
-    }
-
-    #live-chat h5 {
-        font-size: 10px;
-    }
-
-    #live-chat form {
-        padding: 24px;
-    }
-
-    #live-chat input[type="text"] {
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        padding: 8px;
-        outline: none;
-        width: 234px;
-    }
-
-    .chat-message-counter {
-        background: #e62727;
-        border: 1px solid #fff;
-        border-radius: 50%;
-        display: none;
-        font-size: 12px;
-        font-weight: bold;
-        height: 28px;
-        left: 0;
-        line-height: 28px;
-        margin: -15px 0 0 -15px;
-        position: absolute;
-        text-align: center;
-        top: 0;
-        width: 28px;
-    }
-
-    .chat-close {
-        background: #1b2126;
-        border-radius: 50%;
-        color: #fff;
-        display: block;
-        float: right;
-        font-size: 10px;
-        height: 16px;
-        line-height: 16px;
-        margin: 2px 0 0 0;
-        text-align: center;
-        width: 16px;
-    }
-
-    .chat {
-        background: #fff;
-        height: 900px;
-    }
-
-    .chat-history {
-        padding: 8px 2px;
-        overflow-y: scroll;
-    }
-
-    .chat-message {
-        margin: 16px 0;
-    }
-
-    .chat-message img {
-        border-radius: 50%;
-        float: left;
-    }
-
-    .chat-message-content {
-        margin-left: 56px;
-    }
-
-    .chat-time {
-        float: right;
-        font-size: 10px;
-    }
-
-    .chat-feedback {
-        font-style: italic;
-        margin: 0 0 0 80px;
-    }
-</style>
-
-<header class="clearfix">
-    <h4>Mehmet Mert</h4>
-
-    <span class="chat-message-counter">3</span>
-    <button onclick="closeChat()" style="display: inline" type="button" class="btn-close waves-effect waves-light" data-bs-dismiss="modal"
-            aria-label="Close" id="btn-compare-close-product"></button>
-
-</header>
-
-<div class="chat">
-
-    <div class="chat-history">
-        <textarea class="w-98" id="chat-log" cols="48" rows="12" readonly="readonly">{% for chat in chats %}{{ chat.text }}{% endfor %}</textarea>
-
-    </div> <!-- end chat-history -->
-    <fieldset style="bottom: 5px">
-        <input id="chat-message-input" type="text" size="100">
-        <button onclick="readfile()"><i class="bi bi-paperclip"></i></button>
-        <button id="chat-message-submit" class="btn-success"><i class="bi bi-caret-left-fill"></i></button>
+        </div>
+        {{ room_id|json_script:"room-name" }}
         <input type="hidden" id="chat-replay-id">
         <input id="chat-file" type="file">
-        {{ room_id|json_script:"room-name" }}
-
-    </fieldset>
-
-
-</div> <!-- end chat -->
-
+    </div>
+</div>
 <script>
+    var chat = document.getElementById('chat-log');
+    $(document).ready(function() {
+        chat.scrollTo(0, document.querySelector("#chat-log").scrollHeight);
+    });
+
     const roomName = JSON.parse(document.getElementById('room-name').textContent);
 
     const replay_id = document.getElementById('chat-replay-id')
@@ -176,7 +85,20 @@
 
     chatSocket.onmessage = function (e) {
         const data = JSON.parse(e.data);
-        document.querySelector('#chat-log').value += (data.message + '\n');
+        var chat = document.getElementById('chat-log');
+        chat.scrollTo(0,document.querySelector("#chat-log").scrollHeight);
+        if (data.sender === 'user'){
+            chat.innerHTML += (`<div class="first-chat">
+                        <p>${ data.message }</p>
+                        <div class="arrow"></div>
+                    </div>`);
+        }
+        else{
+            chat.innerHTML += (`<div class="first-chat">
+                        <p>${ data.message }</p>
+                        <div class="arrow"></div>
+                    </div>`);
+        }
     };
 
 
@@ -194,8 +116,11 @@
     document.querySelector('#chat-message-submit').onclick = function (e) {
         const messageInputDom = document.querySelector('#chat-message-input');
         const message = messageInputDom.value;
+        var chat = document.getElementById('chat-log');
+        chat.scrollTo(0,document.querySelector("#chat-log").scrollHeight);
         chatSocket.send(JSON.stringify({
             'message': message,
+            'sender': 'user',
             'event': 'message'
         }))
         messageInputDom.value = '';
@@ -205,12 +130,13 @@
         if (this.files && this.files[0]) {
             var file = document.getElementById("chat-file")
             var FR = new FileReader();
-
+            var chat = document.getElementById('chat-log');
+            chat.scrollTo(0,document.querySelector("#chat-log").scrollHeight);
             FR.addEventListener("load", function (e) {
-
                 fileSocket.send(JSON.stringify({
                     'file': e.target.result,
                     'name': file.value,
+                    'sender': 'user',
                     'event': 'file'
                 }));
             });
@@ -221,7 +147,8 @@
     }
 
     document.getElementById("chat-file").addEventListener("change", readFile);
-    function closeChat(){
+
+    function closeChat() {
         chatSocket.close();
         fileSocket.close();
     }

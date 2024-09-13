@@ -25,10 +25,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json["message"]
+        data = json.loads(text_data)
         user = self.scope['user']
-        print(self.scope)
+        message = data['message']
         query = self.scope['query_string'].decode('utf-8')
         params = urlparse.parse_qs(query)
         replay = params.get('replay_id', [None])[0]
@@ -43,14 +42,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
                                                 replay=replay_object, text=message)
         # Send message to room group
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat.message", "message": message}
+            self.room_group_name, {"type": "chat.message", "message": message, "sender": data["sender"]}
         )
 
     async def chat_message(self, event):
         message = event["message"]
+        sender = event["sender"]
 
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({"message": message}))
+        await self.send(text_data=json.dumps({"message": message, "sender": sender}))
 
 
 class FileConsumer(AsyncWebsocketConsumer):
@@ -70,9 +70,9 @@ class FileConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        file = text_data_json["file"]
-        name = str(text_data_json["name"]).replace('C:\\fakepath\\', '')
+        data = json.loads(text_data)
+        file = data["file"]
+        name = str(data["name"]).replace('C:\\fakepath\\', '')
         user = self.scope['user']
         query = self.scope['query_string'].decode('utf-8')
         params = urlparse.parse_qs(query)
@@ -86,12 +86,13 @@ class FileConsumer(AsyncWebsocketConsumer):
             send_chat_file.delay(room_group_name=self.room_group_name, user=None, ip=self.scope["client"][0],
                                  replay_object=replay_object, file=file, name=name)
         await self.channel_layer.group_send(
-            self.room_group_name, {"type": "chat.message", "message": name}
+            self.room_group_name, {"type": "chat.message", "message": name, "sender": data["sender"]}
         )
 
     # Receive message from room group
     async def chat_message(self, event):
         message = event["message"]
+        sender = event["sender"]
 
         # Send message to WebSocket
-        await self.send(text_data=json.dumps({"message": message}))
+        await self.send(text_data=json.dumps({"message": message, "sender": sender}))
