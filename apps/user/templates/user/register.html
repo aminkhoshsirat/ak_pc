@@ -40,10 +40,15 @@
                                         <label for="floatingPassword">کلمه عبور</label>
                                     </div>
                                     <div class="form-floating mb-3">
-                                        <input type="password" name="confirm_password" class="form-control float-input" id="confirm-password-field" placeholder="تکرار کلمه عبور">
+                                        <input type="password" name="confirm_password" class="form-control float-input" id="confirm-password-field" placeholder="تکرار کلمه عبور" required>
                                         <label for="floatingPasswordRe">تکرار کلمه عبور</label>
                                     </div>
-                                    <div id="register-detail">
+                                    <div class="form-floating mb-3" id="code-activation-field" style="display: none">
+                                        <input type="text" class="form-control float-input text-center send-code-input"
+                                               id="code-field" name="code" placeholder="برای مثال 4522">
+                                        <label for="floatingInput">برای مثال 4522</label>
+                                    </div>
+                                    <div style="display: none" id="register-detail" class="alert alert-danger" role="alert">
 
                                     </div>
                                     <div class="form-group">

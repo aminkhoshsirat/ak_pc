@@ -7,9 +7,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*7ka_#@8d5k2&vv^6uud@w&7h^$9143+vdgnv_x)vvqk+jp7t='
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['akurtek.ir', 'www.akurtek.ir']
+
 
 INSTALLED_APPS = [
     'daphne',
@@ -69,6 +70,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_htmx.middleware.HtmxMiddleware",
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://akurtek.ir']
 
 ROOT_URLCONF = 'akurtekPC.urls'
 
@@ -134,47 +137,47 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'stati/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Liara Storages
-# AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
-# AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
-# AWS_STORAGE_BUCKET_NAME = 'akurtek'
-# AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
-# AWS_S3_REGION_NAME = 'us-east-1'
+AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
+AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
+AWS_STORAGE_BUCKET_NAME = 'akurtek'
+AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
+AWS_S3_REGION_NAME = 'us-east-1'
 
 # Arvan Storage
+#
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#
+# AWS_ACCESS_KEY_ID = arvan_cloud_config.get('access_key')
+#
+# AWS_SECRET_ACCESS_KEY = arvan_cloud_config.get('secret_key')
+#
+# AWS_S3_ENDPOINT_URL = arvan_cloud_config.get('simin_domain')
+#
+# AWS_STORAGE_BUCKET_NAME = arvan_cloud_config.get('bucket_name')
+#
+# AWS_SERVICE_NAME = 's3'
+#
+# AWS_S3_FILE_OVERWRITE = False
+#
+# AWS_QUERYSTRING_AUTH = False
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#Django-storages configuration
 
-AWS_ACCESS_KEY_ID = arvan_cloud_config.get('access_key')
-
-AWS_SECRET_ACCESS_KEY = arvan_cloud_config.get('secret_key')
-
-AWS_S3_ENDPOINT_URL = arvan_cloud_config.get('simin_domain')
-
-AWS_STORAGE_BUCKET_NAME = arvan_cloud_config.get('bucket_name')
-
-AWS_SERVICE_NAME = 's3'
-
-AWS_S3_FILE_OVERWRITE = False
-
-AWS_QUERYSTRING_AUTH = False
-
-# Django-storages configuration
-
-# STORAGES = {
-#   "default": {
-#       "BACKEND": "storages.backends.s3.S3Storage",
-#   },
-#   "staticfiles": {
-#       "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-#   },
-# }
+STORAGES = {
+  "default": {
+      "BACKEND": "storages.backends.s3.S3Storage",
+  },
+  "staticfiles": {
+      "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+  },
+}
 
 
 # Ckeditor Config

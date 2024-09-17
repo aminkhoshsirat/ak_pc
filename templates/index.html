@@ -83,44 +83,6 @@
                                                                 </h5>
 
                                                             </div>
-                                                            <div class="product-feature py-2">
-                                                                <h6>ویژگی محصول:</h6>
-                                                                <nav class="navbar">
-                                                                    <ul class="navbar-nav">
-                                                                        {% for field in product.fields %}
-                                                                            {% if forloop.counter < 25 %}
-                                                                                <li class="nav-item pb-1 font-14">
-                                                                                    <div style="display: inline"><span
-                                                                                            class="nav-title me-1 fw-bold">{{ field.name }}</span>
-                                                                                    </div>
-                                                                                    <span>:</span>
-                                                                                    {% if field.amount %}
-                                                                                        {% if field.amount == True %}
-                                                                                            <span class="nav-title-desc text-muted">دارد</span>
-                                                                                        {% elif field.amount == False %}
-                                                                                            <span class="nav-title-desc text-muted">ندارد</span>
-                                                                                        {% else %}
-                                                                                            <span class="nav-title-desc text-muted">{{ field.amount }}</span>
-                                                                                        {% endif %}
-
-                                                                                    {% endif %}
-                                                                                </li>
-                                                                            {% endif %}
-                                                                        {% endfor %}
-
-                                                                    </ul>
-                                                                </nav>
-                                                                <div class="order-progress py-3">
-                                                                    <h6 class="fw-bold mb-2">63% فروش رفته</h6>
-                                                                    <div class="progress">
-                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                                             role="progressbar" aria-valuenow="63"
-                                                                             aria-valuemin="0" aria-valuemax="100"
-                                                                             style="width: 63%;background-color: #007fee;">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="offer-desc-price">
                                                                 <span class="old">{{ product.product.price | money_format }} تومان</span>
                                                                 <span class="new">{{ product.product.price_after_off | money_format }} تومان</span>
@@ -216,7 +178,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for product in new_products %}
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                  style="margin-left: 10px;">
@@ -368,7 +330,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for product in assembled_cases %}
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                  style="margin-left: 10px;">
@@ -475,7 +437,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for product in laptops %}
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                  style="margin-left: 10px;">
@@ -582,7 +544,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for product in cpus %}
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                  style="margin-left: 10px;">
@@ -682,7 +644,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for product in main_boards %}
                             <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 10"
                                  style="margin-left: 10px;">
@@ -788,7 +750,7 @@
                 <div class="swiper free-mode swiper-initialized swiper-horizontal swiper-free-mode swiper-rtl swiper-backface-hidden"
                      id="product-box">
                     <div class="swiper-wrapper" id="swiper-wrapper-c216a34813094d4c" aria-live="polite"
-                         style="transform: translate3d(0px, 0px, 0px);overflow: auto;scrollbar-width: none;">
+                         style="transform: translate3d(0px, 0px, 0px)">
                         {% for brand in brands %}
                             <div class="swiper-slide">
                                 <a href="{{ brand.get_absolute_url }}">

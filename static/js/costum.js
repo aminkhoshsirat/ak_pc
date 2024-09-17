@@ -45,6 +45,7 @@ function deleteProductUser(id) {
                                         <i class="bi bi-cart-plus"></i>افزودن به سبد خرید
                                     </button>`);
     })
+    location.reload();
 }
 
 $(function () {
@@ -75,6 +76,7 @@ function changeNumBucket(id) {
     const total_price = parseInt($('#bucket_total_price').text());
     $.get('/product/change/' + id + '?num=' + num).then(res => {
     })
+    location.reload();
 }
 
 function changeProductNum(id) {
@@ -312,9 +314,16 @@ function sendCode() {
         password,
         confirm_password
     }).then(res => {
-        $('#send-code-btn').hide();
-        $('#register-btn').show();
-        $('#register-detail').html(res);
+        if (res === 'ok'){
+            $('#code-activation-field').show();
+            $('#register-detail').hide();
+            $('#send-code-btn').hide();
+            $('#register-btn').show();
+        }
+        else{
+            $('#register-detail').html(res).show();
+        }
+
     })
 }
 
@@ -336,7 +345,48 @@ function register(id) {
     }).then(res => {
         if (res === 'ok') {
             location.replace('/');
+            $('#register-detail').hide();
         }
+        $('#register-detail').html(res).show();
+    })
+}
+
+function sendCodeForget(){
+    const phone = $('#phone-forget').val();
+    $.post('/user/send-code', {
+        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+        phone,
+    }).then(res => {
+        if (res === 'ok') {
+            $('#forget-activation-field').show();
+            $('#forget-sub-btn').show();
+            $('#forget-phone-field').hide();
+            $('#forget-send-code-btn').hide();
+            $('#forget-form-message').hide();
+        }
+        else{
+            $('#forget-form-message').html(res).show();
+        }
+
+    })
+}
+
+function loginForgetUser(){
+    const phone = $('#phone-forget').val();
+    const code = $('#floatingInputcode').val();
+    $.post('/user/forget-password', {
+        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+        phone,
+        code
+    }).then(res => {
+        if (res === 'ok') {
+            location.replace('/');
+            $('#forget-form-message').hide();
+        }
+        else{
+            $('#forget-form-message').html(res).show();
+        }
+
     })
 }
 

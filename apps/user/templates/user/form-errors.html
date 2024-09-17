@@ -1,0 +1,11 @@
+{% for field in form %}
+    <ul class="errorlist">
+        {% for error in field.errors %}
+            <li>{{ field.label }}
+                <ul class="errorlist">
+                    <li>{{ error }}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}

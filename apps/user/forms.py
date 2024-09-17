@@ -4,8 +4,8 @@ from django.core.validators import MinLengthValidator
 
 
 class UserLoginForm(forms.Form):
-    phone_or_email = forms.CharField(max_length=300)
-    password = forms.CharField(max_length=25)
+    phone_or_email = forms.CharField(max_length=300, label='ایمیل یا شماره تلفن', error_messages={'required': 'ایمیل یا تلفن نامعتبر', 'max_length': 'ایمیل یا تلفن نامعتبر'})
+    password = forms.CharField(max_length=25, label='پسورد', error_messages={'required': 'پسورد نامعتبر', 'max_length': 'پسورد نامعتبر'})
 
 
 class UserRegisterForm(forms.Form):
@@ -107,6 +107,11 @@ class AddressForm(forms.Form):
 
 class SendOtpForm(forms.Form):
     phone = forms.CharField(max_length=11)
+
+
+class ForgetForm(forms.Form):
+    phone = forms.CharField(max_length=11)
+    code = forms.CharField(max_length=6)
 
 
 class AddAdminForm(forms.ModelForm):

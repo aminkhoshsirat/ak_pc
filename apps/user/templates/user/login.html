@@ -34,6 +34,13 @@
                                             placeholder="کلمه عبور">
                                         <label for="floatingPassword">کلمه عبور</label>
                                     </div>
+                                    {% if messages %}
+                                        <ul class="messages alert alert-danger">
+                                            {% for message in messages %}
+                                            <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
                                     <div class="row gy-3 mb-3">
                                         <div class="col-sm-6">
                                             <div class="form-check form-switch">
@@ -44,7 +51,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group text-sm-end text-start">
-                                                <a href="" class="text-primary">فراموشی رمز عبور</a>
+                                                <a href="{% url 'user:forget' %}" class="text-primary">فراموشی رمز عبور</a>
                                             </div>
                                         </div>
                                     </div>
@@ -53,13 +60,6 @@
                                             class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ورود</button>
                                     </div>
                                 </form>
-                                {% if messages %}
-                                        <ul class="messages">
-                                            {% for message in messages %}
-                                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                            {% endfor %}
-                                        </ul>
-                                        {% endif %}
                                 <div class="divider">
                                     <span>یا</span>
                                 </div>

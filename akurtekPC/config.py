@@ -15,3 +15,33 @@ arvan_cloud_config = {
     'simin_domain': "https://akurtek-pc.s3.ir-thr-at1.arvanstorage.ir",
     'bucket_name': "akurtek-pc"
 }
+
+
+# Postgresql Config
+postgres_config = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dgsahdajfwb_db',
+        'USER': 'postgres',
+        'PASSWORD': 'tUQnyO72rNbdk4DgeZFk',
+        'HOST': 'dgsahdajfgjtjreethsd-koz-service',
+        'PORT': '5432'
+    }
+
+redis_host = 'gfdhfdhfdhfhdhggoewwhou-utr-service'
+
+redis_password = 'nJmlpq69NIi7oBBnDTyr'
+
+
+# postgres_config = {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'akurtek',
+#         'USER': 'amin_ak',
+#         'PASSWORD': 'aminkh1110',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+#
+# redis_host = 'localhost'
+# redis_password = ''
+
+redis_cli = Redis(host=redis_host, password=redis_password, db=0)

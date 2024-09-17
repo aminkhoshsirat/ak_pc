@@ -1,5 +1,6 @@
 {% extends 'user/base.html' %}
 {% block title %}{% endblock %}
+{% load poll_extras %}
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">
@@ -41,7 +42,9 @@
                                     </td>
                                     <td colspan="2">
                                         <h6 class="font-12 text-muted">کد پستی </h6>
-                                        <p class="fw-bold mt-2 font-14">{{ user.post_code }}</p>
+                                        {% if user.post_code %}
+                                            <p class="fw-bold mt-2 font-14">{{ user.post_code }}</p>
+                                        {% endif %}
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,11 +105,11 @@
                                                     <h6 class="font-14 title text-overflow-1">{{ product.product.title }}</h6>
                                                     <div class="price d-flex flex-column justify-content-end mt-2">
                                                         <div class="text-end">
-                                                            <span class="fw-bold font-18 def-color">{{ product.product.price_after_off }}</span>
+                                                            <span class="fw-bold font-18 def-color">{{ product.product.price_after_off | money_format }}</span>
                                                             <span class="badge main-color-two-bg rounded-pill">{{ product.product.off }}%</span>
                                                         </div>
                                                         <div class="text-end">
-                                                            <span class="text-muted font-14 text-decoration-line-through">{{ product.product.price }}</span>
+                                                            <span class="text-muted font-14 text-decoration-line-through">{{ product.product.price | money_format }}</span>
                                                             <span class="text-muted font-14">تومان</span>
                                                         </div>
                                                     </div>

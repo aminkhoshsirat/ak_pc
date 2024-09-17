@@ -25,16 +25,26 @@
                             <div class="auth-content">
                                 <h3 class="font-20 text-center forget-title-form" style="padding-top:70px;">فراموشی رمز
                                     عبور </h3>
-                                <form action="" class="mt-3">
-                                    <div class="form-floating mb-3">
-                                        <input id="phone-forget" name="phone" type="text" class="form-control float-input" id="floatingInput"
+
+                                    <div id="forget-phone-field" class="form-floating mb-3">
+                                        <input id="phone-forget" name="phone" type="text" class="form-control float-input"
                                             placeholder="تلفن همراه">
-                                        <label for="floatingInput">تلفن همراه</label>
+                                        <label for="phone-forget">تلفن همراه</label>
+                                    </div>
+                                    <div style="display: none" id="forget-activation-field" class="form-floating mb-3">
+                                        <input name="phone" type="text" class="form-control float-input" id="floatingInputcode"
+                                            placeholder="کد تایید">
+                                        <label for="floatingInputcode">کد تایید</label>
+                                    </div>
+                                    <div style="display: none" id="forget-form-message" class="alert alert-danger" role="alert">
+
                                     </div>
                                     <div class="form-group">
-                                        <button onclick="" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ارسال کدتایید</button>
+                                        <button id="forget-send-code-btn" onclick="sendCodeForget()" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ارسال کدتایید</button>
                                     </div>
-                                </form>
+                                    <div class="form-group">
+                                        <button onclick="loginForgetUser()" style="display: none" id="forget-sub-btn" class="btn main-color-three-bg border-0 rounded-pill w-100 text-white waves-effect waves-light">ورود</button>
+                                    </div>
                                 <div class="divider">
                                     <span>یا</span>
                                 </div>

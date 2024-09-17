@@ -177,8 +177,10 @@ class ProductDetailView(DetailView):
         context['comment_count'] = product.product_comments.count()
         context['favorite_product'] = UserFavoriteProductModel.objects.filter(user_id=self.request.user.id,
                                                                               product=product).exists()
-
-        context['fields'] = product_fields(product)
+        try:
+            context['fields'] = product_fields(product)
+        except:
+            context['fields'] = None
         context['product'] = product
         context['product_video'] = ProductVideoModel.objects.filter(product=product).first()
 
@@ -251,7 +253,6 @@ class ProductCommentView(ListView):
 
 class ProductLikeView(View):
     def get(self, request, id):
-        print(id)
         if request.user.is_authenticated:
             like_status = self.request.GET.get('like-status')
             if like_status == 'like':
@@ -309,10 +310,14 @@ class ProductChangeView(View):
 class ShowProductView(View):
     def get(self, request, id):
         product = get_object_or_404(ProductModel, id=id)
+        try:
+            fields = product_fields(product),
+        except:
+            fields = None
         context = {
             'product': product,
             'images': ProductImageModel.objects.filter(product=product),
-            'fields': product_fields(product),
+            'fields': fields,
         }
         return render(request, 'product/show-product.html', context)
 

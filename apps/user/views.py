@@ -40,9 +40,10 @@ class UserLoginView(View):
                     return redirect(request.META['HTTP_REFERER'])
             else:
                 messages.add_message(request, messages.ERROR, 'کاربر یافت نشد')
-                return redirect('user:login')
+                return redirect(request.META['HTTP_REFERER'])
         else:
-            return render(request, 'user/login.html')
+            messages.add_message(request, messages.ERROR, form.errors)
+            return redirect(request.META['HTTP_REFERER'])
 
 
 class UserLoginHeaderView(View):
@@ -88,11 +89,8 @@ class UserRegisterView(View):
                     code = random.randint(100000, 999999)
                     r.set(f'{phone}:activation_code', code, ex=600)
                     send_otp(phone, str(code))
-                    return render(request, 'user/send-code.html')
-                else:
-                    return render(request, 'user/send-code.html')
-        else:
-            return HttpResponse(form.errors)
+                return HttpResponse('ok')
+        return render(request, 'user/form-errors.html', {'form': form})
 
 
 class UserRegisterActivationView(View):
@@ -106,7 +104,6 @@ class UserRegisterActivationView(View):
                 sending_code = str(int(r.get(f'{phone}:activation_code')))
             except:
                 sending_code = ''
-            print(sending_code)
             if sending_code:
                 if sending_code == code:
                     user = UserModel.objects.create_user(fullname=cd['fullname'], email=cd['email'], phone=phone, password=cd['password'])
@@ -114,11 +111,9 @@ class UserRegisterActivationView(View):
                     login(request, user)
                     return HttpResponse('ok')
                 else:
-                    return HttpResponse('code is incorrect')
-            return HttpResponse('failed')
-
-        else:
-            return render(request, 'user/register.html')
+                    return HttpResponse('کد نادرست')
+            return HttpResponse('نامعتبر')
+        return render(request, 'user/form-errors.html', {'form': form})
 
 
 class UserLogoutView(LoginRequiredMixin, View):
@@ -137,18 +132,19 @@ class SendOtpCodeView(View):
             if user:
                 if user.ban:
                     messages.add_message(request, messages.ERROR, 'کاربر ازسایت محروم شده است')
+                    return HttpResponse('کاربر ازسایت محروم شده است')
                 else:
                     time = r.ttl(f'{phone}:activation_code')
                     if time < 420:
                         code = random.randint(100000, 999999)
                         r.set(f'{phone}:activation_code', code, ex=600)
                         send_otp(phone, code)
+                    return HttpResponse('ok')
 
             else:
                 return HttpResponse('کاربر وجود ندارد')
 
-        else:
-            return HttpResponse(form.errors)
+        return render(request, 'user/form-errors.html', {'form': form})
 
 
 class PasswordForgetView(View):
@@ -156,7 +152,26 @@ class PasswordForgetView(View):
         return render(request, 'user/forget.html')
 
     def post(self, request):
-        pass
+        form = ForgetForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            phone = cd['phone']
+            user = UserModel.objects.filter(phone=phone).first()
+            if user:
+                if user.ban:
+                    return HttpResponse('کاربر ازسایت محروم شده است')
+                else:
+                    try:
+                        sending_code = str(int(r.get(f'{phone}:activation_code')))
+                    except:
+                        sending_code = ''
+                    if sending_code == cd['code']:
+                        login(request, user)
+                        r.delete(f'{phone}:activation_code')
+                        return HttpResponse('ok')
+                    return HttpResponse('کد نادرست است')
+            return HttpResponse('کاربر وجود ندارد')
+        return HttpResponse('نامعتبر')
 
 
 class ChangePasswordView(LoginRequiredMixin, View):
