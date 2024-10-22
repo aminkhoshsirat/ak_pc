@@ -85,7 +85,7 @@ class ProductModel(models.Model):
     introduce = models.TextField(verbose_name='معرفی')
     url = models.SlugField(unique=True, allow_unicode=True, verbose_name='لینک')
     image = models.ImageField(upload_to='product/product_images', verbose_name='تصویر')
-    published_date = jmodels.jDateTimeField(auto_now_add=True, verbose_name='تاریخ انتشار')
+    published_date = jmodels.jDateField(auto_now_add=True, verbose_name='تاریخ انتشار')
     update_date = jmodels.jDateTimeField(auto_now=True, verbose_name='تاریخ بروزرسانی')
     price = models.PositiveIntegerField(verbose_name='قیمت')
     price_after_off = models.PositiveIntegerField(null=True, blank=True, verbose_name='قیمت بعد از تخفیف')

@@ -31,4 +31,5 @@ urlpatterns = [
     path('add-user', AddUserView.as_view(), name='add_user'),
     path('add-auther', AddAutherView.as_view(), name='add_auther'),
     path('admin', AdminView.as_view(), name='admin'),
+    path('chart', ChartView.as_view(), name='chart')
 ]

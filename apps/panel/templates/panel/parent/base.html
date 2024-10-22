@@ -49,7 +49,6 @@
     <!--start overlay-->
     <div class="overlay nav-toggle-icon"></div>
     <!--end overlay-->
-{% include 'panel/partial/footer.html' %}
 <!--Start Back To Top Button-->
     <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
     <!--End Back To Top Button-->
@@ -127,14 +126,21 @@
 <script src="{% static 'panel/js/pace.min.js' %}"></script>
 <script src="{% static 'panel/plugins/chartjs/js/Chart.min.js' %}"></script>
 <script src="{% static 'panel/plugins/chartjs/js/Chart.extension.js' %}"></script>
+<script src="{% static 'panel/plugins/chartjs/js/chartjs-custom.js' %}"></script>
 <script src="{% static 'panel/plugins/apexcharts-bundle/js/apexcharts.min.js' %}"></script>
 <!--app-->
 <script src="{% static 'panel/js/app.js' %}"></script>
-<script src="{% static 'panel/js/index4.js' %}"></script>
+<script src="{% static 'panel/js/pace.min.js' %}"></script>
+{% block extra %}
+{% endblock %}
+{#<script src="{% static 'panel/plugins/apexcharts-bundle/js/apexcharts.min.js' %}"></script>#}
+{#<script src="{% static 'panel/plugins/apexcharts-bundle/js/apex-custom.js' %}"></script>#}
+{% block extra_js %}
+{% endblock %}
+{#<script src="{% static 'panel/js/index4.js' %}"></script>#}
 <script>
     new PerfectScrollbar(".best-product")
 </script>
-{% block extra_js %}
-{% endblock %}
+<script src="{% static 'js/costum.js' %}"></script>
 </body>
 </html>

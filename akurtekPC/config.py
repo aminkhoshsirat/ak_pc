@@ -8,40 +8,31 @@ ghasedak_api_key = 'RjZN5VorYOuI01duQPGOT5cE+DfLh6PDwPyEKYDpDwI'
 
 ghasedak_template = 'akurtek'
 
-# ArvanCloud
-arvan_cloud_config = {
-    'access_key': "5de4b746-59da-4a18-bec9-411c09793550",
-    'secret_key': "334a4bf4798191fc2f26ace1cde01b68ab00556d1c43285f49cbccc8e6b4304d",
-    'simin_domain': "https://akurtek-pc.s3.ir-thr-at1.arvanstorage.ir",
-    'bucket_name': "akurtek-pc"
-}
-
-
 # Postgresql Config
-postgres_config = {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dgsahdajfwb_db',
-        'USER': 'postgres',
-        'PASSWORD': 'tUQnyO72rNbdk4DgeZFk',
-        'HOST': 'dgsahdajfgjtjreethsd-koz-service',
-        'PORT': '5432'
-    }
-
-redis_host = 'gfdhfdhfdhfhdhggoewwhou-utr-service'
-
-redis_password = 'nJmlpq69NIi7oBBnDTyr'
-
-
 # postgres_config = {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'akurtek',
-#         'USER': 'amin_ak',
-#         'PASSWORD': 'aminkh1110',
-#         'HOST': 'localhost',
+#         'NAME': 'dgsahdajfwb_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'tUQnyO72rNbdk4DgeZFk',
+#         'HOST': 'dgsahdajfgjtjreethsd-koz-service',
 #         'PORT': '5432'
 #     }
 #
-# redis_host = 'localhost'
-# redis_password = ''
+# redis_host = 'gfdhfdhfdhfhdhggoewwhou-utr-service'
+#
+# redis_password = 'nJmlpq69NIi7oBBnDTyr'
+
+
+postgres_config = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'akurtek',
+        'USER': 'amin_ak',
+        'PASSWORD': 'aminkh1110',
+        'HOST': 'localhost',
+        'PORT': '5432'
+    }
+
+redis_host = 'localhost'
+redis_password = ''
 
 redis_cli = Redis(host=redis_host, password=redis_password, db=0)

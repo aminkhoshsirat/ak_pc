@@ -33,6 +33,10 @@ from akurtekPC.config import ghasedak_api_key
 from apps.user.forms import AddAdminForm, AddUserForm
 from apps.blog.models import BlogCategoryModel, BlogCommentModel, BlogModel, AutherModel
 from apps.blog.forms import AutherForm, BlogForm, BlogCategoryForm
+from django.db.models.aggregates import Count
+from datetime import timedelta
+from utils.chart import *
+from django.utils.safestring import mark_safe
 
 
 class AdminRequiredMixin(UserPassesTestMixin):
@@ -98,6 +102,10 @@ class IndexView(AdminRequiredMixin, View):
         except:
             ghasedak_amount = 0
 
+        products = ProductModel.objects.all()
+
+        g = count_chart(products, 'published_date', 'month')
+
         context = {
             'recently_sell_products': recently_sell_products,
             'most_sell_products': most_sell_products,
@@ -107,6 +115,8 @@ class IndexView(AdminRequiredMixin, View):
             'users_num': users.count,
             'order_user': order_user,
             'ghasedak_amount': ghasedak_amount,
+            'x': g['x'],
+            'y': g['y']
         }
         return render(request, 'panel/index.html', context)
 
@@ -762,3 +772,24 @@ class AddNewProductView(AdminRequiredMixin, View):
                 form.save()
             else:
                 return redirect(request.META['HTTP_REFERER'])
+
+
+class ChartView(View):
+    def get(self, request):
+        products = ProductModel.objects.all()
+        product_month_chart = count_chart(products, 'published_date', 'month')
+        buckets = BuketModel.objects.all()
+        best_sell_products = products.order_by('-sell')[0:5]
+        best_sell_products_num = [i.sell for i in best_sell_products]
+        best_sell_products_name = [i.title for i in best_sell_products]
+        sells_month = sum_chart(buckets, 'paid_date', 'price_paid', 'month')
+
+        print(best_sell_products)
+
+        context = {
+            'product_month_chart': product_month_chart,
+            'sells_month': sells_month,
+            'best_sell_products_num': best_sell_products_num,
+            'best_sell_products_name': best_sell_products_name,
+        }
+        return render(request, 'panel/charts-apex-chart.html', context)
