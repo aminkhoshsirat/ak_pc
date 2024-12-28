@@ -26,12 +26,13 @@ class CategoryView(ListView):
             series = SeriesModel.objects.all()
             bit = BitTypeModel.objects.all()
             gpu = OnBoardGpuModel.objects.all()
-            field_list = [{'name': CpuPlatformModel._meta.verbose_name.title, 'fields': platform},
-                    {'name': SocketTypeModel._meta.verbose_name.title, 'fields': socket},
-                    {'name': DDRModel._meta.verbose_name.title, 'fields': ddr},
-                    {'name': SeriesModel._meta.verbose_name.title, 'fields': series},
-                    {'name': BitTypeModel._meta.verbose_name.title, 'fields': bit},
-                    {'name': OnBoardGpuModel._meta.verbose_name.title, 'fields': gpu},
+            field_list = [
+                {'name': CpuPlatformModel._meta.verbose_name.title, 'fields': platform},
+                {'name': SocketTypeModel._meta.verbose_name.title, 'fields': socket},
+                {'name': DDRModel._meta.verbose_name.title, 'fields': ddr},
+                {'name': SeriesModel._meta.verbose_name.title, 'fields': series},
+                {'name': BitTypeModel._meta.verbose_name.title, 'fields': bit},
+                {'name': OnBoardGpuModel._meta.verbose_name.title, 'fields': gpu},
             ]
             context['field_list'] = field_list
 
@@ -42,13 +43,14 @@ class CategoryView(ListView):
             frequency = RamFrequencyModel.objects.all()
             bit = BitTypeModel.objects.all()
             gpu = OnBoardGpuModel.objects.all()
-            field_list = [{'name': DDRModel._meta.verbose_name.title, 'fields': ddr},
-                          {'name': FormFactorModel._meta.verbose_name.title, 'fields': form_factor},
-                          {'name': MainBoardChipSetModel._meta.verbose_name.title, 'fields': chipset},
-                          {'name': RamFrequencyModel._meta.verbose_name.title, 'fields': frequency},
-                          {'name': BitTypeModel._meta.verbose_name.title, 'fields': bit},
-                          {'name': OnBoardGpuModel._meta.verbose_name.title, 'fields': gpu},
-                          ]
+            field_list = [
+                {'name': DDRModel._meta.verbose_name.title, 'fields': ddr},
+                {'name': FormFactorModel._meta.verbose_name.title, 'fields': form_factor},
+                {'name': MainBoardChipSetModel._meta.verbose_name.title, 'fields': chipset},
+                {'name': RamFrequencyModel._meta.verbose_name.title, 'fields': frequency},
+                {'name': BitTypeModel._meta.verbose_name.title, 'fields': bit},
+                {'name': OnBoardGpuModel._meta.verbose_name.title, 'fields': gpu},
+            ]
             context['field_list'] = field_list
 
         elif category == 'ram':
@@ -60,9 +62,10 @@ class CategoryView(ListView):
         elif category == 'gpu':
             platform = GpuPlatformModel.objects.all()
             ddr = GpuDDRModel.objects.all()
-            field_list = [{'name': GpuDDRModel._meta.verbose_name.title, 'fields': ddr},
-                          {'name': GpuPlatformModel._meta.verbose_name.title, 'fields': platform},
-                          ]
+            field_list = [
+                {'name': GpuDDRModel._meta.verbose_name.title, 'fields': ddr},
+                {'name': GpuPlatformModel._meta.verbose_name.title, 'fields': platform},
+            ]
             context['field_list'] = field_list
 
         return context

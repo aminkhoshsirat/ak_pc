@@ -29,7 +29,6 @@ INSTALLED_APPS = [
     'djangobower',
     'django_template_maths',
 
-
     # Internal Apps
     'django_jalali',
     'storages',

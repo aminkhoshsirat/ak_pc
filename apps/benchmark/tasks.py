@@ -158,7 +158,6 @@ def disk_scrapy_tasks():
     return 'disk scrapy task success'
 
 
-
 @shared_task
 def pc_scrapy_tasks():
     url = [

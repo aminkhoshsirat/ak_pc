@@ -18,7 +18,8 @@ class BlogCategoryModel(models.Model):
     url = models.SlugField(unique=True, allow_unicode=True)
     description = models.TextField()
     active = models.BooleanField(default=True)
-    parent = models.ForeignKey('BlogCategoryModel', on_delete=models.CASCADE, related_name='child', null=True, blank=True)
+    parent = models.ForeignKey('BlogCategoryModel', on_delete=models.CASCADE, related_name='child', null=True,
+                               blank=True)
 
     def get_absolute_url(self):
         return reverse('blog:category', args=[self.url])

@@ -14,7 +14,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "akurtekPC.settings")
 # is populated before importing code that may import ORM models.
 django_asgi_app = get_asgi_application()
 
-# session middlewar stack is for using session in our consumer
+# session middleware stack is for using session in our consumer
 
 
 application = ProtocolTypeRouter(
