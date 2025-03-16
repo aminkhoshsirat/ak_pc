@@ -7,14 +7,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-*7ka_#@8d5k2&vv^6uud@w&7h^$9143+vdgnv_x)vvqk+jp7t='
 
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['akurtek.ir', 'www.akurtek.ir']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['akurtek.ir', 'www.akurtek.ir']
+# ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
-    'daphne',
     'admin_tools_stats',
     'django_nvd3',
     'django.contrib.admin',
@@ -30,6 +29,7 @@ INSTALLED_APPS = [
     'django_template_maths',
 
     # Internal Apps
+    'django.contrib.sitemaps',
     'django_jalali',
     'storages',
     'channels',
@@ -71,7 +71,7 @@ MIDDLEWARE = [
     "django_htmx.middleware.HtmxMiddleware",
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://akurtek.ir']
+CSRF_TRUSTED_ORIGINS = ['https://akurtek.ir', 'http://akurtekpc.runflare.run/']
 
 ROOT_URLCONF = 'akurtekPC.urls'
 
@@ -92,7 +92,7 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'akurtekPC.asgi.application'
+WSGI_APPLICATION = 'akurtekPC.wsgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
@@ -137,16 +137,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'stati/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Liara Storages
-AWS_ACCESS_KEY_ID = 's7mtd3ecb1safiaq'
-AWS_SECRET_ACCESS_KEY = '50dfce50-11b3-45a6-a8ec-4029430c8ae5'
-AWS_STORAGE_BUCKET_NAME = 'akurtek'
+AWS_ACCESS_KEY_ID = 'delfbv0ahb81g94l'
+AWS_SECRET_ACCESS_KEY = '0eaba88f-ea4b-4474-9282-376a0bd80d71'
+AWS_STORAGE_BUCKET_NAME = 'akurtek-pc'
 AWS_S3_ENDPOINT_URL = 'https://storage.c2.liara.space'
 AWS_S3_REGION_NAME = 'us-east-1'
 # AWS_DEFAULT_ACL = 'public-read'

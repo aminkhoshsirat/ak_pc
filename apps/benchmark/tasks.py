@@ -20,7 +20,7 @@ def cpu_scrapy_tasks():
         if category in ['overclock', 'single-thread']:
             once = True
         details = []
-        text = requests.get(i.get('url'), timeout=20).text
+        text = requests.get(i.get('url'), timeout=20, headers={'User-Agent': 'Mozilla/5.0'}).text
         soup = BeautifulSoup(text, 'html.parser').find('ul', class_='chartlist')
         if once:
             for i in soup.find_all('li')[::2]:
@@ -78,7 +78,7 @@ def gpu_scrapy_tasks():
 
     for i in url:
         details = []
-        text = requests.get(i.get('url'), timeout=20).text
+        text = requests.get(i.get('url'), timeout=20, headers={'User-Agent': 'Mozilla/5.0'}).text
         category = i.get('category')
         soup = BeautifulSoup(text, 'html.parser').find('ul', class_='chartlist')
         for i in soup.find_all('li'):
@@ -114,7 +114,7 @@ def ram_scrapy_tasks():
 
     for i in url:
         details = []
-        text = requests.get(i.get('url'), timeout=20).text
+        text = requests.get(i.get('url'), timeout=20, headers={'User-Agent': 'Mozilla/5.0'}).text
         category = i.get('category')
         soup = BeautifulSoup(text, 'html.parser')
         soup = soup.find('div', {'class': 'chart_body'})
@@ -144,7 +144,7 @@ def disk_scrapy_tasks():
 
     for i in url:
         details = []
-        text = requests.get(i.get('url'), timeout=20).text
+        text = requests.get(i.get('url'), timeout=20, headers={'User-Agent': 'Mozilla/5.0'}).text
         category = i.get('category')
         soup = BeautifulSoup(text, 'html.parser')
         soup = soup.find('div', {'class': 'chart_body'})
@@ -169,7 +169,7 @@ def pc_scrapy_tasks():
 
     for i in url:
         details = []
-        text = requests.get(i.get('url'), timeout=20).text
+        text = requests.get(i.get('url'), timeout=20, headers={'User-Agent': 'Mozilla/5.0'}).text
         category = i.get('category')
         soup = BeautifulSoup(text, 'html.parser').find('ul', class_='chartlist')
         for i in soup.find_all('li'):

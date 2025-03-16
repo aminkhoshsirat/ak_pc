@@ -9,30 +9,30 @@ ghasedak_api_key = 'RjZN5VorYOuI01duQPGOT5cE+DfLh6PDwPyEKYDpDwI'
 ghasedak_template = 'akurtek'
 
 # Postgresql Config
-# postgres_config = {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'dgsahdajfwb_db',
-#         'USER': 'postgres',
-#         'PASSWORD': 'tUQnyO72rNbdk4DgeZFk',
-#         'HOST': 'dgsahdajfgjtjreethsd-koz-service',
-#         'PORT': '5432'
-#     }
-#
-# redis_host = 'gfdhfdhfdhfhdhggoewwhou-utr-service'
-#
-# redis_password = 'nJmlpq69NIi7oBBnDTyr'
-
-
 postgres_config = {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'akurtek',
-        'USER': 'amin_ak',
-        'PASSWORD': 'aminkh1110',
-        'HOST': 'localhost',
+        'NAME': 'vbuviughciu_db',
+        'USER': 'postgres',
+        'PASSWORD': 'uddZwhyENJ5EU9Ona5xp',
+        'HOST': 'vbuviughbvdbvkbfapqoqkkv-vdj-service',
         'PORT': '5432'
     }
 
-redis_host = 'localhost'
-redis_password = ''
+redis_host = 'fuwegfgaqpbbcvvzmxad-crc-service'
+
+redis_password = 'dnniv157DTuyqTEOYaEn'
+
+
+# postgres_config = {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'akurtek',
+#         'USER': 'amin_ak',
+#         'PASSWORD': 'aminkh1110',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+#
+# redis_host = 'localhost'
+# redis_password = ''
 
 redis_cli = Redis(host=redis_host, password=redis_password, db=0)

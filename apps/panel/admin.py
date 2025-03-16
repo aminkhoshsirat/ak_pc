@@ -4,7 +4,7 @@ from .models import *
 
 @admin.register(SiteDetailModel)
 class SiteDetailAdmin(admin.ModelAdmin):
-    list_display = ['logo', 'phone', 'email']
+    list_display = ['title', 'phone', 'email']
 
 
 @admin.register(AdvertisingBannerModel)

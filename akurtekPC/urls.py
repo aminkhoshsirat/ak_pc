@@ -2,6 +2,28 @@ from django.contrib import admin
 from django.urls import path, include
 from apps.product.views import IndexView, FaqsView, ContactUsView, AboutUsView
 
+from django.contrib.sitemaps.views import sitemap
+from apps.product.sitemaps import *
+from apps.asemble.sitemaps import AssembleSitemap, ProductSitemap as AssembleProductSitemap
+from apps.benchmark.sitemaps import *
+from apps.blog.sitemaps import *
+from apps.power_calculator.sitemaps import *
+
+sitemaps = {
+    'main_category': MainCategorySitemap,
+    'child_category': ChildCategorySitemap,
+    'product': ProductSitemap,
+    'brand': BrandSitemap,
+    'assemble_product': AssembleProductSitemap,
+    'assemble': AssembleSitemap,
+    'benchmark': BenchmarkSitemap,
+    'blogs': BlogSitemap,
+    'categories': CategorySitemap,
+    'keywords': KeywordSitemap,
+    'authers': AutherSitemap,
+    'power': PowerSitemap,
+}
+
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('admin_tools_stats/', include('admin_tools_stats.urls')),
@@ -19,5 +41,8 @@ urlpatterns = [
     path('panel/', include('apps.panel.urls', namespace='panel')),
     path('chat/', include('apps.chat.urls', namespace='chat')),
     path('video/', include('apps.video.urls', namespace='video')),
+
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
+
 ]
 

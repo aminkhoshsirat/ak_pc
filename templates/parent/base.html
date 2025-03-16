@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <link rel="stylesheet" href="{% static 'plugin/tagify/tagify.css' %}">
-    <link rel="icon" href="{% static 'logo.jpg' %}">
+    <link rel="icon" href="{% static 'logo.webp' %}">
 </head>
 
 <body>
@@ -91,17 +91,17 @@
         <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
     </svg>
 </div>
-<div id="btncollapzion" data-bs-toggle="modal"
-     data-bs-target="#ChatModal" class=" btn_collapzion" onclick="showChat()"></div>
+{#<div id="btncollapzion" data-bs-toggle="modal"#}
+{#     data-bs-target="#ChatModal" class=" btn_collapzion" onclick="showChat()"></div>#}
 
-<div style="scrollbar-width: none; margin-bottom: 800px !important;" class="modal fade" id="ChatModal" tabindex="-1"
-     aria-labelledby="chartModalLabel" aria-hidden="true">
-
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-    </div>
-    <div id="live-chat">
-    </div>
-</div>
+{#<div style="scrollbar-width: none; margin-bottom: 800px !important;" class="modal fade" id="ChatModal" tabindex="-1"#}
+{#     aria-labelledby="chartModalLabel" aria-hidden="true">#}
+{##}
+{#    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">#}
+{#    </div>#}
+{#    <div id="live-chat">#}
+{#    </div>#}
+{#</div>#}
 <div class="" id="contactOverlay"></div>
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
@@ -123,13 +123,13 @@
 <script>
 
 </script>
-<script>
-    function showChat(){
-        $.get('/chat').then(res => {
-            $('#live-chat').html(res);
-        })
-    }
-</script>
+{#<script>#}
+{#    function showChat(){#}
+{#        $.get('/chat').then(res => {#}
+{#            $('#live-chat').html(res);#}
+{#        })#}
+{#    }#}
+{#</script>#}
 <script>
     //// config floating contact
     $('#btncollapzion').Collapzion({});
