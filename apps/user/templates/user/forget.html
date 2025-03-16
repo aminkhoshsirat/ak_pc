@@ -1,5 +1,26 @@
 {% extends 'parent/base.html' %}
-{% block title %}فراموشی رمز عبور{% endblock %}
+{% block title %}
+    فراموشی رمز عبور | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه فراموشی رمز عبور آکورتک، شما می‌توانید رمز عبور خود را بازیابی کرده و به راحتی به حساب کاربری خود دسترسی پیدا کنید.">
+
+    <meta name="keywords" content="فراموشی رمز عبور, بازیابی رمز عبور, تغییر رمز عبور, آکورتک, ورود به حساب کاربری, امنیت حساب کاربری">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="فراموشی رمز عبور | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید رمز عبور خود را بازیابی کنید و به راحتی به حساب کاربری آکورتک دسترسی پیدا کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- bread croumb -->

@@ -1,5 +1,26 @@
 {% extends 'parent/base.html' %}
-{% block title %}ورود{% endblock %}
+{% block title %}
+    ورود به حساب کاربری | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه ورود به حساب کاربری آکورتک، می‌توانید به راحتی با استفاده از ایمیل و رمز عبور خود وارد حساب کاربری خود شوید.">
+
+    <meta name="keywords" content="ورود به حساب کاربری, ورود به آکورتک, حساب کاربری, آکورتک, ورود, لاگین">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="ورود به حساب کاربری | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید با وارد کردن ایمیل و رمز عبور، به حساب کاربری خود در آکورتک دسترسی پیدا کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <!-- bread croumb -->
     <div class="content">

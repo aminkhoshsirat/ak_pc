@@ -1,5 +1,19 @@
 {% extends 'user/base.html' %}
-{% block title %}پروفایل{% endblock %}
+{% block title %}
+    پروفایل | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="مشاهده و ویرایش اطلاعات پروفایل کاربری شما در آکورتک.">
+    <meta name="keywords" content="پروفایل کاربری, آکورتک, ویرایش پروفایل">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="پروفایل | آکورتک">
+    <meta property="og:description" content="مشاهده و ویرایش اطلاعات پروفایل کاربری شما در آکورتک.">
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

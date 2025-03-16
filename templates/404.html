@@ -1,6 +1,20 @@
 {% extends 'parent/base.html' %}
 {% load static %}
-{% block title %}یافت نشد | 404{% endblock %}
+{% block title %}صفحه یافت نشد | آکورتک{% endblock %}
+
+{% block meta %}
+    <meta name="description"
+          content="صفحه مورد نظر شما پیدا نشد. ممکن است آدرس اشتباه وارد شده باشد یا صفحه حذف شده باشد.">
+    <meta name="keywords" content="خطای 404, صفحه یافت نشد, آکورتک, صفحه موجود نیست, ارور 404">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="صفحه یافت نشد | آکورتک">
+    <meta property="og:description"
+          content="صفحه مورد نظر شما یافت نشد. ممکن است آدرس اشتباه وارد شده باشد یا صفحه حذف شده باشد.">
+    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ error_image.url }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <div class="content">
         <div class="container-fluid">

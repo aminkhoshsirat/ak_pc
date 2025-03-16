@@ -1,5 +1,17 @@
 {% extends 'parent/base.html' %}
-{% block title %}ارتباط با ما{% endblock %}
+{% block title %}تماس با ما | آکورتک - ارتباط با تیم پشتیبانی و مشاوره برای خرید قطعات کامپیوتری{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="صفحه تماس با ما آکورتک. برای ارتباط با تیم پشتیبانی و مشاوره درباره خرید قطعات کامپیوتری، اسمبل سیستم و هر سوال دیگر، از طریق این صفحه با ما تماس بگیرید.">
+    <meta name="keywords" content="تماس با آکورتک, پشتیبانی آکورتک, خرید قطعات کامپیوتری, مشاوره خرید, پشتیبانی فنی, ارتباط با آکورتک">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="تماس با ما | آکورتک">
+    <meta property="og:description" content="برای ارتباط با تیم پشتیبانی آکورتک و دریافت مشاوره درباره خرید قطعات کامپیوتری و خدمات اسمبل سیستم، از طریق این صفحه با ما تماس بگیرید.">
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ contact_image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <div class="content">
         <div class="container-fluid">

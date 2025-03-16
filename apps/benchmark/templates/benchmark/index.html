@@ -1,6 +1,27 @@
 {% extends 'parent/base.html' %}
 {% load static %}
-{% block title %}بنجمارک{% endblock %}
+{% block title %}
+    بنچمارک | آکورتک - مقایسه و بررسی عملکرد قطعات کامپیوتری و سیستم‌های گیمینگ
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه، به بررسی و مقایسه عملکرد سیستم‌های کامپیوتری و قطعات مختلف مانند کارت گرافیک، پردازنده و دیگر سخت‌افزارها می‌پردازیم. نتایج بنچمارک‌ها برای کمک به انتخاب بهترین قطعات در اینجا موجود است.">
+
+    <meta name="keywords" content="بنچمارک, بنچمارک سیستم, بنچمارک کارت گرافیک, بررسی عملکرد سیستم, مقایسه قطعات کامپیوتری, سیستم گیمینگ, عملکرد قطعات, پردازنده, کارت گرافیک, سیستم‌های گیمینگ آکورتک">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک | آکورتک">
+
+    <meta property="og:description" content="در این صفحه نتایج بنچمارک انواع قطعات کامپیوتری و سیستم‌های گیمینگ آکورتک را می‌بینید. مقایسه عملکرد کارت گرافیک‌ها، پردازنده‌ها و دیگر قطعات با نتایج دقیق بنچمارک.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <div class="content">

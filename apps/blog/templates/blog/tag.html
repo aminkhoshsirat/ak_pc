@@ -1,5 +1,27 @@
 {% extends 'parent/base.html' %}
-{% block title %}تگ | {{ tag.title }}{% endblock %}
+
+{% block title %}
+    کلمات کلیدی | آکورتک - جستجو و مشاهده کلمات کلیدی مرتبط با محصولات و وبلاگ‌های آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه، کلمات کلیدی مرتبط با محصولات و وبلاگ‌های آکورتک نمایش داده می‌شود. جستجو کنید و به راحتی به مطالب مرتبط دسترسی پیدا کنید.">
+
+    <meta name="keywords" content="{{ tag.title }}">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="کلمات کلیدی | آکورتک">
+
+    <meta property="og:description" content="این صفحه شامل کلمات کلیدی مختلف است که به شما کمک می‌کند تا محصولات و وبلاگ‌های مرتبط با آکورتک را پیدا کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ some_image_url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 <main>
 

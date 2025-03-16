@@ -1,6 +1,27 @@
 {% extends 'user/base.html' %}
 {% load poll_extras %}
-{% block title %}سفارش ها{% endblock %}
+{% block title %}
+    سفارش‌ها | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه سفارش‌ها، شما می‌توانید تمامی سفارش‌های خود را در آکورتک مشاهده کرده و وضعیت هر یک را بررسی کنید.">
+
+    <meta name="keywords" content="سفارش‌ها, وضعیت سفارش, پیگیری سفارش, تاریخ سفارش, خرید از آکورتک, تاریخچه خرید">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="سفارش‌ها | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید تمامی سفارش‌های خود را در آکورتک مشاهده کرده و وضعیت و جزئیات هر یک از آن‌ها را بررسی کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

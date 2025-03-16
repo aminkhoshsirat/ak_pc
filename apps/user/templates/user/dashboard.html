@@ -1,5 +1,26 @@
 {% extends 'user/base.html' %}
-{% block title %}داشبورد{% endblock %}
+{% block title %}
+    پنل کاربری | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در پنل کاربری آکورتک، می‌توانید اطلاعات پروفایل، سفارشات، نظرات و تنظیمات خود را مشاهده و ویرایش کنید.">
+
+    <meta name="keywords" content="پنل کاربری, پروفایل, سفارشات من, نظرات من, آکورتک, تنظیمات حساب کاربری, مدیریت حساب کاربری">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="پنل کاربری | آکورتک">
+
+    <meta property="og:description" content="پنل کاربری آکورتک به شما امکان مدیریت پروفایل، سفارشات، نظرات و تنظیمات حساب کاربری را می‌دهد.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% load poll_extras %}
 {% block panel %}
     <div class="col-lg-9">

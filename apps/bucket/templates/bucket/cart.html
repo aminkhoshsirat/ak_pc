@@ -1,7 +1,26 @@
 {% extends 'parent/base.html' %}
 {% load poll_extras %}
 {% load django_template_maths %}
-{% block title %}سبد خرید{% endblock %}
+{% block title %}
+    سبد خرید | آکورتک - مشاهده و تکمیل خرید محصولات خود
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="سبد خرید آکورتک به شما این امکان را می‌دهد که محصولات مورد نظر خود را مشاهده و تکمیل خرید کنید. خرید آنلاین از فروشگاه آکورتک با تحویل سریع و قیمت مناسب.">
+    <meta name="keywords" content="سبد خرید, خرید آنلاین, خرید قطعات کامپیوتر, خرید محصولات گیمینگ, تکمیل خرید, فروشگاه آنلاین آکورتک">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="سبد خرید | آکورتک - مشاهده و تکمیل خرید محصولات خود">
+
+    <meta property="og:description" content="در سبد خرید آکورتک، محصولات انتخابی خود را مشاهده و خرید نهایی را تکمیل کنید. تحویل سریع و بهترین قیمت‌ها در انتظار شما هستند.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ cart_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <!-- start main-data -->
     <div class="content">

@@ -3,7 +3,16 @@
 {% load poll_extras %}
 
 {% block title %}AKURTEK - آکورتک | فروش قطعات کامپیوتری، اسمبل و بنچمارک{% endblock %}
-
+{% block meta %}
+<meta name="description" content="آکورتک - فروشگاه قطعات کامپیوتر و خدمات اسمبل سیستم، ارائه بهترین محصولات برای گیمرها و متخصصان IT.">
+<meta name="keywords" content="قطعات کامپیوتر, اسمبل سیستم, بنچمارک, خرید قطعات, گیمینگ, سیستم‌های گیمینگ, خدمات کامپیوتر, MSI, مادربرد">
+<meta name="author" content="آکورتک">
+<meta property="og:title" content="آکورتک - فروشگاه قطعات کامپیوتر و اسمبل سیستم">
+<meta property="og:description" content="آکورتک بهترین قطعات کامپیوتر را برای گیمرها و متخصصان IT فراهم می‌کند. سیستم‌های گیمینگ پیشرفته، فروش قطعات و اسمبل سیستم.">
+{#<meta property="og:image" content="{{ request.build_absolute_uri }}{{ site_image.url }}">#}
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
 {% block content %}
 
     <!-- home-slider -->

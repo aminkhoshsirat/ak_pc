@@ -1,5 +1,26 @@
 {% extends 'parent/base.html' %}
-{% block title %}اعلان ها{% endblock %}
+{% block title %}
+    اعلان‌ها | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه اعلان‌ها، تمامی اطلاع‌رسانی‌ها و اعلان‌های جدید مربوط به حساب کاربری شما در آکورتک نمایش داده می‌شود.">
+
+    <meta name="keywords" content="اعلان‌ها, اطلاع‌رسانی, اعلان‌های جدید, اعلان‌های کاربری, آکورتک, اخبار حساب کاربری">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="اعلان‌ها | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید تمامی اعلان‌ها و پیام‌های جدید مرتبط با حساب کاربری خود را مشاهده کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- bread croumb -->

@@ -1,5 +1,24 @@
 {% extends 'parent/base.html' %}
-{% block title %}{% endblock %}
+{% block title %}
+    پرداخت موفق | آکورتک - سفارش شما با موفقیت ثبت شد
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="پرداخت شما با موفقیت انجام شد. سفارش شما ثبت شده و به زودی ارسال خواهد شد. از خرید شما از آکورتک متشکریم!">
+    <meta name="keywords" content="پرداخت موفق, خرید آنلاین, سفارش ثبت شده, خرید قطعات کامپیوتر, ارسال سفارش, آکورتک, خرید آنلاین قطعات, تکمیل خرید">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="پرداخت موفق | آکورتک - سفارش شما با موفقیت ثبت شد">
+
+    <meta property="og:description" content="پرداخت شما با موفقیت انجام شد. سفارش شما ثبت و به زودی ارسال خواهد شد. از خرید شما از آکورتک متشکریم!">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ success_payment_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- start main-data -->

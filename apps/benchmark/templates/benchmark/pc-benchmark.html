@@ -1,4 +1,26 @@
 {% extends 'benchmark/benchmark.html' %}
+{% block title %}
+    بنچمارک سیستم | آکورتک - مقایسه عملکرد سیستم‌های گیمینگ و حرفه‌ای
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه به بررسی و مقایسه عملکرد سیستم‌های مختلف پرداخته‌ایم. نتایج بنچمارک سیستم‌های گیمینگ و حرفه‌ای برای کمک به انتخاب بهترین سیستم بر اساس نیازهای شما.">
+
+    <meta name="keywords" content="بنچمارک سیستم, مقایسه سیستم, سیستم گیمینگ, سیستم حرفه‌ای, عملکرد سیستم, بنچمارک سیستم گیمینگ، بهترین سیستم 2025">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک سیستم | آکورتک">
+
+    <meta property="og:description" content="مقایسه عملکرد سیستم‌های مختلف گیمینگ و حرفه‌ای. نتایج بنچمارک سیستم‌ها برای انتخاب بهترین سیستم بر اساس نیازهای شما در گیمینگ، طراحی گرافیکی و کاربردهای حرفه‌ای.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ system_benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block table %}
     <thead style="color: #0a53be!important">
     <tr class="table-primary">

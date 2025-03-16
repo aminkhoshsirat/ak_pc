@@ -1,5 +1,24 @@
 {% extends 'parent/base.html' %}
-{% block title %}سبد خرید{% endblock %}
+{% block title %}
+    سبد خرید  | آکورتک - محصولات مورد نظر خود را اضافه کنید
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="سبد خرید شما خالی است. برای خرید محصولات دلخواه خود از فروشگاه آکورتک شروع به انتخاب و افزودن کنید.">
+    <meta name="keywords" content="سبد خرید خالی, خرید آنلاین, فروشگاه آکورتک, خرید قطعات کامپیوتر, خرید گیمینگ, خرید آنلاین قطعات, اضافه کردن به سبد خرید">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="سبد خرید خالی | آکورتک - محصولات مورد نظر خود را اضافه کنید">
+
+    <meta property="og:description" content="سبد خرید شما خالی است. برای خرید محصولات دلخواه خود از فروشگاه آکورتک شروع به انتخاب کنید و محصولات خود را به سبد خرید اضافه نمایید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ empty_cart_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- bread croumb -->

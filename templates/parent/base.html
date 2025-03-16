@@ -7,6 +7,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="آکورتک - فروشگاه قطعات کامپیوتر و خدمات اسمبل سیستم">
+    <meta name="keywords" content="قطعات کامپیوتر, اسمبل سیستم, بنچمارک, خرید قطعات, گیمینگ">
+    <meta name="author" content="آکورتک">
+
+    {% block meta %}
+    <meta property="og:title" content="آکورتک - فروشگاه قطعات کامپیوتر و اسمبل سیستم">
+    <meta property="og:description" content="آکورتک بهترین قطعات کامپیوتر را برای گیمرها و متخصصان IT فراهم می‌کند.">
+    <meta property="og:image" content="URL_image.jpg">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+    {% endblock %}
+
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'font/bootstrap-icon/bootstrap-icons.css' %}">

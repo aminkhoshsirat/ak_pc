@@ -1,4 +1,26 @@
 {% extends 'benchmark/benchmark.html' %}
+{% block title %}
+    بنچمارک پردازنده | آکورتک - مقایسه و بررسی عملکرد پردازنده‌های مختلف
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه به بررسی و مقایسه عملکرد پردازنده‌های مختلف از برندهای Intel و AMD می‌پردازیم. نتایج بنچمارک برای کمک به انتخاب بهترین پردازنده در اینجا موجود است.">
+
+    <meta name="keywords" content="بنچمارک پردازنده, پردازنده Intel, پردازنده AMD, مقایسه پردازنده‌ها, عملکرد پردازنده, بنچمارک سیستم, پردازنده‌های قدرتمند, پردازنده گیمینگ, پردازنده‌های سریع">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک پردازنده | آکورتک">
+
+    <meta property="og:description" content="نتایج بنچمارک پردازنده‌های مختلف Intel و AMD را در این صفحه ببینید. مقایسه عملکرد پردازنده‌ها برای انتخاب بهترین گزینه برای سیستم‌های گیمینگ و حرفه‌ای.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ processor_benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block table %}
     <thead style="color: #0a53be!important">
         <tr class="table-primary">

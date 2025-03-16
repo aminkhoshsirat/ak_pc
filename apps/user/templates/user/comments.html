@@ -1,5 +1,26 @@
 {% extends 'user/base.html' %}
-{% block title %}نظرات{% endblock %}
+{% block title %}
+    نظرات من | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه شما می‌توانید نظرات ارسال‌شده خود را مشاهده کنید و به نظرات جدید اضافه کنید. صفحه نظرات کاربر آکورتک.">
+
+    <meta name="keywords" content="نظرات من, نظرات کاربر, ارسال نظر, دیدگاه‌ها, آکورتک, نظرات کاربران, نقد و بررسی">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="نظرات من | آکورتک">
+
+    <meta property="og:description" content="در این صفحه، شما می‌توانید نظرات ارسال‌شده خود را مشاهده و مدیریت کنید. صفحه نظرات کاربر آکورتک.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

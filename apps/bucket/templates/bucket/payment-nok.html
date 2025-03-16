@@ -1,5 +1,24 @@
 {% extends 'parent/base.html' %}
-{% block title %}{% endblock %}
+{% block title %}
+    پرداخت ناموفق | آکورتک - مشکلی در فرآیند پرداخت پیش آمده است
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="پرداخت شما ناموفق بود. لطفاً اطلاعات پرداخت خود را بررسی کرده و دوباره تلاش کنید. در صورت ادامه مشکل با پشتیبانی آکورتک تماس بگیرید.">
+    <meta name="keywords" content="پرداخت ناموفق, مشکل پرداخت, خرید آنلاین, آکورتک, پرداخت با کارت, خرید قطعات کامپیوتر, پرداخت آنلاین, مشکل در پرداخت">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="پرداخت ناموفق | آکورتک - مشکلی در فرآیند پرداخت پیش آمده است">
+
+    <meta property="og:description" content="پرداخت شما ناموفق بود. لطفاً اطلاعات پرداخت خود را بررسی کنید و در صورت نیاز به پشتیبانی با ما تماس بگیرید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ failed_payment_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <!-- start main-data -->
     <div class="content">

@@ -1,6 +1,18 @@
 {% extends 'parent/base.html' %}
 {% load poll_extras %}
-{% block title %}{% endblock %}
+{% block title %}مقایسه محصولات | آکورتک - بهترین انتخاب برای قطعات کامپیوتر{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="مقایسه بهترین قطعات کامپیوتر و تجهیزات گیمینگ در آکورتک. ویژگی‌ها، قیمت و مشخصات فنی محصولات را با هم مقایسه کنید تا بهترین انتخاب را داشته باشید.">
+    <meta name="keywords" content="مقایسه محصولات, مقایسه قطعات کامپیوتر, مقایسه مادربرد, مقایسه کارت گرافیک, بهترین قطعات کامپیوتر, آکورتک">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="مقایسه محصولات | آکورتک">
+    <meta property="og:description" content="در صفحه مقایسه محصولات آکورتک، می‌توانید ویژگی‌ها و مشخصات فنی مختلف قطعات کامپیوتر و تجهیزات گیمینگ را با هم مقایسه کنید.">
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ comparison_image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <!-- bread croumb -->
     <div class="content">

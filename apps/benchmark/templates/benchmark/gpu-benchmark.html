@@ -1,4 +1,26 @@
 {% extends 'benchmark/benchmark.html' %}
+{% block title %}
+    بنچمارک کارت گرافیک | آکورتک - مقایسه و بررسی عملکرد GPU
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه به بررسی و مقایسه عملکرد کارت گرافیک‌های مختلف از برندهای مختلف پرداخته‌ایم. نتایج بنچمارک برای کمک به انتخاب بهترین کارت گرافیک مناسب برای گیمینگ و کاربردهای حرفه‌ای.">
+
+    <meta name="keywords" content="بنچمارک کارت گرافیک, GPU, مقایسه کارت گرافیک, کارت گرافیک گیمینگ, بررسی عملکرد GPU, کارت گرافیک برای گیمینگ، بهترین کارت گرافیک 2025">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک کارت گرافیک | آکورتک">
+
+    <meta property="og:description" content="مقایسه عملکرد کارت گرافیک‌های مختلف در بازی‌ها و برنامه‌های گرافیکی. نتایج بنچمارک برای انتخاب کارت گرافیک مناسب برای گیمینگ و دیگر کاربردهای حرفه‌ای.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ gpu_benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block table %}
     <thead style="color: #0a53be!important">
         <tr class="table-primary">

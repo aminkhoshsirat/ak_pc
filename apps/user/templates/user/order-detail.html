@@ -1,6 +1,27 @@
 {% extends 'user/base.html' %}
 {% load poll_extras %}
-{% block title %}سفارش{% endblock %}
+{% block title %}
+    جزئیات سفارش #{{ order.id }} | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="مشاهده جزئیات سفارش شماره {{ order.id }} در آکورتک. بررسی وضعیت، تاریخ، محصولات و هزینه‌های مرتبط با این سفارش.">
+
+    <meta name="keywords" content="جزئیات سفارش, سفارش #{{ order.id }}, پیگیری سفارش, تاریخ سفارش, وضعیت سفارش, هزینه سفارش, خرید از آکورتک">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="جزئیات سفارش #{{ order.id }} | آکورتک">
+
+    <meta property="og:description" content="در این صفحه جزئیات سفارش شماره {{ order.id }} در آکورتک را مشاهده کرده و وضعیت، محصولات و هزینه‌های آن را بررسی کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

@@ -1,6 +1,27 @@
 {% extends 'parent/base.html' %}
 {% load static %}
-{% block title %}{% endblock %}
+
+{% block title %}
+    محاسبه‌گر پاور | آکورتک - انتخاب مناسب‌ترین منبع تغذیه برای سیستم شما
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="محاسبه‌گر پاور آکورتک به شما کمک می‌کند تا قدرت منبع تغذیه مناسب برای سیستم خود را با توجه به قطعات مختلف آن محاسبه کنید.">
+    <meta name="keywords" content="محاسبه پاور, محاسبه منبع تغذیه, انتخاب پاور مناسب, پاور برای گیمینگ, قدرت منبع تغذیه, پاور سیستم کامپیوتری">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="محاسبه‌گر پاور | آکورتک - انتخاب مناسب‌ترین منبع تغذیه برای سیستم شما">
+
+    <meta property="og:description" content="با استفاده از محاسبه‌گر پاور آکورتک، می‌توانید قدرت دقیق منبع تغذیه مورد نیاز برای سیستم خود را محاسبه کنید تا از عملکرد بهینه و ایمنی سیستم خود مطمئن شوید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ page_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+
 {% block content %}
     <link rel="stylesheet" href="{% static 'css/power.css' %}">
     <main id="power__calculator" data-v-app="">

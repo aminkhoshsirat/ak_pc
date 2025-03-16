@@ -1,4 +1,26 @@
 {% extends 'benchmark/benchmark.html' %}
+{% block title %}
+    بنچمارک دیسک | آکورتک - مقایسه و بررسی عملکرد SSD و حافظه‌های ذخیره‌سازی
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه به بررسی و مقایسه عملکرد SSD‌ها و حافظه‌های ذخیره‌سازی مختلف از برندهای مختلف پرداخته‌ایم. نتایج بنچمارک برای کمک به انتخاب بهترین دیسک موجود است.">
+
+    <meta name="keywords" content="بنچمارک دیسک, SSD, مقایسه SSD, حافظه ذخیره‌سازی، حافظه SSD، بررسی عملکرد دیسک، بنچمارک حافظه، حافظه سریع، دیسک گیمینگ">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک دیسک | آکورتک">
+
+    <meta property="og:description" content="مقایسه عملکرد SSD‌ها و حافظه‌های ذخیره‌سازی مختلف از برندهای مختلف را در این صفحه ببینید. نتایج بنچمارک برای انتخاب بهترین حافظه ذخیره‌سازی با توجه به نیاز شما.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ ssd_benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block table %}
     <thead style="color: #0a53be!important">
     <tr class="table-primary">

@@ -1,5 +1,16 @@
 {% extends 'parent/base.html' %}
-{% block title %}سوالات متداول{% endblock %}
+{% block title %}FAQ - سوالات متداول | آکورتک - پاسخ به سوالات شما درباره قطعات کامپیوتر و اسمبل سیستم{% endblock %}
+{% block meta %}
+    <meta name="description" content="صفحه سوالات متداول آکورتک. در اینجا به سوالات متداول درباره قطعات کامپیوتر، اسمبل سیستم و خرید از فروشگاه آکورتک پاسخ داده می‌شود.">
+    <meta name="keywords" content="سوالات متداول, FAQ, قطعات کامپیوتر, اسمبل سیستم, خرید قطعات, پشتیبانی آکورتک, گیمینگ, قطعات برای گیمرها">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="FAQ - سوالات متداول | آکورتک">
+    <meta property="og:description" content="در صفحه سوالات متداول آکورتک، به سوالات رایج کاربران در زمینه قطعات کامپیوتر و خدمات اسمبل سیستم پاسخ داده می‌شود.">
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ faq_image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- start main-data -->

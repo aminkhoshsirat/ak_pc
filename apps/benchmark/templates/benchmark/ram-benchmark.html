@@ -1,4 +1,26 @@
 {% extends 'benchmark/benchmark.html' %}
+{% block title %}
+    بنچمارک حافظه رم | آکورتک - مقایسه عملکرد و سرعت حافظه‌های مختلف
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه به بررسی و مقایسه عملکرد حافظه‌های رم مختلف پرداخته‌ایم. نتایج بنچمارک رم‌ها برای کمک به انتخاب بهترین گزینه بر اساس نیازهای شما.">
+
+    <meta name="keywords" content="بنچمارک حافظه رم, عملکرد حافظه رم, مقایسه رم, رم گیمینگ, سرعت حافظه رم, بهترین رم 2025, حافظه رم DDR4, DDR5">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="بنچمارک حافظه رم | آکورتک">
+
+    <meta property="og:description" content="مقایسه عملکرد و سرعت حافظه‌های رم مختلف. نتایج بنچمارک برای انتخاب بهترین رم بر اساس نیازهای شما در گیمینگ و کاربردهای حرفه‌ای.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ ram_benchmark_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block table %}
     <thead style="color: #0a53be!important">
     <tr class="table-primary">

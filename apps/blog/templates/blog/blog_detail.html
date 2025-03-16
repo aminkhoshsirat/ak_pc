@@ -1,5 +1,30 @@
 {% extends 'parent/base.html' %}
-{% block title %}وبلاگ | {{ blog.title }}{% endblock %}
+{% block title %}
+    {{ blog.title }} | آکورتک - بررسی تخصصی {{ blog.title }}
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="مطالعه جزئیات مقاله {{ blog.title }} در وبلاگ آکورتک. در این پست، شما می‌توانید اطلاعات کاملی در مورد {{ blog.title }}، ویژگی‌ها، مزایا و کاربردهای آن پیدا کنید.">
+
+    <meta name="keywords" content="{% for keyword in blog.keyword.all %}{{ keyword.name }}, {% endfor %}">
+
+    <meta name="author" content="{% for author in blog.auther.all %}{{ author.name }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+
+    <meta name="date" content="{{ blog.published_date|date:"Y-m-d" }}" />
+
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="{{ blog.title }} | آکورتک - بررسی تخصصی {{ blog.title }}">
+
+    <meta property="og:description" content="در این مقاله، بررسی کاملی از {{ blog.title }} ارائه شده است. مطالب جامع و مفیدی از ویژگی‌ها، مزایا و معایب آن برای شما آماده کرده‌ایم.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ blog.image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
 

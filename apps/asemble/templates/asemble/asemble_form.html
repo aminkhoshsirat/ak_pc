@@ -1,7 +1,29 @@
 {% extends 'parent/base.html' %}
 {% load poll_extras %}
 {% load static %}
-{% block title %}اسمبل{% endblock %}
+{% block title %}
+    اسمبل سیستم گیمینگ و حرفه‌ای | آکورتک - انتخاب قطعات و محاسبه قیمت
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه اسمبل سیستم آکورتک، شما می‌توانید قطعات مختلف سیستم را انتخاب کنید و قیمت نهایی سیستم خود را مشاهده کنید. انتخاب قطعات گیمینگ و حرفه‌ای با قابلیت تنظیم.">
+
+    <meta name="keywords" content="اسمبل سیستم, انتخاب قطعات سیستم, سیستم گیمینگ, سیستم حرفه‌ای, انتخاب قطعات گیمینگ, قیمت سیستم کامپیوتر, اسمبل کامپیوتر, قیمت سیستم گیمینگ, انتخاب پردازنده, انتخاب کارت گرافیک">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="اسمبل سیستم گیمینگ و حرفه‌ای | آکورتک">
+
+    <meta property="og:description" content="انتخاب قطعات سیستم گیمینگ و حرفه‌ای با محاسبه قیمت نهایی سیستم. شخصی‌سازی سیستم خود با بهترین قطعات.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ assemble_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+
 {% block content %}
     <div class="content">
         <div class="container-fluid">

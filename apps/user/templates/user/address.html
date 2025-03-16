@@ -1,5 +1,26 @@
 {% extends 'user/base.html' %}
-{% block title %}آدرس{% endblock %}
+{% block title %}
+    مدیریت آدرس‌های شما | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در این صفحه می‌توانید آدرس‌های خود را مشاهده، ویرایش و حذف کنید. این آدرس‌ها برای ارسال سفارشات به شما استفاده می‌شوند.">
+
+    <meta name="keywords" content="مدیریت آدرس‌ها, آدرس‌های کاربری, ویرایش آدرس, حذف آدرس, ارسال سفارشات, آکورتک">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="مدیریت آدرس‌های شما | آکورتک">
+
+    <meta property="og:description" content="صفحه مدیریت آدرس‌های شما در آکورتک. مشاهده، ویرایش و حذف آدرس‌های خود را انجام دهید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box" style="padding:40px 20px;">

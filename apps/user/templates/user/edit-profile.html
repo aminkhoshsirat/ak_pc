@@ -1,5 +1,26 @@
 {% extends 'user/base.html' %}
-{% block title %}ویرایش پروفایل{% endblock %}
+{% block title %}
+    ویرایش پروفایل | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه ویرایش پروفایل آکورتک، می‌توانید اطلاعات شخصی خود را به‌روزرسانی کرده و تنظیمات حساب کاربری‌تان را مدیریت کنید.">
+
+    <meta name="keywords" content="ویرایش پروفایل, پروفایل کاربری, تغییر اطلاعات, تنظیمات حساب, آکورتک, مدیریت حساب کاربری">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="ویرایش پروفایل | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید اطلاعات شخصی خود را به‌روزرسانی کرده و تنظیمات حساب کاربری‌تان را تغییر دهید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

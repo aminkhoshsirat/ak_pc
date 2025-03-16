@@ -1,5 +1,18 @@
 {% extends 'parent/base.html' %}
-{% block title %}درباره ما{% endblock %}
+{% block title %}درباره آکورتک | آشنایی با تیم و خدمات تخصصی قطعات کامپیوتری{% endblock %}
+
+
+{% block meta %}
+    <meta name="description" content="صفحه درباره ما آکورتک. در این صفحه با برند آکورتک آشنا شوید و تاریخچه فعالیت‌های ما در زمینه فروش قطعات کامپیوتری، اسمبل سیستم و خدمات پس از فروش را مشاهده کنید.">
+    <meta name="keywords" content="درباره آکورتک, آکورتک, برند آکورتک, قطعات کامپیوتری, اسمبل سیستم, فروشگاه قطعات, خدمات آکورتک">
+    <meta name="author" content="آکورتک">
+    <meta property="og:title" content="درباره ما | آکورتک">
+    <meta property="og:description" content="آکورتک، برند معتبر در زمینه فروش قطعات کامپیوتری و خدمات اسمبل سیستم. در این صفحه می‌توانید با تیم و تاریخچه فعالیت‌های ما آشنا شوید.">
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ about_image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
     <div class="content">
         <div class="container-fluid">

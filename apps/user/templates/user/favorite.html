@@ -1,6 +1,27 @@
 {% extends 'user/base.html' %}
 {% load poll_extras %}
-{% block title %}علاقه مندی ها{% endblock %}
+{% block title %}
+    علاقه‌مندی‌ها | آکورتک
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="در صفحه علاقه‌مندی‌های آکورتک، شما می‌توانید محصولات و قطعات مورد علاقه‌تان را مشاهده کرده و از اینجا آنها را به سبد خرید خود اضافه کنید.">
+
+    <meta name="keywords" content="علاقه‌مندی‌ها, لیست علاقه‌مندی‌ها, محصولات مورد علاقه, قطعات کامپیوتر, سیستم گیمینگ, سبد خرید, آکورتک">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="علاقه‌مندی‌ها | آکورتک">
+
+    <meta property="og:description" content="در این صفحه می‌توانید محصولات مورد علاقه خود را مشاهده کرده و به سبد خرید خود اضافه کنید.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ user.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block panel %}
     <div class="col-lg-9">
         <div class="content-box">

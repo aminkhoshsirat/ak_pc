@@ -1,5 +1,24 @@
 {% extends 'parent/base.html' %}
-{% block title %}جزییات پرداخت{% endblock %}
+{% block title %}
+    جزئیات پرداخت | آکورتک - تکمیل فرآیند خرید آنلاین شما
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="صفحه جزئیات پرداخت آکورتک به شما کمک می‌کند تا جزئیات پرداخت خود را وارد کرده و خرید آنلاین خود را به‌راحتی و با امنیت تکمیل کنید.">
+    <meta name="keywords" content="پرداخت آنلاین, جزئیات پرداخت, خرید آنلاین, تکمیل خرید, پرداخت امن, خرید قطعات کامپیوتر, پرداخت با کارت, خرید گیمینگ">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="جزئیات پرداخت | آکورتک - تکمیل فرآیند خرید آنلاین شما">
+
+    <meta property="og:description" content="در صفحه جزئیات پرداخت آکورتک، می‌توانید اطلاعات پرداخت خود را وارد کرده و خرید خود را تکمیل کنید. پرداخت امن و سریع، تضمین خرید شما.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ payment_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 
     <!-- start main-data -->

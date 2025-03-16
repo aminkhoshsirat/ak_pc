@@ -1,6 +1,25 @@
 {% extends 'parent/base.html' %}
 {% load static %}
-{% block title %}وبلاگ{% endblock %}
+{% block title %}
+    وبلاگ | آکورتک - مقالات تخصصی درباره قطعات کامپیوتر و اسمبل سیستم
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="وبلاگ آکورتک. در این صفحه می‌توانید مقالات تخصصی درباره قطعات کامپیوتر، اسمبل سیستم و نکات مفید برای گیمرها و علاقه‌مندان به تکنولوژی بخوانید.">
+    <meta name="keywords" content="وبلاگ, مقالات تخصصی, قطعات کامپیوتر, اسمبل سیستم, گیمینگ, تکنولوژی, قطعات برای گیمرها, راهنمای خرید کامپیوتر">
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="وبلاگ | آکورتک - مقالات تخصصی درباره قطعات کامپیوتر و اسمبل سیستم">
+
+    <meta property="og:description" content="در وبلاگ آکورتک، مقالات تخصصی و راهنماهایی در زمینه قطعات کامپیوتر، اسمبل سیستم و گیمینگ برای شما آماده شده است.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ blog_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 <!-- bread croumb -->
     <div class="content">

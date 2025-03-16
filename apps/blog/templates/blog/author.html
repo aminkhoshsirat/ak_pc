@@ -1,5 +1,25 @@
 {% extends 'parent/base.html' %}
-{% block title %}نویسنده:{{ auther.name }}{% endblock %}
+
+{% block title %}
+    صفحه نویسنده | {{ auther.name }} | آکورتک - آشنایی با نویسنده و مقالات او
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="آشنایی با {{ auther.name }}، نویسنده مقالات آکورتک. در این صفحه می‌توانید به مقالات و مطالب نویسنده دسترسی پیدا کنید.">
+    <meta name="keywords" content="نویسنده, مقالات نویسنده, {{ auther.name }}, آکورتک, مقالات آکورتک, نویسنده محتوا, مقالات تخصصی">
+    <meta name="author" content="{{ auther.name }}">
+
+    <meta property="og:title" content="صفحه نویسنده | {{ auther.name }} | آکورتک - آشنایی با نویسنده و مقالات او">
+
+    <meta property="og:description" content="در این صفحه با {{ auther.name }} آشنا شوید و مقالات او را در آکورتک مطالعه کنید. نویسنده‌ای با تخصص در زمینه قطعات کامپیوتر و تکنولوژی.">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ author.profile_image.url }}">#}
+
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
 {% block content %}
 <main>
 

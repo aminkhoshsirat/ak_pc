@@ -1,7 +1,58 @@
 {% extends 'parent/base.html' %}
 {% load static %}
 {% load poll_extras %}
-{% block title %}{% endblock %}
+{% block title %}
+    {% if main_category %}
+        {{ main_category.title }} | آکورتک - خرید آنلاین از دسته‌بندی‌های مختلف
+    {% elif child_category %}
+        {{ child_category.title }} | آکورتک - خرید آنلاین
+    {% else %}
+        آکورتک | خرید آنلاین از بهترین دسته‌بندی‌ها
+    {% endif %}
+{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="
+        {% if main_category %}
+            مشاهده دسته‌بندی {{ main_category.title }} در آکورتک. خرید آنلاین و ارسال سریع از دسته‌بندی‌های مختلف.
+        {% elif child_category %}
+            خرید {{ child_category.title }} و محصولات مرتبط. قیمت‌های مناسب و تخفیف‌های ویژه.
+        {% else %}
+            صفحه دسته‌بندی‌های آکورتک. بهترین قیمت‌ها و انواع مختلف محصولات از برندهای معتبر.
+        {% endif %}
+    ">
+
+    <meta name="keywords" content="
+        {% if main_category %}
+            {{ main_category.title }}, دسته‌بندی {{ main_category.title }}, آکورتک
+        {% elif child_category %}
+            {{ child_category.title }}, خرید آنلاین {{ child_category.title }}, آکورتک
+        {% else %}
+            آکورتک, خرید آنلاین, دسته‌بندی‌ها, تخفیف‌ها
+        {% endif %}
+    ">
+
+    <meta name="author" content="آکورتک">
+
+    <meta property="og:title" content="{% block title %}{% endblock %}">
+
+    <meta property="og:description" content="
+        {% if main_category %}
+            مشاهده دسته‌بندی {{ main_category.title }} در آکورتک. خرید آنلاین و ارسال سریع.
+        {% elif child_category %}
+            بررسی و خرید {{ child_category.title }} از آکورتک.
+        {% else %}
+            خرید آنلاین از آکورتک با تخفیف‌های ویژه و بهترین دسته‌بندی‌ها.
+        {% endif %}
+    ">
+
+{#    <meta property="og:image" content="{{ request.build_absolute_uri }}{{ category.image.url }}">#}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+
 {% block content %}
     <div class="content">
         <!-- start bradcrumb -->
