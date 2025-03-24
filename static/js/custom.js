@@ -306,6 +306,7 @@ function sendCode() {
     const fullname = $('#fullname-field').val();
     const password = $('#password-field').val();
     const confirm_password = $('#confirm-password-field').val();
+
     $.post('/user/register', {
         csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
         phone,
@@ -314,20 +315,77 @@ function sendCode() {
         password,
         confirm_password
     }).then(res => {
-        if (res === 'ok'){
+        if (res === 'کد فعال‌سازی ارسال شد') {
+            // نمایش فیلد کد فعال‌سازی و تایمر
             $('#code-activation-field').show();
             $('#register-detail').hide();
             $('#send-code-btn').hide();
             $('#register-btn').show();
-        }
-        else{
+            $('#resend-code-btn').show();
+            startTimer();
+        } else {
+            // نمایش پیام خطا
             $('#register-detail').html(res).show();
         }
-
-    })
+    }).catch(error => {
+        // در صورت بروز خطا، پیغام مناسب را نشان دهید
+        $('#register-detail').html('خطا در ارسال درخواست').show();
+    });
 }
 
-function register(id) {
+
+function resendCode() {
+    const phone = $('#phone-field').val();
+    const email = $('#email-field').val();
+    const fullname = $('#fullname-field').val();
+    const password = $('#password-field').val();
+    const confirm_password = $('#confirm-password-field').val();
+
+
+    // درخواست ارسال مجدد کد
+    $.post('/user/register', {
+        csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+        phone,
+        email,
+        fullname,
+        password,
+        confirm_password
+    }).then(res => {
+        if (res === 'کد فعال‌سازی ارسال شد') {
+            $('#register-detail').hide();
+            $('#send-code-btn').hide();
+            startTimer(); // شروع تایمر مجدد
+        } else {
+            // نمایش پیام خطا
+            $('#register-detail').html(res).show();
+        }
+    }).catch(error => {
+        $('#register-detail').html('خطا در ارسال درخواست').show();
+    });
+}
+
+function startTimer() {
+    let timerDuration = 120; // تایمر برای 2 دقیقه (120 ثانیه)
+    const timerText = $('#timer-text');
+    const timerDiv = $('#timer');
+    timerDiv.show();
+
+    const interval = setInterval(() => {
+        const minutes = Math.floor(timerDuration / 60);
+        const seconds = timerDuration % 60;
+        timerText.text(`زمان باقی‌مانده: ${minutes}:${seconds < 10 ? '0' + seconds : seconds} ثانیه`);
+        timerDuration--;
+
+        if (timerDuration < 0) {
+            clearInterval(interval);
+            timerDiv.hide(); // مخفی کردن تایمر پس از پایا
+            $('#resend-code-btn').show(); // نمایش دکمه ارسال کد دوباره
+            $('#register-btn').show(); // مخفی کردن دکمه ثبت‌نام
+        }
+    }, 1000);
+}
+
+function register() {
     const phone = $('#phone-field').val();
     const code = $('#code-field').val();
     const email = $('#email-field').val();
@@ -347,8 +405,10 @@ function register(id) {
             location.replace('/');
             $('#register-detail').hide();
         }
-        $('#register-detail').html(res).show();
-    })
+        else{
+            $('#register-detail').html(res).show();
+        }
+    });
 }
 
 function sendCodeForget(){

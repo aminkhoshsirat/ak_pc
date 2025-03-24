@@ -3,7 +3,7 @@ import redis
 import requests
 from bs4 import BeautifulSoup
 import json
-from akurtekPC.config import redis_cli as r
+from akurtekPC.redis import redis_cli as r
 
 @shared_task
 def cpu_scrapy_tasks():

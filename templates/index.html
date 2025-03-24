@@ -23,28 +23,28 @@
                     <div class="swiper" id="homeSlider">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <a href=""><img src="{{ advertising_banner1.image.url }}" class="d-sm-block d-none"
+                                <a href=""><img src="{{ advertising_banner1.image.url }}" style="width: 100%;height: auto;" class="d-sm-block d-none"
                                                 alt="{{ advertising_banner1.title }}"></a>
                                 <a href=""><img src="{{ advertising_banner5.image.url }}" class="d-sm-none d-block"
                                                 alt="{{ advertising_banner5.title }}"></a>
                             </div>
                             <div class="swiper-slide">
                                 <a href=""><img src="{{ advertising_banner2.image.url }}" class="d-sm-block d-none"
-                                                alt="{{ advertising_banner2.title }}"></a>
+                                                alt="{{ advertising_banner2.title }}" loading="lazy"></a>
                                 <a href=""><img src="{{ advertising_banner6.image.url }}" class="d-sm-none d-block"
-                                                alt="{{ advertising_banner6.title }}"></a>
+                                                alt="{{ advertising_banner6.title }}" loading="lazy"></a>
                             </div>
                             <div class="swiper-slide">
                                 <a href=""><img src="{{ advertising_banner3.image.url }}" class="d-sm-block d-none"
-                                                alt="{{ advertising_banner3.title }}"></a>
+                                                alt="{{ advertising_banner3.title }}" loading="lazy"></a>
                                 <a href=""><img src="{{ advertising_banner7.image.url }}" class="d-sm-none d-block"
-                                                alt="{{ advertising_banner7.title }}"></a>
+                                                alt="{{ advertising_banner7.title }}" loading="lazy"></a>
                             </div>
                             <div class="swiper-slide">
                                 <a href=""><img src="{{ advertising_banner4.image.url }}" class="d-sm-block d-none"
-                                                alt="{{ advertising_banner4.title }}"></a>
+                                                alt="{{ advertising_banner4.title }}" loading="lazy"></a>
                                 <a href=""><img src="{{ advertising_banner8.image.url }}" class="d-sm-none d-block"
-                                                alt="{{ advertising_banner8.title }}"></a>
+                                                alt="{{ advertising_banner8.title }}" loading="lazy"></a>
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
@@ -74,7 +74,7 @@
                                                     </div>
                                                     <div class="offer-img">
                                                         <img src="{{ product.product.image.url }}"
-                                                             alt="{{ product.product.title }}" class="img-fluid">
+                                                             alt="{{ product.product.title }}" class="img-fluid" loading="lazy">
                                                         <div class='countdown'
                                                              data-date="{{ product.date | date:"%Y-%m-%d" }}"
                                                              data-time="{{ product.date | date:"%H:%M" }}">
@@ -149,7 +149,7 @@
                             <a href="{{ category.get_absolute_url }}">
                                 <img src="{{ category.main_category_image.image.url }}" width="100px" height="100px"
                                      alt="{{ category.title }}"
-                                     class="img-fluid">
+                                     class="img-fluid" loading="lazy">
                                 <h6>{{ category.title }}</h6>
                             </a>
                         </div>
@@ -207,9 +207,9 @@
                                     <a href="{{ product.get_absolute_url }}">
                                         <div class="image text-center">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid one-image">
+                                                 class="img-fluid one-image" loading="lazy">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid two-image">
+                                                 class="img-fluid two-image" loading="lazy">
                                         </div>
                                         <div class="desc">
                                             <div class="title">
@@ -358,9 +358,9 @@
                                     <a href="{{ product.get_absolute_url }}">
                                         <div class="image text-center">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid one-image">
+                                                 class="img-fluid one-image" loading="lazy">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid two-image">
+                                                 class="img-fluid two-image" loading="lazy">
                                         </div>
                                         <div class="desc">
                                             <div class="title">
@@ -465,9 +465,9 @@
                                     <a href="{{ product.get_absolute_url }}">
                                         <div class="image text-center">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid one-image">
+                                                 class="img-fluid one-image" loading="lazy">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid two-image">
+                                                 class="img-fluid two-image" loading="lazy">
                                         </div>
                                         <div class="desc">
                                             <div class="title">
@@ -572,9 +572,9 @@
                                     <a href="{{ product.get_absolute_url }}">
                                         <div class="image text-center">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid one-image">
+                                                 class="img-fluid one-image" loading="lazy">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid two-image">
+                                                 class="img-fluid two-image" loading="lazy">
                                         </div>
                                         <div class="desc">
                                             <div class="title">
@@ -672,9 +672,9 @@
                                     <a href="{{ product.get_absolute_url }}">
                                         <div class="image text-center">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid one-image">
+                                                 class="img-fluid one-image" loading="lazy">
                                             <img src="{{ product.image.url }}" alt="{{ product.title }}"
-                                                 class="img-fluid two-image">
+                                                 class="img-fluid two-image" loading="lazy">
                                         </div>
                                         <div class="desc">
                                             <div class="title">
@@ -764,7 +764,7 @@
                             <div class="swiper-slide">
                                 <a href="{{ brand.get_absolute_url }}">
                                     <div class="image text-center">
-                                        <img src="{{ brand.image.url }}" class="img-fluid" alt="{{ brand.title }}">
+                                        <img src="{{ brand.image.url }}" class="img-fluid" alt="{{ brand.title }}" loading="lazy">
                                     </div>
                                 </a>
                             </div>
@@ -813,7 +813,7 @@
                                  style="margin-left: 10px;">
                                 <a href="{{ blog.get_absolute_url }}">
                                     <div class="image-blog text-center">
-                                        <img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}">
+                                        <img src="{{ blog.image.url }}" class="img-fluid" alt="{{ blog.title }}" loading="lazy">
                                         <div class="blog-desc position-absolute bottom-0">
                                             <h6 class="font-14">{{ blog.title }}</h6>
                                             <div class="d-flex justify-content-between align-items-center my-2">

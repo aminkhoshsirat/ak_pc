@@ -8,7 +8,7 @@ from .models import *
 from .serializers import *
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from akurtekPC.config import redis_cli as re
+from akurtekPC.redis import redis_cli as re
 
 
 class PowerView(View):

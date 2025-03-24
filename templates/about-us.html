@@ -18,12 +18,7 @@
         <div class="container-fluid">
             <div class="content-box">
                 <div class="about-us">
-                    {% for object in objects %}
-                        <h3 class="h3 main-title">{{ object.title }}</h3>
-                        <p class="font-16" style="line-height: 40px;">
-                            {{ object.description }}
-                        </p>
-                    {% endfor %}
+                    {{ about_us.text | safe }}
                 </div>
             </div>
         </div>

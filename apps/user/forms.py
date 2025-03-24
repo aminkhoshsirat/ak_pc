@@ -4,8 +4,16 @@ from django.core.validators import MinLengthValidator
 
 
 class UserLoginForm(forms.Form):
-    phone_or_email = forms.CharField(max_length=300, label='ایمیل یا شماره تلفن', error_messages={'required': 'ایمیل یا تلفن نامعتبر', 'max_length': 'ایمیل یا تلفن نامعتبر'})
-    password = forms.CharField(max_length=25, label='پسورد', error_messages={'required': 'پسورد نامعتبر', 'max_length': 'پسورد نامعتبر'})
+    phone_or_email = forms.CharField(
+        max_length=300,
+        label='ایمیل یا شماره تلفن',
+        error_messages={'required': 'ایمیل یا تلفن نامعتبر', 'max_length': 'ایمیل یا تلفن نامعتبر'}
+    )
+    password = forms.CharField(
+        max_length=25,
+        label='پسورد',
+        error_messages={'required': 'پسورد نامعتبر', 'max_length': 'پسورد نامعتبر'}
+    )
 
 
 class UserRegisterForm(forms.Form):
@@ -15,17 +23,18 @@ class UserRegisterForm(forms.Form):
     password = forms.CharField(max_length=25)
     confirm_password = forms.CharField(max_length=25)
 
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
+            raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
+        return password
+
     def clean_confirm_password(self):
         confirm_password = self.cleaned_data['confirm_password']
         password = self.cleaned_data['password']
-
-        if confirm_password == password:
-            if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
-                raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
-            else:
-                return confirm_password
-        else:
+        if confirm_password != password:
             raise forms.ValidationError('پسورد و تکرار آن یکی نمی باشد')
+        return confirm_password
 
 
 class UserRegisterActivationForm(forms.Form):
@@ -36,17 +45,18 @@ class UserRegisterActivationForm(forms.Form):
     password = forms.CharField(max_length=25)
     confirm_password = forms.CharField(max_length=25)
 
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
+            raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
+        return password
+
     def clean_confirm_password(self):
         confirm_password = self.cleaned_data['confirm_password']
         password = self.cleaned_data['password']
-
-        if confirm_password == password:
-            if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
-                raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
-            else:
-                return confirm_password
-        else:
+        if confirm_password != password:
             raise forms.ValidationError('پسورد و تکرار آن یکی نمی باشد')
+        return confirm_password
 
 
 class UserEditForm(forms.ModelForm):
@@ -59,17 +69,18 @@ class UserChangePasswordForm(forms.Form):
     password = forms.CharField(max_length=25)
     confirm_password = forms.CharField(max_length=25)
 
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
+            raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
+        return password
+
     def clean_confirm_password(self):
         confirm_password = self.cleaned_data['confirm_password']
         password = self.cleaned_data['password']
-
-        if confirm_password == password:
-            if password.isdigit() or password.isalpha() or password.lower() == password or len(password) < 8:
-                raise forms.ValidationError('پسورد باید شامل اعداد و حروف کوچک و بزرگ باشد و حداقل 8 کاراکتر.')
-            else:
-                return confirm_password
-        else:
+        if confirm_password != password:
             raise forms.ValidationError('پسورد و تکرار آن یکی نمی باشد')
+        return confirm_password
 
 
 class NeshanSearchForm(forms.Form):
@@ -106,12 +117,12 @@ class AddressForm(forms.Form):
 
 
 class SendOtpForm(forms.Form):
-    phone = forms.CharField(max_length=11)
+    phone = forms.CharField(max_length=11, error_messages={'required': 'لطفا شماره تلفن را وارد کنید'})
 
 
 class ForgetForm(forms.Form):
-    phone = forms.CharField(max_length=11)
-    code = forms.CharField(max_length=6)
+    phone = forms.CharField(max_length=11, error_messages={'required': 'لطفا شماره تلفن را وارد کنید'})
+    code = forms.CharField(max_length=6, error_messages={'required': 'لطفا کد را وارد کنید'})
 
 
 class AddAdminForm(forms.ModelForm):

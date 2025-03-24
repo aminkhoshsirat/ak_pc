@@ -6,6 +6,7 @@ from apps.product.models import BrandModel
 from apps.product.models import ChildCategoryModel
 from apps.product.models import ProductCommentModel
 from apps.blog.models import BlogCommentModel
+from ckeditor.fields import RichTextField
 
 
 banner_order = [(str(i), str(i)) for i in range(1, 5)]
@@ -140,5 +141,4 @@ class ContactUsModel(models.Model):
 
 
 class AboutUsModel(models.Model):
-    title = models.TextField()
-    description = models.TextField()
+    text = RichTextField()

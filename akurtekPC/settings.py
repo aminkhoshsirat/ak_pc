@@ -1,16 +1,16 @@
 import os
 from pathlib import Path
+import os
+from dotenv import load_dotenv
 
-from .config import *
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-*7ka_#@8d5k2&vv^6uud@w&7h^$9143+vdgnv_x)vvqk+jp7t='
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = False
-
+DEBUG = True
 ALLOWED_HOSTS = ['akurtek.ir', 'www.akurtek.ir']
-# ALLOWED_HOSTS = ['*']
 
 
 INSTALLED_APPS = [
@@ -61,6 +61,7 @@ AUTH_USER_MODEL = 'user.UserModel'
 SITE_ID = 1
 
 MIDDLEWARE = [
+    'django.middleware.gzip.GZipMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,19 +99,27 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [f'redis://:{redis_password}@{redis_host}:6379'],
+            "hosts": [f'redis://:{os.getenv("redis_password")}@{os.getenv("redis_host")}:6379'],
         },
     },
 }
 
 DATABASES = {
-    'default': postgres_config
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("pg_name"),
+        'USER': os.getenv("pg_user"),
+        'PASSWORD': os.getenv("pg_password"),
+        'HOST': os.getenv("pg_host"),
+        'PORT': '5432',
+    }
 }
+
 
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
-        'LOCATION': f'redis://:{redis_password}@{redis_host}:6379',
+        'LOCATION': f'redis://:{os.getenv("redis_password")}@{os.getenv("redis_host")}:6379',
     }
 }
 
@@ -140,6 +149,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [BASE_DIR / 'static']
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -194,9 +205,9 @@ REST_FRAMEWORK = {
 }
 
 # CELERY SETTINGS
-CELERY_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/3'
-CELERY_BROKER_URL = f'redis://:{redis_password}@{redis_host}:6379/4'
-CELERY_RESULT_BACKEND = f'redis://:{redis_password}@{redis_host}:6379/5'
+CELERY_BACKEND = f'redis://:{os.getenv("redis_password")}@{os.getenv("redis_host")}:6379/3'
+CELERY_BROKER_URL = f'redis://:{os.getenv("redis_password")}@{os.getenv("redis_host")}:6379/4'
+CELERY_RESULT_BACKEND = f'redis://:{os.getenv("redis_password")}@{os.getenv("redis_host")}:6379/5'
 
 
 CELERY_TASK_SERIALIZER = 'json'
@@ -205,3 +216,9 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_ENABLE_UTC = False
 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
+# STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
+
+MAILCHIMP_API_KEY = os.getenv("MAILCHIMP_API_KEY")
+MAILCHIMP_SERVER_PREFIX = os.getenv("MAILCHIMP_SERVER_PREFIX")
+MAILCHIMP_LIST_ID = os.getenv("MAILCHIMP_LIST_ID")

@@ -29,7 +29,9 @@ from django.contrib.postgres.search import TrigramSimilarity
 from django.db.models.functions import Greatest
 from utils.create_base_categories import create_categories
 from apps.notification.models import AdminNotificationModel
-from akurtekPC.config import ghasedak_api_key
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from apps.user.forms import AddAdminForm, AddUserForm
 from apps.blog.models import BlogCategoryModel, BlogCommentModel, BlogModel, AutherModel
 from apps.blog.forms import AutherForm, BlogForm, BlogCategoryForm
@@ -93,7 +95,7 @@ class IndexView(AdminRequiredMixin, View):
             url = "http://api.ghasedaksms.com/v2/credit"
 
             headers = {
-                'apikey': "RjZN5VorYOuI01duQPGOT5cE+DfLh6PDwPyEKYDpDwI",
+                'apikey': os.getenv("ghasedak_api_key"),
             }
             response = requests.request("POST", url, headers=headers)
             ghasedak_amount = int(json.loads(response.text)['credit'] / 10)

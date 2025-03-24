@@ -1,3 +1,5 @@
+from django.db.models import QuerySet, ManyToManyField
+
 from .models import *
 
 
@@ -38,9 +40,24 @@ def product_fields(product):
 
     fields = []
 
+    # for i in product._meta.get_fields()[30:]:
+    #     if hasattr(i, 'verbose_name'):
+    #         if i.verbose_name != 'productmodel ptr':
+    #             fields.append({'name': i.verbose_name , 'amount': '' if str(product.__getattribute__(i.name)).endswith('None')else product.__getattribute__(i.name)})
+
     for i in product._meta.get_fields()[30:]:
         if hasattr(i, 'verbose_name'):
             if i.verbose_name != 'productmodel ptr':
-                fields.append({'name': i.verbose_name , 'amount': '' if str(product.__getattribute__(i.name)).endswith('None')else product.__getattribute__(i.name)})
+                # اگر فیلد many-to-many باشد
+                if isinstance(getattr(product, i.name), ManyToManyField):
+
+                    related_objects = getattr(product, i.name).all()
+                    related_field_values = [str(obj) for obj in related_objects]
+                    fields.append({'name': i.verbose_name, 'amount': ', '.join(related_field_values)})
+
+                else:
+                    field_value = getattr(product, i.name)
+                    fields.append(
+                        {'name': i.verbose_name, 'amount': '' if str(field_value).endswith('None') else field_value})
 
     return fields

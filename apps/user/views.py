@@ -1,4 +1,6 @@
 import json
+
+from django.http import JsonResponse
 from django.shortcuts import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -11,13 +13,13 @@ from apps.bucket.models import BuketModel
 from apps.product.models import UserFavoriteProductModel, ProductCommentModel
 from .forms import *
 from django.utils.safestring import mark_safe
-from akurtekPC.config import NESHAN_API_KEY
 from apps.panel.models import SiteDetailModel
 import random
 from apps.notification.models import UserNotificationModel
 from django.utils import timezone
 from utils.services import send_otp
-from akurtekPC.config import redis_cli as r
+from akurtekPC.redis import redis_cli as r
+import time
 
 
 class UserLoginView(View):
@@ -26,46 +28,48 @@ class UserLoginView(View):
 
     def post(self, request):
         form = UserLoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            phone_or_email = cd['phone_or_email']
-            user = UserModel.objects.filter(Q(phone=phone_or_email) | Q(email=phone_or_email)).first()
-            if user:
-                check_password = user.check_password(cd['password'])
-                if check_password:
-                    login(request, user)
-                    return redirect('index')
-                else:
-                    messages.add_message(request, messages.ERROR, 'رمز عبور اشتباه است')
-                    return redirect(request.META['HTTP_REFERER'])
-            else:
-                messages.add_message(request, messages.ERROR, 'کاربر یافت نشد')
-                return redirect(request.META['HTTP_REFERER'])
-        else:
-            messages.add_message(request, messages.ERROR, form.errors)
+
+        if not form.is_valid():
+            messages.add_message(request, messages.ERROR, 'اطلاعات وارد شده اشتباه است')
             return redirect(request.META['HTTP_REFERER'])
+
+        cd = form.cleaned_data
+        phone_or_email = cd['phone_or_email']
+        user = UserModel.objects.filter(Q(phone=phone_or_email) | Q(email=phone_or_email)).first()
+
+        if user:
+            if user.check_password(cd['password']):
+                login(request, user)
+                return redirect('index')
+            else:
+                messages.add_message(request, messages.ERROR, 'رمز عبور اشتباه است')
+        else:
+            messages.add_message(request, messages.ERROR, 'کاربر یافت نشد')
+
+        return redirect(request.META['HTTP_REFERER'])
 
 
 class UserLoginHeaderView(View):
     def post(self, request):
         form = UserLoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            phone_or_email = cd['phone_or_email']
-            user = UserModel.objects.filter(Q(phone=phone_or_email) | Q(email=phone_or_email)).first()
-            if user:
-                check_password = user.check_password(cd['password'])
-                if check_password:
-                    login(request, user)
-                    return redirect(request.META['HTTP_REFERER'])
-                else:
-                    messages.add_message(request, messages.ERROR, 'رمز عبور اشتباه است')
-                    return redirect(request.META['HTTP_REFERER'])
-            else:
-                messages.add_message(request, messages.ERROR, 'کاربر یافت نشد')
-                return redirect(request.META['HTTP_REFERER'])
-        else:
+
+        if not form.is_valid():
             return redirect(request.META['HTTP_REFERER'])
+
+        cd = form.cleaned_data
+        phone_or_email = cd['phone_or_email']
+        user = UserModel.objects.filter(Q(phone=phone_or_email) | Q(email=phone_or_email)).first()
+
+        if user:
+            if user.check_password(cd['password']):
+                login(request, user)
+            else:
+                messages.add_message(request, messages.ERROR, 'رمز عبور اشتباه است')
+        else:
+            messages.add_message(request, messages.ERROR, 'کاربر یافت نشد')
+
+        return redirect(request.META['HTTP_REFERER'])
+
 
 
 class UserRegisterView(View):
@@ -74,46 +78,77 @@ class UserRegisterView(View):
 
     def post(self, request):
         form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            phone = cd['phone']
-            user = UserModel.objects.filter(phone=phone).first()
-            if user:
-                if user.ban:
-                    return HttpResponse('کاربر ازسایت محروم شده است')
-                return HttpResponse('کاربر وجود دارد')
+        if not form.is_valid():
+            return render(request, 'user/form-errors.html', {'form': form})
 
-            else:
-                time = r.ttl(f'{phone}:activation_code')
-                if time < 420:
-                    code = random.randint(100000, 999999)
-                    r.set(f'{phone}:activation_code', code, ex=600)
-                    send_otp(phone, str(code))
-                return HttpResponse('ok')
-        return render(request, 'user/form-errors.html', {'form': form})
+        cd = form.cleaned_data
+        phone = cd['phone']
+        email = cd['email']
+
+        if UserModel.objects.filter(phone=phone).exists():
+            return HttpResponse('این شماره تلفن قبلاً ثبت شده است')
+
+        if UserModel.objects.filter(email=email).exists():
+            return HttpResponse('این ایمیل قبلاً ثبت شده است')
+
+
+        cache_key = f'{phone}:activation_code'
+        last_request_key = f'{phone}:last_request_time'
+
+
+        last_request_time = r.get(last_request_key)
+        current_time = int(time.time())
+
+        if last_request_time and (current_time - int(last_request_time)) < 120:
+            remaining_time = 120 - (current_time - int(last_request_time))
+            return HttpResponse( f'لطفاً {remaining_time} ثانیه دیگر تلاش کنید')
+
+
+        code = random.randint(100000, 999999)
+        r.set(cache_key, code, ex=600)
+        r.set(last_request_key, current_time, ex=120)
+        send_otp(phone, str(code))
+
+        return HttpResponse('کد فعال‌سازی ارسال شد')
 
 
 class UserRegisterActivationView(View):
     def post(self, request):
         form = UserRegisterActivationForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            code = cd['code']
-            phone = cd['phone']
-            try:
-                sending_code = str(int(r.get(f'{phone}:activation_code')))
-            except:
-                sending_code = ''
-            if sending_code:
-                if sending_code == code:
-                    user = UserModel.objects.create_user(fullname=cd['fullname'], email=cd['email'], phone=phone, password=cd['password'])
-                    r.delete(f'{phone}:activation_code')
-                    login(request, user)
-                    return HttpResponse('ok')
-                else:
-                    return HttpResponse('کد نادرست')
-            return HttpResponse('نامعتبر')
-        return render(request, 'user/form-errors.html', {'form': form})
+        if not form.is_valid():
+            return render(request, 'user/form-errors.html', {'form': form})
+
+        cd = form.cleaned_data
+        phone = cd['phone']
+        email = cd['email']
+        code = cd['code']
+
+        try:
+            stored_code = str(int(r.get(f'{phone}:activation_code')))
+        except (TypeError, ValueError):
+            stored_code = ''
+
+        if not stored_code or stored_code != code:
+            return HttpResponse('کد نادرست یا نامعتبر است')
+
+        if UserModel.objects.filter(phone=phone).exists():
+            return HttpResponse('این شماره تلفن قبلاً ثبت شده است')
+
+        if UserModel.objects.filter(email=email).exists():
+            return HttpResponse('این ایمیل قبلاً ثبت شده است')
+
+        user = UserModel.objects.create_user(
+            fullname=cd['fullname'],
+            email=email,
+            phone=phone,
+            password=cd['password']
+        )
+
+        r.delete(f'{phone}:activation_code')
+        login(request, user)
+
+        return HttpResponse('ok')
+
 
 
 class UserLogoutView(LoginRequiredMixin, View):
@@ -129,22 +164,24 @@ class SendOtpCodeView(View):
             cd = form.cleaned_data
             phone = cd['phone']
             user = UserModel.objects.filter(phone=phone).first()
-            if user:
-                if user.ban:
-                    messages.add_message(request, messages.ERROR, 'کاربر ازسایت محروم شده است')
-                    return HttpResponse('کاربر ازسایت محروم شده است')
-                else:
-                    time = r.ttl(f'{phone}:activation_code')
-                    if time < 420:
-                        code = random.randint(100000, 999999)
-                        r.set(f'{phone}:activation_code', code, ex=600)
-                        send_otp(phone, code)
-                    return HttpResponse('ok')
 
-            else:
+            if not user:
                 return HttpResponse('کاربر وجود ندارد')
 
+            if user.ban:
+                messages.add_message(request, messages.ERROR, 'کاربر ازسایت محروم شده است')
+                return HttpResponse('کاربر ازسایت محروم شده است')
+
+            time = r.ttl(f'{phone}:activation_code')
+            if time < 120:
+                code = random.randint(100000, 999999)
+                r.set(f'{phone}:activation_code', code, ex=600)
+                send_otp(phone, code)
+
+            return HttpResponse('ok')
+
         return render(request, 'user/form-errors.html', {'form': form})
+
 
 
 class PasswordForgetView(View):
@@ -153,25 +190,31 @@ class PasswordForgetView(View):
 
     def post(self, request):
         form = ForgetForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            phone = cd['phone']
-            user = UserModel.objects.filter(phone=phone).first()
-            if user:
-                if user.ban:
-                    return HttpResponse('کاربر ازسایت محروم شده است')
-                else:
-                    try:
-                        sending_code = str(int(r.get(f'{phone}:activation_code')))
-                    except:
-                        sending_code = ''
-                    if sending_code == cd['code']:
-                        login(request, user)
-                        r.delete(f'{phone}:activation_code')
-                        return HttpResponse('ok')
-                    return HttpResponse('کد نادرست است')
+        if not form.is_valid():
+            return HttpResponse('نامعتبر')
+
+        cd = form.cleaned_data
+        phone = cd['phone']
+        user = UserModel.objects.filter(phone=phone).first()
+
+        if not user:
             return HttpResponse('کاربر وجود ندارد')
-        return HttpResponse('نامعتبر')
+
+        if user.ban:
+            return HttpResponse('کاربر ازسایت محروم شده است')
+
+        try:
+            sending_code = str(int(r.get(f'{phone}:activation_code')))
+        except:
+            sending_code = ''
+
+        if sending_code == cd['code']:
+            login(request, user)
+            r.delete(f'{phone}:activation_code')
+            return HttpResponse('ok')
+
+        return HttpResponse('کد نادرست است')
+
 
 
 class ChangePasswordView(LoginRequiredMixin, View):
@@ -183,10 +226,10 @@ class ChangePasswordView(LoginRequiredMixin, View):
         if form.is_valid():
             cd = form.cleaned_data
             user = self.request.user
-            password = cd['password']
-            user.set_password(password)
+            user.set_password(cd['password'])
             user.save()
             return redirect('user:dashboard')
+
         return render(request, 'user/change-password.html')
 
 
@@ -307,7 +350,6 @@ class UserAddressView(ListView):
 class UserAddAddressView(LoginRequiredMixin, View):
     def get(self, request):
         context = {
-            'api_key': mark_safe(NESHAN_API_KEY),
             'map_x': request.session.get('map_x'),
             'map_y': request.session.get('map_y'),
         }

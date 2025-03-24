@@ -30,3 +30,8 @@ class FinancialStatementAdmin(admin.ModelAdmin):
 @admin.register(FinancialStatementObjectsModel)
 class FinancialStatementObjectsAdmin(admin.ModelAdmin):
     list_display = ['title']
+
+
+@admin.register(AboutUsModel)
+class AboutUsAdmin(admin.ModelAdmin):
+    list_display = ['id']

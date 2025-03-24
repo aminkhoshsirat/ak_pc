@@ -1,6 +1,8 @@
 from django.http import HttpRequest
 import http.client
-from akurtekPC.config import ghasedak_api_key, ghasedak_template
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 
 def get_client_ip(request: HttpRequest):
@@ -14,9 +16,9 @@ def get_client_ip(request: HttpRequest):
 
 def send_otp(phone, message):
     conn = http.client.HTTPConnection("api.ghasedaksms.com")
-    payload = f"receptor={phone}&type=1&template={ghasedak_template}&param1={message}"
+    payload = f"receptor={phone}&type=1&template={os.getenv("ghasedak_template")}&param1={message}"
     headers = {
-        'apikey': ghasedak_api_key,
+        'apikey': os.getenv("ghasedak_api_key"),
         'content-type': "application/x-www-form-urlencoded"
     }
     conn.request("POST", "/v2/send/verify", payload, headers)

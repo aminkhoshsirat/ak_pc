@@ -1,6 +1,6 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
-from akurtekPC.config import redis_cli as r
+from akurtekPC.redis import redis_cli as r
 
 class BenchmarkSitemap(Sitemap):
     changefreq = "weekly"

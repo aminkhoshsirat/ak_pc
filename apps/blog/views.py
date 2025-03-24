@@ -39,7 +39,7 @@ class BlogView(ListView):
         blogs = BlogModel.objects.prefetch_related('blog_view', 'blog_likes').filter(active=True)
 
         if search:
-            blogs = blogs.objects.annotate(similar=Greatest(
+            blogs = blogs.annotate(similar=Greatest(
                 TrigramSimilarity('title', search),
                 TrigramSimilarity('url', search),
                 TrigramSimilarity('category__title', search),

@@ -20,7 +20,7 @@ from django.db.models import Avg
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
-from akurtekPC.config import redis_cli as r
+from akurtekPC.redis import redis_cli as r
 
 
 class HeaderView(View):
@@ -71,8 +71,8 @@ class ContactUsView(View):
 
 class AboutUsView(View):
     def get(self, request):
-        objects = AboutUsModel.objects.all()
-        return render(request, 'about-us.html', {'objects': objects})
+        about_us = AboutUsModel.objects.first()
+        return render(request, 'about-us.html', {'about_us': about_us})
 
 
 class ProductListView(ListView):
@@ -88,7 +88,7 @@ class ProductListView(ListView):
 
         context['count_products'] = context['products'].count()
         context['products_price'] = context['products'].aggregate(max=Max('price_after_off'), min=Min('price_after_off'))
-        context['filters'] = filter_category(child_category_url)
+        context['filters'] = filter_category(child_category_url) if child_category_url else None
 
 
         return context
@@ -114,22 +114,22 @@ class ProductListView(ListView):
             main_category = MainCategoryModel.objects.prefetch_related('base_category_child').filter(
                 url=main_category_url, active=True).first()
             self.extra_context = {'main_category': main_category}
-            products = products.filter(main_category=main_category)
+            products = products.filter(main_category=main_category).order_by('-id')
 
         elif child_category_url:
             child_category = ChildCategoryModel.objects.filter(url=child_category_url, active=True).first()
             self.extra_context = {'child_category': child_category}
-            products = products.filter(Q(child_category=child_category) | Q(child_category__parent_category=child_category))
+            products = products.filter(Q(child_category=child_category) | Q(child_category__parent_category=child_category)).order_by('-id')
 
         if brand:
-            products = products.filter(brand__url=brand)
+            products = products.filter(brand__url=brand).order_by('-id')
 
         else:
-            products = products.filter(active=True)
+            products = products.filter(active=True).order_by('-id')
 
         if new_filter_dict:
             try:
-                products = CpuModel.objects.filter(**new_filter_dict)
+                products = CpuModel.objects.filter(**new_filter_dict).order_by('-id')
             except:
                 pass
 
@@ -143,7 +143,7 @@ class ProductListView(ListView):
 
         if sort:
             if sort == '1':
-                products = products
+                products = products.order_by('-id')
 
             if sort == '2':
                 products = products.annotate(count=Count('favorite_product')).order_by('-count')
